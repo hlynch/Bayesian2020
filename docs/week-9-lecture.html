@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bayesian Data Analysis and Computation Lecture and Lab Notes</title>
+  <meta name="description" content="Bayesian Data Analysis and Computation Lecture and Lab Notes">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  
+  
+  
+
+<meta name="author" content="Heather Lynch">
+
+
+<meta name="date" content="2020-07-08">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="week-8-lab.html">
+<link rel="next" href="week-9-lab.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
+<li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#introduction-to-this-course"><i class="fa fa-check"></i><b>1.1</b> Introduction to this course</a></li>
+<li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#statistical-philosophy-and-the-foundations-of-bayesian-analysis"><i class="fa fa-check"></i><b>1.2</b> Statistical philosophy and the foundations of Bayesian analysis</a></li>
+<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#some-probability-vocabulary"><i class="fa fa-check"></i><b>1.3</b> Some probability vocabulary</a></li>
+<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#testing-jags-installation"><i class="fa fa-check"></i><b>1.4</b> Testing JAGS installation</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1-lab.html"><a href="week-1-lab.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab</a></li>
+<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a><ul>
+<li class="chapter" data-level="3.1" data-path="week-2-lecture.html"><a href="week-2-lecture.html#bayes-theorem-and-all-that-follows-from-it"><i class="fa fa-check"></i><b>3.1</b> Bayes Theorem and all that follows from it</a></li>
+<li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats"><i class="fa fa-check"></i><b>3.2</b> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#getting-some-more-practice-with-jags"><i class="fa fa-check"></i><b>3.3</b> Getting some more practice with JAGS</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>4</b> Week 3 Lecture</a><ul>
+<li class="chapter" data-level="4.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#how-do-we-obtain-priors"><i class="fa fa-check"></i><b>4.1</b> How do we obtain priors?</a></li>
+<li class="chapter" data-level="4.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#conjugacy"><i class="fa fa-check"></i><b>4.2</b> Conjugacy</a></li>
+<li class="chapter" data-level="4.3" data-path="week-3-lecture.html"><a href="week-3-lecture.html#sensitivity-analysis"><i class="fa fa-check"></i><b>4.3</b> Sensitivity analysis</a></li>
+<li class="chapter" data-level="4.4" data-path="week-3-lecture.html"><a href="week-3-lecture.html#expert-elicitation"><i class="fa fa-check"></i><b>4.4</b> Expert elicitation</a></li>
+<li class="chapter" data-level="4.5" data-path="week-3-lecture.html"><a href="week-3-lecture.html#more-information"><i class="fa fa-check"></i><b>4.5</b> More information</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="5.1" data-path="week-3-lab.html"><a href="week-3-lab.html#congugacy"><i class="fa fa-check"></i><b>5.1</b> Congugacy</a></li>
+<li class="chapter" data-level="5.2" data-path="week-3-lab.html"><a href="week-3-lab.html#moment-matching-two-distributions"><i class="fa fa-check"></i><b>5.2</b> Moment Matching two distributions</a></li>
+<li class="chapter" data-level="5.3" data-path="week-3-lab.html"><a href="week-3-lab.html#from-prior-to-posterior-to-prior"><i class="fa fa-check"></i><b>5.3</b> From Prior to Posterior to Prior</a></li>
+<li class="chapter" data-level="5.4" data-path="week-3-lab.html"><a href="week-3-lab.html#adding-data-one-at-a-time-or-all-at-once"><i class="fa fa-check"></i><b>5.4</b> Adding data: One at a time or all at once?</a></li>
+<li class="chapter" data-level="5.5" data-path="week-3-lab.html"><a href="week-3-lab.html#what-impact-did-the-choice-of-prior-have"><i class="fa fa-check"></i><b>5.5</b> What impact did the choice of prior have?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>6</b> Week 4 Lecture</a><ul>
+<li class="chapter" data-level="6.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#rejection-sampling"><i class="fa fa-check"></i><b>6.1</b> Rejection Sampling</a></li>
+<li class="chapter" data-level="6.2" data-path="week-4-lecture.html"><a href="week-4-lecture.html#adaptive-rejection-sampling"><i class="fa fa-check"></i><b>6.2</b> Adaptive Rejection Sampling</a></li>
+<li class="chapter" data-level="6.3" data-path="week-4-lecture.html"><a href="week-4-lecture.html#monte-carlo-integration"><i class="fa fa-check"></i><b>6.3</b> Monte Carlo Integration</a></li>
+<li class="chapter" data-level="6.4" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sometimes-you-just-want-the-integral"><i class="fa fa-check"></i><b>6.4</b> Sometimes you just want the integral…</a></li>
+<li class="chapter" data-level="6.5" data-path="week-4-lecture.html"><a href="week-4-lecture.html#importance-sampling"><i class="fa fa-check"></i><b>6.5</b> Importance Sampling</a></li>
+<li class="chapter" data-level="6.6" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sampling-importance-resampling"><i class="fa fa-check"></i><b>6.6</b> Sampling Importance Resampling</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lab</a><ul>
+<li class="chapter" data-level="7.1" data-path="week-4-lab.html"><a href="week-4-lab.html#smith-and-gelfand-1992"><i class="fa fa-check"></i><b>7.1</b> Smith and Gelfand (1992)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>8</b> Week 5 Lecture</a><ul>
+<li class="chapter" data-level="8.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#gibbs-sampling"><i class="fa fa-check"></i><b>8.1</b> Gibbs Sampling</a></li>
+<li class="chapter" data-level="8.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#metropolis-algorithm"><i class="fa fa-check"></i><b>8.2</b> Metropolis algorithm</a></li>
+<li class="chapter" data-level="8.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-messy-reality-hybrid-of-m-h-and-gibbs"><i class="fa fa-check"></i><b>8.3</b> The Messy reality = Hybrid of M-H and Gibbs</a></li>
+<li class="chapter" data-level="8.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#convergence"><i class="fa fa-check"></i><b>8.4</b> Convergence</a></li>
+<li class="chapter" data-level="8.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#bayesian-change-point-example"><i class="fa fa-check"></i><b>8.5</b> Bayesian change point example</a></li>
+<li class="chapter" data-level="8.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#hierarchical-model"><i class="fa fa-check"></i><b>8.6</b> Hierarchical model</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lab</a><ul>
+<li class="chapter" data-level="9.1" data-path="week-5-lab.html"><a href="week-5-lab.html#gibbs-sampler"><i class="fa fa-check"></i><b>9.1</b> Gibbs Sampler</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="week-6-lab.html"><a href="week-6-lab.html"><i class="fa fa-check"></i><b>10</b> Week 6 Lab</a><ul>
+<li class="chapter" data-level="10.1" data-path="week-6-lab.html"><a href="week-6-lab.html#fitting-a-distribution"><i class="fa fa-check"></i><b>10.1</b> Fitting a distribution</a></li>
+<li class="chapter" data-level="10.2" data-path="week-6-lab.html"><a href="week-6-lab.html#one-way-anova"><i class="fa fa-check"></i><b>10.2</b> One-way ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="week-7-lecture.html"><a href="week-7-lecture.html"><i class="fa fa-check"></i><b>11</b> Week 7 Lecture</a><ul>
+<li class="chapter" data-level="11.1" data-path="week-7-lecture.html"><a href="week-7-lecture.html#class-projects"><i class="fa fa-check"></i><b>11.1</b> Class projects</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="week-7-lab.html"><a href="week-7-lab.html"><i class="fa fa-check"></i><b>12</b> Week 7 Lab</a></li>
+<li class="chapter" data-level="13" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>13</b> Week 8 Lecture</a></li>
+<li class="chapter" data-level="14" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lab</a></li>
+<li class="chapter" data-level="15" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>15</b> Week 9 Lecture</a><ul>
+<li class="chapter" data-level="15.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#the-probability-of-estimability"><i class="fa fa-check"></i><b>15.1</b> The probability of estimability</a></li>
+<li class="chapter" data-level="15.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#multilevel-modelling-ala-gelman-and-hill"><i class="fa fa-check"></i><b>15.2</b> Multilevel modelling ala Gelman and Hill</a></li>
+<li class="chapter" data-level="15.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#in-sum."><i class="fa fa-check"></i><b>15.3</b> In sum….</a></li>
+<li class="chapter" data-level="15.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#nice-et-al.-2014"><i class="fa fa-check"></i><b>15.4</b> Nice et al. (2014)</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lab</a></li>
+<li class="chapter" data-level="17" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>17</b> Week 10 Lecture</a><ul>
+<li class="chapter" data-level="17.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#convergence-1"><i class="fa fa-check"></i><b>17.1</b> Convergence</a></li>
+<li class="chapter" data-level="17.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#testing-for-convergence"><i class="fa fa-check"></i><b>17.2</b> Testing for convergence</a></li>
+<li class="chapter" data-level="17.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>17.3</b> Gelman-Rubin statistic</a></li>
+<li class="chapter" data-level="17.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#the-take-away-what-should-we-be-checking-after-we-run-our-models"><i class="fa fa-check"></i><b>17.4</b> The take away: What should we be checking after we run our models</a></li>
+<li class="chapter" data-level="17.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#missing-data"><i class="fa fa-check"></i><b>17.5</b> Missing data</a></li>
+<li class="chapter" data-level="17.6" data-path="week-10-lecture.html"><a href="week-10-lecture.html#initial-values"><i class="fa fa-check"></i><b>17.6</b> Initial values</a></li>
+<li class="chapter" data-level="17.7" data-path="week-10-lecture.html"><a href="week-10-lecture.html#sample-scripts-and-output-for-prior-posterior-overlap"><i class="fa fa-check"></i><b>17.7</b> Sample scripts and output for prior-posterior overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lab</a></li>
+<li class="chapter" data-level="19" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>19</b> Week 11 Lecture</a><ul>
+<li class="chapter" data-level="19.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#dynamical-time-series-models"><i class="fa fa-check"></i><b>19.1</b> Dynamical (time series) models</a></li>
+<li class="chapter" data-level="19.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#process-error"><i class="fa fa-check"></i><b>19.2</b> Process error</a></li>
+<li class="chapter" data-level="19.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#observation-error"><i class="fa fa-check"></i><b>19.3</b> Observation error</a></li>
+<li class="chapter" data-level="19.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#other-kinds-of-statespace-models"><i class="fa fa-check"></i><b>19.4</b> Other kinds of state=space models</a></li>
+<li class="chapter" data-level="19.5" data-path="week-11-lecture.html"><a href="week-11-lecture.html#missing-data-1"><i class="fa fa-check"></i><b>19.5</b> Missing data</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lab</a><ul>
+<li class="chapter" data-level="20.1" data-path="week-11-lab.html"><a href="week-11-lab.html#simple-logistic"><i class="fa fa-check"></i><b>20.1</b> Simple logistic</a></li>
+<li class="chapter" data-level="20.2" data-path="week-11-lab.html"><a href="week-11-lab.html#observation-error-only-model"><i class="fa fa-check"></i><b>20.2</b> Observation-error-only model</a></li>
+<li class="chapter" data-level="20.3" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-only-model"><i class="fa fa-check"></i><b>20.3</b> Process-error-only model</a></li>
+<li class="chapter" data-level="20.4" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-and-observation-error-together"><i class="fa fa-check"></i><b>20.4</b> Process-error and observation-error together</a></li>
+<li class="chapter" data-level="20.5" data-path="week-11-lab.html"><a href="week-11-lab.html#final-thoughts"><i class="fa fa-check"></i><b>20.5</b> Final thoughts</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>21</b> Week 12 Lecture</a><ul>
+<li class="chapter" data-level="21.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#mark-recapture-modeling"><i class="fa fa-check"></i><b>21.1</b> Mark-recapture modeling</a></li>
+<li class="chapter" data-level="21.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#cormack-jolly-seber"><i class="fa fa-check"></i><b>21.2</b> Cormack-Jolly-Seber</a></li>
+<li class="chapter" data-level="21.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-1-brute-force"><i class="fa fa-check"></i><b>21.3</b> Method #1: Brute force</a></li>
+<li class="chapter" data-level="21.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-2-modeling-the-entire-capture-history"><i class="fa fa-check"></i><b>21.4</b> Method #2: Modeling the entire capture history</a></li>
+<li class="chapter" data-level="21.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#what-other-kind-of-models-might-you-fit"><i class="fa fa-check"></i><b>21.5</b> What other kind of models might you fit</a></li>
+<li class="chapter" data-level="21.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#occupancy-modelling"><i class="fa fa-check"></i><b>21.6</b> Occupancy modelling</a></li>
+<li class="chapter" data-level="21.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#dynamic-state-space-models-for-meta-population-dynamics"><i class="fa fa-check"></i><b>21.7</b> Dynamic state-space models for meta-population dynamics</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lab</a><ul>
+<li class="chapter" data-level="22.1" data-path="week-12-lab.html"><a href="week-12-lab.html#the-zeros-trick"><i class="fa fa-check"></i><b>22.1</b> The ‘zeros’ trick</a></li>
+<li class="chapter" data-level="22.2" data-path="week-12-lab.html"><a href="week-12-lab.html#the-ones-trick"><i class="fa fa-check"></i><b>22.2</b> The ‘ones’ trick</a></li>
+<li class="chapter" data-level="22.3" data-path="week-12-lab.html"><a href="week-12-lab.html#initial-values-1"><i class="fa fa-check"></i><b>22.3</b> Initial values</a></li>
+<li class="chapter" data-level="22.4" data-path="week-12-lab.html"><a href="week-12-lab.html#first-a-warm-up"><i class="fa fa-check"></i><b>22.4</b> First, a warm up</a></li>
+<li class="chapter" data-level="22.5" data-path="week-12-lab.html"><a href="week-12-lab.html#fitting-mark-recapture-models"><i class="fa fa-check"></i><b>22.5</b> Fitting mark-recapture models</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>23</b> Week 13 Lecture</a><ul>
+<li class="chapter" data-level="23.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#rejection-abc"><i class="fa fa-check"></i><b>23.1</b> Rejection ABC</a></li>
+<li class="chapter" data-level="23.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-1-basic-rejection-abc"><i class="fa fa-check"></i><b>23.2</b> Option #1: Basic rejection ABC</a></li>
+<li class="chapter" data-level="23.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-2-markov-chain-monte-carlo-abc"><i class="fa fa-check"></i><b>23.3</b> Option #2: Markov Chain Monte Carlo ABC</a></li>
+<li class="chapter" data-level="23.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-3-sequential-monte-carlo-abc"><i class="fa fa-check"></i><b>23.4</b> Option #3: Sequential Monte Carlo ABC</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 14 Lecture</a><ul>
+<li class="chapter" data-level="24.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#the-mona-lisa"><i class="fa fa-check"></i><b>24.1</b> The Mona Lisa</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>25</b> Week 14 Lab</a></li>
+<li class="chapter" data-level="26" data-path="week-15-lecture.html"><a href="week-15-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 15 Lecture</a><ul>
+<li class="chapter" data-level="26.1" data-path="week-15-lecture.html"><a href="week-15-lecture.html#a-quick-step-back-what-are-the-goals-of-model-selection"><i class="fa fa-check"></i><b>26.1</b> A quick step back: What are the goals of model selection?</a></li>
+<li class="chapter" data-level="26.2" data-path="week-15-lecture.html"><a href="week-15-lecture.html#bayesian-model-averaging"><i class="fa fa-check"></i><b>26.2</b> Bayesian model averaging</a></li>
+<li class="chapter" data-level="26.3" data-path="week-15-lecture.html"><a href="week-15-lecture.html#beyond-bayes-factors"><i class="fa fa-check"></i><b>26.3</b> Beyond Bayes Factors</a></li>
+<li class="chapter" data-level="26.4" data-path="week-15-lecture.html"><a href="week-15-lecture.html#variable-selection-for-nested-models"><i class="fa fa-check"></i><b>26.4</b> Variable selection for nested models</a></li>
+<li class="chapter" data-level="26.5" data-path="week-15-lecture.html"><a href="week-15-lecture.html#prior-data-conflict"><i class="fa fa-check"></i><b>26.5</b> Prior-data conflict</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-9-lecture" class="section level1">
+<h1><span class="header-section-number">15</span> Week 9 Lecture</h1>
+<p>Hierarchical models are simply models in which model parameters themselves have a statistical distribution. Another definition would be the one provided by Gelman and Hill “…multilevel models are extensions of regression in which data are structured in groups and coefficients can vary by group”. We were introduced to the simplest version of hierarchical models in Biometry when we discussed random effects models. Random effects models are hierarchical models, but the latter term encompasses much more complicated models than can be fit using ‘lmer’ or related functions in R.</p>
+<p>Let’s say that you are modeling survivorship of fish in five different watersheds <span class="math inline">\((i = 1,2,3,4,5)\)</span>.</p>
+<p><span class="math display">\[
+S_{i} \sim \mbox{Bern}(p_{i})
+\]</span> You have three choices:</p>
+<ol style="list-style-type: decimal">
+<li><p>Model each of the five watersheds independently. You have to estimate a survivorship probability <span class="math inline">\(p_{i}\)</span> for each of the watersheds. This is analogous to treating ‘watershed’ as a ‘fixed effect’. (I use this terminology now but for reasons discussed in Gelman and Hill, I will drop these terms once you understand the basic idea behind hierarchical modeling.)</p></li>
+<li><p>Lump all the data together, ignore any differences between watersheds, and estimate just one survivorship probability <span class="math inline">\(p\)</span> for the aggregated dataset.</p></li>
+<li><p>Model the parameters as belonging to some distribution, for example, maybe a normal distribution</p></li>
+</ol>
+<p><span class="math display">\[
+logit(p_{i}) \sim N(\mu,\sigma^{2})
+\]</span></p>
+<p>Now you have to estimate two parameters, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^{2}\)</span>, which is fewer than Option #1 but less than Option #2.</p>
+<p>There are many advantages to modelling parameters as being drawn from a common distribution, in addition to the issue of the number of model parameters just described. One such advantage is the idea of “borrowing strength” from groups with large sample sizes to inform estimates of groups with small sample sizes. Let’s say you have one watershed with only three fish data points. Using Option #1, we would have to estimate survivorship using only these three fish. Using Option #3, however, we can constrain the watershed-specific survivorship estimate by saying that it has to fall along some distribution; this hyperparameter distribution may be quite well parameterized by the other four watersheds, and this keeps the estimate for the poorly sampling watershed reasonable.</p>
+<div id="the-probability-of-estimability" class="section level2">
+<h2><span class="header-section-number">15.1</span> The probability of estimability</h2>
+<p>Hierarchical models are often easy to write down, but sometimes they can be difficult to fit. Parameters in a hierarchical model may become entangled: likelihoods can become ridge-shaped or multimodal.</p>
+<p>Example:</p>
+<p><span class="math display">\[
+Y_{i} \sim N(\theta_{i},\sigma^{2}) \\
+\theta_{i} \sim N(\mu,\tau^{2})
+\]</span></p>
+<p>What’s wrong with this? This is equivalent to</p>
+<p><span class="math display">\[
+Y_{i} \sim N(\mu, \tau^{2}+\sigma^{2})
+\]</span></p>
+<p>No amount of data is ever going to allow you to separately estimate <span class="math inline">\(\tau\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
+<p>However, the fact that <span class="math inline">\(\tau\)</span> and <span class="math inline">\(\sigma\)</span> have prior distributions does mean that you will technically be able to run these models, and you will get posterior distributions for <span class="math inline">\(\tau\)</span> and <span class="math inline">\(\sigma\)</span> - you just have to be aware that the data are not contributing to the inference regarding the balance between <span class="math inline">\(\tau\)</span> and <span class="math inline">\(\sigma\)</span> in structuring the overall variability in the data.</p>
+<p>In more complex examples, you may not even be aware that parameters are non-estimable (a.k.a. that the data are not contributing to their estimates). One common way to check if this is happening is to compare the prior to the posterior. If the posterior looks just like the prior, then the data probably hasn’t provided much information. (Though this isn’t fail safe – sometimes the posterior “looks” different from the prior as a statistical artifact of marginalization over another parameter.)</p>
+</div>
+<div id="multilevel-modelling-ala-gelman-and-hill" class="section level2">
+<h2><span class="header-section-number">15.2</span> Multilevel modelling ala Gelman and Hill</h2>
+<p>No paper or book does a better job explaining the ins and outs of “multilevel” or “hierarchical” modelling than Gelman and Hill (2007). If you foresee doing any kind of serious hierarchical modelling for your research, I can’t recommend more highly buying (and reading) Gelman and Hill. Today we will focus on Chapters 11 and 16.</p>
+<p>I’m going to walk through the discussion presented in Gelman and Hill Chapter 11 but using a more ecological example.</p>
+<p>Let’s say we want to study flowering phenology (a concept we should all be fairly familiar with by now), and we do this by measuring the timing of flowering in 100 plants sampled in each of five New York ecosystems. (In other words, we measuring flowering in 100 plants in the Pine Barrens, another 100 plants in the Adirondacks, etc.). We may have some individual-level predictors such as latitude or spring temperature. In other words, these are predictors that are different for each and every individual (n=500) in the study.</p>
+<p>We have many ways that we could model these data. One way would be a “varying-intercept model”:</p>
+<p><span class="math display">\[
+y_{i} = \alpha_{j[i]} + \beta x_{i} + \epsilon_{i}
+\]</span></p>
+<p>(The notation <span class="math inline">\(j[i]\)</span> indicates that this is the group <span class="math inline">\(j\)</span> in which individual <span class="math inline">\(i\)</span> is found.)</p>
+<p>How do we read this? This says that the flowering date of each plant (<span class="math inline">\(i\)</span>) is modelled as a linear function of a group-level intercept and an individual-level covariate (<span class="math inline">\(x_{i}\)</span>) with a shared coefficient <span class="math inline">\(\beta\)</span> (and an individual-level error term). In other words, the full model involves 5 intercepts (one for each ecosystem) and one slope term. Let’s assume for now we simply estimate these 5 intercept terms as “fixed effects”, and that we do not assume a higher level model such as <span class="math inline">\(\alpha_{j[i]} \sim N(\mu,\sigma^{2})\)</span>. [NB: There would be nothing wrong with doing this if we thought it was appropriate.]</p>
+<p>We could have used a “varying slope” model:</p>
+<p><span class="math display">\[
+y_{i} = \alpha + \beta_{j[i]}x_{i} + \epsilon_{i}
+\]</span> Now we would have a single intercept and 5 slopes. The interpretation of this model would be that the relationship between phenology and latitude depends on ecosystem. Make sure this makes sense!</p>
+<p>We could have used a “varying-intercept, varying-slope” model:</p>
+<p><span class="math display">\[
+y_{i} = \alpha_{j[i]} + \beta_{j[i]}x_{i} + \epsilon_{i}
+\]</span> Now we would have 5 intercepts and 5 slopes.</p>
+<p>Let’s consider for a moment a varying slope model like this</p>
+<p><span class="math display">\[
+y_{i} = \alpha + \beta_{j[i]}x_{i} + \epsilon_{i}
+\]</span></p>
+<p>where we want to further model the slopes as coming from a normal distribution:</p>
+<p><span class="math display">\[
+\beta_{j[i]} \sim N(\mu, \sigma^{2})
+\]</span> Why might we want to do this? We may want to do this because we have some underlying theory that suggests that the slopes follow a normal distribution. We might want to protect ourselves from getting unreasonable slope estimates for groups that have small amounts of data. (In this case, we posited 100 samples from each ecosystem, so not explicitly a concern.) We might want to explicitly estimate some common “mean slope” that averages together the responses of each individual ecosystem. This allows us to estimate the slope for each ecosystem and get a measure of “average slope” at the same time, and even a measure of variance between ecosystems.</p>
+<p>Let’s say this is the model we wanted to fit. You might ask yourself, why not fit the first model</p>
+<p><span class="math display">\[
+y_{i} = \alpha + \beta_{j[i]}x_{i} + \epsilon_{i}
+\]</span> and then afterwards simply fit a normal distribution to the resulting slope estimates. The reason this is NOT equivalent is that there is no way for the constraint on the slopes to “filter back up” to the slope estimates themselves. Make sure this makes sense! Doing a model like this in two stages is called “doing statistics on statistics” and it is generally frowned upon. Why do two models that don’t interact when you could do everything in one integrated model that captures all the information you want simultaneously.</p>
+<p>So far we have assumed that the covariates we have are specific to each individual, for example, the exact latitude of each plant. But it may be that covariates come in at the ecosystem level, like species diversity. (I’m not saying I know how species diversity might affect flowering phenology, its just an example of a covariate that comes in at the ecosystem level.) Why does this require special consideration? Let’s say that the first few rows of our data might look like</p>
+<p>FloweringDay | Ecosystem | Latitude | Ecosystem Species Diversity |<br />
+              | | (Individual level) | (Group level) |<br />
+——– —- |:—————:|:——————:|:———–:|:————–:|<br />
+97 | PineBarrens | 40.78 | 120 | |<br />
+95 | PineBarrens | 40.65 | 120 | |<br />
+103 | PineBarrens | 40.62 | 120 | |<br />
+107 | PineBarrens | 40.81 | 120 | |<br />
+92 | PineBarrens | 40.60 | 120 | |<br />
+101 | Adirondacks | 44.13 | 235 | |</p>
+<p>Notice that if we use the varying-slope model, we shouldn’t write the model like this:</p>
+<p><span class="math display">\[
+y_{i} = \alpha + \beta_{j[i]}Lat_{i} + \gamma Diversity_{i} + \epsilon_{i}
+\]</span> but like this:</p>
+<p><span class="math display">\[
+y_{i} = \alpha + \beta_{j[i]}Lat_{i} + \gamma Diversity_{j[i]} + \epsilon_{i}
+\]</span></p>
+<p>Do you understand why? Because the former model involves a type of pseudoreplication, whereby the model assumes that each individual has a unique Diversity whereas this predictor comes in at the ecosystem level. The second way of the writing the model is correct.</p>
+<p>*Multilevel modelling simply refers to models in which covariates (a.k.a. predictors) enter the model at different levels. Some predictors will be individual-based predictors, some will be at the group level (there may be many “groups”).</p>
+<p>*Hierarchical modelling refers to models in which the coefficients (i.e. the things you are trying to estimate) are modelled as having additional distributional assumptions. In other words, there is a hierarchy of models, a model for the data, a model for the parameters, possible a model for the parameters of THAT model, and so forth.</p>
+<p>Multilevel modelling and Hierarchical modelling are not the same thing, nor are they unique to Bayesian modelling, but they often go hand in hand because multilevel models are often also hierarchical models. Bayesian methods provide a straightforward approach to these types of models, but by no means the only approach.</p>
+<p>Before moving on, we should be clear that multilevel models are not constrained to nested structures. Imagine for example that you want to add random effects for Ecosystem and for flower “Family” (as in Species, Genus, Family). Family will not be nested in Ecosystem, nor will Ecosystem be nested in Family. That’s OK! Random effects for Ecosystem and Family present no problem at all.</p>
+<p><span class="math display">\[
+y_{i} = \alpha+\beta_{j[i]}\mbox{Lat}_{i} + \gamma \mbox{Diversity}_{j[i]} + \mbox{Ecosystem}_{j[i]} + \mbox{Family}_{k[i]} + \epsilon_{i}
+\]</span> (Just to summarize, at this point we have a single intercept for all plants, a slope for Latitude that depends on which Ecosystem you are in, a random effect for Ecosystem, a random effect for Family, and a residual term.)</p>
+</div>
+<div id="in-sum." class="section level2">
+<h2><span class="header-section-number">15.3</span> In sum….</h2>
+<p>We have a lot of freedom to build models in whatever way makes the most sense for the data. We can choose to pool coefficients across groups and have a single coefficient or we can allow each group to have its own coefficient. We can do something intermediate, and enforce a distribution for the coefficients so that each individual or group is allowed to have variation for that coefficient but that variation is modelled as following some distribution with its own parameters to estimate. We can and should model predictors on the scale at which they are measured (individual-level, group-level, etc.). There is no “correct” model.</p>
+<p>As a final ‘capstone’ application of Bayesian modeling, we are going to work through analyses by Nice et al. (2014).</p>
+</div>
+<div id="nice-et-al.-2014" class="section level2">
+<h2><span class="header-section-number">15.4</span> Nice et al. (2014)</h2>
+<p>The goal: To understand how weather affects the population dynamics of butterflies, both at the individual species level and also at the community level.</p>
+<p>Challenges: Traditional methods make it difficult to assess fluctuations at the species level and the community level simultaneously.</p>
+<p>Data: Observations on butterfly presence and absence over 38 year period at Donner Pass. (Response variable was the number of “Day Positives” – the number of days in which a species was recorded as present – treated as a Binomial variable.)</p>
+<p>GLM model for “Day Positives”</p>
+<p><span class="math display">\[
+DP_{ij} \sim \mbox{Binomial}(p_{ij},\mbox{Visits}_{j})
+\]</span> where <span class="math inline">\(i\)</span> = species and <span class="math inline">\(j\)</span> = site.</p>
+<p><span class="math display">\[
+logit(p_{ij}) \sim \mu_{\mbox{species}_{i}} + \beta_{1species_i} \times \mbox{covariate}_{1_ij} + \beta_{2species_i} \times \mbox{covariate}_{2_ij} + \dots
+\]</span> Species-specific intercepts and coefficients were modeled as</p>
+<p><span class="math display">\[
+\mu_{\mbox{species}_i} \sim N(\mu_{\mu},\tau_{\mu}) \\
+\beta_{\mbox{species}_i} \sim N(\mu_{\beta},\tau_{\beta})
+\]</span> The parameters <span class="math inline">\(\mu_{\mu}\)</span>,<span class="math inline">\(\mu_{\beta}\)</span> represent the mean community-level response, and <span class="math inline">\(\tau_{\mu}\)</span>,<span class="math inline">\(\tau_{\beta}\)</span> represent how much variation there is at the species level (i.e. between species variation <span class="math inline">\(=1/\tau\)</span>).</p>
+<p>What are the authors talking about in the paragraph starting with “We then asked if differences among species…” on page 2159?</p>
+<p>How do the authors represent their results? See Figures 1 and 2. Which approach do you like better (Figure 1 or 2)? Why? Note that in Table 1 and Figure 3 (and elsewhere), the authors have used the median and not the mean to represent the central posterior value. Why might they have done that?</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-8-lab.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-9-lab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

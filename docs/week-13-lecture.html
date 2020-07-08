@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bayesian Data Analysis and Computation Lecture and Lab Notes</title>
+  <meta name="description" content="Bayesian Data Analysis and Computation Lecture and Lab Notes">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  
+  
+  
+
+<meta name="author" content="Heather Lynch">
+
+
+<meta name="date" content="2020-07-08">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="week-12-lab.html">
+<link rel="next" href="week-14-lecture.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
+<li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#introduction-to-this-course"><i class="fa fa-check"></i><b>1.1</b> Introduction to this course</a></li>
+<li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#statistical-philosophy-and-the-foundations-of-bayesian-analysis"><i class="fa fa-check"></i><b>1.2</b> Statistical philosophy and the foundations of Bayesian analysis</a></li>
+<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#some-probability-vocabulary"><i class="fa fa-check"></i><b>1.3</b> Some probability vocabulary</a></li>
+<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#testing-jags-installation"><i class="fa fa-check"></i><b>1.4</b> Testing JAGS installation</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1-lab.html"><a href="week-1-lab.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab</a></li>
+<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a><ul>
+<li class="chapter" data-level="3.1" data-path="week-2-lecture.html"><a href="week-2-lecture.html#bayes-theorem-and-all-that-follows-from-it"><i class="fa fa-check"></i><b>3.1</b> Bayes Theorem and all that follows from it</a></li>
+<li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats"><i class="fa fa-check"></i><b>3.2</b> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#getting-some-more-practice-with-jags"><i class="fa fa-check"></i><b>3.3</b> Getting some more practice with JAGS</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>4</b> Week 3 Lecture</a><ul>
+<li class="chapter" data-level="4.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#how-do-we-obtain-priors"><i class="fa fa-check"></i><b>4.1</b> How do we obtain priors?</a></li>
+<li class="chapter" data-level="4.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#conjugacy"><i class="fa fa-check"></i><b>4.2</b> Conjugacy</a></li>
+<li class="chapter" data-level="4.3" data-path="week-3-lecture.html"><a href="week-3-lecture.html#sensitivity-analysis"><i class="fa fa-check"></i><b>4.3</b> Sensitivity analysis</a></li>
+<li class="chapter" data-level="4.4" data-path="week-3-lecture.html"><a href="week-3-lecture.html#expert-elicitation"><i class="fa fa-check"></i><b>4.4</b> Expert elicitation</a></li>
+<li class="chapter" data-level="4.5" data-path="week-3-lecture.html"><a href="week-3-lecture.html#more-information"><i class="fa fa-check"></i><b>4.5</b> More information</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="5.1" data-path="week-3-lab.html"><a href="week-3-lab.html#congugacy"><i class="fa fa-check"></i><b>5.1</b> Congugacy</a></li>
+<li class="chapter" data-level="5.2" data-path="week-3-lab.html"><a href="week-3-lab.html#moment-matching-two-distributions"><i class="fa fa-check"></i><b>5.2</b> Moment Matching two distributions</a></li>
+<li class="chapter" data-level="5.3" data-path="week-3-lab.html"><a href="week-3-lab.html#from-prior-to-posterior-to-prior"><i class="fa fa-check"></i><b>5.3</b> From Prior to Posterior to Prior</a></li>
+<li class="chapter" data-level="5.4" data-path="week-3-lab.html"><a href="week-3-lab.html#adding-data-one-at-a-time-or-all-at-once"><i class="fa fa-check"></i><b>5.4</b> Adding data: One at a time or all at once?</a></li>
+<li class="chapter" data-level="5.5" data-path="week-3-lab.html"><a href="week-3-lab.html#what-impact-did-the-choice-of-prior-have"><i class="fa fa-check"></i><b>5.5</b> What impact did the choice of prior have?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>6</b> Week 4 Lecture</a><ul>
+<li class="chapter" data-level="6.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#rejection-sampling"><i class="fa fa-check"></i><b>6.1</b> Rejection Sampling</a></li>
+<li class="chapter" data-level="6.2" data-path="week-4-lecture.html"><a href="week-4-lecture.html#adaptive-rejection-sampling"><i class="fa fa-check"></i><b>6.2</b> Adaptive Rejection Sampling</a></li>
+<li class="chapter" data-level="6.3" data-path="week-4-lecture.html"><a href="week-4-lecture.html#monte-carlo-integration"><i class="fa fa-check"></i><b>6.3</b> Monte Carlo Integration</a></li>
+<li class="chapter" data-level="6.4" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sometimes-you-just-want-the-integral"><i class="fa fa-check"></i><b>6.4</b> Sometimes you just want the integral…</a></li>
+<li class="chapter" data-level="6.5" data-path="week-4-lecture.html"><a href="week-4-lecture.html#importance-sampling"><i class="fa fa-check"></i><b>6.5</b> Importance Sampling</a></li>
+<li class="chapter" data-level="6.6" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sampling-importance-resampling"><i class="fa fa-check"></i><b>6.6</b> Sampling Importance Resampling</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lab</a><ul>
+<li class="chapter" data-level="7.1" data-path="week-4-lab.html"><a href="week-4-lab.html#smith-and-gelfand-1992"><i class="fa fa-check"></i><b>7.1</b> Smith and Gelfand (1992)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>8</b> Week 5 Lecture</a><ul>
+<li class="chapter" data-level="8.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#gibbs-sampling"><i class="fa fa-check"></i><b>8.1</b> Gibbs Sampling</a></li>
+<li class="chapter" data-level="8.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#metropolis-algorithm"><i class="fa fa-check"></i><b>8.2</b> Metropolis algorithm</a></li>
+<li class="chapter" data-level="8.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-messy-reality-hybrid-of-m-h-and-gibbs"><i class="fa fa-check"></i><b>8.3</b> The Messy reality = Hybrid of M-H and Gibbs</a></li>
+<li class="chapter" data-level="8.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#convergence"><i class="fa fa-check"></i><b>8.4</b> Convergence</a></li>
+<li class="chapter" data-level="8.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#bayesian-change-point-example"><i class="fa fa-check"></i><b>8.5</b> Bayesian change point example</a></li>
+<li class="chapter" data-level="8.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#hierarchical-model"><i class="fa fa-check"></i><b>8.6</b> Hierarchical model</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lab</a><ul>
+<li class="chapter" data-level="9.1" data-path="week-5-lab.html"><a href="week-5-lab.html#gibbs-sampler"><i class="fa fa-check"></i><b>9.1</b> Gibbs Sampler</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="week-6-lab.html"><a href="week-6-lab.html"><i class="fa fa-check"></i><b>10</b> Week 6 Lab</a><ul>
+<li class="chapter" data-level="10.1" data-path="week-6-lab.html"><a href="week-6-lab.html#fitting-a-distribution"><i class="fa fa-check"></i><b>10.1</b> Fitting a distribution</a></li>
+<li class="chapter" data-level="10.2" data-path="week-6-lab.html"><a href="week-6-lab.html#one-way-anova"><i class="fa fa-check"></i><b>10.2</b> One-way ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="week-7-lecture.html"><a href="week-7-lecture.html"><i class="fa fa-check"></i><b>11</b> Week 7 Lecture</a><ul>
+<li class="chapter" data-level="11.1" data-path="week-7-lecture.html"><a href="week-7-lecture.html#class-projects"><i class="fa fa-check"></i><b>11.1</b> Class projects</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="week-7-lab.html"><a href="week-7-lab.html"><i class="fa fa-check"></i><b>12</b> Week 7 Lab</a></li>
+<li class="chapter" data-level="13" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>13</b> Week 8 Lecture</a></li>
+<li class="chapter" data-level="14" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lab</a></li>
+<li class="chapter" data-level="15" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>15</b> Week 9 Lecture</a><ul>
+<li class="chapter" data-level="15.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#the-probability-of-estimability"><i class="fa fa-check"></i><b>15.1</b> The probability of estimability</a></li>
+<li class="chapter" data-level="15.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#multilevel-modelling-ala-gelman-and-hill"><i class="fa fa-check"></i><b>15.2</b> Multilevel modelling ala Gelman and Hill</a></li>
+<li class="chapter" data-level="15.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#in-sum."><i class="fa fa-check"></i><b>15.3</b> In sum….</a></li>
+<li class="chapter" data-level="15.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#nice-et-al.-2014"><i class="fa fa-check"></i><b>15.4</b> Nice et al. (2014)</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lab</a></li>
+<li class="chapter" data-level="17" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>17</b> Week 10 Lecture</a><ul>
+<li class="chapter" data-level="17.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#convergence-1"><i class="fa fa-check"></i><b>17.1</b> Convergence</a></li>
+<li class="chapter" data-level="17.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#testing-for-convergence"><i class="fa fa-check"></i><b>17.2</b> Testing for convergence</a></li>
+<li class="chapter" data-level="17.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>17.3</b> Gelman-Rubin statistic</a></li>
+<li class="chapter" data-level="17.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#the-take-away-what-should-we-be-checking-after-we-run-our-models"><i class="fa fa-check"></i><b>17.4</b> The take away: What should we be checking after we run our models</a></li>
+<li class="chapter" data-level="17.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#missing-data"><i class="fa fa-check"></i><b>17.5</b> Missing data</a></li>
+<li class="chapter" data-level="17.6" data-path="week-10-lecture.html"><a href="week-10-lecture.html#initial-values"><i class="fa fa-check"></i><b>17.6</b> Initial values</a></li>
+<li class="chapter" data-level="17.7" data-path="week-10-lecture.html"><a href="week-10-lecture.html#sample-scripts-and-output-for-prior-posterior-overlap"><i class="fa fa-check"></i><b>17.7</b> Sample scripts and output for prior-posterior overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lab</a></li>
+<li class="chapter" data-level="19" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>19</b> Week 11 Lecture</a><ul>
+<li class="chapter" data-level="19.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#dynamical-time-series-models"><i class="fa fa-check"></i><b>19.1</b> Dynamical (time series) models</a></li>
+<li class="chapter" data-level="19.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#process-error"><i class="fa fa-check"></i><b>19.2</b> Process error</a></li>
+<li class="chapter" data-level="19.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#observation-error"><i class="fa fa-check"></i><b>19.3</b> Observation error</a></li>
+<li class="chapter" data-level="19.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#other-kinds-of-statespace-models"><i class="fa fa-check"></i><b>19.4</b> Other kinds of state=space models</a></li>
+<li class="chapter" data-level="19.5" data-path="week-11-lecture.html"><a href="week-11-lecture.html#missing-data-1"><i class="fa fa-check"></i><b>19.5</b> Missing data</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lab</a><ul>
+<li class="chapter" data-level="20.1" data-path="week-11-lab.html"><a href="week-11-lab.html#simple-logistic"><i class="fa fa-check"></i><b>20.1</b> Simple logistic</a></li>
+<li class="chapter" data-level="20.2" data-path="week-11-lab.html"><a href="week-11-lab.html#observation-error-only-model"><i class="fa fa-check"></i><b>20.2</b> Observation-error-only model</a></li>
+<li class="chapter" data-level="20.3" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-only-model"><i class="fa fa-check"></i><b>20.3</b> Process-error-only model</a></li>
+<li class="chapter" data-level="20.4" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-and-observation-error-together"><i class="fa fa-check"></i><b>20.4</b> Process-error and observation-error together</a></li>
+<li class="chapter" data-level="20.5" data-path="week-11-lab.html"><a href="week-11-lab.html#final-thoughts"><i class="fa fa-check"></i><b>20.5</b> Final thoughts</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>21</b> Week 12 Lecture</a><ul>
+<li class="chapter" data-level="21.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#mark-recapture-modeling"><i class="fa fa-check"></i><b>21.1</b> Mark-recapture modeling</a></li>
+<li class="chapter" data-level="21.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#cormack-jolly-seber"><i class="fa fa-check"></i><b>21.2</b> Cormack-Jolly-Seber</a></li>
+<li class="chapter" data-level="21.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-1-brute-force"><i class="fa fa-check"></i><b>21.3</b> Method #1: Brute force</a></li>
+<li class="chapter" data-level="21.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-2-modeling-the-entire-capture-history"><i class="fa fa-check"></i><b>21.4</b> Method #2: Modeling the entire capture history</a></li>
+<li class="chapter" data-level="21.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#what-other-kind-of-models-might-you-fit"><i class="fa fa-check"></i><b>21.5</b> What other kind of models might you fit</a></li>
+<li class="chapter" data-level="21.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#occupancy-modelling"><i class="fa fa-check"></i><b>21.6</b> Occupancy modelling</a></li>
+<li class="chapter" data-level="21.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#dynamic-state-space-models-for-meta-population-dynamics"><i class="fa fa-check"></i><b>21.7</b> Dynamic state-space models for meta-population dynamics</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lab</a><ul>
+<li class="chapter" data-level="22.1" data-path="week-12-lab.html"><a href="week-12-lab.html#the-zeros-trick"><i class="fa fa-check"></i><b>22.1</b> The ‘zeros’ trick</a></li>
+<li class="chapter" data-level="22.2" data-path="week-12-lab.html"><a href="week-12-lab.html#the-ones-trick"><i class="fa fa-check"></i><b>22.2</b> The ‘ones’ trick</a></li>
+<li class="chapter" data-level="22.3" data-path="week-12-lab.html"><a href="week-12-lab.html#initial-values-1"><i class="fa fa-check"></i><b>22.3</b> Initial values</a></li>
+<li class="chapter" data-level="22.4" data-path="week-12-lab.html"><a href="week-12-lab.html#first-a-warm-up"><i class="fa fa-check"></i><b>22.4</b> First, a warm up</a></li>
+<li class="chapter" data-level="22.5" data-path="week-12-lab.html"><a href="week-12-lab.html#fitting-mark-recapture-models"><i class="fa fa-check"></i><b>22.5</b> Fitting mark-recapture models</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>23</b> Week 13 Lecture</a><ul>
+<li class="chapter" data-level="23.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#rejection-abc"><i class="fa fa-check"></i><b>23.1</b> Rejection ABC</a></li>
+<li class="chapter" data-level="23.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-1-basic-rejection-abc"><i class="fa fa-check"></i><b>23.2</b> Option #1: Basic rejection ABC</a></li>
+<li class="chapter" data-level="23.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-2-markov-chain-monte-carlo-abc"><i class="fa fa-check"></i><b>23.3</b> Option #2: Markov Chain Monte Carlo ABC</a></li>
+<li class="chapter" data-level="23.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-3-sequential-monte-carlo-abc"><i class="fa fa-check"></i><b>23.4</b> Option #3: Sequential Monte Carlo ABC</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 14 Lecture</a><ul>
+<li class="chapter" data-level="24.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#the-mona-lisa"><i class="fa fa-check"></i><b>24.1</b> The Mona Lisa</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>25</b> Week 14 Lab</a></li>
+<li class="chapter" data-level="26" data-path="week-15-lecture.html"><a href="week-15-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 15 Lecture</a><ul>
+<li class="chapter" data-level="26.1" data-path="week-15-lecture.html"><a href="week-15-lecture.html#a-quick-step-back-what-are-the-goals-of-model-selection"><i class="fa fa-check"></i><b>26.1</b> A quick step back: What are the goals of model selection?</a></li>
+<li class="chapter" data-level="26.2" data-path="week-15-lecture.html"><a href="week-15-lecture.html#bayesian-model-averaging"><i class="fa fa-check"></i><b>26.2</b> Bayesian model averaging</a></li>
+<li class="chapter" data-level="26.3" data-path="week-15-lecture.html"><a href="week-15-lecture.html#beyond-bayes-factors"><i class="fa fa-check"></i><b>26.3</b> Beyond Bayes Factors</a></li>
+<li class="chapter" data-level="26.4" data-path="week-15-lecture.html"><a href="week-15-lecture.html#variable-selection-for-nested-models"><i class="fa fa-check"></i><b>26.4</b> Variable selection for nested models</a></li>
+<li class="chapter" data-level="26.5" data-path="week-15-lecture.html"><a href="week-15-lecture.html#prior-data-conflict"><i class="fa fa-check"></i><b>26.5</b> Prior-data conflict</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-13-lecture" class="section level1">
+<h1><span class="header-section-number">23</span> Week 13 Lecture</h1>
+<p>We will start with a quote from Beaumont 2010: “For many problems, although it may be straightforward to write a computer program to simulate data, it may actually be very difficult to work out the likelihood function.”</p>
+<p>When would we use ABC? ABC should be considered when the mechanism generating your data is so complicated that you don’t have any hope of writing down an actually likelihood for it. It might be because the actual biological or physical mechanism is complicated or because the observation process is complicated - it doesn’t matter. You have data and its generated by some process and you want to figure out how to estimate the parameters of that underlying process.</p>
+<p>The basics of ABC are simple: (1) Specify some summary metric that you think captures the fit of the model to the data. [Some references call this “D” but I like to use the symbol T since this is more traditional and it matches the symbology we used in Biometry.] In other words, how would you judge whether a model was a “good” model. Usually there are aspects of the data that you think are really important and any good model should match the data in these respects. There are also probably aspects of the data that are not as critical and you’d be satisfied with a model that missed the mark in these respects. (In a population model, for example, you might be most concerned that your model captures the interannual variability in abundance, and less concerned that the models gets the right number for abundance. In this case, the summary statistic might be interannual variation in abundance.)</p>
+<p><strong>Sufficient statistics</strong> A little vocabulary is in order here. A sufficient statistic is a summary metric that captures all the information in the data for a given parameter. Once you calculate the sufficient statistic, you have everything you need to estimate the parameter of interest. For example, if you have data from a Poisson distribution, the sum of the data is all you need to estimate the parameter <span class="math inline">\(\lambda\)</span>. (This seems obvious for this example but there are more complex examples in which the “data compression” of the summary statistic is significant.) I’m bringing this up here because sufficient statistics are always the best summary metric to use for ABC, since there is no loss of information in using the sufficient statistic to compare the simulated data to the real data. However, in many practical cases, the sufficient statistic is unknown so you have to be a bit creative when thinking of summary metrics that capture the key elements of the dataset you have.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Simulate the process over the space of all possible parameter values.</p></li>
+<li><p>For each simulation, calculate the summary metric of fit. Reject the parameter combinations that did not yield a summary statistic similar to the actual data. The density of parameter values that were not rejected are left, and they form an approximate posterior distribution.</p></li>
+</ol>
+<p>*This is remarkably straightforward! Try a bunch of parameter values and see which ones “work”. Its like throwing spaghetti at the wall and seeing what sticks.</p>
+<p>Strictly speaking, the algorithm as I have just described it is ABC-rejection sampling, because we are rejecting parameter sets that do not fit the data. Other algorithms for ABC operate more like particle filters, whereby you iterate through the ABC process but at each step you redraw new parameter sets in the vicinity of the ones that were retained at the last stage.</p>
+<p>To solidify these ideas, let make sure we see the parallels between ABC and the basic rejection sampling we learned in the beginning of the semester.</p>
+<p><strong>Rejection sampling</strong></p>
+<p>In rejection sampling, we draw a value <span class="math inline">\(x^{(i)}\)</span> from the prior <span class="math inline">\(q(x)\)</span>. [Note that at the time, we called this a candidate distribution, but it is essentially a prior distribution and so we will stick with that terminology here. The scaling constant <span class="math inline">\(M\)</span> is just there to ensure that the likelihood ratio is always <span class="math inline">\(\leq 1\)</span>.] We then calculated the ratio of the likelihoods and accepted the value with a probability equal to the likelihood ratio. [Again, this is a scaled likelihood ratio because we have this arbitrary constant <span class="math inline">\(M\)</span> in the denominator. So if <span class="math inline">\(M\)</span> is really big, we reject most of the samples from the prior/candidate distribution, but they are retained  to the likelihood <span class="math inline">\(p()\)</span>.]</p>
+<p><span class="math display">\[
+x^{(i)} \sim q(x) \\
+u \sim \mbox{Unif}(0,1) \\
+\mbox{u} &lt; \frac{p(x^{(i)})}{M*q(x^{(i)})} \mbox{, then accept } x^{(i)}
+\]</span></p>
+<p>This works fine when we can write down the likelihood <span class="math inline">\(p()\)</span> but <strong>what happens when we cannot write down the likelihood?</strong> That’s when ABC comes in.</p>
+<div id="rejection-abc" class="section level2">
+<h2><span class="header-section-number">23.1</span> Rejection ABC</h2>
+<p>Same idea as above, but we are drawing parameter(s) from a prior/candidate distribution <span class="math inline">\(x^{(i)}\)</span> and then running them through our simulation. We then accept or reject based on whether the summary metric matches that from the data.</p>
+<p><span class="math display">\[
+x^{(i)} \sim q(x) \\
+\mbox{Simulate data using the parameter(s) } x^{(i)} \\
+\mbox{if } T^{\mbox{sim}} = T^{\mbox{data}} \mbox{, then accept } x^{(i)}
+\]</span> So…this sounds pretty straightforward, but often T is a continuous variable and it is exceptionally unlikely that your simulated statistic will yield a summary statistic T that is exactly equal to that for the real data, and so in practice, ABC goes like</p>
+<p><span class="math display">\[
+x^{(i)} \sim q(x) \\
+\mbox{Simulate data using the parameter(s) } x^{(i)} \\
+\mbox{if } \mbox{distance}(T^{\mbox{sim}},T^{\mbox{data}}) &lt; \epsilon \mbox{, then accept } x^{(i)}
+\]</span> Note that now we had to define some way of defining the distance between two statistics. In one dimension, when you have a single statistic, this is pretty straightforward and you could simply define</p>
+<p><span class="math display">\[
+\mbox{distance}(T^{\mbox{sim}},T^{\mbox{data}}) = T^{\mbox{sim}} - T^{\mbox{data}}
+\]</span> However, when you have more than one statistic, you need to find some way to combine them. For instance, its not obvious that if you have one statistic related to mutation rate and another related to convergence time that the distance should simply be the Euclidian distance</p>
+<p><span class="math display">\[
+\mbox{distance}(T^{\mbox{sim}},T^{\mbox{data}}) = \sqrt{(MR^{\mbox{sim}} - MR^{\mbox{data}})^2 + (CT^{\mbox{sim}} - CT^{\mbox{data}})^2}
+\]</span> In fact, this measure of distance might make no sense at all. This is all to say that your choice of statistics and your choice of distance are up to you, and should be chosen carefully if your ABC algorithm is going to be able to differentiate ‘good’ models from ‘bad’ ones.</p>
+<p>ABC comes with some challenges. In particular, how to explore parameter space if you have a large number of parameters? There are many flavors of ABC that have been developed; here I only introduce a few simple ones to give you a sense of how it goes.</p>
+</div>
+<div id="option-1-basic-rejection-abc" class="section level2">
+<h2><span class="header-section-number">23.2</span> Option #1: Basic rejection ABC</h2>
+<p>The simplest option is simply draw a gazzilion points from your parameter space and try them all. You could draw these parameter sets from your prior distributions for each parameter. You can then use some rejection criteria to select those parameter sets that led to data that were “close enough” to be retained.</p>
+</div>
+<div id="option-2-markov-chain-monte-carlo-abc" class="section level2">
+<h2><span class="header-section-number">23.3</span> Option #2: Markov Chain Monte Carlo ABC</h2>
+<p>In this method, you will have a Markov Chain of samples. I’ve pasted the pseudocode from Beaumont 2010 below. Note that <span class="math inline">\(\pi(\theta)\)</span> is the prior distribution for parameter <span class="math inline">\(\theta\)</span> and that <span class="math inline">\(K()\)</span> is a PDF describing jumps between values in parameter space. (This is exactly the same as we dealt with previously with we discussed Metropolis-Hastings.) Note that if the jump distribution <span class="math inline">\(K()\)</span> is symmetric, than the ratio in step 3b is equal to 1 and can be dropped.</p>
+<p><strong>Pseudocode</strong></p>
+<p>Initialize by sampling <span class="math inline">\(\theta^{(0)} \sim \pi(\theta)\)</span>. \ At iteration <span class="math inline">\(t \get 1\)</span>, \</p>
+<ol style="list-style-type: decimal">
+<li>Simulate <span class="math inline">\(\theta^{\prime} \sim K(\theta|\theta^{(t-1)}\)</span>).</li>
+<li>Simulate <span class="math inline">\(x \sim p(x| \theta^{\prime}\)</span>).</li>
+<li>If <span class="math inline">\(\rho(S(x),S(y)) &lt; \epsilon\)</span>, a. <span class="math inline">\(u \sim \mbox{Unif}\)</span>(0,1); b. <span class="math inline">\(\mbox{if} u \leq \pi(\theta^{\prime})/\pi(\theta^{(t-1)}) \times K(\theta^{(t-1)}|\theta^{\prime})/K(\theta^{\prime}|\theta^{(t-1)}), \mbox{then } \theta^{(t)}=\theta^{\prime}\)</span>; c. <span class="math inline">\(\mbox{otherwise } \theta^{(t)} = \theta^{(t-1)}\)</span>;</li>
+<li><span class="math inline">\(\mbox{otherwise } \theta^{(t)} = \theta^{(t-1)}\)</span>.</li>
+</ol>
+</div>
+<div id="option-3-sequential-monte-carlo-abc" class="section level2">
+<h2><span class="header-section-number">23.4</span> Option #3: Sequential Monte Carlo ABC</h2>
+<p>A more sophisticated algorithm is called Sequential Monte Carlo (SMC) ABC. In SMC-ABC, each parameter combination <span class="math inline">\(\theta_{i}\)</span> is termed a “particle”. If you have <span class="math inline">\(m\)</span> parameters, you can think of each parameter combination as a particle in m-dimensional space. A population of these particles can be written as <span class="math inline">\(\{\theta_{1},\theta_{2},\dots,\theta_{N}\}\)</span>.</p>
+<p><strong>Pseudocode</strong></p>
+<ol style="list-style-type: decimal">
+<li>A population of particles <span class="math inline">\(\{\theta_{1},\theta_{2},\dots,\theta_{N}\}\)</span> is selected using the prior distributions for each parameter</li>
+<li>The simulation/model are used to simulate data <span class="math inline">\(x^{*}\)</span> from <span class="math inline">\(\{\theta\}\)</span></li>
+<li>Calculate a distance metric between <span class="math inline">\(x^{*}\)</span> and the observed data</li>
+<li>Particles with distance less than some tolerance <span class="math inline">\(\epsilon\)</span> are retained</li>
+<li>Retained particles are weighted and smoothed to create a distribution from which the next generation of particles will be drawn</li>
+<li>Reduce the tolerance <span class="math inline">\(\epsilon\)</span> and start again at step 1</li>
+<li>Keep iterating until the desired tolerance <span class="math inline">\(\epsilon\)</span> is achieved</li>
+</ol>
+<p>or, more mathematically,</p>
+<ol style="list-style-type: decimal">
+<li><p>At iteration <span class="math inline">\(t=1\)</span>, \ for <span class="math inline">\(i = 1,\dots,N\)</span>, \ until <span class="math inline">\(\rho(S(x),S(y)) &lt; \epsilon_{1}\)</span> \ simulate $<em>{i}^{(1)} ()  x p(x|</em>{i}^{(1)}). \ Set <span class="math inline">\(\omega_{i}^{(1)} = 1/N\)</span>. \ Take <span class="math inline">\(\tau^{2}_{2}\)</span> as twice the empirical variance of the <span class="math inline">\(\theta_{i}^{(1)}\)</span>’s.</p></li>
+<li><p>At iteration <span class="math inline">\(2 \leq t \leq T\)</span>, \ for <span class="math inline">\(i = 1,\dots,N\)</span>, \ until <span class="math inline">\(\rho(S(x),S(y)) &lt; \epsilon_{t}\)</span> \ pick <span class="math inline">\(\theta_{i}^{*}\)</span> from the <span class="math inline">\(\theta_{j}^{(t-1)}\)</span>’s with probability <span class="math inline">\(\omega_{j}^{(t-1)}\)</span>; \ generate <span class="math inline">\(\theta_{i}^{(t)} \sim K(\theta | \theta_{i}^{(*)};\tau_{t}^{2})\)</span> and <span class="math inline">\(x \sim p(x|\theta_{i}^{(t)})\)</span>. \ Set <span class="math inline">\(\omega_{i}^{(t)} \propto \pi(\theta_{i}^{(t)})/\sum_{j=1}^{N}\omega_{j}^{(t-1)}K(\theta_{i}^{(t)}|\theta_{i}^{(t-1)};\tau_{t}^{2}\)</span>).</p></li>
+</ol>
+<p>Take $_{t+1}^{2} as twice the weighted empirical variance of the <span class="math inline">\(\theta_{i}^{(t)}\)</span>’s.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="RejectionMCMCSMC.png" alt="Visualization of the alternative sampling options: Rejection Sampling, MCMC, and SMC." width="100%" />
+<p class="caption">
+Figure 1.1: Visualization of the alternative sampling options: Rejection Sampling, MCMC, and SMC.
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-12-lab.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-14-lecture.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

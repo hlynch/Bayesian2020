@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bayesian Data Analysis and Computation Lecture and Lab Notes</title>
+  <meta name="description" content="Bayesian Data Analysis and Computation Lecture and Lab Notes">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  
+  
+  
+
+<meta name="author" content="Heather Lynch">
+
+
+<meta name="date" content="2020-07-08">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="week-1-lab.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
+<li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#introduction-to-this-course"><i class="fa fa-check"></i><b>1.1</b> Introduction to this course</a></li>
+<li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#statistical-philosophy-and-the-foundations-of-bayesian-analysis"><i class="fa fa-check"></i><b>1.2</b> Statistical philosophy and the foundations of Bayesian analysis</a></li>
+<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#some-probability-vocabulary"><i class="fa fa-check"></i><b>1.3</b> Some probability vocabulary</a></li>
+<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#testing-jags-installation"><i class="fa fa-check"></i><b>1.4</b> Testing JAGS installation</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1-lab.html"><a href="week-1-lab.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab</a></li>
+<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a><ul>
+<li class="chapter" data-level="3.1" data-path="week-2-lecture.html"><a href="week-2-lecture.html#bayes-theorem-and-all-that-follows-from-it"><i class="fa fa-check"></i><b>3.1</b> Bayes Theorem and all that follows from it</a></li>
+<li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats"><i class="fa fa-check"></i><b>3.2</b> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#getting-some-more-practice-with-jags"><i class="fa fa-check"></i><b>3.3</b> Getting some more practice with JAGS</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>4</b> Week 3 Lecture</a><ul>
+<li class="chapter" data-level="4.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#how-do-we-obtain-priors"><i class="fa fa-check"></i><b>4.1</b> How do we obtain priors?</a></li>
+<li class="chapter" data-level="4.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#conjugacy"><i class="fa fa-check"></i><b>4.2</b> Conjugacy</a></li>
+<li class="chapter" data-level="4.3" data-path="week-3-lecture.html"><a href="week-3-lecture.html#sensitivity-analysis"><i class="fa fa-check"></i><b>4.3</b> Sensitivity analysis</a></li>
+<li class="chapter" data-level="4.4" data-path="week-3-lecture.html"><a href="week-3-lecture.html#expert-elicitation"><i class="fa fa-check"></i><b>4.4</b> Expert elicitation</a></li>
+<li class="chapter" data-level="4.5" data-path="week-3-lecture.html"><a href="week-3-lecture.html#more-information"><i class="fa fa-check"></i><b>4.5</b> More information</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="5.1" data-path="week-3-lab.html"><a href="week-3-lab.html#congugacy"><i class="fa fa-check"></i><b>5.1</b> Congugacy</a></li>
+<li class="chapter" data-level="5.2" data-path="week-3-lab.html"><a href="week-3-lab.html#moment-matching-two-distributions"><i class="fa fa-check"></i><b>5.2</b> Moment Matching two distributions</a></li>
+<li class="chapter" data-level="5.3" data-path="week-3-lab.html"><a href="week-3-lab.html#from-prior-to-posterior-to-prior"><i class="fa fa-check"></i><b>5.3</b> From Prior to Posterior to Prior</a></li>
+<li class="chapter" data-level="5.4" data-path="week-3-lab.html"><a href="week-3-lab.html#adding-data-one-at-a-time-or-all-at-once"><i class="fa fa-check"></i><b>5.4</b> Adding data: One at a time or all at once?</a></li>
+<li class="chapter" data-level="5.5" data-path="week-3-lab.html"><a href="week-3-lab.html#what-impact-did-the-choice-of-prior-have"><i class="fa fa-check"></i><b>5.5</b> What impact did the choice of prior have?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>6</b> Week 4 Lecture</a><ul>
+<li class="chapter" data-level="6.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#rejection-sampling"><i class="fa fa-check"></i><b>6.1</b> Rejection Sampling</a></li>
+<li class="chapter" data-level="6.2" data-path="week-4-lecture.html"><a href="week-4-lecture.html#adaptive-rejection-sampling"><i class="fa fa-check"></i><b>6.2</b> Adaptive Rejection Sampling</a></li>
+<li class="chapter" data-level="6.3" data-path="week-4-lecture.html"><a href="week-4-lecture.html#monte-carlo-integration"><i class="fa fa-check"></i><b>6.3</b> Monte Carlo Integration</a></li>
+<li class="chapter" data-level="6.4" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sometimes-you-just-want-the-integral"><i class="fa fa-check"></i><b>6.4</b> Sometimes you just want the integral…</a></li>
+<li class="chapter" data-level="6.5" data-path="week-4-lecture.html"><a href="week-4-lecture.html#importance-sampling"><i class="fa fa-check"></i><b>6.5</b> Importance Sampling</a></li>
+<li class="chapter" data-level="6.6" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sampling-importance-resampling"><i class="fa fa-check"></i><b>6.6</b> Sampling Importance Resampling</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lab</a><ul>
+<li class="chapter" data-level="7.1" data-path="week-4-lab.html"><a href="week-4-lab.html#smith-and-gelfand-1992"><i class="fa fa-check"></i><b>7.1</b> Smith and Gelfand (1992)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>8</b> Week 5 Lecture</a><ul>
+<li class="chapter" data-level="8.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#gibbs-sampling"><i class="fa fa-check"></i><b>8.1</b> Gibbs Sampling</a></li>
+<li class="chapter" data-level="8.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#metropolis-algorithm"><i class="fa fa-check"></i><b>8.2</b> Metropolis algorithm</a></li>
+<li class="chapter" data-level="8.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-messy-reality-hybrid-of-m-h-and-gibbs"><i class="fa fa-check"></i><b>8.3</b> The Messy reality = Hybrid of M-H and Gibbs</a></li>
+<li class="chapter" data-level="8.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#convergence"><i class="fa fa-check"></i><b>8.4</b> Convergence</a></li>
+<li class="chapter" data-level="8.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#bayesian-change-point-example"><i class="fa fa-check"></i><b>8.5</b> Bayesian change point example</a></li>
+<li class="chapter" data-level="8.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#hierarchical-model"><i class="fa fa-check"></i><b>8.6</b> Hierarchical model</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lab</a><ul>
+<li class="chapter" data-level="9.1" data-path="week-5-lab.html"><a href="week-5-lab.html#gibbs-sampler"><i class="fa fa-check"></i><b>9.1</b> Gibbs Sampler</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="week-6-lab.html"><a href="week-6-lab.html"><i class="fa fa-check"></i><b>10</b> Week 6 Lab</a><ul>
+<li class="chapter" data-level="10.1" data-path="week-6-lab.html"><a href="week-6-lab.html#fitting-a-distribution"><i class="fa fa-check"></i><b>10.1</b> Fitting a distribution</a></li>
+<li class="chapter" data-level="10.2" data-path="week-6-lab.html"><a href="week-6-lab.html#one-way-anova"><i class="fa fa-check"></i><b>10.2</b> One-way ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="week-7-lecture.html"><a href="week-7-lecture.html"><i class="fa fa-check"></i><b>11</b> Week 7 Lecture</a><ul>
+<li class="chapter" data-level="11.1" data-path="week-7-lecture.html"><a href="week-7-lecture.html#class-projects"><i class="fa fa-check"></i><b>11.1</b> Class projects</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="week-7-lab.html"><a href="week-7-lab.html"><i class="fa fa-check"></i><b>12</b> Week 7 Lab</a></li>
+<li class="chapter" data-level="13" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>13</b> Week 8 Lecture</a></li>
+<li class="chapter" data-level="14" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lab</a></li>
+<li class="chapter" data-level="15" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>15</b> Week 9 Lecture</a><ul>
+<li class="chapter" data-level="15.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#the-probability-of-estimability"><i class="fa fa-check"></i><b>15.1</b> The probability of estimability</a></li>
+<li class="chapter" data-level="15.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#multilevel-modelling-ala-gelman-and-hill"><i class="fa fa-check"></i><b>15.2</b> Multilevel modelling ala Gelman and Hill</a></li>
+<li class="chapter" data-level="15.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#in-sum."><i class="fa fa-check"></i><b>15.3</b> In sum….</a></li>
+<li class="chapter" data-level="15.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#nice-et-al.-2014"><i class="fa fa-check"></i><b>15.4</b> Nice et al. (2014)</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lab</a></li>
+<li class="chapter" data-level="17" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>17</b> Week 10 Lecture</a><ul>
+<li class="chapter" data-level="17.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#convergence-1"><i class="fa fa-check"></i><b>17.1</b> Convergence</a></li>
+<li class="chapter" data-level="17.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#testing-for-convergence"><i class="fa fa-check"></i><b>17.2</b> Testing for convergence</a></li>
+<li class="chapter" data-level="17.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>17.3</b> Gelman-Rubin statistic</a></li>
+<li class="chapter" data-level="17.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#the-take-away-what-should-we-be-checking-after-we-run-our-models"><i class="fa fa-check"></i><b>17.4</b> The take away: What should we be checking after we run our models</a></li>
+<li class="chapter" data-level="17.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#missing-data"><i class="fa fa-check"></i><b>17.5</b> Missing data</a></li>
+<li class="chapter" data-level="17.6" data-path="week-10-lecture.html"><a href="week-10-lecture.html#initial-values"><i class="fa fa-check"></i><b>17.6</b> Initial values</a></li>
+<li class="chapter" data-level="17.7" data-path="week-10-lecture.html"><a href="week-10-lecture.html#sample-scripts-and-output-for-prior-posterior-overlap"><i class="fa fa-check"></i><b>17.7</b> Sample scripts and output for prior-posterior overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lab</a></li>
+<li class="chapter" data-level="19" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>19</b> Week 11 Lecture</a><ul>
+<li class="chapter" data-level="19.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#dynamical-time-series-models"><i class="fa fa-check"></i><b>19.1</b> Dynamical (time series) models</a></li>
+<li class="chapter" data-level="19.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#process-error"><i class="fa fa-check"></i><b>19.2</b> Process error</a></li>
+<li class="chapter" data-level="19.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#observation-error"><i class="fa fa-check"></i><b>19.3</b> Observation error</a></li>
+<li class="chapter" data-level="19.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#other-kinds-of-statespace-models"><i class="fa fa-check"></i><b>19.4</b> Other kinds of state=space models</a></li>
+<li class="chapter" data-level="19.5" data-path="week-11-lecture.html"><a href="week-11-lecture.html#missing-data-1"><i class="fa fa-check"></i><b>19.5</b> Missing data</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lab</a><ul>
+<li class="chapter" data-level="20.1" data-path="week-11-lab.html"><a href="week-11-lab.html#simple-logistic"><i class="fa fa-check"></i><b>20.1</b> Simple logistic</a></li>
+<li class="chapter" data-level="20.2" data-path="week-11-lab.html"><a href="week-11-lab.html#observation-error-only-model"><i class="fa fa-check"></i><b>20.2</b> Observation-error-only model</a></li>
+<li class="chapter" data-level="20.3" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-only-model"><i class="fa fa-check"></i><b>20.3</b> Process-error-only model</a></li>
+<li class="chapter" data-level="20.4" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-and-observation-error-together"><i class="fa fa-check"></i><b>20.4</b> Process-error and observation-error together</a></li>
+<li class="chapter" data-level="20.5" data-path="week-11-lab.html"><a href="week-11-lab.html#final-thoughts"><i class="fa fa-check"></i><b>20.5</b> Final thoughts</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>21</b> Week 12 Lecture</a><ul>
+<li class="chapter" data-level="21.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#mark-recapture-modeling"><i class="fa fa-check"></i><b>21.1</b> Mark-recapture modeling</a></li>
+<li class="chapter" data-level="21.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#cormack-jolly-seber"><i class="fa fa-check"></i><b>21.2</b> Cormack-Jolly-Seber</a></li>
+<li class="chapter" data-level="21.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-1-brute-force"><i class="fa fa-check"></i><b>21.3</b> Method #1: Brute force</a></li>
+<li class="chapter" data-level="21.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-2-modeling-the-entire-capture-history"><i class="fa fa-check"></i><b>21.4</b> Method #2: Modeling the entire capture history</a></li>
+<li class="chapter" data-level="21.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#what-other-kind-of-models-might-you-fit"><i class="fa fa-check"></i><b>21.5</b> What other kind of models might you fit</a></li>
+<li class="chapter" data-level="21.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#occupancy-modelling"><i class="fa fa-check"></i><b>21.6</b> Occupancy modelling</a></li>
+<li class="chapter" data-level="21.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#dynamic-state-space-models-for-meta-population-dynamics"><i class="fa fa-check"></i><b>21.7</b> Dynamic state-space models for meta-population dynamics</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lab</a><ul>
+<li class="chapter" data-level="22.1" data-path="week-12-lab.html"><a href="week-12-lab.html#the-zeros-trick"><i class="fa fa-check"></i><b>22.1</b> The ‘zeros’ trick</a></li>
+<li class="chapter" data-level="22.2" data-path="week-12-lab.html"><a href="week-12-lab.html#the-ones-trick"><i class="fa fa-check"></i><b>22.2</b> The ‘ones’ trick</a></li>
+<li class="chapter" data-level="22.3" data-path="week-12-lab.html"><a href="week-12-lab.html#initial-values-1"><i class="fa fa-check"></i><b>22.3</b> Initial values</a></li>
+<li class="chapter" data-level="22.4" data-path="week-12-lab.html"><a href="week-12-lab.html#first-a-warm-up"><i class="fa fa-check"></i><b>22.4</b> First, a warm up</a></li>
+<li class="chapter" data-level="22.5" data-path="week-12-lab.html"><a href="week-12-lab.html#fitting-mark-recapture-models"><i class="fa fa-check"></i><b>22.5</b> Fitting mark-recapture models</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>23</b> Week 13 Lecture</a><ul>
+<li class="chapter" data-level="23.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#rejection-abc"><i class="fa fa-check"></i><b>23.1</b> Rejection ABC</a></li>
+<li class="chapter" data-level="23.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-1-basic-rejection-abc"><i class="fa fa-check"></i><b>23.2</b> Option #1: Basic rejection ABC</a></li>
+<li class="chapter" data-level="23.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-2-markov-chain-monte-carlo-abc"><i class="fa fa-check"></i><b>23.3</b> Option #2: Markov Chain Monte Carlo ABC</a></li>
+<li class="chapter" data-level="23.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-3-sequential-monte-carlo-abc"><i class="fa fa-check"></i><b>23.4</b> Option #3: Sequential Monte Carlo ABC</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 14 Lecture</a><ul>
+<li class="chapter" data-level="24.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#the-mona-lisa"><i class="fa fa-check"></i><b>24.1</b> The Mona Lisa</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>25</b> Week 14 Lab</a></li>
+<li class="chapter" data-level="26" data-path="week-15-lecture.html"><a href="week-15-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 15 Lecture</a><ul>
+<li class="chapter" data-level="26.1" data-path="week-15-lecture.html"><a href="week-15-lecture.html#a-quick-step-back-what-are-the-goals-of-model-selection"><i class="fa fa-check"></i><b>26.1</b> A quick step back: What are the goals of model selection?</a></li>
+<li class="chapter" data-level="26.2" data-path="week-15-lecture.html"><a href="week-15-lecture.html#bayesian-model-averaging"><i class="fa fa-check"></i><b>26.2</b> Bayesian model averaging</a></li>
+<li class="chapter" data-level="26.3" data-path="week-15-lecture.html"><a href="week-15-lecture.html#beyond-bayes-factors"><i class="fa fa-check"></i><b>26.3</b> Beyond Bayes Factors</a></li>
+<li class="chapter" data-level="26.4" data-path="week-15-lecture.html"><a href="week-15-lecture.html#variable-selection-for-nested-models"><i class="fa fa-check"></i><b>26.4</b> Variable selection for nested models</a></li>
+<li class="chapter" data-level="26.5" data-path="week-15-lecture.html"><a href="week-15-lecture.html#prior-data-conflict"><i class="fa fa-check"></i><b>26.5</b> Prior-data conflict</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-1-lecture" class="section level1">
+<h1><span class="header-section-number">1</span> Week 1 Lecture</h1>
+<div id="introduction-to-this-course" class="section level2">
+<h2><span class="header-section-number">1.1</span> Introduction to this course</h2>
+<p>Before launching into Bayesian stats, take a few minutes and go over the syllabus.</p>
+<p>The structure of this course is very similar to Biometry, with one “lecture” and one “lab” a week and one problem set each week. The problem sets will be due before class on Monday, starting in Week 2. As always, you are encouraged to work in groups, but you are responsible for the final content of your assignment and identical (or virtually identical) problem sets or scripts will be consider plagiarism.</p>
+<p><strong>Break to look over the syllabus. Any questions? Send me an e-mail…</strong></p>
+<p>Today we will go over some basics, including a review of null hypothesis significance testing and the differences between NHST and Bayesian approaches. On Wednesday, you will work through a simple lab to make sure that everyone has JAGS/RJAGS up and running.</p>
+</div>
+<div id="statistical-philosophy-and-the-foundations-of-bayesian-analysis" class="section level2">
+<h2><span class="header-section-number">1.2</span> Statistical philosophy and the foundations of Bayesian analysis</h2>
+<p>A quick review of Fisher, Neyman-Pearson, Bayes, and Popper</p>
+<p>The current statistical methodology common in the fields of ecology, evolution, anthropology etc. is a hybrid mash-up of several different paradigms developed in the early 20th century. Christensen (2005) provides an excellent summary, which you have already read; I will only sketch the main ideas here. Bayesian thinking is not a new idea – it was originally introduced by Thomas Bayes in 1763, and thus is predates by a couple of centuries the developments of Fisher and Neyman and Pearson and Popper. Go ahead and read Aho Chapter 1 again for more of the historical background.</p>
+<p>There are multiple ways to frame the hypothesis testing / statistical inference endeavour. But going through them will make more sense if we take a minute to think of the kinds of hypotheses we are actually interested in testing.</p>
+<p>EXERCISE: Lets spend a few minutes writing down a hypothesis you will actually be trying to test in your thesis research. This involves two stages. (1) You need to think about a scientific hypothesis (biological, physical, political, etc.) that you would like to test. This is something you could say in words. (2) You need to find a way to translate that into a statistical hypothesis. In other words, at some level, your hypothesis has to boil down to one (or a few) parameters that can be measured and compared to some null hypothesis. What is that parameter? What is its value under the ‘null’ hypothesis?</p>
+<p>Alright, now that we have something in mind, lets plow ahead with the four primary ways of testing a statistical hypothesis:</p>
+<ol style="list-style-type: decimal">
+<li>‘Fisherian testing’ involves a single hypothesis (the null hypothesis) which can be rejected by contradiction. In other words, if your data would be unlikely to arise from your null model, you’d be inclined to reject your null model. In fact, the threshold for “unlikely” includes not only the result you got but also anything more extreme than the result obtained. How unlikely it would have to be to get something as or more extreme that the observed data is the cutoff , typically but rather arbitrarily set at 0.05.</li>
+</ol>
+<p>Note that rejecting the null hypothesis under Fisherian logic does not tell you why the null hypothesis was rejected. As noted by Christensen (2005), it could be because one of the parameter values was wrong, or because the data were not independent, or because the form of the distribution was wrong, and any of a long list of things. Also, note that in Fisherian testing, there is no concern about Type I error rates.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Neyman-Pearson Tests explicitly involve both a null hypothesis and an alternative hypothesis. We have some intuition about how to choose a null hypothesis (‘null hypothesis is the dull hypothesis’) but how would be go about defining an explicit alternative hypothesis. This is where expected effect size comes in. If you have a theory about the expected size of the effect, this would be a logical alternative hypothesis.</li>
+</ol>
+<p>In Neyman-Pearson testing, we define a rejection region for the test statistic based (in some form or another) on its likelihood ratio, and starting from the largest likelihood ratio <span class="math inline">\(Lik_{HA}/Lik_{H0}\)</span>, and starting from the largest likelihood ratio, selecting outcomes until the total probability of rejecting the null when it is true reaches some threshold <span class="math inline">\(\alpha\)</span>. Those outcomes are now part of the rejection region, because they have a total Type I error rate of <span class="math inline">\(\alpha\)</span> and contain all those values in which <span class="math inline">\(H_{A}\)</span> is much more likely than <span class="math inline">\(H_{0}\)</span>. The main difference between Fisherian testing and NP-testing is that Fisher may reject both hypotheses as inconsistent with the data, whereas NP will decide the better of two alternatives (without any real indication of the fact that both are poor representations of the data).</p>
+<p><strong>Fisher and NP answer different questions: The former asks “Is this model any good”, whereas the latter asks “Of these two models, which is better”.</strong></p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Karl Popper and the use of hypothetico-deductive reasoning represents a mash-up of Fisherian and N-P testing. The basic idea is that you generate a hypothesis, you then say “if that hypothesis is true then we make the following predictions”, and you then do an experiment to test those predictions. If the experiment yields an outcome consistent with the prediction, than the model “lives to die another day”. However, if the experiment yields an outcome that is inconsistent with the prediction, than you can reject the original hypothesis and start back at the beginning (generating a new hypothesis). Popper’s hypothetico-deductive logic combines deductive and inductive reasoning by stating, in essence, that “if it predicts (deductive), than it explains (inductive)”.</p></li>
+<li><p>Bayesian approaches do not involve hypotheses at all (at least not explicitly; you may interpret the results in the context of a hypothesis). Bayesian methods provide a way to define a probability distribution for the parameter of interest. The probability distribution is called the posterior distribution, and it is a combination of your prior expectation for the parameter and the likelihood of the data. Since we will spend the whole semester focusing on Bayesian models, I won’t get into any more detail here.</p></li>
+</ol>
+<p>EXERCISE: Now that we’ve had some time to go through these, can you reframe your hypothesis in each of these paradigms? Spend a few minutes to rewrite your key question these four different ways.</p>
+<p>How does this relate to maximum likelihood estimation?</p>
+<p>The important take-home message is that Bayesian thinking involves an additional element of randomness that we don’t have with frequentist (a.k.a. traditional) methods. To really understand why this is, we need to review the idea of a likelihood, and how in frequentist statistics we use that likelihood to make inference about a parameter.</p>
+<p>Specifically, lets say we want to model the mean length of fish in a certain pond.</p>
+<p><span class="math display">\[
+Y \sim N(\mu, \sigma^{2})
+\]</span> where <span class="math inline">\(\mu\)</span> is the expected length of these fish. Frequentist methods assume <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are fixed but unknown. Our job is to reverse engineer what <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> must have been in order for our data to be “a typical outcome”.</p>
+<p>As a reminder, the probability density of the normal distribution is given by</p>
+<p><span class="math display">\[
+f(X|\mu,\sigma) \sim \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}
+\]</span> Remember that for variables that are i.i.d., the joint probability (A,B,C) is simply the product of the three p.d.f.s</p>
+<p><span class="math display">\[
+P(X_{1}\cap X_{2} \cap X_{3})=P(X_{1})\times P(X_{2})\times P(X_{3})
+\]</span></p>
+<p>Therefore, by extension, for <span class="math inline">\(n\)</span> data points</p>
+<p><span class="math display">\[
+L(\mu,\sigma|X_{1},X_{2},...,X_{n})= \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(X_{i}-\mu)^{2}}{\sigma^{2}}\right)}
+\]</span></p>
+<p>Taken as a probability density, this equation denotes the probability of getting unknown data <span class="math inline">\({X_{1},X_{2},...,X_{n}}\)</span> given (|) the known distribution parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. However, it can be rewritten as a likelihood simply by reversing the conditionality:</p>
+<p><span class="math display">\[
+L(\mu,\sigma|X_{1},X_{2},...,X_{n}) = \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(X_{i}-\mu)^{2}}{\sigma^{2}}\right)}
+\]</span></p>
+<p>The likelihood specifies the probability of obtaining the known data <span class="math inline">\({X_{1},X_{2},...,X_{n}}\)</span> by a certain combination of the unknown parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
+<p>pdf: parameters known, data varies<br />
+likelihood: data known, parameters vary</p>
+<p>In this way, the relationship between the joint probability density and the likelihood function is a bit like the relationship between the young woman and the old maid in this famous optical illusion:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="Optical_illusion.png" alt="Optical illusion known as &quot;My Wife and my Mother-in-Law&quot;. Source: Wikimedia Commons" width="25%" />
+<p class="caption">
+Figure 1.1: Optical illusion known as “My Wife and my Mother-in-Law”. Source: Wikimedia Commons
+</p>
+</div>
+<p>Parameter estimates may be found by maximum likelihood simply by finding those parameters that make your data most likely (among all possible data sets). [Time for an analogy: Anyone seen CSI: Miami? Where they find the weapon for the murder by shooting test rounds and finding the gun that leaves the marks on the bullet? That’s what we’re doing here in a way.]</p>
+<p>Remember the verbal gymnastics we went through in Biometry when we talked about confidence intervals? For example, we emphasized that a 95th percentile confidence interval represented an interval (whose upper and lower limits were statistical quantities generated from the empirical data) that we were 95<span class="math inline">\(\%\)</span> certain contained the true value of <span class="math inline">\(\mu\)</span>. The statistical probability here was placed entirely on the interval itself, something we created, because the parameter was considered fixed and therefore could not possibly have some element of chance associated with it. [STOP: Let’s make sure we really are on the same page here. This is important stuff!]</p>
+<p>As frequentists, we assume a single “true” value for the parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^{2}\)</span>. Bayesians would argue that <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^{2}\)</span> themselves have a probability distribution, so we have some finite probability that <span class="math inline">\(\mu\)</span> is, say, 1.2 and another probability that <span class="math inline">\(\mu\)</span> is 1.4. THEN, conditional on that value of <span class="math inline">\(\mu\)</span>, we have some probability of getting the data (the fish lengths) that were actually obtained. Bayesian thinking, which explicitly defines a statistical distribution for the unknown parameters, frees us from the horrible frequentist awkwardness on confidence intervals. <em>We actually get what we always wanted all along but could never actually get with frequentist logic: a probability distribution for the parameters of interest.</em></p>
+</div>
+<div id="some-probability-vocabulary" class="section level2">
+<h2><span class="header-section-number">1.3</span> Some probability vocabulary</h2>
+<p>In Biometry we didn’t spend a lot of time on multivariate distributions (distributions that describe the joint probability of more than one stochastic variable), but these are critical to Bayesian analyses and so we will spend some time playing catch up this week.</p>
+<p>We will spend some time playing around with joint distributions in second, but for now we’ll just introduce some vocabulary, and some mathematical identities.</p>
+<p>Let’s say we have a bivariate distribution for discrete quantities such as hair color and eye color, and we survey a number (n=20 in this case) of students.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Brown</th>
+<th align="center">Blond</th>
+<th align="center">Red</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Blue eyes</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Brown eyes</td>
+<td align="center">7</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Green eyes</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>This table summarizes the joint distribution for hair color and eye color, which we would write as</p>
+<p><span class="math display">\[
+P(hair,eye)
+\]</span></p>
+<p>We may be interest only in <em>marginal</em> probabilities, which are those probabilities representing hair color irrespective of eye color, or eye color irrespective of hair color. In other words, the marginal probability of having blue eyes is 7/20. The marginal probability of having blond hair is also 7/20. These are univariate probabilities, and are written as</p>
+<p><span class="math display">\[
+P(eye)
+\]</span></p>
+<p>or</p>
+<p><span class="math display">\[
+P(hair)
+\]</span> You might be interest in the <em>conditional</em> distributions. For example, the probability of having blue eyes conditional on having blond hair is given by 4/7. We write this as follows</p>
+<p><span class="math display">\[
+P(eyes=blue|hair=blond)
+\]</span></p>
+<p>The | symbol represents the “conditional on” statement.</p>
+<p>The relationship between joint, marginal, and conditional distributions can be seen in the following statement</p>
+<p><span class="math display">\[
+P(\mbox{eyes}=\mbox{blue},\mbox{hair}=\mbox{blond})=P(\mbox{eyes}=\mbox{blue}|\mbox{hair}=\mbox{blond})P(\mbox{hair}=\mbox{blond})
+\]</span></p>
+<p>We can see that this works out as it should</p>
+<p><span class="math display">\[
+\frac{4}{20}=\frac{4}{7}\frac{7}{20}
+\]</span></p>
+<p>If we want to know the probability of having blue eyes (and didn’t care about hair color) than we would want to add up all the possibilities:</p>
+<p><span class="math display">\[
+P(\mbox{eyes}=\mbox{blue})=P(\mbox{eyes}=\mbox{blue}|\mbox{hair}=\mbox{blond})P(\mbox{hair}=\mbox{blond})+P(\mbox{eyes}=\mbox{blue}|\mbox{hair}=\mbox{brown})P(\mbox{hair}=\mbox{brown})+P(\mbox{eyes}=\mbox{blue}|\mbox{hair}=\mbox{red})P(\mbox{hair}=\mbox{red})
+\]</span> We can state this more simply as a sum:</p>
+<p><span class="math display">\[
+P(\mbox{eyes}=\mbox{blue})=\sum_{\mbox{all hair colors}}P(\mbox{eyes}=\mbox{blue}|\mbox{hair}=\square)P(\mbox{hair}=\square)
+\]</span></p>
+<p>For continuous distributions, the same principles apply. Let’s say we have a continuous bivariate distribution <span class="math inline">\(p(A,B)\)</span>. The marginal distribution for A can be calculated by integrating over B (we call this “marginalizing out” or “marginalizing over” B)</p>
+<p><span class="math display">\[
+p(A=a)=\int_{b=-\infty}^{b=\infty}p(A=a|B=b)p(B=b)db = \int_{b=-\infty}^{b=\infty}p(A=a,B=b)db
+\]</span></p>
+<p>Notice that, in all cases (discrete or continuous), the relationships among marginal, conditional, and joint distribution can written as</p>
+<p><span class="math display">\[
+p(A|B)\times p(B)=p(A,B)
+\]</span> or as</p>
+<p><span class="math display">\[
+p(B|A)\times p(A)=p(A,B)
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+p(A|B)=\frac{p(B|A)p(A)}{p(B)} = \frac{p(A,B)}{p(B)}
+\]</span></p>
+</div>
+<div id="testing-jags-installation" class="section level2">
+<h2><span class="header-section-number">1.4</span> Testing JAGS installation</h2>
+<p>While there are several options for fitting Bayesian models, including writing your own custom samplers, in this class we will use <a href="http://mcmc-jags.sourceforge.net/">JAGS</a>, which stands for Just Another Gibbs Sampler. We’re not really going to get into using JAGS for fitting models until lab, I want to make sure everyone has JAGS installed properly.</p>
+<p>Once you have installed JAGS, we can make sure its working by running the R code in ‘Week 1 JAGS test.R’. This “wrapper” code gets the model variables set up and organized, and passes it to the actual JAGS code in the file ‘Week1_TestModel.jags’. Make sure that the .jags file is in the Working Directory so the wrapper file can find it.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-1-lab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bayesian Data Analysis and Computation Lecture and Lab Notes</title>
+  <meta name="description" content="Bayesian Data Analysis and Computation Lecture and Lab Notes">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  
+  
+  
+
+<meta name="author" content="Heather Lynch">
+
+
+<meta name="date" content="2020-07-08">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="week-10-lab.html">
+<link rel="next" href="week-11-lab.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
+<li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#introduction-to-this-course"><i class="fa fa-check"></i><b>1.1</b> Introduction to this course</a></li>
+<li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#statistical-philosophy-and-the-foundations-of-bayesian-analysis"><i class="fa fa-check"></i><b>1.2</b> Statistical philosophy and the foundations of Bayesian analysis</a></li>
+<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#some-probability-vocabulary"><i class="fa fa-check"></i><b>1.3</b> Some probability vocabulary</a></li>
+<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#testing-jags-installation"><i class="fa fa-check"></i><b>1.4</b> Testing JAGS installation</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1-lab.html"><a href="week-1-lab.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab</a></li>
+<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a><ul>
+<li class="chapter" data-level="3.1" data-path="week-2-lecture.html"><a href="week-2-lecture.html#bayes-theorem-and-all-that-follows-from-it"><i class="fa fa-check"></i><b>3.1</b> Bayes Theorem and all that follows from it</a></li>
+<li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats"><i class="fa fa-check"></i><b>3.2</b> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#getting-some-more-practice-with-jags"><i class="fa fa-check"></i><b>3.3</b> Getting some more practice with JAGS</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>4</b> Week 3 Lecture</a><ul>
+<li class="chapter" data-level="4.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#how-do-we-obtain-priors"><i class="fa fa-check"></i><b>4.1</b> How do we obtain priors?</a></li>
+<li class="chapter" data-level="4.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#conjugacy"><i class="fa fa-check"></i><b>4.2</b> Conjugacy</a></li>
+<li class="chapter" data-level="4.3" data-path="week-3-lecture.html"><a href="week-3-lecture.html#sensitivity-analysis"><i class="fa fa-check"></i><b>4.3</b> Sensitivity analysis</a></li>
+<li class="chapter" data-level="4.4" data-path="week-3-lecture.html"><a href="week-3-lecture.html#expert-elicitation"><i class="fa fa-check"></i><b>4.4</b> Expert elicitation</a></li>
+<li class="chapter" data-level="4.5" data-path="week-3-lecture.html"><a href="week-3-lecture.html#more-information"><i class="fa fa-check"></i><b>4.5</b> More information</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="5.1" data-path="week-3-lab.html"><a href="week-3-lab.html#congugacy"><i class="fa fa-check"></i><b>5.1</b> Congugacy</a></li>
+<li class="chapter" data-level="5.2" data-path="week-3-lab.html"><a href="week-3-lab.html#moment-matching-two-distributions"><i class="fa fa-check"></i><b>5.2</b> Moment Matching two distributions</a></li>
+<li class="chapter" data-level="5.3" data-path="week-3-lab.html"><a href="week-3-lab.html#from-prior-to-posterior-to-prior"><i class="fa fa-check"></i><b>5.3</b> From Prior to Posterior to Prior</a></li>
+<li class="chapter" data-level="5.4" data-path="week-3-lab.html"><a href="week-3-lab.html#adding-data-one-at-a-time-or-all-at-once"><i class="fa fa-check"></i><b>5.4</b> Adding data: One at a time or all at once?</a></li>
+<li class="chapter" data-level="5.5" data-path="week-3-lab.html"><a href="week-3-lab.html#what-impact-did-the-choice-of-prior-have"><i class="fa fa-check"></i><b>5.5</b> What impact did the choice of prior have?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>6</b> Week 4 Lecture</a><ul>
+<li class="chapter" data-level="6.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#rejection-sampling"><i class="fa fa-check"></i><b>6.1</b> Rejection Sampling</a></li>
+<li class="chapter" data-level="6.2" data-path="week-4-lecture.html"><a href="week-4-lecture.html#adaptive-rejection-sampling"><i class="fa fa-check"></i><b>6.2</b> Adaptive Rejection Sampling</a></li>
+<li class="chapter" data-level="6.3" data-path="week-4-lecture.html"><a href="week-4-lecture.html#monte-carlo-integration"><i class="fa fa-check"></i><b>6.3</b> Monte Carlo Integration</a></li>
+<li class="chapter" data-level="6.4" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sometimes-you-just-want-the-integral"><i class="fa fa-check"></i><b>6.4</b> Sometimes you just want the integral…</a></li>
+<li class="chapter" data-level="6.5" data-path="week-4-lecture.html"><a href="week-4-lecture.html#importance-sampling"><i class="fa fa-check"></i><b>6.5</b> Importance Sampling</a></li>
+<li class="chapter" data-level="6.6" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sampling-importance-resampling"><i class="fa fa-check"></i><b>6.6</b> Sampling Importance Resampling</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lab</a><ul>
+<li class="chapter" data-level="7.1" data-path="week-4-lab.html"><a href="week-4-lab.html#smith-and-gelfand-1992"><i class="fa fa-check"></i><b>7.1</b> Smith and Gelfand (1992)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>8</b> Week 5 Lecture</a><ul>
+<li class="chapter" data-level="8.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#gibbs-sampling"><i class="fa fa-check"></i><b>8.1</b> Gibbs Sampling</a></li>
+<li class="chapter" data-level="8.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#metropolis-algorithm"><i class="fa fa-check"></i><b>8.2</b> Metropolis algorithm</a></li>
+<li class="chapter" data-level="8.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-messy-reality-hybrid-of-m-h-and-gibbs"><i class="fa fa-check"></i><b>8.3</b> The Messy reality = Hybrid of M-H and Gibbs</a></li>
+<li class="chapter" data-level="8.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#convergence"><i class="fa fa-check"></i><b>8.4</b> Convergence</a></li>
+<li class="chapter" data-level="8.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#bayesian-change-point-example"><i class="fa fa-check"></i><b>8.5</b> Bayesian change point example</a></li>
+<li class="chapter" data-level="8.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#hierarchical-model"><i class="fa fa-check"></i><b>8.6</b> Hierarchical model</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lab</a><ul>
+<li class="chapter" data-level="9.1" data-path="week-5-lab.html"><a href="week-5-lab.html#gibbs-sampler"><i class="fa fa-check"></i><b>9.1</b> Gibbs Sampler</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="week-6-lab.html"><a href="week-6-lab.html"><i class="fa fa-check"></i><b>10</b> Week 6 Lab</a><ul>
+<li class="chapter" data-level="10.1" data-path="week-6-lab.html"><a href="week-6-lab.html#fitting-a-distribution"><i class="fa fa-check"></i><b>10.1</b> Fitting a distribution</a></li>
+<li class="chapter" data-level="10.2" data-path="week-6-lab.html"><a href="week-6-lab.html#one-way-anova"><i class="fa fa-check"></i><b>10.2</b> One-way ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="week-7-lecture.html"><a href="week-7-lecture.html"><i class="fa fa-check"></i><b>11</b> Week 7 Lecture</a><ul>
+<li class="chapter" data-level="11.1" data-path="week-7-lecture.html"><a href="week-7-lecture.html#class-projects"><i class="fa fa-check"></i><b>11.1</b> Class projects</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="week-7-lab.html"><a href="week-7-lab.html"><i class="fa fa-check"></i><b>12</b> Week 7 Lab</a></li>
+<li class="chapter" data-level="13" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>13</b> Week 8 Lecture</a></li>
+<li class="chapter" data-level="14" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lab</a></li>
+<li class="chapter" data-level="15" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>15</b> Week 9 Lecture</a><ul>
+<li class="chapter" data-level="15.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#the-probability-of-estimability"><i class="fa fa-check"></i><b>15.1</b> The probability of estimability</a></li>
+<li class="chapter" data-level="15.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#multilevel-modelling-ala-gelman-and-hill"><i class="fa fa-check"></i><b>15.2</b> Multilevel modelling ala Gelman and Hill</a></li>
+<li class="chapter" data-level="15.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#in-sum."><i class="fa fa-check"></i><b>15.3</b> In sum….</a></li>
+<li class="chapter" data-level="15.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#nice-et-al.-2014"><i class="fa fa-check"></i><b>15.4</b> Nice et al. (2014)</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lab</a></li>
+<li class="chapter" data-level="17" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>17</b> Week 10 Lecture</a><ul>
+<li class="chapter" data-level="17.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#convergence-1"><i class="fa fa-check"></i><b>17.1</b> Convergence</a></li>
+<li class="chapter" data-level="17.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#testing-for-convergence"><i class="fa fa-check"></i><b>17.2</b> Testing for convergence</a></li>
+<li class="chapter" data-level="17.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>17.3</b> Gelman-Rubin statistic</a></li>
+<li class="chapter" data-level="17.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#the-take-away-what-should-we-be-checking-after-we-run-our-models"><i class="fa fa-check"></i><b>17.4</b> The take away: What should we be checking after we run our models</a></li>
+<li class="chapter" data-level="17.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#missing-data"><i class="fa fa-check"></i><b>17.5</b> Missing data</a></li>
+<li class="chapter" data-level="17.6" data-path="week-10-lecture.html"><a href="week-10-lecture.html#initial-values"><i class="fa fa-check"></i><b>17.6</b> Initial values</a></li>
+<li class="chapter" data-level="17.7" data-path="week-10-lecture.html"><a href="week-10-lecture.html#sample-scripts-and-output-for-prior-posterior-overlap"><i class="fa fa-check"></i><b>17.7</b> Sample scripts and output for prior-posterior overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lab</a></li>
+<li class="chapter" data-level="19" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>19</b> Week 11 Lecture</a><ul>
+<li class="chapter" data-level="19.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#dynamical-time-series-models"><i class="fa fa-check"></i><b>19.1</b> Dynamical (time series) models</a></li>
+<li class="chapter" data-level="19.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#process-error"><i class="fa fa-check"></i><b>19.2</b> Process error</a></li>
+<li class="chapter" data-level="19.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#observation-error"><i class="fa fa-check"></i><b>19.3</b> Observation error</a></li>
+<li class="chapter" data-level="19.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#other-kinds-of-statespace-models"><i class="fa fa-check"></i><b>19.4</b> Other kinds of state=space models</a></li>
+<li class="chapter" data-level="19.5" data-path="week-11-lecture.html"><a href="week-11-lecture.html#missing-data-1"><i class="fa fa-check"></i><b>19.5</b> Missing data</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lab</a><ul>
+<li class="chapter" data-level="20.1" data-path="week-11-lab.html"><a href="week-11-lab.html#simple-logistic"><i class="fa fa-check"></i><b>20.1</b> Simple logistic</a></li>
+<li class="chapter" data-level="20.2" data-path="week-11-lab.html"><a href="week-11-lab.html#observation-error-only-model"><i class="fa fa-check"></i><b>20.2</b> Observation-error-only model</a></li>
+<li class="chapter" data-level="20.3" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-only-model"><i class="fa fa-check"></i><b>20.3</b> Process-error-only model</a></li>
+<li class="chapter" data-level="20.4" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-and-observation-error-together"><i class="fa fa-check"></i><b>20.4</b> Process-error and observation-error together</a></li>
+<li class="chapter" data-level="20.5" data-path="week-11-lab.html"><a href="week-11-lab.html#final-thoughts"><i class="fa fa-check"></i><b>20.5</b> Final thoughts</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>21</b> Week 12 Lecture</a><ul>
+<li class="chapter" data-level="21.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#mark-recapture-modeling"><i class="fa fa-check"></i><b>21.1</b> Mark-recapture modeling</a></li>
+<li class="chapter" data-level="21.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#cormack-jolly-seber"><i class="fa fa-check"></i><b>21.2</b> Cormack-Jolly-Seber</a></li>
+<li class="chapter" data-level="21.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-1-brute-force"><i class="fa fa-check"></i><b>21.3</b> Method #1: Brute force</a></li>
+<li class="chapter" data-level="21.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-2-modeling-the-entire-capture-history"><i class="fa fa-check"></i><b>21.4</b> Method #2: Modeling the entire capture history</a></li>
+<li class="chapter" data-level="21.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#what-other-kind-of-models-might-you-fit"><i class="fa fa-check"></i><b>21.5</b> What other kind of models might you fit</a></li>
+<li class="chapter" data-level="21.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#occupancy-modelling"><i class="fa fa-check"></i><b>21.6</b> Occupancy modelling</a></li>
+<li class="chapter" data-level="21.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#dynamic-state-space-models-for-meta-population-dynamics"><i class="fa fa-check"></i><b>21.7</b> Dynamic state-space models for meta-population dynamics</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lab</a><ul>
+<li class="chapter" data-level="22.1" data-path="week-12-lab.html"><a href="week-12-lab.html#the-zeros-trick"><i class="fa fa-check"></i><b>22.1</b> The ‘zeros’ trick</a></li>
+<li class="chapter" data-level="22.2" data-path="week-12-lab.html"><a href="week-12-lab.html#the-ones-trick"><i class="fa fa-check"></i><b>22.2</b> The ‘ones’ trick</a></li>
+<li class="chapter" data-level="22.3" data-path="week-12-lab.html"><a href="week-12-lab.html#initial-values-1"><i class="fa fa-check"></i><b>22.3</b> Initial values</a></li>
+<li class="chapter" data-level="22.4" data-path="week-12-lab.html"><a href="week-12-lab.html#first-a-warm-up"><i class="fa fa-check"></i><b>22.4</b> First, a warm up</a></li>
+<li class="chapter" data-level="22.5" data-path="week-12-lab.html"><a href="week-12-lab.html#fitting-mark-recapture-models"><i class="fa fa-check"></i><b>22.5</b> Fitting mark-recapture models</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>23</b> Week 13 Lecture</a><ul>
+<li class="chapter" data-level="23.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#rejection-abc"><i class="fa fa-check"></i><b>23.1</b> Rejection ABC</a></li>
+<li class="chapter" data-level="23.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-1-basic-rejection-abc"><i class="fa fa-check"></i><b>23.2</b> Option #1: Basic rejection ABC</a></li>
+<li class="chapter" data-level="23.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-2-markov-chain-monte-carlo-abc"><i class="fa fa-check"></i><b>23.3</b> Option #2: Markov Chain Monte Carlo ABC</a></li>
+<li class="chapter" data-level="23.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-3-sequential-monte-carlo-abc"><i class="fa fa-check"></i><b>23.4</b> Option #3: Sequential Monte Carlo ABC</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 14 Lecture</a><ul>
+<li class="chapter" data-level="24.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#the-mona-lisa"><i class="fa fa-check"></i><b>24.1</b> The Mona Lisa</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>25</b> Week 14 Lab</a></li>
+<li class="chapter" data-level="26" data-path="week-15-lecture.html"><a href="week-15-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 15 Lecture</a><ul>
+<li class="chapter" data-level="26.1" data-path="week-15-lecture.html"><a href="week-15-lecture.html#a-quick-step-back-what-are-the-goals-of-model-selection"><i class="fa fa-check"></i><b>26.1</b> A quick step back: What are the goals of model selection?</a></li>
+<li class="chapter" data-level="26.2" data-path="week-15-lecture.html"><a href="week-15-lecture.html#bayesian-model-averaging"><i class="fa fa-check"></i><b>26.2</b> Bayesian model averaging</a></li>
+<li class="chapter" data-level="26.3" data-path="week-15-lecture.html"><a href="week-15-lecture.html#beyond-bayes-factors"><i class="fa fa-check"></i><b>26.3</b> Beyond Bayes Factors</a></li>
+<li class="chapter" data-level="26.4" data-path="week-15-lecture.html"><a href="week-15-lecture.html#variable-selection-for-nested-models"><i class="fa fa-check"></i><b>26.4</b> Variable selection for nested models</a></li>
+<li class="chapter" data-level="26.5" data-path="week-15-lecture.html"><a href="week-15-lecture.html#prior-data-conflict"><i class="fa fa-check"></i><b>26.5</b> Prior-data conflict</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-11-lecture" class="section level1">
+<h1><span class="header-section-number">19</span> Week 11 Lecture</h1>
+<p>We have some more topics to cover in terms of model comparison and hypothesis testing, but first we will cover state-space models so that we can discuss model comparison in terms of various models for population dynamics.</p>
+<p>‘State-space’ is a generic term used for any kind of modeling in which the observed variables pass between different states. These are often time series models, in which the states are the different time periods of measurement, or they may represent the transitions between different life stages of an animal (for existence). Bolker talks about “dynamical models”. In this case, the states are assumed to represent time. These would be considered a subset of state-space models. (You might further specify that a model is stage-structured or age-structured…regardless, the process of fitting such models is very similar.)</p>
+<p>We will discuss a tiny slice of state-space models, which is their application to abundance time series. This is where ecological theory meets statistical modeling.</p>
+<div id="dynamical-time-series-models" class="section level2">
+<h2><span class="header-section-number">19.1</span> Dynamical (time series) models</h2>
+<p>I will follow Ben Bolker’s treatment of the subject quite closely, because it is well laid out and it covers both likelihood methods and Bayesian methods.</p>
+<p>The basic situation is as follows:</p>
+<p><span class="math display">\[
+N_{t+1,obs} = f(N_{t+1}) \\
+N_{t+1} = g(N_{t})
+\]</span></p>
+<p></p>
+<p><strong>Observation error</strong>: Involves the actual observation or measurement process. Observation error does not feed back into the dynamics of the system because the dynamics involve only the true state.</p>
+<p><strong>Process error</strong>: Involves variation in the dynamical process. I don’t really like the term “error” here, because there is no error involved. (For this reason, some authors call it process noise.) Process error simply refers to variation in the dynamics not otherwise explained by the model (and possibly unexplainable if there is some genuine stochasticity)</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="StateSpaceModel.png" alt="Diagram of a state space model" width="75%" />
+<p class="caption">
+Figure 1.1: Diagram of a state space model
+</p>
+</div>
+<p>If you were to simulate 1000 time series from a process-error only model, the time series would diverge over time. By contrast, if you simulated 1000 time series from a model with only observation error, the time series occupy a “band” of constant width over time. Do you see why this is? The process errors accumulate over time because the error in one year affects the dynamics in the next year. Observation errors do not affect the real state of the system, and thus do not accumulate over time.</p>
+<p>Some vocabulary is in order here. If you are measuring the state of the system with error, then the true state <span class="math inline">\(N_{t}\)</span>] is called a ‘latent’ state. We use the term ‘latent state’ to describe any hidden state which can only be inferred indirectly through observation.</p>
+</div>
+<div id="process-error" class="section level2">
+<h2><span class="header-section-number">19.2</span> Process error</h2>
+<p>First, some ecological modeling background to get us started. The Ricker model is a classic population dynamics model that accounts for density-dependence in population growth (population growth slows as the density increases). Ricker’s model for population growth is given as</p>
+<p><span class="math display">\[
+N_{t+1} = N_{t}e^{r(1-N_{t}/K)}
+\]</span> where <span class="math inline">\(r\)</span> is the population growth rate and <span class="math inline">\(K\)</span> is the ‘carrying capacity’. If we explicitly include process error in our formulation, we have at least two choices on how to do so. We could add Normally-distributed error to the effective population growth rate in the exponent; in this case, Ricker’s model looks like</p>
+<p><span class="math display">\[
+N_{t+1} = N_{t}e^{r(1-N_{t}/K)+\epsilon}
+\]</span> where</p>
+<p><span class="math display">\[
+\epsilon \sim N(0,\sigma^{2})
+\]</span> If we take the log of both sides</p>
+<p><span class="math display">\[
+log(N_{t+1}) = log(N_{t}) + r\left(1-\frac{N_{t}}{K}\right)+\epsilon
+\]</span> and rewrite as</p>
+<p><span class="math display">\[
+log(N_{t+1}) \sim N\left(\mbox{log}(N_{t}) + r\left(1-\frac{N_{t}}{K}\right),\sigma^{2}\right)
+\]</span> we see that process error of this type assumes <span class="math inline">\(N_{t}\)</span> log-normally distributed.</p>
+<p>Another way of writing this would be</p>
+<p><span class="math display">\[
+N_{t+1} = N_{t}e^{r(1-N_{t}/K)+\epsilon} = N_{t}e^{r(1-N_{t}/K)e^{\epsilon}}
+\]</span> Note that <span class="math inline">\(E[e^{\epsilon}] \neq 1\)</span>, so <span class="math inline">\(E[N_{t+1}] \neq N_{t}e^{r(1-N_{t}/K)}\)</span> as you might think (or want, if you are building the model). For this reason, people often add a correction factor (see Hilborn and Mangel pg. 146).</p>
+<p>Another way of adding process error would be to assume</p>
+<p><span class="math display">\[
+N_{t+1} = N_{t}e^{r(1-N_{t}/K)}+\epsilon \\
+\epsilon \sim N(0,\sigma^{2})
+\]</span> or, equivalently,</p>
+<p><span class="math display">\[
+N_{t+1} = N(N_{t}e^{r(1-N_{t}/K)},\sigma^{2})
+\]</span> There are no strict rules about how process error should be modeled (or when); such details would be included in the description of a model. The former approach would be called ‘log-normally distributed process error’, whereas the latter would be called ‘normally distributed process error’.</p>
+<p>To see how all this gets applied in practice, we will walk through the example provided in McCarthy on mountain pygmy possums. The key elements of the biology are as follows:</p>
+<ul>
+<li>we will build a model that lumps all age-classes together into a single population. In other words, there will be no age- or stage-structure included in the model, although doing so would be a rather straightforward modification of the code. (Stage- and age-structured models are fairly easy to code, but unless there is a lot of information of the abundance of each stage or age, they can be quite difficult to fit…)</li>
+<li>female pygmy possums are highly territorial, so we need to include density dependence. We do this here using a Ricker model: <span class="math inline">\(N_{t+1} = N_{t}e^{r(1-N_{t}/K)}\)</span>, although there are many ways you might want to do this, and various models can be compared as we will discuss next week.</li>
+<li>Pygmy possums have small population sizes, and thus experience demographic stochasticity. In other words, just by random chance, their populations can fluctuate, and these fluctuations can be important when population sizes are small. We will use the Poisson distribution to model their abundance. (Side note: Abundances are discrete and non-negative and so a Poisson is an obvious choice. However, abundances are often quite large and are frequently modeled with a continuous distribution such as a Normal. The advantage of a Normal distribution is that you can model the variance independent of the mean. The downside is that a normal distribution does not enforce non-negativity, and for this reason, the log-normal is often used.)</li>
+</ul>
+<p>The model that McCarthy suggests is the following:</p>
+<p><span class="math display">\[
+N_{t+1} \sim \mbox{Pois}(\lambda_{t+1}) \\
+log(\lambda_{t+1}) = log(N_{t}) + r\left(1-\frac{N_{t}}{K}\right) + \epsilon \\
+\epsilon \sim N(0,\sigma^{2})
+\]</span> and the code for fitting this in WinBUGS/JAGS is included in Box 9.1. (I have changed his notation to be consistent with the activities in the lab on Wednesday.)</p>
+<p>Note that McCarthy added some Normally distributed process error to account for environmental variation not otherwise included in the model.</p>
+<ul>
+<li>Walk through the code in Box 9.1 – any questions?</li>
+</ul>
+<p>Note that this model ONLY models process error, there is nothing here to deal with observation error. We would have to layer on top of this a model for the observed counts as a function for the true count. We will discuss some ways of doing that now.</p>
+</div>
+<div id="observation-error" class="section level2">
+<h2><span class="header-section-number">19.3</span> Observation error</h2>
+<p>Observation models also come with a lot of choices, but usually these are more closely linked to information you have because you probably know something about the way in which the data were collected. As above, you could be choosing between log-normally distributed or normally distributed errors. Alternatively, you may have some other observation process altogether (Binomial, Poisson, etc.).</p>
+<p>Note that in ecology, observation models for an abundance often assume that the number of counted individuals is some fraction of the true number of individuals, such as</p>
+<p><span class="math display">\[
+N_{t+1,obs} \sim \mbox{Binom}(N_{t+1},\theta)
+\]</span> This will not work when there are false positives or double counting or some other “failure mode” for your observations that does not fit into this Binomial framework.</p>
+</div>
+<div id="other-kinds-of-statespace-models" class="section level2">
+<h2><span class="header-section-number">19.4</span> Other kinds of state=space models</h2>
+<p>Clark and Bjornstad is a classic paper on state-space models. Let’s walk through their discussion on epidemiological models since they represent a different flavor of state-space models that the ones we have been discussing. These so-called S-I-R models track the number of individuals that are S=Susceptible to a disease, I = Infected with a disease, and R=Recovered from a disease (we usually assume no reinfection after recovery). Like all state-space models, the hard part is just getting accounting right, and working out the transition rates or flow of individuals among different states.</p>
+<p>The number of susceptible individuals in Year <span class="math inline">\(t\)</span> is given by</p>
+<p><span class="math display">\[
+S_{t} = S_{t-1} + B_{t-1} - I_{t,new}
+\]</span> where <span class="math inline">\(B_{t-1}\)</span> is the number of births in the previous year (these are newly susceptible individuals) and <span class="math inline">\(I_{t}\)</span> is the number who are infected in the current time step and are therefore no longer in the susceptible category. The probability of infection in Year <span class="math inline">\(t\)</span> is modeled with a Binomial</p>
+<p><span class="math display">\[
+I_{t,new} \sim \mbox{Binom}(S_{t-1},\phi_{t-1})
+\]</span> where <span class="math inline">\(\phi_{t-1}\)</span> is the transmission rate</p>
+<p><span class="math display">\[
+\phi_{t-1} = \beta_{t} \times \frac{I_{t-1,new}}{N_{t-1}}
+\]</span> and <span class="math inline">\(\beta_{t}\)</span> is the constant of proportionality between the transmission rate and the fraction of the population that is infected. (Here we have assumed that your probability of being infected increases as the fraction of infected persons in the population also increases.) Clark and Bjornstad, in their modeling of measles, model <span class="math inline">\(\beta_{t}\)</span> as varying bi-weekly, since they found that the transmission rate depended strongly on whether schools were in or out of session. I am leaving <span class="math inline">\(\beta_{t}\)</span> as a function of year because this is the more general formulation.</p>
+<p>Because not all infections are reported, we model reported infections as a Binomial draw from the true number of infections, with the probability <span class="math inline">\(\rho\)</span> being the detection probability (from a health services perspective).</p>
+<p><span class="math display">\[
+I_{t,new,obs} \sim \mbox{Binom}(I_{t,new},\rho)
+\]</span> Note that in fitting this model, Clark and Bjornstad use a slightly informative prior for <span class="math inline">\(\rho\)</span>. This is precisely when Bayesian methods become most useful, because you might have good information on reporting rates in other epidemics that can inform the data at hand.</p>
+<p>Note that Clark and Bjornstad do not actually track the total number of infected individuals, which would require some accounting like:</p>
+<p><span class="math display">\[
+I_{t} = I_{t,new}-R_{t}
+\]</span> In their case, they have only (imperfect) observations on newly infected individuals, and are not keeping track of the total number of infected individuals (as you might, for example, when modeling HIV in which regular surveys are conducted to assess infection status).</p>
+<p>State-space models can get arbitrarily complicated, and are limited almost exclusively by the quality and quantity of data you have to fit the models.</p>
+</div>
+<div id="missing-data-1" class="section level2">
+<h2><span class="header-section-number">19.5</span> Missing data</h2>
+<p>One of the most important take-home messages from Clark and Bjornstad has to do with the way that missing data can be accommodated in state-space models:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="ClarkBjornstad.png" alt="From Clark and Bjornstad" width="75%" />
+<p class="caption">
+Figure 3.1: From Clark and Bjornstad
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-10-lab.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-11-lab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

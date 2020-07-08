@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bayesian Data Analysis and Computation Lecture and Lab Notes</title>
+  <meta name="description" content="Bayesian Data Analysis and Computation Lecture and Lab Notes">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  
+  
+  
+
+<meta name="author" content="Heather Lynch">
+
+
+<meta name="date" content="2020-07-08">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="week-9-lab.html">
+<link rel="next" href="week-10-lab.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
+<li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#introduction-to-this-course"><i class="fa fa-check"></i><b>1.1</b> Introduction to this course</a></li>
+<li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#statistical-philosophy-and-the-foundations-of-bayesian-analysis"><i class="fa fa-check"></i><b>1.2</b> Statistical philosophy and the foundations of Bayesian analysis</a></li>
+<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#some-probability-vocabulary"><i class="fa fa-check"></i><b>1.3</b> Some probability vocabulary</a></li>
+<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#testing-jags-installation"><i class="fa fa-check"></i><b>1.4</b> Testing JAGS installation</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1-lab.html"><a href="week-1-lab.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab</a></li>
+<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a><ul>
+<li class="chapter" data-level="3.1" data-path="week-2-lecture.html"><a href="week-2-lecture.html#bayes-theorem-and-all-that-follows-from-it"><i class="fa fa-check"></i><b>3.1</b> Bayes Theorem and all that follows from it</a></li>
+<li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats"><i class="fa fa-check"></i><b>3.2</b> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#getting-some-more-practice-with-jags"><i class="fa fa-check"></i><b>3.3</b> Getting some more practice with JAGS</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>4</b> Week 3 Lecture</a><ul>
+<li class="chapter" data-level="4.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#how-do-we-obtain-priors"><i class="fa fa-check"></i><b>4.1</b> How do we obtain priors?</a></li>
+<li class="chapter" data-level="4.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#conjugacy"><i class="fa fa-check"></i><b>4.2</b> Conjugacy</a></li>
+<li class="chapter" data-level="4.3" data-path="week-3-lecture.html"><a href="week-3-lecture.html#sensitivity-analysis"><i class="fa fa-check"></i><b>4.3</b> Sensitivity analysis</a></li>
+<li class="chapter" data-level="4.4" data-path="week-3-lecture.html"><a href="week-3-lecture.html#expert-elicitation"><i class="fa fa-check"></i><b>4.4</b> Expert elicitation</a></li>
+<li class="chapter" data-level="4.5" data-path="week-3-lecture.html"><a href="week-3-lecture.html#more-information"><i class="fa fa-check"></i><b>4.5</b> More information</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="5.1" data-path="week-3-lab.html"><a href="week-3-lab.html#congugacy"><i class="fa fa-check"></i><b>5.1</b> Congugacy</a></li>
+<li class="chapter" data-level="5.2" data-path="week-3-lab.html"><a href="week-3-lab.html#moment-matching-two-distributions"><i class="fa fa-check"></i><b>5.2</b> Moment Matching two distributions</a></li>
+<li class="chapter" data-level="5.3" data-path="week-3-lab.html"><a href="week-3-lab.html#from-prior-to-posterior-to-prior"><i class="fa fa-check"></i><b>5.3</b> From Prior to Posterior to Prior</a></li>
+<li class="chapter" data-level="5.4" data-path="week-3-lab.html"><a href="week-3-lab.html#adding-data-one-at-a-time-or-all-at-once"><i class="fa fa-check"></i><b>5.4</b> Adding data: One at a time or all at once?</a></li>
+<li class="chapter" data-level="5.5" data-path="week-3-lab.html"><a href="week-3-lab.html#what-impact-did-the-choice-of-prior-have"><i class="fa fa-check"></i><b>5.5</b> What impact did the choice of prior have?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>6</b> Week 4 Lecture</a><ul>
+<li class="chapter" data-level="6.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#rejection-sampling"><i class="fa fa-check"></i><b>6.1</b> Rejection Sampling</a></li>
+<li class="chapter" data-level="6.2" data-path="week-4-lecture.html"><a href="week-4-lecture.html#adaptive-rejection-sampling"><i class="fa fa-check"></i><b>6.2</b> Adaptive Rejection Sampling</a></li>
+<li class="chapter" data-level="6.3" data-path="week-4-lecture.html"><a href="week-4-lecture.html#monte-carlo-integration"><i class="fa fa-check"></i><b>6.3</b> Monte Carlo Integration</a></li>
+<li class="chapter" data-level="6.4" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sometimes-you-just-want-the-integral"><i class="fa fa-check"></i><b>6.4</b> Sometimes you just want the integral…</a></li>
+<li class="chapter" data-level="6.5" data-path="week-4-lecture.html"><a href="week-4-lecture.html#importance-sampling"><i class="fa fa-check"></i><b>6.5</b> Importance Sampling</a></li>
+<li class="chapter" data-level="6.6" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sampling-importance-resampling"><i class="fa fa-check"></i><b>6.6</b> Sampling Importance Resampling</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lab</a><ul>
+<li class="chapter" data-level="7.1" data-path="week-4-lab.html"><a href="week-4-lab.html#smith-and-gelfand-1992"><i class="fa fa-check"></i><b>7.1</b> Smith and Gelfand (1992)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>8</b> Week 5 Lecture</a><ul>
+<li class="chapter" data-level="8.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#gibbs-sampling"><i class="fa fa-check"></i><b>8.1</b> Gibbs Sampling</a></li>
+<li class="chapter" data-level="8.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#metropolis-algorithm"><i class="fa fa-check"></i><b>8.2</b> Metropolis algorithm</a></li>
+<li class="chapter" data-level="8.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-messy-reality-hybrid-of-m-h-and-gibbs"><i class="fa fa-check"></i><b>8.3</b> The Messy reality = Hybrid of M-H and Gibbs</a></li>
+<li class="chapter" data-level="8.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#convergence"><i class="fa fa-check"></i><b>8.4</b> Convergence</a></li>
+<li class="chapter" data-level="8.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#bayesian-change-point-example"><i class="fa fa-check"></i><b>8.5</b> Bayesian change point example</a></li>
+<li class="chapter" data-level="8.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#hierarchical-model"><i class="fa fa-check"></i><b>8.6</b> Hierarchical model</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lab</a><ul>
+<li class="chapter" data-level="9.1" data-path="week-5-lab.html"><a href="week-5-lab.html#gibbs-sampler"><i class="fa fa-check"></i><b>9.1</b> Gibbs Sampler</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="week-6-lab.html"><a href="week-6-lab.html"><i class="fa fa-check"></i><b>10</b> Week 6 Lab</a><ul>
+<li class="chapter" data-level="10.1" data-path="week-6-lab.html"><a href="week-6-lab.html#fitting-a-distribution"><i class="fa fa-check"></i><b>10.1</b> Fitting a distribution</a></li>
+<li class="chapter" data-level="10.2" data-path="week-6-lab.html"><a href="week-6-lab.html#one-way-anova"><i class="fa fa-check"></i><b>10.2</b> One-way ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="week-7-lecture.html"><a href="week-7-lecture.html"><i class="fa fa-check"></i><b>11</b> Week 7 Lecture</a><ul>
+<li class="chapter" data-level="11.1" data-path="week-7-lecture.html"><a href="week-7-lecture.html#class-projects"><i class="fa fa-check"></i><b>11.1</b> Class projects</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="week-7-lab.html"><a href="week-7-lab.html"><i class="fa fa-check"></i><b>12</b> Week 7 Lab</a></li>
+<li class="chapter" data-level="13" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>13</b> Week 8 Lecture</a></li>
+<li class="chapter" data-level="14" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lab</a></li>
+<li class="chapter" data-level="15" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>15</b> Week 9 Lecture</a><ul>
+<li class="chapter" data-level="15.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#the-probability-of-estimability"><i class="fa fa-check"></i><b>15.1</b> The probability of estimability</a></li>
+<li class="chapter" data-level="15.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#multilevel-modelling-ala-gelman-and-hill"><i class="fa fa-check"></i><b>15.2</b> Multilevel modelling ala Gelman and Hill</a></li>
+<li class="chapter" data-level="15.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#in-sum."><i class="fa fa-check"></i><b>15.3</b> In sum….</a></li>
+<li class="chapter" data-level="15.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#nice-et-al.-2014"><i class="fa fa-check"></i><b>15.4</b> Nice et al. (2014)</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lab</a></li>
+<li class="chapter" data-level="17" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>17</b> Week 10 Lecture</a><ul>
+<li class="chapter" data-level="17.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#convergence-1"><i class="fa fa-check"></i><b>17.1</b> Convergence</a></li>
+<li class="chapter" data-level="17.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#testing-for-convergence"><i class="fa fa-check"></i><b>17.2</b> Testing for convergence</a></li>
+<li class="chapter" data-level="17.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>17.3</b> Gelman-Rubin statistic</a></li>
+<li class="chapter" data-level="17.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#the-take-away-what-should-we-be-checking-after-we-run-our-models"><i class="fa fa-check"></i><b>17.4</b> The take away: What should we be checking after we run our models</a></li>
+<li class="chapter" data-level="17.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#missing-data"><i class="fa fa-check"></i><b>17.5</b> Missing data</a></li>
+<li class="chapter" data-level="17.6" data-path="week-10-lecture.html"><a href="week-10-lecture.html#initial-values"><i class="fa fa-check"></i><b>17.6</b> Initial values</a></li>
+<li class="chapter" data-level="17.7" data-path="week-10-lecture.html"><a href="week-10-lecture.html#sample-scripts-and-output-for-prior-posterior-overlap"><i class="fa fa-check"></i><b>17.7</b> Sample scripts and output for prior-posterior overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lab</a></li>
+<li class="chapter" data-level="19" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>19</b> Week 11 Lecture</a><ul>
+<li class="chapter" data-level="19.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#dynamical-time-series-models"><i class="fa fa-check"></i><b>19.1</b> Dynamical (time series) models</a></li>
+<li class="chapter" data-level="19.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#process-error"><i class="fa fa-check"></i><b>19.2</b> Process error</a></li>
+<li class="chapter" data-level="19.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#observation-error"><i class="fa fa-check"></i><b>19.3</b> Observation error</a></li>
+<li class="chapter" data-level="19.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#other-kinds-of-statespace-models"><i class="fa fa-check"></i><b>19.4</b> Other kinds of state=space models</a></li>
+<li class="chapter" data-level="19.5" data-path="week-11-lecture.html"><a href="week-11-lecture.html#missing-data-1"><i class="fa fa-check"></i><b>19.5</b> Missing data</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lab</a><ul>
+<li class="chapter" data-level="20.1" data-path="week-11-lab.html"><a href="week-11-lab.html#simple-logistic"><i class="fa fa-check"></i><b>20.1</b> Simple logistic</a></li>
+<li class="chapter" data-level="20.2" data-path="week-11-lab.html"><a href="week-11-lab.html#observation-error-only-model"><i class="fa fa-check"></i><b>20.2</b> Observation-error-only model</a></li>
+<li class="chapter" data-level="20.3" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-only-model"><i class="fa fa-check"></i><b>20.3</b> Process-error-only model</a></li>
+<li class="chapter" data-level="20.4" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-and-observation-error-together"><i class="fa fa-check"></i><b>20.4</b> Process-error and observation-error together</a></li>
+<li class="chapter" data-level="20.5" data-path="week-11-lab.html"><a href="week-11-lab.html#final-thoughts"><i class="fa fa-check"></i><b>20.5</b> Final thoughts</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>21</b> Week 12 Lecture</a><ul>
+<li class="chapter" data-level="21.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#mark-recapture-modeling"><i class="fa fa-check"></i><b>21.1</b> Mark-recapture modeling</a></li>
+<li class="chapter" data-level="21.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#cormack-jolly-seber"><i class="fa fa-check"></i><b>21.2</b> Cormack-Jolly-Seber</a></li>
+<li class="chapter" data-level="21.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-1-brute-force"><i class="fa fa-check"></i><b>21.3</b> Method #1: Brute force</a></li>
+<li class="chapter" data-level="21.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-2-modeling-the-entire-capture-history"><i class="fa fa-check"></i><b>21.4</b> Method #2: Modeling the entire capture history</a></li>
+<li class="chapter" data-level="21.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#what-other-kind-of-models-might-you-fit"><i class="fa fa-check"></i><b>21.5</b> What other kind of models might you fit</a></li>
+<li class="chapter" data-level="21.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#occupancy-modelling"><i class="fa fa-check"></i><b>21.6</b> Occupancy modelling</a></li>
+<li class="chapter" data-level="21.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#dynamic-state-space-models-for-meta-population-dynamics"><i class="fa fa-check"></i><b>21.7</b> Dynamic state-space models for meta-population dynamics</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lab</a><ul>
+<li class="chapter" data-level="22.1" data-path="week-12-lab.html"><a href="week-12-lab.html#the-zeros-trick"><i class="fa fa-check"></i><b>22.1</b> The ‘zeros’ trick</a></li>
+<li class="chapter" data-level="22.2" data-path="week-12-lab.html"><a href="week-12-lab.html#the-ones-trick"><i class="fa fa-check"></i><b>22.2</b> The ‘ones’ trick</a></li>
+<li class="chapter" data-level="22.3" data-path="week-12-lab.html"><a href="week-12-lab.html#initial-values-1"><i class="fa fa-check"></i><b>22.3</b> Initial values</a></li>
+<li class="chapter" data-level="22.4" data-path="week-12-lab.html"><a href="week-12-lab.html#first-a-warm-up"><i class="fa fa-check"></i><b>22.4</b> First, a warm up</a></li>
+<li class="chapter" data-level="22.5" data-path="week-12-lab.html"><a href="week-12-lab.html#fitting-mark-recapture-models"><i class="fa fa-check"></i><b>22.5</b> Fitting mark-recapture models</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>23</b> Week 13 Lecture</a><ul>
+<li class="chapter" data-level="23.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#rejection-abc"><i class="fa fa-check"></i><b>23.1</b> Rejection ABC</a></li>
+<li class="chapter" data-level="23.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-1-basic-rejection-abc"><i class="fa fa-check"></i><b>23.2</b> Option #1: Basic rejection ABC</a></li>
+<li class="chapter" data-level="23.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-2-markov-chain-monte-carlo-abc"><i class="fa fa-check"></i><b>23.3</b> Option #2: Markov Chain Monte Carlo ABC</a></li>
+<li class="chapter" data-level="23.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-3-sequential-monte-carlo-abc"><i class="fa fa-check"></i><b>23.4</b> Option #3: Sequential Monte Carlo ABC</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 14 Lecture</a><ul>
+<li class="chapter" data-level="24.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#the-mona-lisa"><i class="fa fa-check"></i><b>24.1</b> The Mona Lisa</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>25</b> Week 14 Lab</a></li>
+<li class="chapter" data-level="26" data-path="week-15-lecture.html"><a href="week-15-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 15 Lecture</a><ul>
+<li class="chapter" data-level="26.1" data-path="week-15-lecture.html"><a href="week-15-lecture.html#a-quick-step-back-what-are-the-goals-of-model-selection"><i class="fa fa-check"></i><b>26.1</b> A quick step back: What are the goals of model selection?</a></li>
+<li class="chapter" data-level="26.2" data-path="week-15-lecture.html"><a href="week-15-lecture.html#bayesian-model-averaging"><i class="fa fa-check"></i><b>26.2</b> Bayesian model averaging</a></li>
+<li class="chapter" data-level="26.3" data-path="week-15-lecture.html"><a href="week-15-lecture.html#beyond-bayes-factors"><i class="fa fa-check"></i><b>26.3</b> Beyond Bayes Factors</a></li>
+<li class="chapter" data-level="26.4" data-path="week-15-lecture.html"><a href="week-15-lecture.html#variable-selection-for-nested-models"><i class="fa fa-check"></i><b>26.4</b> Variable selection for nested models</a></li>
+<li class="chapter" data-level="26.5" data-path="week-15-lecture.html"><a href="week-15-lecture.html#prior-data-conflict"><i class="fa fa-check"></i><b>26.5</b> Prior-data conflict</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-10-lecture" class="section level1">
+<h1><span class="header-section-number">17</span> Week 10 Lecture</h1>
+<p>This week we’ll take some time to discuss the messy, annoying computational details of doing Bayesian analyses. Before launching into this, its worth stepping back and reviewing a bit about Analysis of Variance, since the same ideas are going to be useful to us today.</p>
+<p>Let’s say I have Normally distributed data on heights and I have three groups of individuals; I may want to ask whether these groups are different in height (on average). At first blush, I could simply take the average height in each group and compare them to each other, but this isn’t a good test. Why? Because if there is any variability in heights, then I do not know whether these group means are different because of random sampling error (i.e. I took a sample from each group and my sample may not be representative of the underlying population because there is some variance and maybe my sample has a few smaller individuals, etc.), or whether they are different because the groups really are fundamentally different in height. This is what we have to decide using the data we have. We do this by computing within-group variance using two methods.</p>
+<p>Method #1: The simplest way of estimating within group variance is just to calculate it. In other words, calculate the variance for each group individually. If we have 3 groups, we now have 3 estimates of within group variance. To get an average estimate of within-group variance, we can just average those estimates together. More formally:</p>
+<p><span class="math display">\[
+\sigma^{2} = \frac{1}{m}\sum_{j=1}^{m}(\mbox{variance in group j})
+\]</span> This works as an estimate of within-group variance even if the groups are different from one another. We could have a group of very tall individuals and a group of shorter individuals, but we could still estimate within-group variance by looking at the variation within each group and then averaging them together.</p>
+<p>If the groups are <strong>not</strong> different (i.e., under <span class="math inline">\(H_{0}\)</span>), then all the individuals sampled really do come from the same underlying population, regardless of group, and this gives us a second method of estimating within-group standard deviation. Recall that the Central Limit Theorem states that the variance in the <strong>mean</strong> is related to the variance in the data as</p>
+<p><span class="math display">\[
+\sigma^{2}_{\bar{Y}} = \frac{\sigma^{2}}{n}
+\]</span> More samples (<span class="math inline">\(n\)</span>) means we have a more precise (smaller <span class="math inline">\(\sigma_{\bar{Y}}\)</span>) estimate of the mean <span class="math inline">\(\bar{Y}\)</span>. We can flip this around to say</p>
+<p><span class="math display">\[
+\sigma^{2} = n\sigma^{2}_{\bar{Y}}
+\]</span> This says that if we know the variance among the MEANS we can use this to estimate the within-group variance. This only works when all the comes come from the same distribution. When doing ANOVA, we compare these two measures of within-sample variance to TEST whether the samples in different groups come from the same population. But the basic underlying idea, that we have variation within each group, and variance between groups, and that variance between groups can be used to estimate variance within groups (under <span class="math inline">\(H_{0}\)</span>) is an idea we will need to use again in the context of chain convergence.</p>
+<div id="convergence-1" class="section level2">
+<h2><span class="header-section-number">17.1</span> Convergence</h2>
+<p>When we talk about a Bayesian model converging, we usually mean that our posterior distributions have adequately sampled the (correct) posterior distribution, and that we have enough samples from that posterior distribution to precisely estimate the parameters of our model. There are many metrics that we might use to assess our MCMC chains but they generally fall into two categories.</p>
+<ol style="list-style-type: decimal">
+<li><p>Estimates of Monte Carlo error: Monte Carlo error refers to the uncertainty in our parameter estimates that stems from having a finite number of samples from the posterior.</p></li>
+<li><p>Testing convergence: <span class="math inline">\(\hat{R}\)</span> and <span class="math inline">\(n_{eff}\)</span></p></li>
+</ol>
+<p>Before getting further, I want to make sure that everyone understands the distinction between two types of error. This is best illustrated with an example. Lets say that I have a simple binomial model</p>
+<p><span class="math display">\[
+Y_{i} \sim \mbox{Binom}(N,\theta)
+\]</span> The posterior distribution <span class="math inline">\(\theta|Y_{i}\)</span> will have some “spread”, as is easily seen by a histogram of the posterior samples, and the standard deviation of the posterior samples is a measure of that uncertainty. As long as we have adequately sampled the posterior distribution, that standard deviation will be insensitive to sample size. In other words, we can run our chains forever and that spread of the posterior distribution won’t change, because that spread reflects the “true” uncertainty about the parameter based on the prior and the data available. The parameter estimate we will report in the paper (i.e. the quantity of interest) will usually be the mean or median of that distribution, and we will refer to this measure of central tendency as <span class="math inline">\(\hat{\theta}\)</span>. If we use the posterior mean as our measure of central tendency, then</p>
+<p><span class="math display">\[
+\hat{\theta} = E[\theta|Y_{i}]
+\]</span> Unlike the standard deviation of the samples for <span class="math inline">\(\theta|Y_{i}\)</span>, our uncertainty regarding <span class="math inline">\(\hat{\theta}\)</span> (which we call the Monte Carlo standard error) <strong>is</strong> sensitive to sample size. As we collect more samples, we will more precisely estimate <span class="math inline">\(\hat{\theta}\)</span>, and our uncertainty about will decrease. This situation is analogous to the difference between the standard deviation of a distribution, and the standard deviation of the mean of a distribution, the latter of which we refer to as the standard error (of the mean).</p>
+<p>In most applied applications of Bayesian modelling, Monte Carlo standard errors are not of interest and will be far smaller than the standard deviation of the posterior. In other words, given the Binomial model just discussion, you would report in your paper “$=<span class="math inline">\(3.5 (2.1,4.7)&quot;. You would not need to specify the posterior mean to more digits &quot;\)</span>=$3.547834 (2.1,4.7)” because the extra precision is made irrelevant because of the spread of the posterior. Technically, you should also report the uncertainty associated with the estimate of the posterior mean (in other words, how well do you know that the mean is 3.5 and not 3.4 or 3.6) but this is not usually done in the manuscript, rather the error of the mean is usually included in a table (such as in the summary table produced by JAGS).</p>
+<p>[Keep in mind that we can ask about the MCSE for any function of any parameter, such as a function <span class="math inline">\(\widehat{g(\theta)}\)</span>.]</p>
+<p><strong>OK, now we know what Monte Carlo standard errors are, but how do we calculate them?</strong></p>
+<p>If the N samples were all independent, then we could easily calculate the MCSE by just using the Central Limit Theorem.</p>
+<p><span class="math display">\[
+\mbox{MCSE} = \sqrt{\frac{s^2}{N}} = \sqrt{\frac{\frac{1}{N-1}\sum_{i=1}^{N}(g(\theta_{i})-\overline{g(\theta_{i})})^{2}}{N}} = \frac{SD(g(\theta_{i}))}{\sqrt{N}}
+\]</span> However, the samples are not usually independent, and in fact, Markov Chain samples can be highly autocorrelated. Therefore, we use the  way of calculating the MCSE, which is to divide up our chain into <span class="math inline">\(m\)</span> batches of length <span class="math inline">\(n\)</span> (<span class="math inline">\(N=mn\)</span>); while the individual draws may be highly correlated, we hope that batches of draws will be independent. (There are many ways to estimate the Markov Chain standard error but here I am describing the <strong>batch means</strong> method.)</p>
+<p>Now we can write</p>
+<p><span class="math display">\[
+s^{2} = \frac{n}{m-1}\sum_{j=1}^{m}(\overline{\theta_{. j}}-\overline{\theta_{..}})^{2}
+\]</span> without concern for the autocorrelation of individual samples.</p>
+</div>
+<div id="testing-for-convergence" class="section level2">
+<h2><span class="header-section-number">17.2</span> Testing for convergence</h2>
+<p>Theory cannot tell us how long it will take to get our chains to converge. So far we’ve done simple examples that converge after only a few thousand iterations, and take only seconds to run. In practice, JAGS may take days or even weeks of processing, even with parallel chains, to converge. You may never get it to converge.</p>
+<p>If you are writing your own samplers from scratch, there are a lot of issues you have to deal with, but using JAGS, your problems are fewer. One of the few controls you have on the actual posterior is to decide how much to thin the chains. It is always better to keep everything. However, if you have to run millions of chains, you are usually better off only storing some fraction of those samples. You can thin out by selection one out of every two, one out of ten, etc. This keeps the size of the MCMC output reasonable even if the chains are very long, and because the samples are often highly correlated, it involves minimal information loss.</p>
+<p>How do we assess convergence? Many Bayesian practitioners would argue the best approach is simply to compare the performance of multiple chains. With parallel processing, this often doesn’t take any longer than running a single chain, especially so because even basic desktop computers have multiple cores. The idea is that if multiple chains converge on the same distribution, then you must have found the correct distribution. However, Geyer (in Brooks et al. 2011) cautions about pseudo-convergence. What is pseudo-convergence? Consider a situation in which the distribution you are trying to sample from (but don’t know) has a 99.9% probability of being Unif(0,1) and a 0.1% probability of being Unif(1000000,1000001). Under these circumstances, assuming a fairly typical jump proposal such as N(0,1), you might start all of your samplers so that they end up sampling only the portion that is Unif(0,1). For a chain of any reasonable length, you might never propose a jump to the second portion of the distribution Unif(1000000,1000001), and so your chains will appear to converge on Unif(0,1) and you would have no clue that there was in fact support along some other interval. Running multiple chains will not have helped identify convergence because, in essence, they were not ‘overdispersed’. <strong>The problem is that without knowing the distribution, you have no way of knowing what constitutes overdispersed</strong>, so you have no way of choosing starting values that are guaranteed to sample the entire space. As noted by Geyer, this is a problem with all “black box” samplers.</p>
+<p>Gelman and Shirley (in Brooks et al. 2011) are less nihilistic in their advice on convergence, and they offer some more practical suggestions. The most important suggestion in to <strong>simulate fake data</strong> and fit the model to convince yourself that a) the model works as expected and b) that the posterior intervals are sensible (i.e., 50% of the 50% posterior intervals should contain the true value).</p>
+<ul>
+<li>Whenever possible, its critical to use fake data to confirm that your code works. This is well worth the time invested.</li>
+<li>I also like Gelman and Shirley’s (slightly cheeky) advice to run the chains from the point of submission until the reviews come in. It’s actually kind of brilliant.</li>
+</ul>
+</div>
+<div id="gelman-rubin-statistic" class="section level2">
+<h2><span class="header-section-number">17.3</span> Gelman-Rubin statistic</h2>
+<p>There are many ways to try and assess whether a chain has converged. Of course, we never know if this is pseudo-convergence, but this is an unknown unknown that non-statisticians don’t usually obsess over (unless, of course, the posterior is pathological or the chains are very slow to mix…). Here I will present just one formal test, the Gelman-Rubin diagnostic, which I like because it’s quite intuitive and is a direct analog to an analysis of variance. (It is also well-known, and likely to pass through peer review without a second glance…) The G-R statistic requires that you run multiple chains starting with “overdispersed” starting values (in practice, people just pick widely different starting values; more correctly, I would fit your model, draw overdispersed values from those posteriors, and run it again with those starting values). If you have chains, each of length , then the G-R statistic is</p>
+<p><span class="math display">\[
+B=\frac{n}{m-1}\sum_{j=1}^{m}(\overline{\theta_{. j}}-\overline{\theta_{..}})^{2} \\
+W=\frac{1}{m}\sum_{j=1}^{m}\left[\frac{1}{n-1}\sum_{i=1}^{n}(\overline{\theta_{ij}}-\overline{\theta_{.j}})^{2}\right]
+\]</span> where <span class="math inline">\(\theta_{ij}\)</span> is the ith sample from the jth chain, <span class="math inline">\(\overline{\theta_{.j}}\)</span> is the average over the jth chain, and <span class="math inline">\(\theta_{..}\)</span> is the global average (over all samples in all chains).</p>
+<p>Using these values, we can estimate the marginal posterior variance of <span class="math inline">\(\theta\)</span></p>
+<p><span class="math display">\[
+\widehat{Var(\theta|y)} = \frac{n-1}{n}W + \frac{1}{n}B
+\]</span> which can be used to calculate the Gelman-Rubin statistic</p>
+<p><span class="math display">\[
+\hat{R} = \sqrt{\frac{\widehat{Var(\theta|y)}}{W}}
+\]</span> If <span class="math inline">\(\hat{R} \approx 1\)</span>, at least &lt;1.1, then we can be fairly confident that the chains have converged.</p>
+<p>To gain a little intuition for this statistic, consider the case of very large (which is always the case, since the chains are always long)</p>
+<p><span class="math display">\[
+\hat{R}_{\mbox{n large}} \approx \sqrt{B/n}{W}}
+\]</span> which is basically like comparing two estimates of the variance, one derived from the variance between chains (divided by n, think back to how we got SE from SD!) and one derived from the variance within a chain.</p>
+<p>The effective sample size <span class="math inline">\(n_{eff}\)</span> is a related measure to <span class="math inline">\(\hat{R}\)</span>.</p>
+</div>
+<div id="the-take-away-what-should-we-be-checking-after-we-run-our-models" class="section level2">
+<h2><span class="header-section-number">17.4</span> The take away: What should we be checking after we run our models</h2>
+<p>Step 1: The first step in fitting any kind of “mission-critical” model is to simulate data and to ensure that you can recover your parameter values. If some parameters are recoverable, but others are not, this might suggest a reworking of the model to eliminate non-identifiable parameters.</p>
+<p>Step 2: Once you’ve run your model (on simulated data, as in Step 1, or later with real data), you will want to check convergence.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Visual inspection of the chains</li>
+<li>Look at <span class="math inline">\(\hat{R}\)</span> for all parameters, esp. those of key interest</li>
+</ol>
+<p>Step 3: Do a bivariate scatterplot of your key parameters. In other words, make scatterplots which plots the samples of each parameter against the samples from the other parameter. Doing so will highlight parameters that might be “trading off” (i.e. large values of one parameter are associated with small values of another parameters, etc.). If parameters are trading off, it may be because there is some combination of these that is identifiable (the product or the ratio) but that the parameters individually are not identifiable. If you have parameters that are trading off or whose scatterplots show non-independence between parameters, you will need to summarize your posterior distribution by a confidence envelop rather than through the two marginal posterior distributions, since the latter (while not strictly incorrect) hides the inherent correlations between the two parameters and may lead you to over- or underestimate uncertainty (similar to Bolker’s likelihood slices vs likelihood profiles in Biometry).</p>
+<p>Step 4: Plot prior-posterior overlap for each key parameter of interest. Too much overlap strongly suggests that your data are simply not that informative about a certain parameter, which is why your posterior looks very similar to the prior.</p>
+<p>Some code to do that and some example output are appended at the end of the lecture notes.</p>
+</div>
+<div id="missing-data" class="section level2">
+<h2><span class="header-section-number">17.5</span> Missing data</h2>
+<p>Bayesian analyses treat data as being sampled from a statistical distribution, so missing response data poses no problem. Missing covariate data, on the other hand, poses more of a problem, and our choices are to either discard rows of our dataset which contain missing covariates (very sad) or impute missing covariates. Unless your dataset is very large, I recommend against deleting data whenever possible. Bayesian methods are often used when datasets are small anyways, and it’s better to rescue elements of your dataset that make your dataset smaller than it has to be.</p>
+<p>First we need to distinguish between four types of missing:</p>
+<ol style="list-style-type: decimal">
+<li>Missing completely at random (probability of being missing is the same for all units)</li>
+<li>Missing at random (probability of being missing depends only on available information)</li>
+<li>Missingness depends on unobserved predictors</li>
+<li>Missingness depends on the missing value itself</li>
+</ol>
+<p>It is important to determine what kind of missingness you have.</p>
+<p><strong>Question: Any examples of missing data from your research? What kind of missingness are you dealing with?</strong></p>
+<p>A sample of imputation methods: 1. Replace missing covariate value with the mean of that covariate across all units. 2. Last value carried forward (sensible if you have a time series or something with strong autocorrelation). 3. Sample with replacement from the other values for that covariate. 4. Fit a model to the observed cases and use that model to predict the missing covariate values. a) Can use the expected value of the model for imputation b) Can include prediction error (in this case, as with any situation in which there is some stochasticity to the imputation procedure, it is best to do this multiple times and assess sensitivity of the results to the imputed values)</p>
+<p>Some vocabulary: Hot-deck vs. cold deck imputation. Hot-deck imputation is when a missing value is imputed by finding one or more “similar” cases without missing data in the dataset under analysis. Cold-deck imputation uses a similar matching procedure but with data that were collected previous to the current analysis.</p>
+</div>
+<div id="initial-values" class="section level2">
+<h2><span class="header-section-number">17.6</span> Initial values</h2>
+<p>We tend to ignore the initial values, though we know that we should be starting our MCMC chains with three “random” widely dispersed values. How do we define widely dispersed? Usually with respect to the prior distribution. BUT in some cases we might be using a flat prior, and drawing random values from a flat prior might make it difficult for the model to converge, or it will take a very long time to converge. I suggest a two part approach for “the final run” of models that are nearing publication-readiness. First, try running the model by drawing randomly from the prior; hopefully this works OK. If not, you’ll have to hand select initial values from values that you think are more reasonable starting values. Run the model, see how it does. Even if it doesn’t reach full convergence, use draws from the posterior as new initial values for a second run. Constrain these starting values to ensure that at least one value is drawn from each side of the posterior mode. In other words, if the posterior is centered on zero, make sure you have at least one positive and at least one negative starting value. Now you’ll be starting values that are dispersed (by design) and shouldn’t be TOO far off reasonable even if you stick with the original flat prior.</p>
+</div>
+<div id="sample-scripts-and-output-for-prior-posterior-overlap" class="section level2">
+<h2><span class="header-section-number">17.7</span> Sample scripts and output for prior-posterior overlap</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot.function=function(prior.vec,posterior.vec,overlap)
+{
+  prior &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">values=</span>prior.vec)
+  posterior &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">values=</span>posterior.vec)
+  prior$name &lt;-<span class="st"> &#39;prior&#39;</span>
+  posterior$name &lt;-<span class="st"> &#39;posterior&#39;</span>
+  Results &lt;-<span class="st"> </span><span class="kw">rbind</span>(prior, posterior)
+  binsize&lt;-(<span class="kw">max</span>(Results$values)-<span class="kw">min</span>(Results$values))/<span class="dv">50</span>
+  <span class="kw">ggplot</span>(Results, <span class="kw">aes</span>(values, <span class="dt">fill =</span> name)) +<span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">binwidth=</span>binsize, <span class="kw">aes</span>(<span class="dt">y =</span> ..density..), <span class="dt">position =</span> <span class="st">&#39;identity&#39;</span>) +<span class="st"> </span><span class="kw">ggtitle</span>(<span class="kw">paste</span>(<span class="kw">as.character</span>(<span class="kw">round</span>(overlap,<span class="dt">digits=</span><span class="dv">2</span>)),<span class="st">&quot;% overlap&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>))
+}
+
+calc.overlap=function(prior.vec,posterior.vec)
+{
+  prior &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">values=</span>prior.vec)
+  posterior &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">values=</span>posterior.vec)
+  prior$name &lt;-<span class="st"> &#39;prior&#39;</span>
+  posterior$name &lt;-<span class="st"> &#39;posterior&#39;</span>
+  Results &lt;-<span class="st"> </span><span class="kw">rbind</span>(prior, posterior)
+  binsize&lt;-(<span class="kw">max</span>(Results$values)-<span class="kw">min</span>(Results$values))/<span class="dv">50</span>
+  s&lt;-<span class="kw">seq</span>(<span class="kw">min</span>(Results$values),<span class="kw">max</span>(Results$values),<span class="dt">by=</span>binsize)
+  overlap&lt;-<span class="kw">vector</span>(<span class="dt">length=</span><span class="kw">length</span>(s))
+  for (i in <span class="dv">1</span>:(<span class="kw">length</span>(s)-<span class="dv">1</span>))
+    {
+      prior.num&lt;-<span class="kw">sum</span>(<span class="kw">as.numeric</span>((prior.vec&gt;s[i])&amp;(prior.vec&lt;s[i<span class="dv">+1</span>])))/<span class="kw">length</span>(prior.vec)
+      posterior.num&lt;-<span class="kw">sum</span>(<span class="kw">as.numeric</span>((posterior.vec&gt;s[i])&amp;(posterior.vec&lt;s[i<span class="dv">+1</span>])))/<span class="kw">length</span>(posterior.vec)
+      overlap[i]&lt;-<span class="kw">min</span>(prior.num,posterior.num)
+    }
+  percent.overlap=<span class="kw">sum</span>(overlap)
+  <span class="kw">return</span>(percent.overlap)
+}</code></pre></div>
+<p>In this case, the data were informative about the first of these parameters but not about the second.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="PriorPosterior1.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="75%" />
+<p class="caption">
+Figure 3.1: Histogram of prior distribution (blue) and posterior distribution (pink).
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="PriorPosterior2.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="75%" />
+<p class="caption">
+Figure 8.1: Histogram of prior distribution (blue) and posterior distribution (pink).
+</p>
+</div>
+<p>Here is an example of where the prior was centered on the posterior mean but the data were still clearly informative:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<img src="PriorPosterior3.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="75%" />
+<p class="caption">
+Figure 8.2: Histogram of prior distribution (blue) and posterior distribution (pink).
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-9-lab.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-10-lab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+Week 15 Lab
+========================================================
+
+We will work through the example provided in Link and Barker Chapter 7.
+
+**Step #1: Bayes Factor for two fully constrained models**
+
+Link and Barker start with a fairly straightforward situation. You have five data points $Y_{i} = \{0,1,2,3,8}$ with mean $\bar{Y} = 2.8$. You want to compare two models 
+
+(1) a geometric model
+
+$$
+P(Y|M_{1},p) = \prod_{i=1}^{5}p(1-p)^{Y_{i}} = p^{5}(1-p)^{5\bar{Y}}
+$$
+
+(A geometric model describes the number of trials required to get the first success. $p$ can be thought of as the probability of “success”.) 
+
+(2) a Poisson model
+
+$$
+P(Y|M_{2},\lambda) = \prod_{i=1}^{5}\frac{e^{-\lambda}\lambda^{Y_{i}}}{Y_{i}!} = \frac{e^{-5\lambda}\lambda^{5\bar{Y}}}{\prod Y_{i}!}
+$$
+
+Note that we now condition on the model being used ($M_{1}$ and $M_{2}$); we will include the model as a parameter through the process of Bayesian Multimodel Inference, since now the model itself, as well as the parameters, are something we are trying to fit.
+
+We are going to compare these two models when the values of $p$ and $\lambda$ are considered fixed at the values $1/4$ and 3, respectively. (These are the MLE given the fact that the mean is known.)
+
+Bayes Factor is now
+
+$$
+BF = \frac{P(Y|M_{1})}{P(Y|M_{2})}
+$$
+Note that we no longer condition on the parameters because the parameters are fixed quantities. The only question now is “how likely is my data given model 1 vs. model 2”. 
+
+**Exercise #1**: Plug in the data to the likelihoods to calculate Bayes Factor. 
+
+This is essentially a likelihood ratio for the two models, because the fixed parameters we have put into model 1 and model 2 are the MLE for each model, except that LR tests can only be done on nested models and here we have two non-nested models. Note that I am not trying to use the Bayes Factor to calculate some kind of a p-value. The reason is that I do not have any theory to suggest what the sampling distribution for this Bayes Factor is, and thus I have no way of knowing whether this is an “extreme” value for the Bayes Factor. This is a bit like when we use AIC. I can see that the Bayes Factor suggests the geometric model, but I can’t say much beyond that. (If the models are nested, you can use a likelihood ratio test and this LR has an asymptotic chi-squared distribution.)
+
+**Step #2: Bayes Factor with unknown parameters**
+
+Let’s say that we don’t have fixed values for the parameters, but we do have some prior information about the two parameters. Now we want to integrate out the parameters using the prior probabilities as weighting factors. In other words
+
+$$
+P(Y|M_{1}) = \int p^{5}(1-p)^{5\bar{Y}}g(p)dp
+$$
+and 
+
+$$
+P(Y|M_{2}) = \int \frac{e^{-5\lambda}\lambda^{5\bar{Y}}}{\prod Y_{i}!}h(\lambda)d\lambda
+$$
+
+where $g(p)$ and $h(\lambda)$ are the prior distributions.
+
+Exercise #2: Calculate Bayes Factor assuming vague priors. Link and Barker provide some suggestions for how to pick priors for $p$ and $\lambda$. (Hint: You may want to use MC integration to calculate the integrals.) Notice that the BF is fairly sensitive to the choice of priors. This is quite typical, and one of the criticisms of using BF.
+
+**Question: Why is the BF so much larger (i.e. more in favor of the geometric model) when we marginalize over the prior distribution for the parameters?**
+
+Note that MC integration may be rather inefficient in these cases, because the prior may be quite flat and the likelihood quite peaked, so most of your draws from the prior distribution contribute little to the integral. One way to make this more efficient is to use importance sampling. In other words, sample from something that is more heavily weighted in those areas supported by the likelihood, and then use the ratio of the new sampling distribution and the prior to weight the results. (You may want to review the Week #4 Lecture.) NB: The inefficiency will grow with the dimensionality of the parameter space. Lunn et al. discuss harmonic mean estimators in Section 8.7.2 that might be worth trying as well.
+
+

@@ -1,0 +1,188 @@
+Week 1 Lecture
+========================================================
+
+Introduction to this course 
+---------------------
+
+Before launching into Bayesian stats, take a few minutes and go over the syllabus. 
+
+The structure of this course is very similar to Biometry, with one “lecture” and one “lab” a week and one problem set each week. The problem sets will be due before class on Monday, starting in Week 2. As always, you are encouraged to work in groups, but you are responsible for the final content of your assignment and identical (or virtually identical) problem sets or scripts will be consider plagiarism.
+
+**Break to look over the syllabus. Any questions? Send me an e-mail…**
+
+Today we will go over some basics, including a review of null hypothesis significance testing and the differences between NHST and Bayesian approaches. On Wednesday, you will work through a simple lab to make sure that everyone has JAGS/RJAGS up and running.
+
+Statistical philosophy and the foundations of Bayesian analysis
+------------------------
+
+A quick review of Fisher, Neyman-Pearson, Bayes, and Popper
+
+The current statistical methodology common in the fields of ecology, evolution, anthropology etc. is a hybrid mash-up of several different paradigms developed in the early 20th century. Christensen (2005) provides an excellent summary, which you have already read; I will only sketch the main ideas here. Bayesian thinking is not a new idea – it was originally introduced by Thomas Bayes in 1763, and thus is predates by a couple of centuries the developments of Fisher and Neyman and Pearson and Popper. Go ahead and read Aho Chapter 1 again for more of the historical background.
+
+There are multiple ways to frame the hypothesis testing / statistical inference endeavour. But going through them will make more sense if we take a minute to think of the kinds of hypotheses we are actually interested in testing.
+
+EXERCISE: Lets spend a few minutes writing down a hypothesis you will actually be trying to test in your thesis research. This involves two stages. (1) You need to think about a scientific hypothesis (biological, physical, political, etc.) that you would like to test. This is something you could say in words. (2) You need to find a way to translate that into a statistical hypothesis. In other words, at some level, your hypothesis has to boil down to one (or a few) parameters that can be measured and compared to some null hypothesis. What is that parameter? What is its value under the ‘null’ hypothesis?
+
+Alright, now that we have something in mind, lets plow ahead with the four primary ways of testing a statistical hypothesis:
+
+1) ‘Fisherian testing’ involves a single hypothesis (the null hypothesis) which can be rejected by contradiction. In other words, if your data would be unlikely to arise from your null model, you’d be inclined to reject your null model. In fact, the threshold for “unlikely” includes not only the result you got but also anything more extreme than the result obtained. How unlikely it would have to be to get something as or more extreme that the observed data is the cutoff , typically but rather arbitrarily set at 0.05. 
+
+Note that rejecting the null hypothesis under Fisherian logic does not tell you why the null hypothesis was rejected. As noted by Christensen (2005), it could be because one of the parameter values was wrong, or because the data were not independent, or because the form of the distribution was wrong, and any of a long list of things. Also, note that in Fisherian testing, there is no concern about Type I error rates.
+
+2) Neyman-Pearson Tests explicitly involve both a null hypothesis and an alternative hypothesis. We have some intuition about how to choose a null hypothesis (‘null hypothesis is the dull hypothesis’) but how would be go about defining an explicit alternative hypothesis. This is where expected effect size comes in. If you have a theory about the expected size of the effect, this would be a logical alternative hypothesis.
+
+In Neyman-Pearson testing, we define a rejection region for the test statistic based (in some form or another) on its likelihood ratio, and starting from the largest likelihood ratio $Lik_{HA}/Lik_{H0}$, and starting from the largest likelihood ratio, selecting outcomes until the total probability of rejecting the null when it is true reaches some threshold $\alpha$. Those outcomes are now part of the rejection region, because they have a total Type I error rate of $\alpha$ and contain all those values in which $H_{A}$ is much more likely than $H_{0}$. The main difference between Fisherian testing and NP-testing is that Fisher may reject both hypotheses as inconsistent with the data, whereas NP will decide the better of two alternatives (without any real indication of the fact that both are poor representations of the data).
+
+**Fisher and NP answer different questions: The former asks “Is this model any good”, whereas the latter asks “Of these two models, which is better”.** 
+
+3) Karl Popper and the use of hypothetico-deductive reasoning represents a mash-up of Fisherian and N-P testing. The basic idea is that you generate a hypothesis, you then say “if that hypothesis is true then we make the following predictions”, and you then do an experiment to test those predictions. If the experiment yields an outcome consistent with the prediction, than the model “lives to die another day”. However, if the experiment yields an outcome that is inconsistent with the prediction, than you can reject the original hypothesis and start back at the beginning (generating a new hypothesis). Popper’s hypothetico-deductive logic combines deductive and inductive reasoning by stating, in essence, that “if it predicts (deductive), than it explains (inductive)”.
+
+4) Bayesian approaches do not involve hypotheses at all (at least not explicitly; you may interpret the results in the context of a hypothesis). Bayesian methods provide a way to define a probability distribution for the parameter of interest. The probability distribution is called the posterior distribution, and it is a combination of your prior expectation for the parameter and the likelihood of the data. Since we will spend the whole semester focusing on Bayesian models, I won’t get into any more detail here.
+
+EXERCISE: Now that we've had some time to go through these, can you reframe your hypothesis in each of these paradigms? Spend a few minutes to rewrite your key question these four different ways.
+
+How does this relate to maximum likelihood estimation?
+
+The important take-home message is that Bayesian thinking involves an additional element of randomness that we don’t have with frequentist (a.k.a. traditional) methods. To really understand why this is, we need to review the idea of a likelihood, and how in frequentist statistics we use that likelihood to make inference about a parameter.
+
+Specifically, lets say we want to model the mean length of fish in a certain pond.
+
+$$
+Y \sim N(\mu, \sigma^{2})
+$$
+where $\mu$ is the expected length of these fish. Frequentist methods assume $\mu$ and $\sigma$ are fixed but unknown. Our job is to reverse engineer what $\mu$ and $\sigma$ must have been in order for our data to be "a typical outcome".
+
+As a reminder, the probability density of the normal distribution is given by
+
+$$
+f(X|\mu,\sigma) \sim \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}
+$$
+Remember that for variables that are i.i.d., the joint probability (A,B,C) is simply the product of the three p.d.f.s
+
+$$
+P(X_{1}\cap X_{2} \cap X_{3})=P(X_{1})\times P(X_{2})\times P(X_{3})
+$$
+
+Therefore, by extension, for $n$ data points
+
+$$
+L(\mu,\sigma|X_{1},X_{2},...,X_{n})= \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(X_{i}-\mu)^{2}}{\sigma^{2}}\right)}
+$$
+
+Taken as a probability density, this equation denotes the probability of getting unknown data ${X_{1},X_{2},...,X_{n}}$ given (|) the known distribution parameters $\mu$ and $\sigma$. However, it can be rewritten as a likelihood simply by reversing the conditionality:
+
+$$
+L(\mu,\sigma|X_{1},X_{2},...,X_{n}) = \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(X_{i}-\mu)^{2}}{\sigma^{2}}\right)}
+$$
+
+The likelihood specifies the probability of obtaining the known data ${X_{1},X_{2},...,X_{n}}$ by a certain combination of the unknown parameters $\mu$ and $\sigma$.
+
+pdf: parameters known, data varies            
+likelihood: data known, parameters vary
+
+In this way, the relationship between the joint probability density and the likelihood function is a bit like the relationship between the young woman and the old maid in this famous optical illusion:
+
+<div class="figure" style="text-align: center">
+<img src="Optical_illusion.png" alt="Optical illusion known as &quot;My Wife and my Mother-in-Law&quot;. Source: Wikimedia Commons" width="25%" />
+<p class="caption">(\#fig:unnamed-chunk-1)Optical illusion known as "My Wife and my Mother-in-Law". Source: Wikimedia Commons</p>
+</div>
+
+Parameter estimates may be found by maximum likelihood simply by finding those parameters that make your data most likely (among all possible data sets). [Time for an analogy: Anyone seen CSI: Miami? Where they find the weapon for the murder by shooting test rounds and finding the gun that leaves the marks on the bullet? That's what we're doing here in a way.]
+
+Remember the verbal gymnastics we went through in Biometry when we talked about confidence intervals? For example, we emphasized that a 95th percentile confidence interval represented an interval (whose upper and lower limits were statistical quantities generated from the empirical data) that we were 95$\%$ certain contained the true value of $\mu$. The statistical probability here was placed entirely on the interval itself, something we created, because the parameter was considered fixed and therefore could not possibly have some element of chance associated with it. [STOP: Let's make sure we really are on the same page here. This is important stuff!]
+
+As frequentists, we assume a single "true" value for the parameters $\mu$ and $\sigma^{2}$. Bayesians would argue that $\mu$ and $\sigma^{2}$ themselves have a probability distribution, so we have some finite probability that $\mu$ is, say, 1.2 and another probability that $\mu$ is 1.4. THEN, conditional on that value of $\mu$, we have some probability of getting the data (the fish lengths) that were actually obtained. Bayesian thinking, which explicitly defines a statistical distribution for the unknown parameters, frees us from the horrible frequentist awkwardness on confidence intervals. *We actually get what we always wanted all along but could never actually get with frequentist logic: a probability distribution for the parameters of interest.*
+
+Some probability vocabulary
+----------------------------
+
+In Biometry we didn’t spend a lot of time on multivariate distributions (distributions that describe the joint probability of more than one stochastic variable), but these are critical to Bayesian analyses and so we will spend some time playing catch up this week.
+
+We will spend some time playing around with joint distributions in second, but for now we’ll just introduce some vocabulary, and some mathematical identities. 
+
+Let’s say we have a bivariate distribution for discrete quantities such as hair color and eye color, and we survey a number (n=20 in this case) of students.
+
+|                     | Brown    | Blond     | Red       |
+| ------------------- |:--------:|:---------:|:---------:| 
+| Blue eyes           |    3     |    4      |      0    |
+| Brown eyes          |   7      |     2     |      0    | 
+| Green eyes          |    2     |    1      |      1    |
+
+This table summarizes the joint distribution for hair color and eye color, which we would write as
+
+$$
+P(hair,eye)
+$$
+
+We may be interest only in *marginal* probabilities, which are those probabilities representing hair color irrespective of eye color, or eye color irrespective of hair color. In other words, the marginal probability of having blue eyes is 7/20. The marginal probability of having blond hair is also 7/20. These are univariate probabilities, and are written as 
+
+$$
+P(eye)
+$$
+
+or
+
+$$
+P(hair)
+$$
+You might be interest in the *conditional* distributions. For example, the probability of having blue eyes conditional on having blond hair is given by 4/7. We write this as follows
+
+$$
+P(eyes=blue|hair=blond)
+$$
+
+The | symbol represents the "conditional on" statement.
+
+The relationship between joint, marginal, and conditional distributions can be seen in the following statement
+
+$$
+P(\mbox{eyes}=\mbox{blue},\mbox{hair}=\mbox{blond})=P(\mbox{eyes}=\mbox{blue}|\mbox{hair}=\mbox{blond})P(\mbox{hair}=\mbox{blond})
+$$
+
+We can see that this works out as it should 
+
+$$
+\frac{4}{20}=\frac{4}{7}\frac{7}{20}
+$$
+
+If we want to know the probability of having blue eyes (and didn't care about hair color) than we would want to add up all the possibilities:
+
+$$
+P(\mbox{eyes}=\mbox{blue})=P(\mbox{eyes}=\mbox{blue}|\mbox{hair}=\mbox{blond})P(\mbox{hair}=\mbox{blond})+P(\mbox{eyes}=\mbox{blue}|\mbox{hair}=\mbox{brown})P(\mbox{hair}=\mbox{brown})+P(\mbox{eyes}=\mbox{blue}|\mbox{hair}=\mbox{red})P(\mbox{hair}=\mbox{red})
+$$
+We can state this more simply as a sum:
+
+$$
+P(\mbox{eyes}=\mbox{blue})=\sum_{\mbox{all hair colors}}P(\mbox{eyes}=\mbox{blue}|\mbox{hair}=\square)P(\mbox{hair}=\square)
+$$
+
+For continuous distributions, the same principles apply. Let’s say we have a continuous bivariate distribution $p(A,B)$. The marginal distribution for A can be calculated by integrating over B (we call this “marginalizing out” or “marginalizing over” B)
+
+$$
+p(A=a)=\int_{b=-\infty}^{b=\infty}p(A=a|B=b)p(B=b)db = \int_{b=-\infty}^{b=\infty}p(A=a,B=b)db
+$$
+
+Notice that, in all cases (discrete or continuous), the relationships among marginal, conditional, and joint distribution can written as
+
+$$
+p(A|B)\times p(B)=p(A,B)
+$$
+or as
+
+$$
+p(B|A)\times p(A)=p(A,B)
+$$
+
+Therefore,
+
+$$
+p(A|B)=\frac{p(B|A)p(A)}{p(B)} = \frac{p(A,B)}{p(B)}
+$$
+
+Testing JAGS installation
+------------------------
+
+While there are several options for fitting Bayesian models, including writing your own custom samplers, in this class we will use [JAGS](http://mcmc-jags.sourceforge.net/), which stands for Just Another Gibbs Sampler. We're not really going to get into using JAGS for fitting models until lab, I want to make sure everyone has JAGS installed properly.
+
+Once you have installed JAGS, we can make sure its working by running the R code in 'Week 1 JAGS test.R'. This "wrapper" code gets the model variables set up and organized, and passes it to the actual JAGS code in the file 'Week1_TestModel.jags'. Make sure that the .jags file is in the Working Directory so the wrapper file can find it.
+

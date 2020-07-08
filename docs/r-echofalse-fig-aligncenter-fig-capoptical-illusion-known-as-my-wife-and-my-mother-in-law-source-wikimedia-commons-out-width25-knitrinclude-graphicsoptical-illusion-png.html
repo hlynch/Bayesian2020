@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bayesian Data Analysis and Computation Lecture and Lab Notes</title>
+  <meta name="description" content="Bayesian Data Analysis and Computation Lecture and Lab Notes">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  
+  
+  
+
+<meta name="author" content="Heather Lynch">
+
+
+<meta name="date" content="2020-06-25">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="week-1-lecture.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
+<li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#part-i-introduction-to-this-course"><i class="fa fa-check"></i><b>1.1</b> PART I: Introduction to this course</a></li>
+<li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#part-ii-statistical-philosophy-and-the-foundations-of-bayesian-analysis"><i class="fa fa-check"></i><b>1.2</b> PART II: Statistical philosophy and the foundations of Bayesian analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-echofalse-fig-aligncenter-fig-capoptical-illusion-known-as-my-wife-and-my-mother-in-law-source-wikimedia-commons-out-width25-knitrinclude-graphicsoptical-illusion-png.html"><a href="r-echofalse-fig-aligncenter-fig-capoptical-illusion-known-as-my-wife-and-my-mother-in-law-source-wikimedia-commons-out-width25-knitrinclude-graphicsoptical-illusion-png.html"><i class="fa fa-check"></i><b>2</b> <code>{r echo=FALSE, fig.align='center', fig.cap='Optical illusion known as &quot;My Wife and my Mother-in-Law&quot;. Source: Wikimedia Commons', out.width='25%'} #knitr::include_graphics('Optical_illusion.png')</code></a><ul>
+<li class="chapter" data-level="2.1" data-path="r-echofalse-fig-aligncenter-fig-capoptical-illusion-known-as-my-wife-and-my-mother-in-law-source-wikimedia-commons-out-width25-knitrinclude-graphicsoptical-illusion-png.html"><a href="r-echofalse-fig-aligncenter-fig-capoptical-illusion-known-as-my-wife-and-my-mother-in-law-source-wikimedia-commons-out-width25-knitrinclude-graphicsoptical-illusion-png.html#some-probability-vocabulary"><i class="fa fa-check"></i><b>2.1</b> Some probability vocabulary</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-echofalse-fig.aligncenter-fig.capoptical-illusion-known-as-my-wife-and-my-mother-in-law.-source-wikimedia-commons-out.width25-knitrinclude_graphicsoptical_illusion.png" class="section level1">
+<h1><span class="header-section-number">2</span> <code>{r echo=FALSE, fig.align='center', fig.cap='Optical illusion known as &quot;My Wife and my Mother-in-Law&quot;. Source: Wikimedia Commons', out.width='25%'} #knitr::include_graphics('Optical_illusion.png')</code></h1>
+<p>Parameter estimates may be found by maximum likelihood simply by finding those parameters that make your data most likely (among all possible data sets). [Time for an analogy: Anyone seen CSI: Miami? Where they find the weapon for the murder by shooting test rounds and finding the gun that leaves the marks on the bullet? That’s what we’re doing here in a way.]</p>
+<p>Remember the verbal gymnastics we went through in Biometry when we talked about confidence intervals? For example, we emphasized that a 95th percentile confidence interval represented an interval (whose upper and lower limits were statistical quantities generated from the empirical data) that we were 95<span class="math inline">\(\%\)</span> certain contained the true value of <span class="math inline">\(\mu\)</span>. The statistical probability here was placed entirely on the interval itself, something we created, because the parameter was considered fixed and therefore could not possibly have some element of chance associated with it. [STOP: Let’s make sure we really are on the same page here. This is important stuff!]</p>
+<p>As frequentists, we assume a single “true” value for the parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^{2}\)</span>. Bayesians would argue that <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^{2}\)</span> themselves have a probability distribution, so we have some finite probability that <span class="math inline">\(\mu\)</span> is, say, 1.2 and another probability that <span class="math inline">\(\mu\)</span> is 1.4. THEN, conditional on that value of <span class="math inline">\(\mu\)</span>, we have some probability of getting the data (the fish lengths) that were actually obtained. Bayesian thinking, which explicitly defines a statistical distribution for the unknown parameters, frees us from the horrible frequentist awkwardness on confidence intervals. <em>We actually get what we always wanted all along but could never actually get with frequentist logic: a probability distribution for the parameters of interest.</em></p>
+<div id="some-probability-vocabulary" class="section level2">
+<h2><span class="header-section-number">2.1</span> Some probability vocabulary</h2>
+<p>In Biometry we didn’t spend a lot of time on multivariate distributions (distributions that describe the joint probability of more than one stochastic variable), but these are critical to Bayesian analyses and so we will spend some time playing catch up this week.</p>
+<p>We will spend some time playing around with joint distributions in second, but for now we’ll just introduce some vocabulary, and some mathematical identities.</p>
+<p>Let’s say we have a bivariate distribution for discrete quantities such as hair color and eye color, and we survey a number (n=20 in this case) of students.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Brown</th>
+<th align="center">Blond</th>
+<th align="center">Red</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Blue eyes</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>Brown eyes</td>
+<td align="center">7</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>Green eyes</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-1-lecture.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
