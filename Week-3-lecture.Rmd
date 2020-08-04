@@ -7,7 +7,7 @@ The use of prior information is one of the major distinguishing features of Baye
 
 We took an aside last week to discuss the ways in which Bayesian statistics is used for criminal justice proceedings, so here we will continue using criminal justice (a system we have some intuition about) to think about the role of priors. Our criminal justice system assumes all defendants are “innocent until proven guilty”. This is our prior expectation. The evidence has to overwhelmingly suggest guilt for a jury to reach a guilty verdict. (“Innocent until proven guilty” refers to the prior distribution, “proof beyond a reasonable doubt” refers to what the posterior distribution would have to look like to determine that a defendant is actually guilty.) 
 
-**Question**: What does the prior distribution actually look like in a criminal case? (Hint: Can’t be a delta function at “innocent” – why not?
+**Question**: What does the prior distribution actually look like in a criminal case? (Hint: Can’t be a delta function at “innocent” – why not?)
 
 How do we obtain priors?
 ------------------------
@@ -37,7 +37,7 @@ $$
 
 We need a prior for N, and since N is discrete we need a discrete distribution for this prior. Jeffrey’s prior in this case would be $p(N) \propto 1/N$. (See text box for more information about Jeffrey's prior; we will not go into much detail and for the example here, you just need to know that the prior is $\propto 1/N$.)
 
-The posterior distribution is then given by
+The posterior distribution is then given by:
 
 $$
 p(N) \propto \frac{N!}{(N-y)!y!}0.5^{N} \times \frac{1}{N} = \frac{(N-1)!}{(N-y)!}0.5^{N}
@@ -53,15 +53,15 @@ At the end of every Bayesian analysis, you should do a sensitivity analysis to s
 
 Our first exercise here will be to emphasize a caution noted in the handout from the book by Lunn et al.: that a uniform distribution is not always a “vague” or uninformative prior. You have to be very cautious when dealing with transformation of parameters. If you want a vague prior for a parameter, make sure the prior is actually what you think it is. In particular, transformations of a uniform are not uniform. This often comes up when putting a vague prior on the variance, since JAGS deals only with the precision (the inverse-variance). A uniform distribution for the precision is not what you actually want – since does not reflect the uncertainty on the scale intended (i.e. on the variance, or possibly on the standard deviation).
 
-**EXERCISE #1**: Convince yourself of this by looking at the distribution for $\theta^2$ if $\theta \sim \mbox{Unif}(0.1)$. Lunn et al. tells us that this new distribution is actually a Beta(0.5,1) – do you agree?
+**EXERCISE #1**: Convince yourself of this by looking at the distribution for $\theta^2$ if $\theta \sim \mbox{Unif}(0,1)$. Lunn et al. tells us that this new distribution is actually a Beta(0.5,1) – do you agree?
 
-Note that while the above example seems contrived, this exact same issue can come up quite easily in ecology. Take the following scenario: You want to model the state of a bird, and there are three possible states (1) not present, (2) present but not breeding, (3) present and breeding. We can think of this as two independent processes
+Note that while the above example seems contrived, this exact same issue can come up quite easily in ecology. Take the following scenario: You want to model the state of a bird, and there are three possible states (1) not present, (2) present but not breeding, (3) present and breeding. We can think of this as two independent processes:
 
 $$
 \mbox{Present} \sim Bern(\theta)
 $$
 
-and
+and,
 
 $$
 \mbox{Breeding|Present} \sim Bern(\pi)
