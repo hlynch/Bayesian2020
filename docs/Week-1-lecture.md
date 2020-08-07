@@ -1,6 +1,9 @@
 Week 1 Lecture
 ========================================================
 
+Papers of the week:
+* `Christensen 2005`: [link](https://github.com/hlynch/Bayesian2020/tree/master/_data/Christensen2005.pdf)
+
 Introduction to this course 
 ---------------------
 

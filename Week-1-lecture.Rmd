@@ -1,8 +1,11 @@
 Week 1 Lecture
 ========================================================
 
-Papers of the week:
-* `Christensen 2005`: [link](https://github.com/hlynch/Bayesian2020/tree/master/_data/Christensen2005.pdf)
+Papers to read this week:
+
+* [Christensen 2005](https://github.com/hlynch/Bayesian2020/tree/master/_data/Christensen2005.pdf): This paper is a little dense, but I'm more interested in your understanding the high level points being made than getting to bogged down in the mathematical details of rejection regions etc.
+* [Clark and Gelfand 2006](https://github.com/hlynch/Bayesian2020/tree/master/_data/ClarkGelfand2006.pdf)
+* [Stephens et al. 2007](https://github.com/hlynch/Bayesian2020/tree/master/_data/StephensEtAl2007.pdf)
 
 Introduction to this course 
 ---------------------
@@ -203,3 +206,8 @@ While there are several options for fitting Bayesian models, including writing y
 
 Once you have installed JAGS, we can make sure its working by running the R code in 'Week 1 JAGS test.R'. This "wrapper" code gets the model variables set up and organized, and passes it to the actual JAGS code in the file 'Week1_TestModel.jags'. Make sure that the .jags file is in the Working Directory so the wrapper file can find it.
 
+For more information about this week's topic
+------------------------
+
+* [Flam NTY article](https://github.com/hlynch/Bayesian2020/tree/master/_data/Flam.pdf)
+* [Aho's Chapter 1](https://github.com/hlynch/Bayesian2020/tree/master/_data/AhoChapter1.pdf)
