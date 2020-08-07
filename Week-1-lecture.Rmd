@@ -6,7 +6,7 @@ Introduction to this course
 
 Before launching into Bayesian stats, take a few minutes and go over the syllabus. 
 
-The structure of this course is very similar to Biometry, with one “lecture” and one “lab” a week and one problem set each week. The problem sets will be due before class on Monday, starting in Week 2. As always, you are encouraged to work in groups, but you are responsible for the final content of your assignment and identical (or virtually identical) problem sets or scripts will be consider plagiarism.
+The structure of this course is very similar to Biometry, with one “lecture” and one “lab” a week and one problem set each week. The problem sets will be due before class on Monday, starting in Week 2. As always, you are encouraged to work in groups, but you are responsible for the final content of your assignment and identical (or virtually identical) problem sets or scripts will be considered plagiarism.
 
 **Break to look over the syllabus. Any questions? Send me an e-mail…**
 
@@ -15,9 +15,9 @@ Today we will go over some basics, including a review of null hypothesis signifi
 Statistical philosophy and the foundations of Bayesian analysis
 ------------------------
 
-A quick review of Fisher, Neyman-Pearson, Bayes, and Popper
+*A quick review of Fisher, Neyman-Pearson, Bayes, and Popper*
 
-The current statistical methodology common in the fields of ecology, evolution, anthropology etc. is a hybrid mash-up of several different paradigms developed in the early 20th century. Christensen (2005) provides an excellent summary, which you have already read; I will only sketch the main ideas here. Bayesian thinking is not a new idea – it was originally introduced by Thomas Bayes in 1763, and thus is predates by a couple of centuries the developments of Fisher and Neyman and Pearson and Popper. Go ahead and read Aho Chapter 1 again for more of the historical background.
+The current statistical methodology common in the fields of ecology, evolution, anthropology etc. is a hybrid mash-up of several different paradigms developed in the early 20th century. Christensen (2005) provides an excellent summary, which you have already read; I will only sketch the main ideas here. Bayesian thinking is not a new idea – it was originally introduced by Thomas Bayes in 1763, and thus predates by a couple of centuries the developments of Fisher and Neyman and Pearson and Popper. Go ahead and read Aho Chapter 1 again for more of the historical background.
 
 There are multiple ways to frame the hypothesis testing / statistical inference endeavour. But going through them will make more sense if we take a minute to think of the kinds of hypotheses we are actually interested in testing.
 
@@ -29,9 +29,9 @@ Alright, now that we have something in mind, lets plow ahead with the four prima
 
 Note that rejecting the null hypothesis under Fisherian logic does not tell you why the null hypothesis was rejected. As noted by Christensen (2005), it could be because one of the parameter values was wrong, or because the data were not independent, or because the form of the distribution was wrong, and any of a long list of things. Also, note that in Fisherian testing, there is no concern about Type I error rates.
 
-2) Neyman-Pearson Tests explicitly involve both a null hypothesis and an alternative hypothesis. We have some intuition about how to choose a null hypothesis (‘null hypothesis is the dull hypothesis’) but how would be go about defining an explicit alternative hypothesis. This is where expected effect size comes in. If you have a theory about the expected size of the effect, this would be a logical alternative hypothesis.
+2) Neyman-Pearson Tests explicitly involve both a null hypothesis and an alternative hypothesis. We have some intuition about how to choose a null hypothesis (‘null hypothesis is the dull hypothesis’) but how would we go about defining an explicit alternative hypothesis? This is where expected effect size comes in. If you have a theory about the expected size of the effect, this would be a logical alternative hypothesis.
 
-In Neyman-Pearson testing, we define a rejection region for the test statistic based (in some form or another) on its likelihood ratio, and starting from the largest likelihood ratio $Lik_{HA}/Lik_{H0}$, and starting from the largest likelihood ratio, selecting outcomes until the total probability of rejecting the null when it is true reaches some threshold $\alpha$. Those outcomes are now part of the rejection region, because they have a total Type I error rate of $\alpha$ and contain all those values in which $H_{A}$ is much more likely than $H_{0}$. The main difference between Fisherian testing and NP-testing is that Fisher may reject both hypotheses as inconsistent with the data, whereas NP will decide the better of two alternatives (without any real indication of the fact that both are poor representations of the data).
+In Neyman-Pearson testing, we define a rejection region for the test statistic based (in some form or another) on its likelihood ratio, and starting from the largest likelihood ratio $Lik_{HA}/Lik_{H0}$, selecting outcomes until the total probability of rejecting the null when it is true reaches some threshold $\alpha$. Those outcomes are now part of the rejection region, because they have a total Type I error rate of $\alpha$ and contain all those values in which $H_{A}$ is much more likely than $H_{0}$. The main difference between Fisherian testing and NP-testing is that Fisher may reject both hypotheses as inconsistent with the data, whereas NP will decide the better of two alternatives (without any real indication of the fact that both are poor representations of the data).
 
 **Fisher and NP answer different questions: The former asks “Is this model any good”, whereas the latter asks “Of these two models, which is better”.** 
 
@@ -41,7 +41,7 @@ In Neyman-Pearson testing, we define a rejection region for the test statistic b
 
 EXERCISE: Now that we've had some time to go through these, can you reframe your hypothesis in each of these paradigms? Spend a few minutes to rewrite your key question these four different ways.
 
-How does this relate to maximum likelihood estimation?
+*How does this relate to maximum likelihood estimation?*
 
 The important take-home message is that Bayesian thinking involves an additional element of randomness that we don’t have with frequentist (a.k.a. traditional) methods. To really understand why this is, we need to review the idea of a likelihood, and how in frequentist statistics we use that likelihood to make inference about a parameter.
 
@@ -55,7 +55,7 @@ where $\mu$ is the expected length of these fish. Frequentist methods assume $\m
 As a reminder, the probability density of the normal distribution is given by
 
 $$
-f(X|\mu,\sigma) \sim \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}
+P(X|\mu,\sigma) \sim \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}
 $$
 Remember that for variables that are i.i.d., the joint probability (A,B,C) is simply the product of the three p.d.f.s
 
@@ -66,7 +66,7 @@ $$
 Therefore, by extension, for $n$ data points
 
 $$
-L(\mu,\sigma|X_{1},X_{2},...,X_{n})= \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(X_{i}-\mu)^{2}}{\sigma^{2}}\right)}
+P(X_{1},X_{2},...,X_{n}|\mu,\sigma)= \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(X_{i}-\mu)^{2}}{\sigma^{2}}\right)}
 $$
 
 Taken as a probability density, this equation denotes the probability of getting unknown data ${X_{1},X_{2},...,X_{n}}$ given (|) the known distribution parameters $\mu$ and $\sigma$. However, it can be rewritten as a likelihood simply by reversing the conditionality:
@@ -124,7 +124,7 @@ or
 $$
 P(hair)
 $$
-You might be interest in the *conditional* distributions. For example, the probability of having blue eyes conditional on having blond hair is given by 4/7. We write this as follows
+You might be interested in the *conditional* distributions. For example, the probability of having blue eyes conditional on having blond hair is given by 4/7. We write this as follows
 
 $$
 P(eyes=blue|hair=blond)
