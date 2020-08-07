@@ -222,5 +222,6 @@ For more information about this week's topic
 ------------------------
 
 Both of the articles below discuss the use of Bayesian methods in the criminal justice system:
+
 * [Fenton and Neil 2012](https://github.com/hlynch/Bayesian2020/tree/master/_data/FentonNeil2012.pdf)
 * [A formula for justice in $\textit{The Guardian}$](https://github.com/hlynch/Bayesian2020/tree/master/_data/TheGuardian.pdf)
