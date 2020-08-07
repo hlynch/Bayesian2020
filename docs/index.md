@@ -1,7 +1,7 @@
 --- 
 title: "Bayesian Data Analysis and Computation Lecture and Lab Notes"
 author: "Heather Lynch"
-date: "2020-07-08"
+date: "2020-08-07"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]

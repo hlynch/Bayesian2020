@@ -25,7 +25,7 @@
 <meta name="author" content="Heather Lynch">
 
 
-<meta name="date" content="2020-07-08">
+<meta name="date" content="2020-08-07">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -106,15 +106,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
 <li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#introduction-to-this-course"><i class="fa fa-check"></i><b>1.1</b> Introduction to this course</a></li>
-<li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#statistical-philosophy-and-the-foundations-of-bayesian-analysis"><i class="fa fa-check"></i><b>1.2</b> Statistical philosophy and the foundations of Bayesian analysis</a></li>
-<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#some-probability-vocabulary"><i class="fa fa-check"></i><b>1.3</b> Some probability vocabulary</a></li>
+<li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#some-probability-vocabulary"><i class="fa fa-check"></i><b>1.2</b> Some probability vocabulary</a></li>
+<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#statistical-philosophy-and-the-foundations-of-bayesian-analysis"><i class="fa fa-check"></i><b>1.3</b> Statistical philosophy and the foundations of Bayesian analysis</a></li>
 <li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#testing-jags-installation"><i class="fa fa-check"></i><b>1.4</b> Testing JAGS installation</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="week-1-lab.html"><a href="week-1-lab.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab</a></li>
 <li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a><ul>
 <li class="chapter" data-level="3.1" data-path="week-2-lecture.html"><a href="week-2-lecture.html#bayes-theorem-and-all-that-follows-from-it"><i class="fa fa-check"></i><b>3.1</b> Bayes Theorem and all that follows from it</a></li>
-<li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats"><i class="fa fa-check"></i><b>3.2</b> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</a></li>
-<li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#getting-some-more-practice-with-jags"><i class="fa fa-check"></i><b>3.3</b> Getting some more practice with JAGS</a></li>
+<li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#how-do-we-interpret-the-posteriors"><i class="fa fa-check"></i><b>3.2</b> How do we interpret the posteriors?</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats"><i class="fa fa-check"></i><b>3.3</b> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</a></li>
+<li class="chapter" data-level="3.4" data-path="week-2-lecture.html"><a href="week-2-lecture.html#getting-some-more-practice-with-jags"><i class="fa fa-check"></i><b>3.4</b> Getting some more practice with JAGS</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>4</b> Week 3 Lecture</a><ul>
 <li class="chapter" data-level="4.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#how-do-we-obtain-priors"><i class="fa fa-check"></i><b>4.1</b> How do we obtain priors?</a></li>
@@ -251,7 +252,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The use of prior information is one of the major distinguishing features of Bayesian analysis, and also the issue that generates the most controversy about Bayesian methods.</p>
 <p><strong>How do we think about the relationship between the prior distribution, the data, and the posterior?</strong></p>
 <p>We took an aside last week to discuss the ways in which Bayesian statistics is used for criminal justice proceedings, so here we will continue using criminal justice (a system we have some intuition about) to think about the role of priors. Our criminal justice system assumes all defendants are “innocent until proven guilty”. This is our prior expectation. The evidence has to overwhelmingly suggest guilt for a jury to reach a guilty verdict. (“Innocent until proven guilty” refers to the prior distribution, “proof beyond a reasonable doubt” refers to what the posterior distribution would have to look like to determine that a defendant is actually guilty.)</p>
-<p><strong>Question</strong>: What does the prior distribution actually look like in a criminal case? (Hint: Can’t be a delta function at “innocent” – why not?</p>
+<p><strong>Question</strong>: What does the prior distribution actually look like in a criminal case? (Hint: Can’t be a delta function at “innocent” – why not?)</p>
 <div id="how-do-we-obtain-priors" class="section level2">
 <h2><span class="header-section-number">4.1</span> How do we obtain priors?</h2>
 <p>The vast majority of ecological analyses use non-informative priors bounded only by biological feasibility. (In other words, you might constrain lifespan to the maximum known lifespan for that species, but use a uniform distribution over that range as the prior.) In these cases, Bayesian statistics are being employed because they are simply more flexible than frequentist methods; where both analyses are possible, they will yield similar results.</p>
@@ -269,7 +270,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 p(y|N) = \mbox{Binomial}(0.5,N) = \frac{N!}{(N-y)!y!}0.5^{N-y}0.5^{y} \propto \frac{N!}{(N-y)!y!}0.5^{N}
 \]</span></p>
 <p>We need a prior for N, and since N is discrete we need a discrete distribution for this prior. Jeffrey’s prior in this case would be <span class="math inline">\(p(N) \propto 1/N\)</span>. (See text box for more information about Jeffrey’s prior; we will not go into much detail and for the example here, you just need to know that the prior is <span class="math inline">\(\propto 1/N\)</span>.)</p>
-<p>The posterior distribution is then given by</p>
+<p>The posterior distribution is then given by:</p>
 <p><span class="math display">\[
 p(N) \propto \frac{N!}{(N-y)!y!}0.5^{N} \times \frac{1}{N} = \frac{(N-1)!}{(N-y)!}0.5^{N}
 \]</span> This is in fact (modulo constants) the pdf of the negative binomial (you can convince yourself this is true at home), which is what you would expect <strong>if</strong> the experimental design had been “keep flipping until you get y heads”. That is precisely the scenario that generates a negative binomial distribution. <strong>But</strong>, in this case, we do not need to assume anything about the manner in which the data were collected, and in fact we do not know whether the 10th head was the last coin flip which ended the “experiment”. In could have been 10 heads followed by 10 tails – in this case the experimental design does not influence the posterior distribution for N.</p>
@@ -279,12 +280,12 @@ p(N) \propto \frac{N!}{(N-y)!y!}0.5^{N} \times \frac{1}{N} = \frac{(N-1)!}{(N-y)
 <h2><span class="header-section-number">4.3</span> Sensitivity analysis</h2>
 <p>At the end of every Bayesian analysis, you should do a sensitivity analysis to see how sensitive your posterior distributions are to priors. In some cases, some parameters may be highly sensitive to the choice of prior, but other parameters of more interest are not. This would be perfectly fine if you are not going to be making any biological inference on the parameters that are highly sensitive to the priors. They may be tangential to the parameters you are really focused on, which themselves may be fairly robust to various prior assumptions. However, you may have cases where the prior makes a big difference. While many data analysts fear this possibility, this is in fact, a confirmation that a Bayesian approach is worthwhile in the first place. In these cases, you simply need to justify the choice of prior and be transparent about the range of outcomes that might have been obtained with different prior assumptions.</p>
 <p>Our first exercise here will be to emphasize a caution noted in the handout from the book by Lunn et al.: that a uniform distribution is not always a “vague” or uninformative prior. You have to be very cautious when dealing with transformation of parameters. If you want a vague prior for a parameter, make sure the prior is actually what you think it is. In particular, transformations of a uniform are not uniform. This often comes up when putting a vague prior on the variance, since JAGS deals only with the precision (the inverse-variance). A uniform distribution for the precision is not what you actually want – since does not reflect the uncertainty on the scale intended (i.e. on the variance, or possibly on the standard deviation).</p>
-<p><strong>EXERCISE #1</strong>: Convince yourself of this by looking at the distribution for <span class="math inline">\(\theta^2\)</span> if <span class="math inline">\(\theta \sim \mbox{Unif}(0.1)\)</span>. Lunn et al. tells us that this new distribution is actually a Beta(0.5,1) – do you agree?</p>
-<p>Note that while the above example seems contrived, this exact same issue can come up quite easily in ecology. Take the following scenario: You want to model the state of a bird, and there are three possible states (1) not present, (2) present but not breeding, (3) present and breeding. We can think of this as two independent processes</p>
+<p><strong>EXERCISE #1</strong>: Convince yourself of this by looking at the distribution for <span class="math inline">\(\theta^2\)</span> if <span class="math inline">\(\theta \sim \mbox{Unif}(0,1)\)</span>. Lunn et al. tells us that this new distribution is actually a Beta(0.5,1) – do you agree?</p>
+<p>Note that while the above example seems contrived, this exact same issue can come up quite easily in ecology. Take the following scenario: You want to model the state of a bird, and there are three possible states (1) not present, (2) present but not breeding, (3) present and breeding. We can think of this as two independent processes:</p>
 <p><span class="math display">\[
 \mbox{Present} \sim Bern(\theta)
 \]</span></p>
-<p>and</p>
+<p>and,</p>
 <p><span class="math display">\[
 \mbox{Breeding|Present} \sim Bern(\pi)
 \]</span> If you didn’t know anything about this bird, you would be tempted to use the following “uninformative” priors:</p>

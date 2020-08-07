@@ -25,7 +25,7 @@
 <meta name="author" content="Heather Lynch">
 
 
-<meta name="date" content="2020-07-08">
+<meta name="date" content="2020-08-07">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -106,15 +106,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
 <li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#introduction-to-this-course"><i class="fa fa-check"></i><b>1.1</b> Introduction to this course</a></li>
-<li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#statistical-philosophy-and-the-foundations-of-bayesian-analysis"><i class="fa fa-check"></i><b>1.2</b> Statistical philosophy and the foundations of Bayesian analysis</a></li>
-<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#some-probability-vocabulary"><i class="fa fa-check"></i><b>1.3</b> Some probability vocabulary</a></li>
+<li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#some-probability-vocabulary"><i class="fa fa-check"></i><b>1.2</b> Some probability vocabulary</a></li>
+<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#statistical-philosophy-and-the-foundations-of-bayesian-analysis"><i class="fa fa-check"></i><b>1.3</b> Statistical philosophy and the foundations of Bayesian analysis</a></li>
 <li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#testing-jags-installation"><i class="fa fa-check"></i><b>1.4</b> Testing JAGS installation</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="week-1-lab.html"><a href="week-1-lab.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab</a></li>
 <li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a><ul>
 <li class="chapter" data-level="3.1" data-path="week-2-lecture.html"><a href="week-2-lecture.html#bayes-theorem-and-all-that-follows-from-it"><i class="fa fa-check"></i><b>3.1</b> Bayes Theorem and all that follows from it</a></li>
-<li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats"><i class="fa fa-check"></i><b>3.2</b> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</a></li>
-<li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#getting-some-more-practice-with-jags"><i class="fa fa-check"></i><b>3.3</b> Getting some more practice with JAGS</a></li>
+<li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#how-do-we-interpret-the-posteriors"><i class="fa fa-check"></i><b>3.2</b> How do we interpret the posteriors?</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats"><i class="fa fa-check"></i><b>3.3</b> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</a></li>
+<li class="chapter" data-level="3.4" data-path="week-2-lecture.html"><a href="week-2-lecture.html#getting-some-more-practice-with-jags"><i class="fa fa-check"></i><b>3.4</b> Getting some more practice with JAGS</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>4</b> Week 3 Lecture</a><ul>
 <li class="chapter" data-level="4.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#how-do-we-obtain-priors"><i class="fa fa-check"></i><b>4.1</b> How do we obtain priors?</a></li>
@@ -262,31 +263,31 @@ P(\theta|x) \propto P(x|\theta)P(\theta)
 \]</span></p>
 <p>In other words, the posterior probability distribution for the parameter <span class="math inline">\(\theta\)</span> conditional on the data <span class="math inline">\(x\)</span> is proportional to the likelihood P(x|) times the prior distribution <span class="math inline">\(P(\theta)\)</span>. We can think about this (vis a vis the video we just saw) as the likelihood “filtering out” the prior distribution. In other words, we have some distribution that describes our prior understanding of the parameter, and we use the data to sift through which values make more or less sense. Values that make the data more likely are themselves more likely, and vice versa.</p>
 <p>Next week we will focus on prior distributions and their interpretation, so we won’t say much more about prior distributions at this stage. We will however work through the algebra of Bayes Theorem to see how we obtain a posterior distribution.</p>
-<p>Let’s say we have one observation <span class="math inline">\(y\)</span> from a Normal distribution of unknown mean <span class="math inline">\(\mu\)</span> and known variance <span class="math inline">\(\sigma^{2}\)</span>. The likelihood of obtaining that observation is simply</p>
+<p>Let’s say we have one observation <span class="math inline">\(y\)</span> from a Normal distribution of unknown mean <span class="math inline">\(\mu\)</span> and known variance <span class="math inline">\(\sigma^{2}\)</span>. The likelihood of obtaining that observation is simply:</p>
 <p><span class="math display">\[
 P(y|\mu) \propto exp\left(\frac{-(y-\mu)^{2}}{2\sigma^2}\right)
 \]</span> where I have included only the terms involving the unknown parameter <span class="math inline">\(\mu\)</span>.</p>
 <p>(Side note on notation. By tradition, both probability densities and likelihoods have the data on the left side and the parameters on the right side on the conditional “|”. This is not how I originally introduced them last week, because in Week #1’s lecture I was trying to highlight the differences between PDFs and likelihoods, which involves what is known and what is unknown. However, to be consistent with the book and papers on the subject, here I revert back to the traditional notation where the data “y” is on the left hand side. Also, I use the letters <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> interchangeably so my choice of one or the other to represent data is arbitrary.)</p>
-<p>Let’s assume a fairly broad (i.e. large variance) Normal distribution prior for <span class="math inline">\(\mu\)</span>, <span class="math inline">\(N(\mu_{0},\tau^{2})\)</span>, so that</p>
+<p>Let’s assume a fairly broad (i.e. large variance) Normal distribution prior for <span class="math inline">\(\mu\)</span>, <span class="math inline">\(N(\mu_{0},\tau^{2})\)</span>, so that:</p>
 <p><span class="math display">\[
 P(\mu) \propto exp\left(\frac{-(\mu-\mu_{0})^{2}}{2\tau^2}\right)
 \]</span></p>
 <p>Make sure this distribution makes sense. In this case the distribution is on <span class="math inline">\(\mu\)</span> and its parameters are <span class="math inline">\(\mu_{0}\)</span> and <span class="math inline">\(\tau\)</span>.</p>
-<p>The posterior distribution is now given by the product</p>
+<p>The posterior distribution is now given by the product:</p>
 <p><span class="math display">\[
 P(\mu|y) \propto exp\left(\frac{-(y-\mu)^{2}}{2\sigma^2}\right)exp\left(\frac{-(\mu-\mu_{0})^{2}}{2\tau^2}\right)
 \]</span> <span class="math display">\[
 P(\mu|y) \propto exp\left(-\frac{1}{2}\left(\frac{(y-\mu)^{2}}{\sigma^2}+\frac{(\mu-\mu_{0})^{2}}{\tau^2}\right)\right)
-\]</span> I’ll spare you the algebra, but this can be simplified as</p>
+\]</span> I’ll spare you the algebra, but this can be simplified as:</p>
 <p><span class="math display">\[
 P(\mu|y) \propto exp\left(-\frac{1}{2}\frac{(\mu-V\nu)^{2}}{V}\right)
-\]</span> where</p>
+\]</span> where,</p>
 <p><span class="math display">\[
 \frac{1}{V} = \frac{1}{\sigma^2}+\frac{1}{\tau^2}
-\]</span> and</p>
+\]</span> and,</p>
 <p><span class="math display">\[
 \nu = \frac{y}{\sigma^2}+\frac{\mu_{0}}{\tau^2}
-\]</span> While this expression looks kind of messy, in the limits it makes a lot of sense.</p>
+\]</span> While this expression looks kind of messy, in the limits it makes a lot of sense:</p>
 <p><span class="math display">\[
 lim_{\tau \rightarrow \infty} V\nu \rightarrow \frac{y/\sigma^2}{1/\sigma^2} = y
 \]</span> In other words, the mean of the posterior distribution is just the value of the single data point if the prior is so broad as to contribute no information to the posterior.</p>
@@ -295,39 +296,43 @@ lim_{\tau \rightarrow \infty} V\nu \rightarrow \frac{y/\sigma^2}{1/\sigma^2} = y
 <p><span class="math inline">\(V \rightarrow \tau^2\)</span></p>
 <p><span class="math inline">\(\nu \rightarrow \frac{\mu_{0}}{\tau^2}\)</span></p>
 <p>Therefore, <span class="math inline">\(V\nu \rightarrow \mu_{0}\)</span>. </span> </details></p>
+<p> </p>
 <p>Likewise, in the <span class="math inline">\(lim_{\tau \rightarrow \infty} V \rightarrow \frac{1}{1/\sigma^2} = \sigma^2\)</span></p>
-<p>which is just the known variance for the data’s distribution. (This should make some sense keeping in mind that the posterior variance represents the uncertainty on the posterior mean. If we consider the CLT, we know that the standard error of the mean is given by <span class="math inline">\(\sigma/\sqrt{n}\)</span> but in this case <span class="math inline">\(n=1\)</span> so this is exactly what we would expect.)</p>
+<p>which is just the known variance for the data’s distribution. (This should make some sense keeping in mind that the posterior variance represents the uncertainty on the posterior mean. If we consider the central limit theorem (CLT), we know that the standard error of the mean is given by <span class="math inline">\(\sigma/\sqrt{n}\)</span> but in this case <span class="math inline">\(n=1\)</span> so this is exactly what we would expect.)</p>
 <p>What happens if we have <span class="math inline">\(n &gt; 1\)</span> independent observations?</p>
-<p>In this case the likelihood is a product</p>
+<p>In this case the likelihood is a product:</p>
 <p><span class="math display">\[
 P(y|\mu) \propto \prod_{i=1}^{N}exp\left(-\frac{(y_{i}-\mu)^2}{2\sigma^2}\right) = exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{N}(y_{i}-\mu)^2\right)
 \]</span></p>
-<p>Working through the same algebra, we have the same basic form for the posterior distribution,</p>
+<p>Working through the same algebra, we have the same basic form for the posterior distribution:</p>
 <p><span class="math display">\[
 P(\mu|y) \propto exp\left(-\frac{1}{2}\frac{(\mu-V\nu)^2}{V}\right)
-\]</span> except now</p>
+\]</span> except now,</p>
 <p><span class="math display">\[
 \frac{1}{V} = \frac{n}{\sigma^2}+\frac{1}{\tau^2}
-\]</span> and</p>
+\]</span> and,</p>
 <p><span class="math display">\[
 \nu = \frac{n\bar{y}}{\sigma^2}+\frac{\mu_{0}}{\tau^2}
 \]</span> (Why do we only keep track of the posterior up to a proportion? Since we know the posterior has to integrate to 1 [not withstanding the use of an “improper” prior, more on that next week], we can always work out the constant if we needed. In practice, however, we usually use Monte Carlo methods to draw samples from the posterior and, for reasons we will discuss in a few weeks, this only requires knowledge of the posterior up to within a proportionality constant.)</p>
-<p>You can see that as <span class="math inline">\(n\)</span> gets large, the data will start to dominate the prior. In fact</p>
+<p>You can see that as <span class="math inline">\(n\)</span> gets large, the data will start to dominate the prior. In fact:</p>
 <p><span class="math display">\[
 lim_{n \rightarrow \infty} V\nu \rightarrow \frac{\frac{n\bar{y}}{\sigma^2}}{\frac{n}{\sigma^2}} = \bar{y}
 \]</span></p>
 <p>Once again, this is precisely what we would expect under the CLT.</p>
 <p>In general, we can see from this fairly simply case with Normal distributions that the posterior is a <strong>weighted average of the prior and the likelihood</strong>, with the weights determined by the variances <span class="math inline">\(\sigma^2\)</span> and <span class="math inline">\(\tau^2\)</span> and the sample size. <strong>Larger sample size weights the likelihood more strongly than the prior.</strong> What happens if <span class="math inline">\(\tau^2\)</span> is very very small? In this case, the prior dominates the posterior entirely, irrespective of the data. This is a good reminder that you want the prior to have reasonable support (non-negligible density) for all values that you think might be supported by the likelihood, because this will allow the posterior to shift and bend towards the likelihood as more data is used.</p>
-<p>What if the variance <span class="math inline">\(\sigma^2\)</span> was not assumed known? Then we would have to include a prior for <span class="math inline">\(\sigma^2\)</span> as well. In this case, the joint posterior distribution would be given as</p>
+<p>What if the variance <span class="math inline">\(\sigma^2\)</span> was not assumed known? Then we would have to include a prior for <span class="math inline">\(\sigma^2\)</span> as well. In this case, the joint posterior distribution would be given as:</p>
 <p><span class="math display">\[
-p(\mu,\sigma|y) \propto p(y|\mu,\sigma)p(\mu)p(\sigma)
-\]</span> If we wanted the marginal posterior distribution for <span class="math inline">\(\mu\)</span>, then we would need to integrate out <span class="math inline">\(\sigma\)</span></p>
+P(\mu,\sigma|y) \propto P(y|\mu,\sigma)P(\mu)P(\sigma)
+\]</span> If we wanted the marginal posterior distribution for <span class="math inline">\(\mu\)</span>, then we would need to integrate out <span class="math inline">\(\sigma\)</span>:</p>
 <p><span class="math display">\[
-p(\mu|y) = \int p(\mu,\sigma|y)d\sigma
-\]</span> ##How do we interpret the posteriors?</p>
+P(\mu|y) = \int P(\mu,\sigma|y)d\sigma
+\]</span></p>
+</div>
+<div id="how-do-we-interpret-the-posteriors" class="section level2">
+<h2><span class="header-section-number">3.2</span> How do we interpret the posteriors?</h2>
 <p>Whereas frequentist methods are focused on rejecting a null hypothesis, Bayesian analyses are focused on the posterior distribution as a statement of the probability of the parameter lying within a certain interval (for a continuous parameter). Bayesian methods often (but not always) end with a statement about the mean (sometimes median) of the posterior distribution and some interval around that measure of central tendency.</p>
 <p>Its worth reminding ourselves that there are three measures of central tendancy that we might want to use to describe the posterior distribution. While the <strong>mean</strong> is perhaps most common, it is not unusual in Bayesian analyses to report instead the <strong>median</strong> or the <strong>mode</strong>; it often depends on which measure of central tendency you think is the most biologically relevant.</p>
-<p>We define a 100(1-<span class="math inline">\(\alpha\)</span>)<span class="math inline">\(\%\)</span> credible interval for a parameter <span class="math inline">\(\theta\)</span> as</p>
+<p>We define a 100(1-<span class="math inline">\(\alpha\)</span>)<span class="math inline">\(\%\)</span> credible interval for a parameter <span class="math inline">\(\theta\)</span> as:</p>
 <p><span class="math display">\[
 P(\theta \in B_{X}|X) = 1 - \alpha
 \]</span> where <span class="math inline">\(B_{X}\)</span> is some interval. In the discussion to follow I will assume 100(1-<span class="math inline">\(\alpha\)</span>)<span class="math inline">\(\%\)</span> equals 95<span class="math inline">\(\%\)</span>, but this is only because it makes the discussion more intuitive and not because there is anything magical about <span class="math inline">\(\alpha\)</span>=0.05.</p>
@@ -341,7 +346,7 @@ Figure 1.1: Source: Doug Schluter <a href="https://www.zoology.ubc.ca/biol548/le
 <p>Note that while summary statistics are useful, it is often the case that authors will publish a histogram of the entire posterior distribution. This can be particularly valuable if the posterior is highly skew (or even multimodal).</p>
 </div>
 <div id="a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats" class="section level2">
-<h2><span class="header-section-number">3.2</span> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</h2>
+<h2><span class="header-section-number">3.3</span> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</h2>
 <p>For lecture today you read the article by Fenton and Neil (2012) and the accompanying article from the Guardian.</p>
 <p>The basic story at hand: Convicted killer “T” appealed his conviction, which was based in part on a Bayesian analysis that found strong evidence linking his sneakers (found in his home) to a shoeprint at the crime scene. A judge threw out “T”s conviction on the basis that Bayesian statistics (specifically, expert opinion that had been used to generate a prior distribution for the number of sneakers of that type in the UK at the time) was not “firm” statistics. The court went further and basically rejected the use of Bayesian statistics in all cases except (somewhat arbitrarily, in my opinion) in the analysis of DNA evidence.</p>
 <p>Fortunately, Bayesian statisticians have come to its defense noting, for example, “The fact that variables cannot be precisely expressed does not affect the validity of the relationships described by [Bayes] formula”.</p>
@@ -356,12 +361,13 @@ Figure 3.1: Source: Doug Schluter <a href="https://www.zoology.ubc.ca/biol548/le
 </p>
 </div>
 <p>Note that if p=<span class="math inline">\(10^{-6}\)</span>, then <span class="math inline">\(P(\mbox{guilt}|\mbox{match})\)</span>=0.5. If p=<span class="math inline">\(0.5\)</span>, then <span class="math inline">\(P(\mbox{guilt}|\mbox{match})\)</span>=0.999999. So, your decision about the guilt or innocence of the defendent depends a lot on your prior expectations for their guilt of innocence. </span> </details></p>
+<p> </p>
 <p>Fenton and Neil raise the idea of a Bayesian network, which we will return to briefly next week. A Bayesian network is a graphical model that shows the conditional relations among variables, and is just a more visual way of understanding a Bayesian analysis with many conditional relationships.</p>
 </div>
 <div id="getting-some-more-practice-with-jags" class="section level2">
-<h2><span class="header-section-number">3.3</span> Getting some more practice with JAGS</h2>
+<h2><span class="header-section-number">3.4</span> Getting some more practice with JAGS</h2>
 <p>We don’t have a formal lab this week, but we can use McCarthy’s example in Boxes 3.4 and 3.5 to practice running models in JAGS. This also gives us an opportunity to see how Bayesian models align with frequentist approaches we may be more familiar with.</p>
-<p><strong>EXERCISE #1</strong>: Run the code from McCarthy Box 3.4, which fits the following model</p>
+<p><strong>EXERCISE #1</strong>: Run the code from McCarthy Box 3.4, which fits the following model:</p>
 <p><span class="math display">\[
 \#Trees \sim Pois(\mbox{mean density})
 \]</span> for the number of trees recorded in equal sized quadrats. First, use the prior and starting values suggested by McCarthy. Then try and break JAGS – use other prior distributions and wildly different starting values. Do the starting values influence the time to convergence? (Look at the posterior draws…)</p>

@@ -5,7 +5,7 @@ output_dir: docs
 rmd_files: ["index.Rmd","Week-1-lecture.Rmd","Week-1-lab.Rmd","Week-2-lecture.Rmd","Week-3-lecture.Rmd","Week-3-lab.Rmd","Week-4-lecture.Rmd","Week-4-lab.Rmd","Week-5-lecture.Rmd","Week-5-lab.Rmd","Week-6-lab.Rmd","Week-7-lecture.Rmd","Week-7-lab.Rmd","Week-8-lecture.Rmd","Week-8-lab.Rmd","Week-9-lecture.Rmd","Week-9-lab.Rmd","Week-10-lecture.Rmd","Week-10-lab.Rmd","Week-11-lecture.Rmd","Week-11-lab.Rmd","Week-12-lecture.Rmd","Week-12-lab.Rmd","Week-13-lecture.Rmd","Week-14-lecture.Rmd","Week-14-lab.Rmd","Week-15-lecture.Rmd"]
 clean: [packages.bib, bookdown.bbl]
 new_session: yes
-#setwd("~/Dropbox/BayesianFall2020")
+#setwd("~/Documents/Projects/Bayesian2020")
 #bookdown::render_book("index.Rmd")
 
 
