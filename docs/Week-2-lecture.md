@@ -1,6 +1,12 @@
 Week 2 Lecture
 ========================================================
 
+Papers to read this week:
+
+* [Ellison 1996](https://github.com/hlynch/Bayesian2020/tree/master/_data/Ellison1996.pdf)
+* [Ellison 2004](https://github.com/hlynch/Bayesian2020/tree/master/_data/Ellison2004.pdf): More advanced material that may take a few weeks to sink in
+* [Berger and Berry 1988](https://github.com/hlynch/Bayesian2020/tree/master/_data/BergerBerry1988.pdf): This is a repeat from Biometry but worth refreshing even if you took Biometry recently and required reading for those that did not take Biometry.
+
 This week we will review the basic elements of Bayesian inference, building on our introduction to Bayes Theorem last week.
 
 Everyone was asked to watch [this video](http://www.sumsar.net/blog/2017/02/introduction-to-bayesian-data-analysis-part-one/) before lecture today. I think this video does a particularly nice job explaining the basic ideas underlying Bayesian inference, and having that intuition under your belt will help when we get into the math.
@@ -212,3 +218,9 @@ a) Is your glmer model actually equivalent to the JAGS model? If its different, 
 b) How do you compare the output of glmer with that of JAGS? How do we even know whether they yield the same inference?
 c) How do you calculate the variance of the random effect as output by glmer?
 
+For more information about this week's topic
+------------------------
+
+Both of the articles below discuss the use of Bayesian methods in the criminal justice system:
+* [Fenton and Neil 2012](https://github.com/hlynch/Bayesian2020/tree/master/_data/FentonNeil2012.pdf)
+* [A formula for justice in The Guardian](https://github.com/hlynch/Bayesian2020/tree/master/_data/TheGuardian.pdf)
