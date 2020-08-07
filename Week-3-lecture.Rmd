@@ -3,10 +3,11 @@ Week 3 Lecture
 
 Papers to read this week:
 
-* [Kuhnert et al. 2010](https://github.com/hlynch/Bayesian2020/tree/master/_data/Kuhnert2010.pdf)
+* [Kuhnert et al. 2010](https://github.com/hlynch/Bayesian2020/tree/master/_data/KuhnertEtAl2010.pdf)
 * [Lambert et al. 2005](https://github.com/hlynch/Bayesian2020/tree/master/_data/LambertEtAl2005.pdf): More advanced material
-* [Lambert et al. 2008](https://github.com/hlynch/Bayesian2020/tree/master/_data/LambertEtAl2008.pdf): More advanced material
 * [Senn 2007](https://github.com/hlynch/Bayesian2020/tree/master/_data/Senn2007.pdf): More advanced material
+* [Lambert et al. 2008](https://github.com/hlynch/Bayesian2020/tree/master/_data/LambertEtAl2008.pdf): A response to Senn 2007
+
 
 The use of prior information is one of the major distinguishing features of Bayesian analysis, and also the issue that generates the most controversy about Bayesian methods.
 
@@ -128,7 +129,9 @@ We do not go into detail on Jeffrey's prior in this course because we have limit
 On Jeffrey's Priors: Notes from lectures at [Berkeley](https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/lectures/lecture7.pdf) and [Duke](https://www2.stat.duke.edu/courses/Fall11/sta114/jeffreys.pdf).
 
 Other papers:
+
 * [Daniels 1999](https://github.com/hlynch/Bayesian2020/tree/master/_data/Daniels1999.pdf)
 
-A chapter from Lunn's textbook:
+A chapter from Lunn et al. 2012 $\textit{A BUGS Book: A Practical Introduction to Bayesian Analysis}$
+
 * [Lunn et al. Chapter 5](https://github.com/hlynch/Bayesian2020/tree/master/_data/LunnChapter5.pdf)
