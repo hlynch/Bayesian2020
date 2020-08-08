@@ -1,6 +1,12 @@
 Week 4 Lecture
 ========================================================
 
+Papers to read this week:
+
+* [Lunn et al. Section 1.4](https://github.com/hlynch/Bayesian2020/tree/master/_data/Lunn1.4.pdf)
+* [Robert and Casella Lecture Notes](https://github.com/hlynch/Bayesian2020/tree/master/_data/MCMC-UseR.pdf): For the purpose of this week, focus on pages 51-79 but these lecture notes are excellent and cover a lot of material and are worth skimming through in their entirety in case there are other sections of interest.
+* [Smith and Gelfand 1992](https://github.com/hlynch/Bayesian2020/tree/master/_data/SmithGelfand1992.pdf): **Important**: This paper has a typo, an important one. See if you can find it. (The paper is such an important one, and so nicely explains the underlying principles, so we read this paper anyways...) In any case, we'll discuss it in class.
+
 In Week #4 and #5, we take a detour from Bayesian stats itself to discuss a more general concept, which is Monte Carlo methods. Monte Carlo methods are named for the famous gambling city, which remind us that stochasticity is really the only requirement for something to be considered “Monte Carlo”. Monte Carlo methods, and the idea behind Markov Chain Monte Carlo (MCMC), are much more general than just Bayesian statistics and, in fact, arise in frequentist statistics as well.
 
 I’ll introduce Monte Carlo methods using three common applications:

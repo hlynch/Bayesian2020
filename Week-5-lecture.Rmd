@@ -1,6 +1,12 @@
 Week 5 Lecture
 ========================================================
 
+Papers to read this week:
+
+* [Lunn et al. Chapter 4](https://github.com/hlynch/Bayesian2020/tree/master/_data/Lunn4.pdf)
+* [Robert and Casella Lecture Notes](https://github.com/hlynch/Bayesian2020/tree/master/_data/MCMC-UseR.pdf): For the purpose of this week, focus on pages 126-167. 
+* [ClarkLab5](https://github.com/hlynch/Bayesian2020/tree/master/_data/ClarkLab5.pdf)
+
 Last week we talked about several applications of MC methods. This week, we are going to expand on these ideas to cover two additional, very important, applications:
 
 1) Gibbs sampling
@@ -368,7 +374,22 @@ $$
 These "priors of priors" ($b_{1}$ and $b_{2}$) are called hyperpriors. Note that I have replaced $c_{1}$, $c_{2}$, $d_{1}$, and $d_{2}$ from Haran with the number 5, which is arbitrary but I wanted to make it clear what was a fixed number and what was a parameter. We will come back to these when we discuss hierarchical models in Week #14. For now, I'll simply say that as each step of the Gibbs sampling, you need to sample from all the terms that include the parameter of interest. Whereas in the non-hierarchical example, we had three parameters, now we have five parameters that we need to iteratively sample from.
 
 
+For more information about this week's topic
+------------------------
 
+Some more detailed statistical papers on various aspects of sampling:
+
+* [Gelfand 2000](https://github.com/hlynch/Bayesian2020/tree/master/_data/Gelfand2000.pdf)
+* [Casella and George 1992](https://github.com/hlynch/Bayesian2020/tree/master/_data/CasellaGeorge1992.pdf)
+* [Gelfand and Smith 1990](https://github.com/hlynch/Bayesian2020/tree/master/_data/GelfandSmith1990.pdf)
+* [Chib and Greenberg 1995](https://github.com/hlynch/Bayesian2020/tree/master/_data/ChibGreenberg1995.pdf)
+
+A fairly non-technical paper about using MCMC in understanding landslides from [$\textit{Physics Today}$](https://github.com/hlynch/Bayesian2020/tree/master/_data/PhysicsToday.pdf).
+
+For papers involving Bayesian analysis in phylogenetics:
+
+* [Altekar et al. 2004](https://github.com/hlynch/Bayesian2020/tree/master/_data/AltekarEtAl2004.pdf)
+* [Brown 2003](https://github.com/hlynch/Bayesian2020/tree/master/_data/Brown2003.pdf)
 
 
 
