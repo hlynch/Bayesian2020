@@ -151,6 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#convergence"><i class="fa fa-check"></i><b>8.4</b> Convergence</a></li>
 <li class="chapter" data-level="8.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#bayesian-change-point-example"><i class="fa fa-check"></i><b>8.5</b> Bayesian change point example</a></li>
 <li class="chapter" data-level="8.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#hierarchical-model"><i class="fa fa-check"></i><b>8.6</b> Hierarchical model</a></li>
+<li class="chapter" data-level="8.7" data-path="week-5-lecture.html"><a href="week-5-lecture.html#for-more-information-about-this-weeks-topic-3"><i class="fa fa-check"></i><b>8.7</b> For more information about this week’s topic</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lab</a><ul>
 <li class="chapter" data-level="9.1" data-path="week-5-lab.html"><a href="week-5-lab.html#gibbs-sampler"><i class="fa fa-check"></i><b>9.1</b> Gibbs Sampler</a></li>
@@ -251,6 +252,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="week-5-lecture" class="section level1">
 <h1><span class="header-section-number">8</span> Week 5 Lecture</h1>
+<p>Papers to read this week:</p>
+<ul>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/Lunn4.pdf">Lunn et al. Chapter 4</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/MCMC-UseR.pdf">Robert and Casella Lecture Notes</a>: For the purpose of this week, focus on pages 126-167.</li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/ClarkLab5.pdf">ClarkLab5</a></li>
+</ul>
 <p>Last week we talked about several applications of MC methods. This week, we are going to expand on these ideas to cover two additional, very important, applications:</p>
 <ol style="list-style-type: decimal">
 <li>Gibbs sampling</li>
@@ -545,6 +552,22 @@ b_{2} \sim Gamma(5,5)
 k \sim Unif(1,...,n)
 \]</span></p>
 <p>These “priors of priors” (<span class="math inline">\(b_{1}\)</span> and <span class="math inline">\(b_{2}\)</span>) are called hyperpriors. Note that I have replaced <span class="math inline">\(c_{1}\)</span>, <span class="math inline">\(c_{2}\)</span>, <span class="math inline">\(d_{1}\)</span>, and <span class="math inline">\(d_{2}\)</span> from Haran with the number 5, which is arbitrary but I wanted to make it clear what was a fixed number and what was a parameter. We will come back to these when we discuss hierarchical models in Week #14. For now, I’ll simply say that as each step of the Gibbs sampling, you need to sample from all the terms that include the parameter of interest. Whereas in the non-hierarchical example, we had three parameters, now we have five parameters that we need to iteratively sample from.</p>
+</div>
+<div id="for-more-information-about-this-weeks-topic-3" class="section level2">
+<h2><span class="header-section-number">8.7</span> For more information about this week’s topic</h2>
+<p>Some more detailed statistical papers on various aspects of sampling:</p>
+<ul>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/Gelfand2000.pdf">Gelfand 2000</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/CasellaGeorge1992.pdf">Casella and George 1992</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/GelfandSmith1990.pdf">Gelfand and Smith 1990</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/ChibGreenberg1995.pdf">Chib and Greenberg 1995</a></li>
+</ul>
+<p>A fairly non-technical paper about using MCMC in understanding landslides from <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/PhysicsToday.pdf"><span class="math inline">\(\textit{Physics Today}\)</span></a>.</p>
+<p>For papers involving Bayesian analysis in phylogenetics:</p>
+<ul>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/AltekarEtAl2004.pdf">Altekar et al. 2004</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/Brown2003.pdf">Brown 2003</a></li>
+</ul>
 
 </div>
 </div>
