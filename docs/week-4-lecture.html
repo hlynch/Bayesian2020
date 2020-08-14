@@ -277,26 +277,51 @@ Figure 1.1: Probability is uniform within the unit circle.
 </p>
 </div>
 <p>Now that we have the basic picture, we can see how this might apply to a real problem. Rejection sampling is based on the idea that you may not be able to draw from the distribution you really want, but you can sample from a distribution that includes (in a statistical sense) the distribution you want and reject samples accordingly.</p>
-<p>Assume <span class="math inline">\(p(x)\)</span> is the distribution you would like to draw from – we call this the “target distribution”. The basic idea is that you take a distribution <span class="math inline">\(q(x)\)</span> which you can sample from (we call this the “candidate distribution” because it generate candidates for the accept-reject part), and you scale it by some number M so that you guarantee that <span class="math inline">\(M*q(x)\)</span> is always greater than or equal to <span class="math inline">\(p(x)\)</span>. What is M? You want M to be only as large as it needs to be (Why?), so we calculate M as</p>
+<p>Assume <span class="math inline">\(g(x)\)</span> is the distribution you would like to draw from – we call this the “target distribution”. The basic idea is that you take a distribution <span class="math inline">\(f(x)\)</span> that you <strong>can</strong> sample from (we call this the “candidate distribution” because it generate candidates for the accept-reject part; sometimes this is also called the “proposal distribution” because it is the distribution used to propose samples that are either rejected or accepted), and you scale it by some number M so that you guarantee that <span class="math inline">\(M*f(x)\)</span> is always greater than or equal to <span class="math inline">\(g(x)\)</span>. (NB: The more traditional letters for the target and candidate distributions are p() and q() but here I am using f() and g() to be consistent with the notes that follow. As might be understood by now, the actual letters used is irrelevant, but I’ll try and keep everything consistent to minimize confusion.)</p>
+<p>What is M? You want M to be only as large as it needs to be (Why?), so we calculate M as</p>
 <p><span class="math display">\[
-M = sup_{x}\left(\frac{p(x)}{q(x)}\right)
+M = sup_{x}\left(\frac{g(x)}{f(x)}\right)
 \]</span> or, to look at it another way</p>
 <p><span class="math display">\[
-1 = sup_{x}\left(\frac{p(x)}{M*q(x)}\right)
+1 = sup_{x}\left(\frac{g(x)}{M*f(x)}\right)
 \]</span></p>
-<p>In words, this simply says that the <strong>largest</strong> you would want <span class="math inline">\(p(x)/M*q(x)\)</span> to be is 1.</p>
+<p>In words, this simply says that the <strong>largest</strong> you would want <span class="math inline">\(g(x)/M*f(x)\)</span> to be is 1.</p>
 <p>OK, so now let’s assume that you have figured out what <span class="math inline">\(M\)</span> needs to be. The pseudocode lays out the basic algorithm to draw N samples from the target distribution:</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
-<img src="RejectionFigure.png" alt="Pseudocode (left) and diagram showing the target and proposal distributions (right)." width="100%" />
+<img src="RejectionFigure.png" alt="Pseudocode for the rejection sampling." width="50%" />
 <p class="caption">
-Figure 3.1: Pseudocode (left) and diagram showing the target and proposal distributions (right).
+Figure 3.1: Pseudocode for the rejection sampling.
 </p>
 </div>
-<p>Note that the draw from the uniform is just a mechanism for accepting values from the target distribution with probability <span class="math inline">\(p(x)/M*q(x)\)</span>. If it makes more sense, you could use a draw from the Bernoulli instead, i.e.</p>
+<p>Note that the draw from the uniform is just a mechanism for accepting values from the target distribution with probability <span class="math inline">\(g(x)/M*f(x)\)</span>. If it makes more sense, you could use a draw from the Bernoulli instead, i.e.</p>
 <p><span class="math display">\[
-x^{(i)} \sim q(x) \\
-\mbox{if rBinom} \left(1,\frac{p(x)}{M*q(x)}\right)
-\]</span> The analogy I might use is that of carving out a sandcastle from a pile of sand. The first task is to pile up enough sand that the pile is higher than the tallest part of the castle, and then the second task is to carve away at the sand until you get the shape you want. Rejection sampling is just carving away at the big shapeless pile of sand to get the distribution you wanted in the first place.</p>
+x^{(i)} \sim f(x) \\
+\mbox{if rBinom} \left(1,\frac{g(x)}{M*f(x)}\right)
+\]</span></p>
+<p>The analogy I might use is that of carving out a sandcastle from a pile of sand. The first task is to pile up enough sand that the pile is higher than the tallest part of the castle, and then the second task is to carve away at the sand until you get the shape you want. Rejection sampling is just carving away at the big shapeless pile of sand to get the distribution you wanted in the first place.</p>
+<p>To walk through a simple example, I’ve bottowed a nice example nearly verbatim from Jarad Neimi’s <a href="https://www.jarad.me/teaching/2013/10/03/rejection-sampling">blog</a> where we take the Beta distribution as the target we want to sample from (pretending, for a moment, that this is not in base R) and the Unif(0,1) as the candidate distribution we actually can sample from. So in this example, and using the notation above, g(x) is the Beta distribution and f(x) is the Uniform distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span><span class="dv">5</span>
+b =<span class="st"> </span><span class="dv">12</span>
+target =<span class="st"> </span>function(x) <span class="kw">dbeta</span>(x,a,b)
+proposal =<span class="st"> </span>dunif</code></pre></div>
+<p>Now we will calculate M and the probability of acceptance.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mode =<span class="st"> </span>(a<span class="dv">-1</span>)/(a+b<span class="dv">-2</span>)
+M =<span class="st"> </span><span class="kw">target</span>(mode)
+<span class="dv">1</span>/M</code></pre></div>
+<pre><code>## [1] 0.2745091</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">1000</span>
+points =<span class="st"> </span><span class="kw">runif</span>(n)
+uniforms =<span class="st"> </span><span class="kw">runif</span>(n)
+accept =<span class="st"> </span>uniforms &lt;<span class="st"> </span>(<span class="kw">target</span>(points)/(M*<span class="kw">proposal</span>(points)))</code></pre></div>
+<p>The plot below has target (red) and proposal (green) density as well as the proposal density scaled by M (green, dashed) to show how it creates an envelope over the target. The points are accepted (blue circle) and rejected (red x) values on the x-axis with their associated uniform draws on the y-axis.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">curve</span>(target, <span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">curve</span>(proposal, <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col=</span><span class="st">&quot;seagreen&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">curve</span>(M*<span class="kw">proposal</span>(x), <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col=</span><span class="st">&quot;seagreen&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">points</span>(points, M*uniforms, <span class="dt">pch=</span><span class="kw">ifelse</span>(accept,<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">col=</span><span class="kw">ifelse</span>(accept,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;target&quot;</span>,<span class="st">&quot;proposal&quot;</span>,<span class="st">&quot;accepted&quot;</span>,<span class="st">&quot;rejected&quot;</span>), 
+       <span class="dt">lwd=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="ot">NA</span>,<span class="ot">NA</span>), <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;seagreen&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>),
+       <span class="dt">pch=</span><span class="kw">c</span>(<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">bg=</span><span class="st">&quot;white&quot;</span>) </code></pre></div>
+<p><img src="Week-4-lecture_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>We will write some code in lab to actually practice doing this.</p>
 </div>
 <div id="adaptive-rejection-sampling" class="section level2">
@@ -340,7 +365,7 @@ s^{2}_{g(x)} = \frac{1}{T-1}\sum^{T}_{1}(g(x_{t})-E[g(x)])^2
 <p><span class="math display">\[
 (b-a)\left[\frac{1}{N}\sum^{N}_{t=1}g(x_{t})\right] = \sum^{N}_{t=1}g(x_{t}) \times \frac{(b-a)}{N}
 \]</span> I’ve re-written this on the right hand side because it connects it to the geometric interpretation illustrated in the figure.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="BayesianIntegration.png" alt="The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008)." width="100%" />
 <p class="caption">
 Figure 6.1: The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function <span class="math inline">\(g(x)\)</span>. Figure adapted from Jarosz (2008).

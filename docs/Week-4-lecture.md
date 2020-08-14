@@ -30,33 +30,81 @@ The idea behind rejection sampling is pretty straightforward and best illustrate
 
 Now that we have the basic picture, we can see how this might apply to a real problem. Rejection sampling is based on the idea that you may not be able to draw from the distribution you really want, but you can sample from a distribution that includes (in a statistical sense) the distribution you want and reject samples accordingly.
 
-Assume $p(x)$ is the distribution you would like to draw from – we call this the “target distribution”. The basic idea is that you take a distribution $q(x)$ which you can sample from (we call this the “candidate distribution” because it generate candidates for the accept-reject part), and you scale it by some number M so that you guarantee that $M*q(x)$ is always greater than or equal to $p(x)$. What is M? You want M to be only as large as it needs to be (Why?), so we calculate M as
+Assume $g(x)$ is the distribution you would like to draw from – we call this the “target distribution”. The basic idea is that you take a distribution $f(x)$ that you **can** sample from (we call this the “candidate distribution” because it generate candidates for the accept-reject part; sometimes this is also called the "proposal distribution" because it is the distribution used to propose samples that are either rejected or accepted), and you scale it by some number M so that you guarantee that $M*f(x)$ is always greater than or equal to $g(x)$. (NB: The more traditional letters for the target and candidate distributions are p() and q() but here I am using f() and g() to be consistent with the notes that follow. As might be understood by now, the actual letters used is irrelevant, but I'll try and keep everything consistent to minimize confusion.)
+
+What is M? You want M to be only as large as it needs to be (Why?), so we calculate M as
 
 $$
-M = sup_{x}\left(\frac{p(x)}{q(x)}\right)
+M = sup_{x}\left(\frac{g(x)}{f(x)}\right)
 $$
 or, to look at it another way
 
 $$
-1 = sup_{x}\left(\frac{p(x)}{M*q(x)}\right)
+1 = sup_{x}\left(\frac{g(x)}{M*f(x)}\right)
 $$
 
-In words, this simply says that the **largest** you would want $p(x)/M*q(x)$ to be is 1.
+In words, this simply says that the **largest** you would want $g(x)/M*f(x)$ to be is 1.
 
 OK, so now let’s assume that you have figured out what $M$ needs to be. The pseudocode lays out the basic algorithm to draw N samples from the target distribution:
 
 <div class="figure" style="text-align: center">
-<img src="RejectionFigure.png" alt="Pseudocode (left) and diagram showing the target and proposal distributions (right)." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2)Pseudocode (left) and diagram showing the target and proposal distributions (right).</p>
+<img src="RejectionFigure.png" alt="Pseudocode for the rejection sampling." width="50%" />
+<p class="caption">(\#fig:unnamed-chunk-2)Pseudocode for the rejection sampling.</p>
 </div>
 
-Note that the draw from the uniform is just a mechanism for accepting values from the target distribution with probability $p(x)/M*q(x)$. If it makes more sense, you could use a draw from the Bernoulli instead, i.e.
+Note that the draw from the uniform is just a mechanism for accepting values from the target distribution with probability $g(x)/M*f(x)$. If it makes more sense, you could use a draw from the Bernoulli instead, i.e.
 
 $$
-x^{(i)} \sim q(x) \\
-\mbox{if rBinom} \left(1,\frac{p(x)}{M*q(x)}\right)
+x^{(i)} \sim f(x) \\
+\mbox{if rBinom} \left(1,\frac{g(x)}{M*f(x)}\right)
 $$
+
 The analogy I might use is that of carving out a sandcastle from a pile of sand. The first task is to pile up enough sand that the pile is higher than the tallest part of the castle, and then the second task is to carve away at the sand until you get the shape you want. Rejection sampling is just carving away at the big shapeless pile of sand to get the distribution you wanted in the first place.
+
+To walk through a simple example, I've bottowed a nice example nearly verbatim from Jarad Neimi's [blog](https://www.jarad.me/teaching/2013/10/03/rejection-sampling) where we take the Beta distribution as the target we want to sample from (pretending, for a moment, that this is not in base R) and the Unif(0,1) as the candidate distribution we actually can sample from. So in this example, and using the notation above, g(x) is the Beta distribution and f(x) is the Uniform distribution.
+
+
+```r
+a = 5
+b = 12
+target = function(x) dbeta(x,a,b)
+proposal = dunif
+```
+
+Now we will calculate M and the probability of acceptance.
+
+
+```r
+mode = (a-1)/(a+b-2)
+M = target(mode)
+1/M
+```
+
+```
+## [1] 0.2745091
+```
+
+```r
+n = 1000
+points = runif(n)
+uniforms = runif(n)
+accept = uniforms < (target(points)/(M*proposal(points)))
+```
+
+The plot below has target (red) and proposal (green) density as well as the proposal density scaled by M (green, dashed) to show how it creates an envelope over the target. The points are accepted (blue circle) and rejected (red x) values on the x-axis with their associated uniform draws on the y-axis.
+
+
+```r
+curve(target, lwd=2)
+curve(proposal, add=TRUE, col="seagreen", lwd=2)
+curve(M*proposal(x), add=TRUE, col="seagreen", lty=2, lwd=2)
+points(points, M*uniforms, pch=ifelse(accept,1,4), col=ifelse(accept,"blue","red"), lwd=2)
+legend("topright", c("target","proposal","accepted","rejected"), 
+       lwd=c(2,2,NA,NA), col=c("black","seagreen","blue","red"),
+       pch=c(NA,NA,1,4), bg="white") 
+```
+
+<img src="Week-4-lecture_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 We will write some code in lab to actually practice doing this.
 
@@ -124,7 +172,7 @@ I've re-written this on the right hand side because it connects it to the geomet
 
 <div class="figure" style="text-align: center">
 <img src="BayesianIntegration.png" alt="The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008)." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-3)The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008).</p>
+<p class="caption">(\#fig:unnamed-chunk-6)The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008).</p>
 </div>
 
 Note that the term Monte Carlo Integration is sometimes replaced by, or used synonymously with the phrase Monte Carlo simulation. Don’t let this confuse you. The idea behind both of these terms is simply that you can replace a probability distribution function (which may be a conditional probability distribution) with samples from that probability distribution function.
