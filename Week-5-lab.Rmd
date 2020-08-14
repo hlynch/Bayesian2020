@@ -9,10 +9,10 @@ and which can be downloaded here.
 
 This is really a subset of the original dataset; I have included only the columns relevant for lab:
 
-Island: Name of Island
-Plants: Number of plant species
-PlantEnd: Number of endemic plant species
-Elevation: Maximum elevation (m)
+Island: Name of Island  
+Plants: Number of plant species  
+PlantEnd: Number of endemic plant species  
+Elevation: Maximum elevation (m)  
 
 Let’s focus on endemism as the trait of interest, so for island $i$, $y_{i}=1$ if the plant is endemic and $y_{i}=0$ if the plant is not endemic. We will treat Elevation as the covariate $x_{i}$ of interest, so
 
@@ -67,7 +67,7 @@ $$
 $$
 thus eliminating the pesky denominator in both expressions.
 
-We will make a minor modification to step 3 to head off problems with numerical errors. The original formulation would require that we draw a value from Unif(0,1) and accept if this value if it is less than $\pi(x^*)/\pi(x)$. Since probabilities (esp. joint probabilities) are always very small problematic numbers, we would prefer to log both sides of this, and to log the draw from the Unif(0,1) and compare this value to $\pi(x^*)/\pi(x)=log(\pi(x^*))-log(\pi(x))$.
+We will make a minor modification to step 3 to head off problems with numerical errors. The original formulation would require that we draw a value from Unif(0,1) and accept if this value is less than $\pi(x^*)/\pi(x)$. Since probabilities (esp. joint probabilities) are always very small problematic numbers, we would prefer to log both sides of this, and to log the draw from the Unif(0,1) and compare this value to $\pi(x^*)/\pi(x)=log(\pi(x^*))-log(\pi(x))$.
 
 $$
 log(\pi(x^*))-log(\pi(x)) = log(P(Y|\beta_{0}^*,\beta_{1}^*))+log(P(\beta_{0}^*))+log(\beta_{1}^*)-log(P(Y|\beta_{0},\beta_{1}))-log(P(\beta_{0}))-log(P(\beta_{1}))
@@ -105,10 +105,10 @@ $$
 \tau \sim Gamma(\alpha,\beta)
 $$
 
-Note that these are the conjugate priors where precision and mean are know, respectively, but that the joint distribution
+Note that these are the conjugate priors where precision and mean are known, respectively, but that the joint distribution
 
 $$
-p(\mu,\tau) \sim N(\gamma, \omega^{2}) \times Gamma(\alpha,\beta)
+P(\mu,\tau) \sim N(\gamma, \omega^{2}) \times Gamma(\alpha,\beta)
 $$
 
 is **not** the conjugate prior for the case in which both $\mu$ and $\tau$ are unknown. In this case we have to appeal to some other scheme for sampling from the posterior distribution, like a Gibbs sampler.
@@ -121,26 +121,26 @@ $$
 and the likelihood in this case is simply the pdf for a Normal, since the data are Normally distributed. (With all the focus on priors and posteriors, the likelihood sometimes gets lost in the shuffle, so don’t forget to make sure you have the right likelihood!)
 
 $$
-p(y_{1},y_{2},...,y_{n}|\mu,\tau) \propto e^{-\frac{\tau}{2}\sum_{i=1}^{n}(y_{i}-\mu)^{2}}
+P(y_{1},y_{2},...,y_{n}|\mu,\tau) \propto e^{-\frac{\tau}{2}\sum_{i=1}^{n}(y_{i}-\mu)^{2}}
 $$
 **Question: Why is there a sum in the exponent?** 
 
 OK, back to the question at hand – what is the distribution for $\mu^{(t)}$ if we have the data y and $\tau^{(t-1)}$? (The beauty of Gibbs sampling is that each draw is conditional on the most recent draw for the other parameters, so the other parameters are assuming “known” at their most recent value.) In other words, what is the conditional posterior for $\mu$ assuming $\tau$ is known? 
 
 $$
-p(\mu|y,\tau) \propto e^{-\frac{1}{2\omega^{2}}(\mu-\gamma)^{2}}e^{-\frac{\tau}{2}\sum_{i=1}^{n}(y_{i}-\mu)^{2}}
+P(\mu|y,\tau) \propto e^{-\frac{1}{2\omega^{2}}(\mu-\gamma)^{2}}e^{-\frac{\tau}{2}\sum_{i=1}^{n}(y_{i}-\mu)^{2}}
 $$
 (This is just the prior for $\mu$ times the likelihood.)
 
 But, because we assume $\tau$ is known here, the prior for $\mu$ is conjugate to the likelihood, and we can simply write down the posterior distribution!
 
 $$
-p(\mu^{(t)}|y,\tau^{(t-1)}) \sim N\left(\frac{\tau^{(t-1)}\sum y_{i}+\omega^{-2}\gamma}{n\tau^{(t-1)}+\omega^{-2}},\frac{1}{n\tau^{(t-1)}+\omega^{-2}}\right)
+P(\mu^{(t)}|y,\tau^{(t-1)}) \sim N\left(\frac{\tau^{(t-1)}\sum y_{i}+\omega^{-2}\gamma}{n\tau^{(t-1)}+\omega^{-2}},\frac{1}{n\tau^{(t-1)}+\omega^{-2}}\right)
 $$
 Likewise, if we know $\mu$, then the prior for $\tau$ is conjugate to the likelihood, and its conditional pdf is given by
 
 $$
-p(\tau^{(t+1)}|y,\mu^{(t)}) \sim Gamma\left(\alpha+\frac{n}{2},\beta+\frac{1}{2}\sum_{i=1}^{n}(y_{i}-\mu^{(t)})^{2}\right)
+P(\tau^{(t+1)}|y,\mu^{(t)}) \sim Gamma\left(\alpha+\frac{n}{2},\beta+\frac{1}{2}\sum_{i=1}^{n}(y_{i}-\mu^{(t)})^{2}\right)
 $$
 
 **EXERCISE**: Write a script to use Gibbs sampling to get posterior distributions for $\mu$ and $\tau$. Use three chains to check convergence, and provide plots of the chains and the posterior histograms for both $\mu$ and $\tau$. What is the posterior mean and 95th percentile credible intervals?
