@@ -3,7 +3,7 @@ Week 7 Lab
 
 This week we’ll be using a dataset on flower phenology that was published in PLOS ONE. The paper was assigned as reading to give you a brief overview of the data. (NB: The temperature data for 1894 was missing, and I have replaced it with the mean temperature from the other years just for the purposes of doing the lab.)
 
-This is as good a time as any to introduce some of the R packages designed to help you plot and evaluate MCMC chains produces by R2WinBUGS and RJAGS.  Download the ‘coda’ package in R and read through the manual. Read through the blog post that I have posted on Bb which provides a quick overview. There is another newer package called ‘boa’ which is similar to ‘coda’ but I have less experience with it and will stick with the more conventional ‘coda’ package. 
+This is as good a time as any to introduce some of the R packages designed to help you plot and evaluate MCMC chains produced by JAGS.  Download the [‘coda’](https://cran.r-project.org/web/packages/coda/index.html) package in R and read through the manual. There is another newer package called [‘MCMCvis'](https://cran.r-project.org/web/packages/MCMCvis/index.html) written by a former PhD student of mine Casey Youngflesh that has many nice features as well.
 
 Exercise: Write a script to use JAGS to fit a linear regression model to the flower data. In other words, write a JAGS script to fit the following model:
 

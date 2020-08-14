@@ -256,7 +256,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>M.P. Johnson and P.H. Raven (1973). Species number and endemism: The Galapagos Archipelago revisited. Science 179, 893-895.</p>
 <p>and which can be downloaded here.</p>
 <p>This is really a subset of the original dataset; I have included only the columns relevant for lab:</p>
-<p>Island: Name of Island Plants: Number of plant species PlantEnd: Number of endemic plant species Elevation: Maximum elevation (m)</p>
+<p>Island: Name of Island<br />
+Plants: Number of plant species<br />
+PlantEnd: Number of endemic plant species<br />
+Elevation: Maximum elevation (m)</p>
 <p>Let’s focus on endemism as the trait of interest, so for island <span class="math inline">\(i\)</span>, <span class="math inline">\(y_{i}=1\)</span> if the plant is endemic and <span class="math inline">\(y_{i}=0\)</span> if the plant is not endemic. We will treat Elevation as the covariate <span class="math inline">\(x_{i}\)</span> of interest, so</p>
 <p><span class="math display">\[
 Y \sim Binom(n,p)
@@ -292,7 +295,7 @@ P(\beta_{0},\beta_{1}|Y) = \frac{P(Y|\beta_{0},\beta_{1})P(\beta_{0},\beta_{1})}
 <p><span class="math display">\[
 \frac{P(\beta_{0}^*,\beta_{1}^*|Y)}{P(\beta_{0},\beta_{1}|Y)} = \frac{\pi(x^*)}{\pi(x)} = \frac{P(Y|\beta_{0}^*,\beta_{1}^*)P(\beta_{0}^*,\beta_{1}^*)}{P(Y|\beta_{0},\beta_{1})P(\beta_{0},\beta_{1})}
 \]</span> thus eliminating the pesky denominator in both expressions.</p>
-<p>We will make a minor modification to step 3 to head off problems with numerical errors. The original formulation would require that we draw a value from Unif(0,1) and accept if this value if it is less than <span class="math inline">\(\pi(x^*)/\pi(x)\)</span>. Since probabilities (esp. joint probabilities) are always very small problematic numbers, we would prefer to log both sides of this, and to log the draw from the Unif(0,1) and compare this value to <span class="math inline">\(\pi(x^*)/\pi(x)=log(\pi(x^*))-log(\pi(x))\)</span>.</p>
+<p>We will make a minor modification to step 3 to head off problems with numerical errors. The original formulation would require that we draw a value from Unif(0,1) and accept if this value is less than <span class="math inline">\(\pi(x^*)/\pi(x)\)</span>. Since probabilities (esp. joint probabilities) are always very small problematic numbers, we would prefer to log both sides of this, and to log the draw from the Unif(0,1) and compare this value to <span class="math inline">\(\pi(x^*)/\pi(x)=log(\pi(x^*))-log(\pi(x))\)</span>.</p>
 <p><span class="math display">\[
 log(\pi(x^*))-log(\pi(x)) = log(P(Y|\beta_{0}^*,\beta_{1}^*))+log(P(\beta_{0}^*))+log(\beta_{1}^*)-log(P(Y|\beta_{0},\beta_{1}))-log(P(\beta_{0}))-log(P(\beta_{1}))
 \]</span> In other words, we calculate the difference in log probabilities and use this as the acceptance threshold.</p>
@@ -302,7 +305,7 @@ log(\pi(x^*))-log(\pi(x)) = log(P(Y|\beta_{0}^*,\beta_{1}^*))+log(P(\beta_{0}^*)
 <p>Things to play around with:</p>
 <ol style="list-style-type: decimal">
 <li><p>Once you get the code working, plot the chains for both <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> - have they converged? How would you check? Also, plot the histograms – these represent your posterior distributions. What do you get if you plot a scatterplot of the posteriors for <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span>?</p></li>
-<li><p>Make your script calculate the acceptance rate. What happens to the acceptance rate when you vary ? (We are generally looking for acceptance rates in the vicinity of 0.5. How would you write your script to adaptively sample to get an acceptance rate $$0.5?)</p></li>
+<li><p>Make your script calculate the acceptance rate. What happens to the acceptance rate when you vary <span class="math inline">\(\sigma\)</span>? (We are generally looking for acceptance rates in the vicinity of 0.5. How would you write your script to adaptively sample to get an acceptance rate $$0.5?)</p></li>
 <li><p>What happens if you use other proposal distributions? Does it converge faster or slower?</p></li>
 </ol>
 <div id="gibbs-sampler" class="section level2">
@@ -313,9 +316,9 @@ log(\pi(x^*))-log(\pi(x)) = log(P(Y|\beta_{0}^*,\beta_{1}^*))+log(P(\beta_{0}^*)
 \mu \sim N(\gamma, \omega^{2}) \\
 \tau \sim Gamma(\alpha,\beta)
 \]</span></p>
-<p>Note that these are the conjugate priors where precision and mean are know, respectively, but that the joint distribution</p>
+<p>Note that these are the conjugate priors where precision and mean are known, respectively, but that the joint distribution</p>
 <p><span class="math display">\[
-p(\mu,\tau) \sim N(\gamma, \omega^{2}) \times Gamma(\alpha,\beta)
+P(\mu,\tau) \sim N(\gamma, \omega^{2}) \times Gamma(\alpha,\beta)
 \]</span></p>
 <p>is <strong>not</strong> the conjugate prior for the case in which both <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\tau\)</span> are unknown. In this case we have to appeal to some other scheme for sampling from the posterior distribution, like a Gibbs sampler.</p>
 <p>What we will need in hand to make the Gibbs sampler work is the conditional distribution for <span class="math inline">\(\mu\)</span> assuming <span class="math inline">\(\tau\)</span> is known, and the conditional distribution for <span class="math inline">\(\tau\)</span> assuming <span class="math inline">\(\mu\)</span> is known. Keep in mind that</p>
@@ -323,18 +326,18 @@ p(\mu,\tau) \sim N(\gamma, \omega^{2}) \times Gamma(\alpha,\beta)
 \mbox{posterior} = \mbox{prior} \times \mbox{likelihood}
 \]</span> and the likelihood in this case is simply the pdf for a Normal, since the data are Normally distributed. (With all the focus on priors and posteriors, the likelihood sometimes gets lost in the shuffle, so don’t forget to make sure you have the right likelihood!)</p>
 <p><span class="math display">\[
-p(y_{1},y_{2},...,y_{n}|\mu,\tau) \propto e^{-\frac{\tau}{2}\sum_{i=1}^{n}(y_{i}-\mu)^{2}}
+P(y_{1},y_{2},...,y_{n}|\mu,\tau) \propto e^{-\frac{\tau}{2}\sum_{i=1}^{n}(y_{i}-\mu)^{2}}
 \]</span> <strong>Question: Why is there a sum in the exponent?</strong></p>
 <p>OK, back to the question at hand – what is the distribution for <span class="math inline">\(\mu^{(t)}\)</span> if we have the data y and <span class="math inline">\(\tau^{(t-1)}\)</span>? (The beauty of Gibbs sampling is that each draw is conditional on the most recent draw for the other parameters, so the other parameters are assuming “known” at their most recent value.) In other words, what is the conditional posterior for <span class="math inline">\(\mu\)</span> assuming <span class="math inline">\(\tau\)</span> is known?</p>
 <p><span class="math display">\[
-p(\mu|y,\tau) \propto e^{-\frac{1}{2\omega^{2}}(\mu-\gamma)^{2}}e^{-\frac{\tau}{2}\sum_{i=1}^{n}(y_{i}-\mu)^{2}}
+P(\mu|y,\tau) \propto e^{-\frac{1}{2\omega^{2}}(\mu-\gamma)^{2}}e^{-\frac{\tau}{2}\sum_{i=1}^{n}(y_{i}-\mu)^{2}}
 \]</span> (This is just the prior for <span class="math inline">\(\mu\)</span> times the likelihood.)</p>
 <p>But, because we assume <span class="math inline">\(\tau\)</span> is known here, the prior for <span class="math inline">\(\mu\)</span> is conjugate to the likelihood, and we can simply write down the posterior distribution!</p>
 <p><span class="math display">\[
-p(\mu^{(t)}|y,\tau^{(t-1)}) \sim N\left(\frac{\tau^{(t-1)}\sum y_{i}+\omega^{-2}\gamma}{n\tau^{(t-1)}+\omega^{-2}},\frac{1}{n\tau^{(t-1)}+\omega^{-2}}\right)
+P(\mu^{(t)}|y,\tau^{(t-1)}) \sim N\left(\frac{\tau^{(t-1)}\sum y_{i}+\omega^{-2}\gamma}{n\tau^{(t-1)}+\omega^{-2}},\frac{1}{n\tau^{(t-1)}+\omega^{-2}}\right)
 \]</span> Likewise, if we know <span class="math inline">\(\mu\)</span>, then the prior for <span class="math inline">\(\tau\)</span> is conjugate to the likelihood, and its conditional pdf is given by</p>
 <p><span class="math display">\[
-p(\tau^{(t+1)}|y,\mu^{(t)}) \sim Gamma\left(\alpha+\frac{n}{2},\beta+\frac{1}{2}\sum_{i=1}^{n}(y_{i}-\mu^{(t)})^{2}\right)
+P(\tau^{(t+1)}|y,\mu^{(t)}) \sim Gamma\left(\alpha+\frac{n}{2},\beta+\frac{1}{2}\sum_{i=1}^{n}(y_{i}-\mu^{(t)})^{2}\right)
 \]</span></p>
 <p><strong>EXERCISE</strong>: Write a script to use Gibbs sampling to get posterior distributions for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\tau\)</span>. Use three chains to check convergence, and provide plots of the chains and the posterior histograms for both <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\tau\)</span>. What is the posterior mean and 95th percentile credible intervals?</p>
 

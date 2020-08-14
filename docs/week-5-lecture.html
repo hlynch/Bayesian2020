@@ -265,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 <p>Keep in mind that the point behind doing MC sampling is that it provides a mechanism for sampling from the posterior distribution. (Remember, the posterior distribution may have [in fact, usually has] no straightforward analytical form.) Last week we covered a class of non-iterative samplers that require us to have a candidate distribution that we could sample from. (They are non-iterative, because we could have drawn all N candidate values simultaneously. The accept-reject criteria for each sample was independent of the accept-reject decision made on the others.)</p>
 <p>The problem with these methods is that it is often very hard to come up with a good candidate distribution that is a good approximation to the target distribution (the closer the better – otherwise, we have a very inefficient algorithm) and which we can sample from. (In one-dimension, this is usually not an issue, the problems arise when you have multi-dimensional problems because candidate distributions for the joint PDF are harder to generate.) Another class of samplers, used more often in Bayesian statistics, is iterative samplers that (for the most part) rely on the generation of a “Markov chain”.</p>
-<p>Before we get into MCMC, its worth thinking a bit more about what a Markov Chain is. A Markov Chain is a series of observations, each one dependent only on the last (or, in more complex examples, or a finite number of previous observations). At the end of the day, a Markov Chain is simply a string of numbers (or, equivalently, states), which we will denote <span class="math inline">\(X^{t}\)</span>. So the state of the chain at <span class="math inline">\(t=0\)</span> is <span class="math inline">\(X^{0}\)</span>, etc.</p>
+<p>Before we get into MCMC, its worth thinking a bit more about what a Markov Chain is. A Markov Chain is a series of observations, each one dependent only on the last (or, in more complex examples, a finite number of previous observations). At the end of the day, a Markov Chain is simply a string of numbers (or, equivalently, states), which we will denote <span class="math inline">\(X^{t}\)</span>. So the state of the chain at <span class="math inline">\(t=0\)</span> is <span class="math inline">\(X^{0}\)</span>, etc.</p>
 <p>The easiest way to represent the allowed transitions in the chain is through a transition matrix <span class="math display">\[
 P = \begin{bmatrix}
 p_{11} &amp; p_{12} &amp; p_{13}\\
@@ -340,7 +340,7 @@ p(\theta_{3}|\theta_{1},\theta_{2},y)
 \theta_{1}^{(2)} \sim p(\theta_{1}|\theta_{2}^{(1)},\theta_{3}^{(1)},y)
 \]</span> and so forth.</p>
 <ol start="3" style="list-style-type: decimal">
-<li>Continue iterating through the chain a large number of times, until the chain has converged (we haven’t yet discussed how we would test convergence yet).</li>
+<li>Continue iterating through the chain a large number of times, until the chain has converged (we haven’t discussed how we would test convergence yet).</li>
 </ol>
 <p>EXERCISE: We’re going to practice this a bit using a simple example inspired by our earlier work on the uniform triangle distribution. Earlier we drew samples from a uniform triangle distribution using Rejection Sampling. Here we are going to use Gibbs Sampling. First, you will need to work out the two conditional probabilities <span class="math inline">\(p(x|y)\)</span> and <span class="math inline">\(p(y|x)\)</span>. You could of course use Bayes Theorem to calculate this</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
@@ -365,7 +365,7 @@ p(y|x) = p(x,y)/p(x)
 </ol>
 <p>When you have tried a large number of samples <span class="math inline">\(k\)</span>, plot your bivariate samples - how do they look? (In other words, make a scatterplot of the sampled <span class="math inline">\((x,y)\)</span> pairs.)</p>
 <p>Now histogram just the <span class="math inline">\(x\)</span> values. This is the <strong>marginal probability density</strong> <span class="math inline">\(p(x)\)</span>. Does it make sense why? Think back to the exercise we did with graph paper. If we have bivariate samples from <span class="math inline">\((x,y)\)</span> and we simply tally up all the samples for a certain x-value (irrespective of the y values involved), we have “marginalized out” <span class="math inline">\(y\)</span> to create <span class="math inline">\(p(x)\)</span>.</p>
-<p>When we do modelling in JAGS, we will do this automatically. In fact, the posterior summaries provided by JAGS and the related R packages automatically provide marginal posterior summaries, and they do that by summarizing the draws for one variables ignoring the values for all the other variables. (I think of this as taking one column from the sims.matrix.)</p>
+<p>When we do modelling in JAGS, we will do this automatically. In fact, the posterior summaries provided by JAGS and the related R packages automatically provide marginal posterior summaries, and they do that by summarizing the draws for one variables ignoring the values for all the other variables(I think of this as taking one column from the sims.matrix).</p>
 </div>
 <div id="metropolis-algorithm" class="section level2">
 <h2><span class="header-section-number">8.2</span> Metropolis algorithm</h2>
@@ -383,8 +383,8 @@ p(y|x) = p(x,y)/p(x)
 <p>where <span class="math inline">\(\pi(x)\)</span> is the probability density associated with <span class="math inline">\(x\)</span>, and likewise, <span class="math inline">\(\pi(x^*)\)</span> is the probability density associated with <span class="math inline">\(x^*\)</span>. If <span class="math inline">\(x^*\)</span> is accepted, then <span class="math inline">\(x^{t+1}=x^{*}\)</span>. If <span class="math inline">\(x^*\)</span> is rejected, then <span class="math inline">\(x^{t+1} = x^{t}\)</span>. (In other words, if you reject the candidate state, then you stay put.)</p>
 <p>Note that you only need to be able to evaluate the ratio <span class="math inline">\(\pi(x^*)/\pi(x)\)</span>, so you don’t need to worry about, or even know, the normalizing constants associated with the function <span class="math inline">\(\pi\)</span>. The proposal distribution <span class="math inline">\(S(x,x^*)\)</span> is critical here because it controls how quickly or slowly the chain samples the space, and how quickly the chain converges. One popular proposal distribution is that which would be associated with an unbiased random walk.</p>
 <p>Some terminology here to navigate if you are applying the Metropolis algorithm to a multivariate problem:</p>
-<p>: Proposals only change one component of <span class="math inline">\(x\)</span>, and updates to each component are applied in sequence.</p>
-<p>: Proposals change all components of <span class="math inline">\(x\)</span> simultaneously. For example, you might generate proposals of the form</p>
+<p><strong>Single-variable Metropolis</strong>: Proposals only change one component of <span class="math inline">\(x\)</span>, and updates to each component are applied in sequence.</p>
+<p><strong>Multivariate Metropolis</strong>: Proposals change all components of <span class="math inline">\(x\)</span> simultaneously. For example, you might generate proposals of the form</p>
 <p><span class="math display">\[
 \begin{pmatrix}
 \theta_{1}^{proposed}\\

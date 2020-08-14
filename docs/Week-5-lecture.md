@@ -16,7 +16,7 @@ Keep in mind that the point behind doing MC sampling is that it provides a mecha
 
 The problem with these methods is that it is often very hard to come up with a good candidate distribution that is a good approximation to the target distribution (the closer the better – otherwise, we have a very inefficient algorithm) and which we can sample from. (In one-dimension, this is usually not an issue, the problems arise when you have multi-dimensional problems because candidate distributions for the joint PDF are harder to generate.) Another class of samplers, used more often in Bayesian statistics, is iterative samplers that (for the most part) rely on the generation of a “Markov chain”.
 
-Before we get into MCMC, its worth thinking a bit more about what a Markov Chain is. A Markov Chain is a series of observations, each one dependent only on the last (or, in more complex examples, or a finite number of previous observations). At the end of the day, a Markov Chain is simply a string of numbers (or, equivalently, states), which we will denote $X^{t}$. So the state of the chain at $t=0$ is $X^{0}$, etc.
+Before we get into MCMC, its worth thinking a bit more about what a Markov Chain is. A Markov Chain is a series of observations, each one dependent only on the last (or, in more complex examples, a finite number of previous observations). At the end of the day, a Markov Chain is simply a string of numbers (or, equivalently, states), which we will denote $X^{t}$. So the state of the chain at $t=0$ is $X^{0}$, etc.
 
 The easiest way to represent the allowed transitions in the chain is through a transition matrix 
 $$
@@ -83,7 +83,7 @@ $$
 $$
 and so forth.
 
-3. Continue iterating through the chain a large number of times, until the chain has converged (we haven’t yet discussed how we would test convergence yet).
+3. Continue iterating through the chain a large number of times, until the chain has converged (we haven’t discussed how we would test convergence yet).
 
 EXERCISE: We're going to practice this a bit using a simple example inspired by our earlier work on the uniform triangle distribution. Earlier we drew samples from a uniform triangle distribution using Rejection Sampling. Here we are going to use Gibbs Sampling. First, you will need to work out the two conditional probabilities $p(x|y)$ and  $p(y|x)$. You could of course use Bayes Theorem to calculate this
 
@@ -114,7 +114,7 @@ When you have tried a large number of samples $k$, plot your bivariate samples -
 
 Now histogram just the $x$ values. This is the **marginal probability density** $p(x)$. Does it make sense why? Think back to the exercise we did with graph paper. If we have bivariate samples from $(x,y)$ and we simply tally up all the samples for a certain x-value (irrespective of the y values involved), we have "marginalized out" $y$ to create $p(x)$. 
 
-When we do modelling in JAGS, we will do this automatically. In fact, the posterior summaries provided by JAGS and the related R packages automatically provide marginal posterior summaries, and they do that by summarizing the draws for one variables ignoring the values for all the other variables. (I think of this as taking one column from the sims.matrix.)
+When we do modelling in JAGS, we will do this automatically. In fact, the posterior summaries provided by JAGS and the related R packages automatically provide marginal posterior summaries, and they do that by summarizing the draws for one variables ignoring the values for all the other variables(I think of this as taking one column from the sims.matrix).
 
 Metropolis algorithm
 -------------------
@@ -137,9 +137,9 @@ Note that you only need to be able to evaluate the ratio $\pi(x^*)/\pi(x)$, so y
 
 Some terminology here to navigate if you are applying the Metropolis algorithm to a multivariate problem:
  
-\emph{Single-variable Metropolis}: Proposals only change one component of $x$, and updates to each component are applied in sequence.
+**Single-variable Metropolis**: Proposals only change one component of $x$, and updates to each component are applied in sequence.
 
-\emph{Multivariate Metropolis}: Proposals change all components of $x$ simultaneously. For example, you might generate proposals of the form
+**Multivariate Metropolis**: Proposals change all components of $x$ simultaneously. For example, you might generate proposals of the form
 
 $$
 \begin{pmatrix}

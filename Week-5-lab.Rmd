@@ -89,7 +89,7 @@ Things to play around with:
 
 1) Once you get the code working, plot the chains for both $\beta_{0}$ and $\beta_{1}$ - have they converged? How would you check? Also, plot the histograms – these represent your posterior distributions. What do you get if you plot a scatterplot of the posteriors for $\beta_{0}$ and $\beta_{1}$?
 
-2) Make your script calculate the acceptance rate. What happens to the acceptance rate when you vary ? (We are generally looking for acceptance rates in the vicinity of 0.5. How would you write your script to adaptively sample to get an acceptance rate $\sim$0.5?)
+2) Make your script calculate the acceptance rate. What happens to the acceptance rate when you vary $\sigma$? (We are generally looking for acceptance rates in the vicinity of 0.5. How would you write your script to adaptively sample to get an acceptance rate $\sim$0.5?)
 
 3) What happens if you use other proposal distributions? Does it converge faster or slower?
 

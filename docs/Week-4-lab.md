@@ -64,7 +64,7 @@ The likelihood from Smith and Gelfand has two typos, so I am reproducing the cor
 $$
 \prod^{3}_{i=1}\left[\sum_{ji} {n_{i1} \choose j_i}{n_{i2} \choose y_i-j_i}\theta_{1}^{j_{i}}(1-\theta_{1})^{n_{i1}-j_{i}}\theta_{2}^{y_{i}-j_{i}}(1-\theta_{2})^{n_{i2}-y_{i}+j_{i}}\right]
 $$
-Note that the bounds on $j_{i}$ are as follows: $max{0,y_{i}-n_{i2}} \leq j_{i} \leq min{n_{i1},y_{i}}$.
+Note that the bounds on $j_{i}$ are as follows: $max(0,y_{i}-n_{i2}) \leq j_{i} \leq min(n_{i1},y_{i})$.
 
 **Important!** They don't say in the paper, but Smith and Gelfand drop the factorials from their likelihood ${n_{i1} \choose j_{i}}{n_{i2} \choose y_{i}-j_{i}}$. To match with their figure, you should do so as well. The constant does not change the $(\theta_{1},\theta_{2})$ location of the peaks of the posterior distribution. However, it does change the posterior and strictly speaking, Smith and Gelfand are incorrect. (In other words, the peaks are still in the same place but the shape of the likelihood is changed.) To get the correct posterior likelihood, the factorials should be left in. But for the purposes of the problem set, we will also drop these terms because doing so will allow us to reproduce what Smith and Gelfand have done.  
 

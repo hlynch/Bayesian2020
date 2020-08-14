@@ -29,15 +29,15 @@ What is the predicted value of CWD at TreeDens=1500? There are really two ways t
 $$
 \widehat{CDW}_{\mbox{mean predicted at 1500}} = \hat{\alpha} + \hat{\beta}*1500
 $$
-This approach is perhaps the most intuitive, but it is also wrong. Why? By collapsing the information in the posteriors for  and  to their posterior means, we ignore any correlations between the samples for  and . Its better to sample from the posteriors directly to build up a posterior distribution for . In other words, just sample from the posterior of $\alpha$, sample from the posterior from $\beta$, and plug those samples into
+This approach is perhaps the most intuitive, but it is also wrong. Why? By collapsing the information in the posteriors for $\alpha$ and $\beta$ to their posterior means, we ignore any correlations between the samples for $\alpha$ and $\beta$. Its better to sample from the posteriors directly to build up a posterior distribution for $CWD_{1500}$. In other words, just sample from the posterior of $\alpha$, sample from the posterior from $\beta$, and plug those samples into
 
 $$
 CDW_{\mbox{mean predicted at 1500}} = \alpha_{\mbox{sample}} + \beta_{\mbox{sample}}*1500
 $$
-If you put this in a loop and do this, say, 1000 times, then you create a posterior distribution for predicted  at TreeDens=1500. The posterior mean is the better estimate of $\widehat{CDW}_{\mbox{1500}}$. Not only that, but now you have more information, because you have the entire posterior distribution. Using this we can directly extract the 95th percentile credible interval. This is analogous to the **confidence interval** from Biometry. In other words, the uncertainty here stems directly and only from the uncertainty in the parameters. To get a **prediction interval**, we need to go one step further and draw samples from
+If you put this in a loop and do this, say, 1000 times, then you create a posterior distribution for predicted $CWD$ at TreeDens=1500. The posterior mean is the better estimate of $\widehat{CDW}_{\mbox{1500}}$. Not only that, but now you have more information, because you have the entire posterior distribution. Using this we can directly extract the 95th percentile credible interval. This is analogous to the **confidence interval** from Biometry. In other words, the uncertainty here stems directly and only from the uncertainty in the parameters. To get a **prediction interval**, we need to go one step further and draw samples from
 
 $$
-CDW_{\mbox{predicted at 1500}} \sim N(CDW_{\mbox{mean predicted at 1500}},\widehat{\sigma^{2}})
+CDW_{\mbox{predicted at 1500}} \sim N(CDW_{\mbox{mean predicted at 1500}},\sigma^{2}_{\mbox{sample}})
 $$
 
 Just as before, we should sample from the posterior for $\sigma^{2}$, and not just use the posterior mean. We can do this in JAGS by just adding the calculation to the code; for each sample from the posteriors for $\alpha$, $\beta$, and $\sigma^{2}$, we can sample from this distribution. Since this is done at each iteration of the chain, we end up with a posterior distribution describing the prediction interval. It is generally far better to anticipate what you will want out of the model and have the model calculate this as it samples than to try and **post hoc** propagate all the uncertainities.
