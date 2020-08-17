@@ -5,7 +5,7 @@
 #############################
 
 jags.directory="/usr/local/bin"
-setwd("/Volumes/TEACHING/Bayesian stats/Week 1 Introduction to Bayesian Statistics/Lab/")
+setwd("~/Dropbox/BayesianFiles/Week 1 Introduction/Lab")
 
 #############################
 #
