@@ -4,7 +4,7 @@ Week 13 Lecture
 Papers to read this week:
 
 * [Beaumont 2010](https://github.com/hlynch/Bayesian2020/tree/master/_data/Beaumont2010.pdf)
-* [Beaumont and Rannala 2004](https://github.com/hlynch/Bayesian2020/tree/master/_data/BeaumontRanalla2004.pdf)
+* [Beaumont and Rannala 2004](https://github.com/hlynch/Bayesian2020/tree/master/_data/BeaumontRannala2004.pdf)
 
 We will start with a quote from Beaumont 2010: "For many problems, although it may be straightforward to write a computer program to simulate data, it may actually be very difficult to work out the likelihood function."
 
