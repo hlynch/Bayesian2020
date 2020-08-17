@@ -208,6 +208,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="21.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#what-other-kind-of-models-might-you-fit"><i class="fa fa-check"></i><b>21.5</b> What other kind of models might you fit</a></li>
 <li class="chapter" data-level="21.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#occupancy-modelling"><i class="fa fa-check"></i><b>21.6</b> Occupancy modelling</a></li>
 <li class="chapter" data-level="21.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#dynamic-state-space-models-for-meta-population-dynamics"><i class="fa fa-check"></i><b>21.7</b> Dynamic state-space models for meta-population dynamics</a></li>
+<li class="chapter" data-level="21.8" data-path="week-12-lecture.html"><a href="week-12-lecture.html#for-more-information-about-this-weeks-topic-7"><i class="fa fa-check"></i><b>21.8</b> For more information about this week’s topic</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lab</a><ul>
 <li class="chapter" data-level="22.1" data-path="week-12-lab.html"><a href="week-12-lab.html#the-zeros-trick"><i class="fa fa-check"></i><b>22.1</b> The ‘zeros’ trick</a></li>
@@ -255,7 +256,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="week-12-lecture" class="section level1">
 <h1><span class="header-section-number">21</span> Week 12 Lecture</h1>
-<p>** Read McCarthy and Masters (2005) for lab. We will be working with their data on the European dipper.</p>
+<p>Papers to read this week:</p>
+<ul>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/McCarthyMasters2005.pdf">McCarthy and Masters 2005</a>: We will be using this dataset for the lab and problem set</li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/RoyleKery2007.pdf">Royle and Kery 2007</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/RotellaNotesOnCJS.pdf">Rotella Notes on CJS models</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/GimenezEtAl2009.pdf">Gimenez et al. 2009</a>: This paper seems a bit outdated because its using WinBUGS rather than JAGS but the description of methods in this paper are quite clear and worth reading.</li>
+</ul>
 <p>Today we are going to cover two types of models, mark-recapture models and occupancy models that have very different applications but share the same underlying principles.</p>
 <div id="mark-recapture-modeling" class="section level2">
 <h2><span class="header-section-number">21.1</span> Mark-recapture modeling</h2>
@@ -376,6 +383,16 @@ Z_{i,t}|Z_{i,t-1} \sim \mbox{Bern}(Z_{i,t-1}\phi_{t-1}+(1-Z_{i,t-1})\gamma_{t-1}
 <p><span class="math display">\[
 Y_{j,i,t} \sim \mbox{Bern}(Z_{i,t}p_{t})
 \]</span> Royle and Kery make an important point about the difference between finite sample estimators and population estimators (see ‘Finite sample estimation’ section on page 1816). In a conservation context this can be an important distinction. I encourage you to read that section carefully if this is likely to apply to your research.</p>
+</div>
+<div id="for-more-information-about-this-weeks-topic-7" class="section level2">
+<h2><span class="header-section-number">21.8</span> For more information about this week’s topic</h2>
+<ul>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/BaileyEtAl2013.pdf">Bailey et al. 2014</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/KerySchaubChapter13.pdf">Kery and Schaub Chapter 13</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/MattfeldtEtAl2009.pdf">Mattfeldt et al. 2009</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/Royle2008.pdf">Royle 2008</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/IknayanEtAl2004.pdf">Iknayan et al. 2004</a></li>
+</ul>
 
 </div>
 </div>
