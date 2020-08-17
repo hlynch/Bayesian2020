@@ -9,6 +9,7 @@ Papers to read this week:
 * [Nice et al. 2014 Appendix A](https://github.com/hlynch/Bayesian2020/tree/master/_data/NiceEtAl2014AppendixA.pdf)
 
 I've also assigned the paper below. This paper is quite long but it is worth reading through quickly and in parts slowly and carefully, because it nicely explains hierarchical modelling in a non-science context (baseball) that may be more accessible than some of the other readings above. 
+
 * [Kruschke and Vanpaemel 2015](https://github.com/hlynch/Bayesian2020/tree/master/_data/KruschkeVanpaemel2015.pdf)
 
 Hierarchical models are simply models in which model parameters themselves have a statistical distribution. Another definition would be the one provided by Gelman and Hill “…multilevel models are extensions of regression in which data are structured in groups and coefficients can vary by group”. We were introduced to the simplest version of hierarchical models in Biometry when we discussed random effects models. Random effects models are hierarchical models, but the latter term encompasses much more complicated models than can be fit using ‘lmer’ or related functions in R.
@@ -188,7 +189,8 @@ For more information about this week's topic
 ------------------------
 
 Below are papers that use hierarchical modelling in a variety of contexts and address some of the issues that arise in their application:
-* [Gerlamn 2006](https://github.com/hlynch/Bayesian2020/tree/master/_data/Gelman2006.pdf)
+
+* [Gelman 2006](https://github.com/hlynch/Bayesian2020/tree/master/_data/Gelman2006.pdf)
 * [Latimer et al. 2006](https://github.com/hlynch/Bayesian2020/tree/master/_data/LatimerEtAl2006.pdf)
 * [Fordyce et al. 2006](https://github.com/hlynch/Bayesian2020/tree/master/_data/FordyceEtAl2011.pdf)
 * [Stegmueller 2013](https://github.com/hlynch/Bayesian2020/tree/master/_data/Stegmueller2013.pdf)

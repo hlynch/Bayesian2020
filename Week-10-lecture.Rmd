@@ -1,6 +1,14 @@
 Week 10 Lecture
 ========================================================
 
+Papers to read this week:
+
+* [Nakagawa and Freckleton 2008](https://github.com/hlynch/Bayesian2020/tree/master/_data/NakagawaFreckleton2008.pdf)
+* [Gelman and Hill Chapter 25](https://github.com/hlynch/Bayesian2020/tree/master/_data/GelmanHillChapter25.pdf)
+* [Robert and Casella Lecture Notes](https://github.com/hlynch/Bayesian2020/tree/master/_data/MCMC-UseR.pdf): For the purpose of this week, focus on Chapter 8 starting on Page 210. 
+* [Lunn et al. Sections 4.3-4.5](https://github.com/hlynch/Bayesian2020/tree/master/_data/Lunn4.pdf)
+
+
 This week we’ll take some time to discuss the messy, annoying computational details of doing Bayesian analyses. Before launching into this, its worth stepping back and reviewing a bit about Analysis of Variance, since the same ideas are going to be useful to us today.
 
 Let’s say I have Normally distributed data on heights and I have three groups of individuals; I may want to ask whether these groups are different in height (on average). At first blush, I could simply take the average height in each group and compare them to each other, but this isn’t a good test. Why? Because if there is any variability in heights, then I do not know whether these group means are different because of random sampling error (i.e. I took a sample from each group and my sample may not be representative of the underlying population because there is some variance and maybe my sample has a few smaller individuals, etc.), or whether they are different because the groups really are fundamentally different in height. This is what we have to decide using the data we have. We do this by computing within-group variance using two methods.
@@ -99,10 +107,10 @@ $$
 $$
 If $\hat{R} \approx 1$, at least <1.1, then we can be fairly confident that the chains have converged.
 
-To gain a little intuition for this statistic, consider the case of very large  (which is always the case, since the chains are always long)
+To gain a little intuition for this statistic, consider the case of very large $n$ (which is always the case, since the chains are always long)
 
 $$
-\hat{R}_{\mbox{n large}} \approx \sqrt{B/n}{W}}
+\hat{R}_{\mbox{n large}} \approx \sqrt{\frac{B/n}{W}}
 $$
 which is basically like comparing two estimates of the variance, one derived from the variance between chains (divided by n, think back to how we got SE from SD!) and one derived from the variance within a chain. 
 
@@ -202,3 +210,9 @@ Here is an example of where the prior was centered on the posterior mean but the
 ```{r echo=FALSE, fig.align='center', fig.cap='Histogram of prior distribution (blue) and posterior distribution (pink).', out.width='75%'}
 knitr::include_graphics('PriorPosterior3.png')
 ```
+
+For more information about this week's topic
+------------------------
+
+* [Brooks and Gelman 1998](https://github.com/hlynch/Bayesian2020/tree/master/_data/BrooksGelman1998.pdf)
+* [Gelman and Shirley 2011](https://github.com/hlynch/Bayesian2020/tree/master/_data/GelmanShirley2011.pdf)

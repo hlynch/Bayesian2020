@@ -99,10 +99,10 @@ $$
 $$
 If $\hat{R} \approx 1$, at least <1.1, then we can be fairly confident that the chains have converged.
 
-To gain a little intuition for this statistic, consider the case of very large  (which is always the case, since the chains are always long)
+To gain a little intuition for this statistic, consider the case of very large $n$ (which is always the case, since the chains are always long)
 
 $$
-\hat{R}_{\mbox{n large}} \approx \sqrt{B/n}{W}}
+\hat{R}_{\mbox{n large}} \approx \sqrt{\frac{B/n}{W}}
 $$
 which is basically like comparing two estimates of the variance, one derived from the variance between chains (divided by n, think back to how we got SE from SD!) and one derived from the variance within a chain. 
 

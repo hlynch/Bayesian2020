@@ -317,9 +317,9 @@ W=\frac{1}{m}\sum_{j=1}^{m}\left[\frac{1}{n-1}\sum_{i=1}^{n}(\overline{\theta_{i
 <p><span class="math display">\[
 \hat{R} = \sqrt{\frac{\widehat{Var(\theta|y)}}{W}}
 \]</span> If <span class="math inline">\(\hat{R} \approx 1\)</span>, at least &lt;1.1, then we can be fairly confident that the chains have converged.</p>
-<p>To gain a little intuition for this statistic, consider the case of very large (which is always the case, since the chains are always long)</p>
+<p>To gain a little intuition for this statistic, consider the case of very large <span class="math inline">\(n\)</span> (which is always the case, since the chains are always long)</p>
 <p><span class="math display">\[
-\hat{R}_{\mbox{n large}} \approx \sqrt{B/n}{W}}
+\hat{R}_{\mbox{n large}} \approx \sqrt{\frac{B/n}{W}}
 \]</span> which is basically like comparing two estimates of the variance, one derived from the variance between chains (divided by n, think back to how we got SE from SD!) and one derived from the variance within a chain.</p>
 <p>The effective sample size <span class="math inline">\(n_{eff}\)</span> is a related measure to <span class="math inline">\(\hat{R}\)</span>.</p>
 </div>
