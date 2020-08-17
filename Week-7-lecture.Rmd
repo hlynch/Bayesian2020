@@ -1,6 +1,10 @@
 Week 7 Lecture
 ========================================================
 
+Papers to read this week:
+
+* [Lunn et al. 6.1 to 6.4](https://github.com/hlynch/Bayesian2020/tree/master/_data/Lunn6_1to6_4.pdf)
+
 Last week I hope I convinced you that Bayesian methods are preferred even for the very simplest problems you could do in your sleep using the skills learned in Biometry. In other words, Bayesian methods aren’t just for hard problems – they are for easy problems too. This week, we’ll continue working on relatively simple models, i.e. linear regression.
 
 By way of brief review, the basic problem to be addressed in simple linear regression is:

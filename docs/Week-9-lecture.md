@@ -1,6 +1,16 @@
 Week 9 Lecture
 ========================================================
 
+Papers to read this week:
+
+* [Gelman and Hill Chapter 11](https://github.com/hlynch/Bayesian2020/tree/master/_data/GelmanHillChapter11.pdf)
+* [Gelman and Hill Chapter 16](https://github.com/hlynch/Bayesian2020/tree/master/_data/GelmanHillChapter16.pdf)
+* [Nice et al. 2014](https://github.com/hlynch/Bayesian2020/tree/master/_data/NiceEtAl2014.pdf)
+* [Nice et al. 2014 Appendix A](https://github.com/hlynch/Bayesian2020/tree/master/_data/NiceEtAl2014AppendixA.pdf)
+
+I've also assigned the paper below. This paper is quite long but it is worth reading through quickly and in parts slowly and carefully, because it nicely explains hierarchical modelling in a non-science context (baseball) that may be more accessible than some of the other readings above. 
+* [Kruschke and Vanpaemel 2015](https://github.com/hlynch/Bayesian2020/tree/master/_data/KruschkeVanpaemel2015.pdf)
+
 Hierarchical models are simply models in which model parameters themselves have a statistical distribution. Another definition would be the one provided by Gelman and Hill “…multilevel models are extensions of regression in which data are structured in groups and coefficients can vary by group”. We were introduced to the simplest version of hierarchical models in Biometry when we discussed random effects models. Random effects models are hierarchical models, but the latter term encompasses much more complicated models than can be fit using ‘lmer’ or related functions in R.
 
 Let’s say that you are modeling survivorship of fish in five different watersheds $(i = 1,2,3,4,5)$.
@@ -173,6 +183,18 @@ The parameters $\mu_{\mu}$,$\mu_{\beta}$ represent the mean community-level resp
 What are the authors talking about in the paragraph starting with “We then asked if differences among species…” on page 2159?
 
 How do the authors represent their results? See Figures 1 and 2. Which approach do you like better (Figure 1 or 2)? Why? Note that in Table 1 and Figure 3 (and elsewhere), the authors have used the median and not the mean to represent the central posterior value. Why might they have done that? 
+
+For more information about this week's topic
+------------------------
+
+Below are papers that use hierarchical modelling in a variety of contexts and address some of the issues that arise in their application:
+* [Gerlamn 2006](https://github.com/hlynch/Bayesian2020/tree/master/_data/Gelman2006.pdf)
+* [Latimer et al. 2006](https://github.com/hlynch/Bayesian2020/tree/master/_data/LatimerEtAl2006.pdf)
+* [Fordyce et al. 2006](https://github.com/hlynch/Bayesian2020/tree/master/_data/FordyceEtAl2011.pdf)
+* [Stegmueller 2013](https://github.com/hlynch/Bayesian2020/tree/master/_data/Stegmueller2013.pdf)
+* [Ver Hoef et al. 2014](https://github.com/hlynch/Bayesian2020/tree/master/_data/VerHoefEtAl2014.pdf)
+* [Hatala et al. 2011](https://github.com/hlynch/Bayesian2020/tree/master/_data/HatalaEtAl2011.pdf)
+
 
 
 

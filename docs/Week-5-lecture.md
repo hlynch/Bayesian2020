@@ -5,7 +5,7 @@ Papers to read this week:
 
 * [Lunn et al. Chapter 4](https://github.com/hlynch/Bayesian2020/tree/master/_data/Lunn4.pdf)
 * [Robert and Casella Lecture Notes](https://github.com/hlynch/Bayesian2020/tree/master/_data/MCMC-UseR.pdf): For the purpose of this week, focus on pages 126-167. 
-* [ClarkLab5](https://github.com/hlynch/Bayesian2020/tree/master/_data/ClarkLab5.pdf)
+* [Clark Lab 5](https://github.com/hlynch/Bayesian2020/tree/master/_data/ClarkLab5.pdf)
 
 Last week we talked about several applications of MC methods. This week, we are going to expand on these ideas to cover two additional, very important, applications:
 

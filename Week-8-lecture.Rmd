@@ -1,6 +1,12 @@
 Week 8 Lecture
 ========================================================
 
+Papers to read this week:
+
+* [Kery Chapter 13](https://github.com/hlynch/Bayesian2020/tree/master/_data/KeryChapter13.pdf)
+* [Kery Chapter 14](https://github.com/hlynch/Bayesian2020/tree/master/_data/KeryChapter14.pdf)
+* [Kery Chapter 16](https://github.com/hlynch/Bayesian2020/tree/master/_data/KeryChapter16.pdf)
+
 There is almost nothing special to say about Bayesian GLMs because the JAGS language makes it perfectly transparent what model is being used for the data and switching to something other than a normal is straightforward. Nevertheless, it’s a good opportunity to get some more practice with JAGS and review the basic principles of non-linear models/GLMs.
 
 First, we will start with a review of such models, a subject that many people find challenging the first time around (a.k.a. in Biometry). Let’s start with the model equation for a standard regression with normally distributed errors:

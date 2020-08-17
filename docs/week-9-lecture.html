@@ -25,7 +25,7 @@
 <meta name="author" content="Heather Lynch">
 
 
-<meta name="date" content="2020-08-14">
+<meta name="date" content="2020-08-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -171,6 +171,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#multilevel-modelling-ala-gelman-and-hill"><i class="fa fa-check"></i><b>15.2</b> Multilevel modelling ala Gelman and Hill</a></li>
 <li class="chapter" data-level="15.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#in-sum."><i class="fa fa-check"></i><b>15.3</b> In sum….</a></li>
 <li class="chapter" data-level="15.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#nice-et-al.-2014"><i class="fa fa-check"></i><b>15.4</b> Nice et al. (2014)</a></li>
+<li class="chapter" data-level="15.5" data-path="week-9-lecture.html"><a href="week-9-lecture.html#for-more-information-about-this-weeks-topic-4"><i class="fa fa-check"></i><b>15.5</b> For more information about this week’s topic</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lab</a></li>
 <li class="chapter" data-level="17" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>17</b> Week 10 Lecture</a><ul>
@@ -252,6 +253,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="week-9-lecture" class="section level1">
 <h1><span class="header-section-number">15</span> Week 9 Lecture</h1>
+<p>Papers to read this week:</p>
+<ul>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/GelmanHillChapter11.pdf">Gelman and Hill Chapter 11</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/GelmanHillChapter16.pdf">Gelman and Hill Chapter 16</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/NiceEtAl2014.pdf">Nice et al. 2014</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/NiceEtAl2014AppendixA.pdf">Nice et al. 2014 Appendix A</a></li>
+</ul>
+<p>I’ve also assigned the paper below. This paper is quite long but it is worth reading through quickly and in parts slowly and carefully, because it nicely explains hierarchical modelling in a non-science context (baseball) that may be more accessible than some of the other readings above. * <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/KruschkeVanpaemel2015.pdf">Kruschke and Vanpaemel 2015</a></p>
 <p>Hierarchical models are simply models in which model parameters themselves have a statistical distribution. Another definition would be the one provided by Gelman and Hill “…multilevel models are extensions of regression in which data are structured in groups and coefficients can vary by group”. We were introduced to the simplest version of hierarchical models in Biometry when we discussed random effects models. Random effects models are hierarchical models, but the latter term encompasses much more complicated models than can be fit using ‘lmer’ or related functions in R.</p>
 <p>Let’s say that you are modeling survivorship of fish in five different watersheds <span class="math inline">\((i = 1,2,3,4,5)\)</span>.</p>
 <p><span class="math display">\[
@@ -363,6 +372,10 @@ logit(p_{ij}) \sim \mu_{\mbox{species}_{i}} + \beta_{1species_i} \times \mbox{co
 \]</span> The parameters <span class="math inline">\(\mu_{\mu}\)</span>,<span class="math inline">\(\mu_{\beta}\)</span> represent the mean community-level response, and <span class="math inline">\(\tau_{\mu}\)</span>,<span class="math inline">\(\tau_{\beta}\)</span> represent how much variation there is at the species level (i.e. between species variation <span class="math inline">\(=1/\tau\)</span>).</p>
 <p>What are the authors talking about in the paragraph starting with “We then asked if differences among species…” on page 2159?</p>
 <p>How do the authors represent their results? See Figures 1 and 2. Which approach do you like better (Figure 1 or 2)? Why? Note that in Table 1 and Figure 3 (and elsewhere), the authors have used the median and not the mean to represent the central posterior value. Why might they have done that?</p>
+</div>
+<div id="for-more-information-about-this-weeks-topic-4" class="section level2">
+<h2><span class="header-section-number">15.5</span> For more information about this week’s topic</h2>
+<p>Below are papers that use hierarchical modelling in a variety of contexts and address some of the issues that arise in their application: * <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/Gelman2006.pdf">Gerlamn 2006</a> * <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/LatimerEtAl2006.pdf">Latimer et al. 2006</a> * <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/FordyceEtAl2011.pdf">Fordyce et al. 2006</a> * <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/Stegmueller2013.pdf">Stegmueller 2013</a> * <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/VerHoefEtAl2014.pdf">Ver Hoef et al. 2014</a> * <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/HatalaEtAl2011.pdf">Hatala et al. 2011</a></p>
 
 </div>
 </div>

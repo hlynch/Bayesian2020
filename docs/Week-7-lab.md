@@ -1,7 +1,7 @@
 Week 7 Lab
 ========================================================
 
-This week we’ll be using a dataset on flower phenology that was published in PLOS ONE. The paper was assigned as reading to give you a brief overview of the data. (NB: The temperature data for 1894 was missing, and I have replaced it with the mean temperature from the other years just for the purposes of doing the lab.)
+This week we’ll be using a [dataset](https://github.com/hlynch/Bayesian2020/tree/master/_data/ElwoodEtAl2013.pdf) on flower phenology that was published in [PLOS ONE](https://github.com/hlynch/Bayesian2020/tree/master/_data/PLOSdataConcord.csv). Please read the paper so you have some context for the modelling that we will be doing. (NB: The temperature data for 1894 was missing, and I have replaced it with the mean temperature from the other years just for the purposes of doing the lab.)
 
 This is as good a time as any to introduce some of the R packages designed to help you plot and evaluate MCMC chains produced by JAGS.  Download the [‘coda’](https://cran.r-project.org/web/packages/coda/index.html) package in R and read through the manual. There is another newer package called [‘MCMCvis'](https://cran.r-project.org/web/packages/MCMCvis/index.html) written by a former PhD student of mine Casey Youngflesh that has many nice features as well.
 

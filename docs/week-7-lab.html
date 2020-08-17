@@ -25,7 +25,7 @@
 <meta name="author" content="Heather Lynch">
 
 
-<meta name="date" content="2020-08-14">
+<meta name="date" content="2020-08-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -171,6 +171,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#multilevel-modelling-ala-gelman-and-hill"><i class="fa fa-check"></i><b>15.2</b> Multilevel modelling ala Gelman and Hill</a></li>
 <li class="chapter" data-level="15.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#in-sum."><i class="fa fa-check"></i><b>15.3</b> In sum….</a></li>
 <li class="chapter" data-level="15.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#nice-et-al.-2014"><i class="fa fa-check"></i><b>15.4</b> Nice et al. (2014)</a></li>
+<li class="chapter" data-level="15.5" data-path="week-9-lecture.html"><a href="week-9-lecture.html#for-more-information-about-this-weeks-topic-4"><i class="fa fa-check"></i><b>15.5</b> For more information about this week’s topic</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lab</a></li>
 <li class="chapter" data-level="17" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>17</b> Week 10 Lecture</a><ul>
@@ -252,7 +253,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="week-7-lab" class="section level1">
 <h1><span class="header-section-number">12</span> Week 7 Lab</h1>
-<p>This week we’ll be using a dataset on flower phenology that was published in PLOS ONE. The paper was assigned as reading to give you a brief overview of the data. (NB: The temperature data for 1894 was missing, and I have replaced it with the mean temperature from the other years just for the purposes of doing the lab.)</p>
+<p>This week we’ll be using a <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/ElwoodEtAl2013.pdf">dataset</a> on flower phenology that was published in <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/PLOSdataConcord.csv">PLOS ONE</a>. Please read the paper so you have some context for the modelling that we will be doing. (NB: The temperature data for 1894 was missing, and I have replaced it with the mean temperature from the other years just for the purposes of doing the lab.)</p>
 <p>This is as good a time as any to introduce some of the R packages designed to help you plot and evaluate MCMC chains produced by JAGS. Download the <a href="https://cran.r-project.org/web/packages/coda/index.html">‘coda’</a> package in R and read through the manual. There is another newer package called <a href="https://cran.r-project.org/web/packages/MCMCvis/index.html">‘MCMCvis’</a> written by a former PhD student of mine Casey Youngflesh that has many nice features as well.</p>
 <p>Exercise: Write a script to use JAGS to fit a linear regression model to the flower data. In other words, write a JAGS script to fit the following model:</p>
 <p><span class="math display">\[
