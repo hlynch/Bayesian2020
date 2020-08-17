@@ -1,6 +1,14 @@
 Week 14 Lecture
 ========================================================
 
+Papers to read this week:
+
+* [Gelman and Shalizi 2013](https://github.com/hlynch/Bayesian2020/tree/master/_data/GelmanShalizi2013.pdf)
+* [Pitt and Myung 2002](https://github.com/hlynch/Bayesian2020/tree/master/_data/PittMyung2002.pdf)
+* [Spiegelhalter et al. 2014](https://github.com/hlynch/Bayesian2020/tree/master/_data/SpiegelhalterEtAl2014.pdf)
+* [Greenland and Poole 2013](https://github.com/hlynch/Bayesian2020/tree/master/_data/GreenlandPoole2013.pdf)
+* [Ward 2008](https://github.com/hlynch/Bayesian2020/tree/master/_data/Ward2008.pdf)
+
 We’ve spent the last few weeks learning how to run models in JAGS, and now we cycle back to some more basic questions about how hypothesis testing is actually done in a Bayesian framework. **Everything covered this week is a matter of continuing development.**  Different experts and textbooks will disagree on the best method, and the use of any one method may draw ire from reviewers. There are no easy and simply ways to check that your model works; these problems are the same as those in frequentist statistics except that the field is newer and so the approaches are still a matter of some debate and discussion.
 
 We usually have two questions when fitting models with data:
@@ -180,4 +188,7 @@ The DIC is an omnibus measure of fit, and its use is fairly contested among stat
 
 We will discuss a fourth method, Bayes Factors, next week when we dig deeper into the world of multimodel inference.
 
+For more information about this week's topic
+------------------------
 
+* [Kass and Raftery 1995](https://github.com/hlynch/Bayesian2020/tree/master/_data/KassRaftery1995.pdf)

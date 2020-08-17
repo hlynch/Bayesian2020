@@ -8,7 +8,6 @@ Papers to read this week:
 * [Rotella Notes on CJS models](https://github.com/hlynch/Bayesian2020/tree/master/_data/RotellaNotesOnCJS.pdf)
 * [Gimenez et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/GimenezEtAl2009.pdf): This paper seems a bit outdated because its using WinBUGS rather than JAGS but the description of methods in this paper are quite clear and worth reading.
 
-
 Today we are going to cover two types of models, mark-recapture models and occupancy models that have very different applications but share the same underlying principles.
 
 Mark-recapture modeling
@@ -184,3 +183,5 @@ For more information about this week's topic
 * [Mattfeldt et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/MattfeldtEtAl2009.pdf)
 * [Royle 2008](https://github.com/hlynch/Bayesian2020/tree/master/_data/Royle2008.pdf)
 * [Iknayan et al. 2004](https://github.com/hlynch/Bayesian2020/tree/master/_data/IknayanEtAl2004.pdf)
+* [Kery and Royle 2010](https://github.com/hlynch/Bayesian2020/tree/master/_data/KeryRoyle2010.pdf)
+* [Poole 2002](https://github.com/hlynch/Bayesian2020/tree/master/_data/Poole2002.pdf)

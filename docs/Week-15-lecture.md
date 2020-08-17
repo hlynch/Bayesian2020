@@ -1,6 +1,13 @@
 Week 15 Lecture
 ========================================================
 
+Papers to read this week:
+
+* [Lunn et al. Sections 8.7 to 8.10](https://github.com/hlynch/Bayesian2020/tree/master/_data/Lunn8_7to8_10.pdf)
+* [Link and Barker 2006](https://github.com/hlynch/Bayesian2020/tree/master/_data/LinkBarker2006.pdf)
+* [Link and Barker Chapter 7](https://github.com/hlynch/Bayesian2020/tree/master/_data/LinkBarkerChapter7.pdf)
+* [Tenan et al. 2014](https://github.com/hlynch/Bayesian2020/tree/master/_data/TenanEtAl2014.pdf)
+
 Whereas DIC is analogous to AIC, Bayes Factors are analogous to likelihood ratios. We can extend Bayes theorem to compare multiple models as follows:
 
 $$
@@ -59,3 +66,9 @@ If you have a comprehensive model with many covariates, and your interest is in 
 What do we do if the prior and the data do not agree? Perhaps you have an informative prior based on previous work, but it occupies almost non-overlapping parameter space with the data you have in hand? In these cases you have to be careful, as you can end up with posteriors that are \emph{between} the prior and the likelihood, but representing \emph{neither} the prior nor the likelihood. (Lunn et al. cite Stephen Senn’s characterization of this: “a Bayesian is someone who, suspecting a donkey and catching a glimpse of what looks like a horse, strong concludes he has seen a mule”.)
 
 One solution (see Lunn and references therein) is to choose a prior that is a mixture distribution of the informed prior and an uninformative prior; in a vague sense this will force the Bayesian model to choose between these two competing prior (informed vs vague). In practice, this is well into messy Bayesian territory; the actual details here would likely take you so far astray of the science you are interested in that it may be time to go back to the beginning and think about the modeling approach from scratch.
+
+For more information about this week's topic
+------------------------
+
+* [Ohara and Sillanpaa 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/OharaSillanpaa2009.pdf)
+* [Jeffreys and Berger 1992](https://github.com/hlynch/Bayesian2020/tree/master/_data/JeffreysBerger1992.pdf)

@@ -16,14 +16,14 @@ link-citations: yes
 
 This eBook contains all of the lecture notes and lab exercises that we will do this semester in Bayesian Data Analysis and Computation. While I have made every effort to cite sources where I've used "found" material, this eBook reflects my own personal notes drawn up over the last seven years and some material may not properly identify the original sources used in drawing up my initial lecture notes. As I have moved this material into an online eBook, I have tried to better document material inspired by or drawn from other sources. If you find anything in these notes that is not properly cited or sourced, please let me know so it can be amended. Any mistakes are mine and mine alone.
 
-Important class dates:
+**Important class dates**:
 
-September 16: Project proposal due
+**September 16**: Project proposal due
 
-September 28: Midterm exam
+**September 28**: Midterm exam
 
-December 4: Projects due
+**December 4**: Projects due
 
-December 9: Project peer reviews due
+**December 9**: Project peer reviews due
 
-December 11: Project peer reviews responses due
+**December 11**: Project peer reviews responses due

@@ -71,4 +71,4 @@ For more information about this week's topic
 ------------------------
 
 * [Ohara and Sillanpaa 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/OharaSillanpaa2009.pdf)
-* [Jeffreys and Berger 1992](https://github.com/hlynch/Bayesian2020/tree/master/_data/JeffreysBerger1992.pdf)
+* [Jefferys and Berger 1992](https://github.com/hlynch/Bayesian2020/tree/master/_data/JefferysBerger1992.pdf)

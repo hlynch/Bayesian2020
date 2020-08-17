@@ -222,9 +222,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="23.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-1-basic-rejection-abc"><i class="fa fa-check"></i><b>23.2</b> Option #1: Basic rejection ABC</a></li>
 <li class="chapter" data-level="23.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-2-markov-chain-monte-carlo-abc"><i class="fa fa-check"></i><b>23.3</b> Option #2: Markov Chain Monte Carlo ABC</a></li>
 <li class="chapter" data-level="23.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-3-sequential-monte-carlo-abc"><i class="fa fa-check"></i><b>23.4</b> Option #3: Sequential Monte Carlo ABC</a></li>
+<li class="chapter" data-level="23.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#for-more-information-about-this-weeks-topic-8"><i class="fa fa-check"></i><b>23.5</b> For more information about this week’s topic</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 14 Lecture</a><ul>
 <li class="chapter" data-level="24.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#the-mona-lisa"><i class="fa fa-check"></i><b>24.1</b> The Mona Lisa</a></li>
+<li class="chapter" data-level="24.2" data-path="week-14-lecture.html"><a href="week-14-lecture.html#for-more-information-about-this-weeks-topic-9"><i class="fa fa-check"></i><b>24.2</b> For more information about this week’s topic</a></li>
 </ul></li>
 <li class="chapter" data-level="25" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>25</b> Week 14 Lab</a></li>
 <li class="chapter" data-level="26" data-path="week-15-lecture.html"><a href="week-15-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 15 Lecture</a><ul>
@@ -233,6 +235,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="26.3" data-path="week-15-lecture.html"><a href="week-15-lecture.html#beyond-bayes-factors"><i class="fa fa-check"></i><b>26.3</b> Beyond Bayes Factors</a></li>
 <li class="chapter" data-level="26.4" data-path="week-15-lecture.html"><a href="week-15-lecture.html#variable-selection-for-nested-models"><i class="fa fa-check"></i><b>26.4</b> Variable selection for nested models</a></li>
 <li class="chapter" data-level="26.5" data-path="week-15-lecture.html"><a href="week-15-lecture.html#prior-data-conflict"><i class="fa fa-check"></i><b>26.5</b> Prior-data conflict</a></li>
+<li class="chapter" data-level="26.6" data-path="week-15-lecture.html"><a href="week-15-lecture.html#for-more-information-about-this-weeks-topic-10"><i class="fa fa-check"></i><b>26.6</b> For more information about this week’s topic</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -256,6 +259,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="week-15-lecture" class="section level1">
 <h1><span class="header-section-number">26</span> Week 15 Lecture</h1>
+<p>Papers to read this week:</p>
+<ul>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/Lunn8_7to8_10.pdf">Lunn et al. Sections 8.7 to 8.10</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/LinkBarker2006.pdf">Link and Barker 2006</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/LinkBarkerChapter7.pdf">Link and Barker Chapter 7</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/TenanEtAl2014.pdf">Tenan et al. 2014</a></li>
+</ul>
 <p>Whereas DIC is analogous to AIC, Bayes Factors are analogous to likelihood ratios. We can extend Bayes theorem to compare multiple models as follows:</p>
 <p><span class="math display">\[
 \frac{P(M_{1}|D)}{P(M_{2}|D)} = \frac{P(M_{1})P(D|M_{1})}{P(M_{2})P(D|M_{2})} = \frac{P(M_{1})}{P(M_{2})} \times \frac{P(D|M_{1})}{P(D|M_{2})}
@@ -302,6 +312,13 @@ P(D|M_{1}) = \int p(D,\theta_{M1})d\theta
 <h2><span class="header-section-number">26.5</span> Prior-data conflict</h2>
 <p>What do we do if the prior and the data do not agree? Perhaps you have an informative prior based on previous work, but it occupies almost non-overlapping parameter space with the data you have in hand? In these cases you have to be careful, as you can end up with posteriors that are  the prior and the likelihood, but representing  the prior nor the likelihood. (Lunn et al. cite Stephen Senn’s characterization of this: “a Bayesian is someone who, suspecting a donkey and catching a glimpse of what looks like a horse, strong concludes he has seen a mule”.)</p>
 <p>One solution (see Lunn and references therein) is to choose a prior that is a mixture distribution of the informed prior and an uninformative prior; in a vague sense this will force the Bayesian model to choose between these two competing prior (informed vs vague). In practice, this is well into messy Bayesian territory; the actual details here would likely take you so far astray of the science you are interested in that it may be time to go back to the beginning and think about the modeling approach from scratch.</p>
+</div>
+<div id="for-more-information-about-this-weeks-topic-10" class="section level2">
+<h2><span class="header-section-number">26.6</span> For more information about this week’s topic</h2>
+<ul>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/OharaSillanpaa2009.pdf">Ohara and Sillanpaa 2009</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/JeffreysBerger1992.pdf">Jeffreys and Berger 1992</a></li>
+</ul>
 
 </div>
 </div>
