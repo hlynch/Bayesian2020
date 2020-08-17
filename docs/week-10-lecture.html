@@ -182,6 +182,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="17.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#missing-data"><i class="fa fa-check"></i><b>17.5</b> Missing data</a></li>
 <li class="chapter" data-level="17.6" data-path="week-10-lecture.html"><a href="week-10-lecture.html#initial-values"><i class="fa fa-check"></i><b>17.6</b> Initial values</a></li>
 <li class="chapter" data-level="17.7" data-path="week-10-lecture.html"><a href="week-10-lecture.html#sample-scripts-and-output-for-prior-posterior-overlap"><i class="fa fa-check"></i><b>17.7</b> Sample scripts and output for prior-posterior overlap</a></li>
+<li class="chapter" data-level="17.8" data-path="week-10-lecture.html"><a href="week-10-lecture.html#for-more-information-about-this-weeks-topic-5"><i class="fa fa-check"></i><b>17.8</b> For more information about this week’s topic</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lab</a></li>
 <li class="chapter" data-level="19" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>19</b> Week 11 Lecture</a><ul>
@@ -253,6 +254,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="week-10-lecture" class="section level1">
 <h1><span class="header-section-number">17</span> Week 10 Lecture</h1>
+<p>Papers to read this week:</p>
+<ul>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/NakagawaFreckleton2008.pdf">Nakagawa and Freckleton 2008</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/GelmanHillChapter25.pdf">Gelman and Hill Chapter 25</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/MCMC-UseR.pdf">Robert and Casella Lecture Notes</a>: For the purpose of this week, focus on Chapter 8 starting on Page 210.</li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/Lunn4.pdf">Lunn et al. Sections 4.3-4.5</a></li>
+</ul>
 <p>This week we’ll take some time to discuss the messy, annoying computational details of doing Bayesian analyses. Before launching into this, its worth stepping back and reviewing a bit about Analysis of Variance, since the same ideas are going to be useful to us today.</p>
 <p>Let’s say I have Normally distributed data on heights and I have three groups of individuals; I may want to ask whether these groups are different in height (on average). At first blush, I could simply take the average height in each group and compare them to each other, but this isn’t a good test. Why? Because if there is any variability in heights, then I do not know whether these group means are different because of random sampling error (i.e. I took a sample from each group and my sample may not be representative of the underlying population because there is some variance and maybe my sample has a few smaller individuals, etc.), or whether they are different because the groups really are fundamentally different in height. This is what we have to decide using the data we have. We do this by computing within-group variance using two methods.</p>
 <p>Method #1: The simplest way of estimating within group variance is just to calculate it. In other words, calculate the variance for each group individually. If we have 3 groups, we now have 3 estimates of within group variance. To get an average estimate of within-group variance, we can just average those estimates together. More formally:</p>
@@ -406,6 +414,13 @@ Figure 8.1: Histogram of prior distribution (blue) and posterior distribution (p
 Figure 8.2: Histogram of prior distribution (blue) and posterior distribution (pink).
 </p>
 </div>
+</div>
+<div id="for-more-information-about-this-weeks-topic-5" class="section level2">
+<h2><span class="header-section-number">17.8</span> For more information about this week’s topic</h2>
+<ul>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/BrooksGelman1998.pdf">Brooks and Gelman 1998</a></li>
+<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/GelmanShirley2011.pdf">Gelman and Shirley 2011</a></li>
+</ul>
 
 </div>
 </div>
