@@ -204,7 +204,7 @@ Testing JAGS installation
 
 While there are several options for fitting Bayesian models, including writing your own custom samplers, in this class we will use [JAGS](http://mcmc-jags.sourceforge.net/), which stands for Just Another Gibbs Sampler. We're not really going to get into using JAGS for fitting models until lab, I want to make sure everyone has JAGS installed properly.
 
-Once you have installed JAGS, we can make sure its working by running the R code in 'Week 1 JAGS test.R'. This "wrapper" code gets the model variables set up and organized, and passes it to the actual JAGS code in the file 'Week1_TestModel.jags'. Make sure that the .jags file is in the Working Directory so the wrapper file can find it.
+Once you have installed JAGS, we can make sure its working by running the R code in [Week 1 JAGS test.R](https://github.com/hlynch/Bayesian2020/tree/master/_data/Week 1 JAGS test.R). This "wrapper" code gets the model variables set up and organized, and passes it to the actual JAGS code in the file [Week1_TestModel.jags](https://github.com/hlynch/Bayesian2020/tree/master/_data/Week1_TestModel.jags). Make sure that the .jags file is in the Working Directory so the wrapper file can find it.
 
 For more information about this week's topic
 ------------------------
