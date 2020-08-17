@@ -3,7 +3,7 @@ Week 11 Lecture
 
 Papers to read this week:
 
-* [Bilker Chapter 11](https://github.com/hlynch/Bayesian2020/tree/master/_data/BolkerChapter11.pdf)
+* [Bolker Chapter 11](https://github.com/hlynch/Bayesian2020/tree/master/_data/BolkerChapter11.pdf)
 * [Clark and Bjornstad 2004](https://github.com/hlynch/Bayesian2020/tree/master/_data/ClarkBjornstad2004.pdf)
 
 For the problem set, you will also need to read:
@@ -186,7 +186,7 @@ There are a large number of really interesting papers illustrating applications 
 * [Buckland et al. 2007](https://github.com/hlynch/Bayesian2020/tree/master/_data/BucklandEtAl2007.pdf)
 * [Oppel et al. 2014](https://github.com/hlynch/Bayesian2020/tree/master/_data/OppelEtAl2014.pdf)
 * [Rotella et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/RotellaEtAl2009.pdf)
-* [Tavecchia et al. 2007](https://github.com/hlynch/Bayesian2020/tree/master/_data/TavecchiaEtAl2007.pdf)
+* [Tavecchia et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/TavecchiaEtAl2009.pdf)
 
 Papers related to theory and statistical inference:
 

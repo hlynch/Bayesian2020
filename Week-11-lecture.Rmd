@@ -188,6 +188,7 @@ There are a large number of really interesting papers illustrating applications 
 
 Papers related to theory and statistical inference:
 
+* [de Valpine 2002](https://github.com/hlynch/Bayesian2020/tree/master/_data/deValpine2002.pdf)
 * [Auger-Methe et al. 2016](https://github.com/hlynch/Bayesian2020/tree/master/_data/AugerMetheEtAl2016.pdf)
 * [Cressie et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/CressieEtAl2009.pdf)
 * [Freckleton et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/FreckletonEtAl2006.pdf)

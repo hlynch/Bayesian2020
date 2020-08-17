@@ -1,7 +1,13 @@
 Week 12 Lecture
 ========================================================
 
-** Read McCarthy and Masters (2005) for lab. We will be working with their data on the European dipper.
+Papers to read this week:
+
+* [McCarthy and Masters 2005](https://github.com/hlynch/Bayesian2020/tree/master/_data/McCarthyMasters2005.pdf): We will be using this dataset for the lab and problem set
+* [Royle and Kery 2007](https://github.com/hlynch/Bayesian2020/tree/master/_data/RoyleKery2007.pdf)
+* [Rotella Notes on CJS models](https://github.com/hlynch/Bayesian2020/tree/master/_data/RotellaNotesOnCJS.pdf)
+* [Gimenez et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/GimenezEtAl2009.pdf): This paper seems a bit outdated because its using WinBUGS rather than JAGS but the description of methods in this paper are quite clear and worth reading.
+
 
 Today we are going to cover two types of models, mark-recapture models and occupancy models that have very different applications but share the same underlying principles.
 
@@ -167,3 +173,11 @@ Y_{j,i,t} \sim \mbox{Bern}(Z_{i,t}p_{t})
 $$
 Royle and Kery make an important point about the difference between finite sample estimators and population estimators (see ‘Finite sample estimation’ section on page 1816). In a conservation context this can be an important distinction. I encourage you to read that section carefully if this is likely to apply to your research.
 
+For more information about this week's topic
+------------------------
+
+* [Bailey et al. 2014](https://github.com/hlynch/Bayesian2020/tree/master/_data/BaileyEtAl2013.pdf)
+* [Kery and Schaub Chapter 13](https://github.com/hlynch/Bayesian2020/tree/master/_data/KerySchaubChapter13.pdf)
+* [Mattfeldt et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/MattfeldtEtAl2009.pdf)
+* [Royle 2008](https://github.com/hlynch/Bayesian2020/tree/master/_data/Royle2008.pdf)
+* [Iknayan et al. 2004](https://github.com/hlynch/Bayesian2020/tree/master/_data/IknayanEtAl2004.pdf)
