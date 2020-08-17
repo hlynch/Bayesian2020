@@ -387,6 +387,7 @@ Some more detailed statistical papers on various aspects of sampling:
 * [Casella and George 1992](https://github.com/hlynch/Bayesian2020/tree/master/_data/CasellaGeorge1992.pdf)
 * [Gelfand and Smith 1990](https://github.com/hlynch/Bayesian2020/tree/master/_data/GelfandSmith1990.pdf)
 * [Chib and Greenberg 1995](https://github.com/hlynch/Bayesian2020/tree/master/_data/ChibGreenberg1995.pdf)
+* [Geyer 2011](https://github.com/hlynch/Bayesian2020/tree/master/_data/Geyer2011.pdf)
 
 A fairly non-technical paper about using MCMC in understanding landslides from [$\textit{Physics Today}$](https://github.com/hlynch/Bayesian2020/tree/master/_data/PhysicsToday.pdf).
 

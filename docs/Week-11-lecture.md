@@ -1,6 +1,15 @@
 Week 11 Lecture
 ========================================================
 
+Papers to read this week:
+
+* [Bilker Chapter 11](https://github.com/hlynch/Bayesian2020/tree/master/_data/BolkerChapter11.pdf)
+* [Clark and Bjornstad 2004](https://github.com/hlynch/Bayesian2020/tree/master/_data/ClarkBjornstad2004.pdf)
+
+For the problem set, you will also need to read:
+
+* [Clark et al. 2010](https://github.com/hlynch/Bayesian2020/tree/master/_data/ClarkEtAl2010.pdf)
+
 We have some more topics to cover in terms of model comparison and hypothesis testing, but first we will cover state-space models so that we can discuss model comparison in terms of various models for population dynamics.
 
 ‘State-space’ is a generic term used for any kind of modeling in which the observed variables pass between different states. These are often time series models, in which the states are the different time periods of measurement, or they may represent the transitions between different life stages of an animal (for existence). Bolker talks about “dynamical models”. In this case, the states are assumed to represent time. These would be considered a subset of state-space models. (You might further specify that a model is stage-structured or age-structured…regardless, the process of fitting such models is very similar.) 
@@ -166,3 +175,24 @@ One of the most important take-home messages from Clark and Bjornstad has to do 
 <p class="caption">(\#fig:unnamed-chunk-2)From Clark and Bjornstad</p>
 </div>
 
+For more information about this week's topic
+------------------------
+
+There are a large number of really interesting papers illustrating applications of these models:
+
+* [Ahrestani et al. 2013](https://github.com/hlynch/Bayesian2020/tree/master/_data/AhrestaniEtAl2013.pdf): This is a really nice and very readable exploration of the difference between process error and observation error in population time series.
+* [Che-Castaldo et al. 2017](https://github.com/hlynch/Bayesian2020/tree/master/_data/CheCastaldoEtAl2017.pdf): One of my own analysis that gets into process vs. observation error. Note that all the details are in the many Supplements.
+* [Brodersen et al. 2014](https://github.com/hlynch/Bayesian2020/tree/master/_data/BrodersenEtAl2014.pdf)
+* [Buckland et al. 2007](https://github.com/hlynch/Bayesian2020/tree/master/_data/BucklandEtAl2007.pdf)
+* [Oppel et al. 2014](https://github.com/hlynch/Bayesian2020/tree/master/_data/OppelEtAl2014.pdf)
+* [Rotella et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/RotellaEtAl2009.pdf)
+* [Tavecchia et al. 2007](https://github.com/hlynch/Bayesian2020/tree/master/_data/TavecchiaEtAl2007.pdf)
+
+Papers related to theory and statistical inference:
+
+* [Auger-Methe et al. 2016](https://github.com/hlynch/Bayesian2020/tree/master/_data/AugerMetheEtAl2016.pdf)
+* [Cressie et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/CressieEtAl2009.pdf)
+* [Freckleton et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/FreckletonEtAl2006.pdf)
+* [Hefley et al. 2013](https://github.com/hlynch/Bayesian2020/tree/master/_data/HefleyEtAl2013.pdf)
+* [Hosack et al. 2012](https://github.com/hlynch/Bayesian2020/tree/master/_data/HosackEtAl2012.pdf)
+* [Humbert et al. 2009](https://github.com/hlynch/Bayesian2020/tree/master/_data/HumbertEtAl2009.pdf)
