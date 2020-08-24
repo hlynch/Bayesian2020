@@ -140,7 +140,7 @@ In Neyman-Pearson testing, we define a rejection region for the test statistic b
 
 **Fisher and NP answer different questions: The former asks “Is this model any good”, whereas the latter asks “Of these two models, which is better”.** 
 
-3) Karl Popper and the use of hypothetico-deductive reasoning represents a mash-up of Fisherian and N-P testing. The basic idea is that you generate a hypothesis, you then say “if that hypothesis is true then we make the following predictions”, and you then do an experiment to test those predictions. If the experiment yields an outcome consistent with the prediction, than the model “lives to die another day”. However, if the experiment yields an outcome that is inconsistent with the prediction, than you can reject the original hypothesis and start back at the beginning (generating a new hypothesis). Popper’s hypothetico-deductive logic combines deductive and inductive reasoning by stating, in essence, that “if it predicts (deductive), than it explains (inductive)”.
+3) Karl Popper introduced an approach that is referred to as hypothetico-deductive reasoning (which will be familiar for those of you that took Biometry). The basic idea is that you generate a hypothesis, you then say “if that hypothesis is true then we make the following predictions”, and you then do an experiment to test those predictions. If the experiment yields an outcome consistent with the prediction, than the model “lives to die another day”. However, if the experiment yields an outcome that is inconsistent with the prediction, than you can reject the original hypothesis and start back at the beginning (generating a new hypothesis). Popper’s hypothetico-deductive logic combines deductive and inductive reasoning by stating, in essence, that “if it predicts (deductive), than it explains (inductive)”.
 
 4) Bayesian approaches do not involve hypotheses at all (at least not explicitly; you may interpret the results in the context of a hypothesis). Bayesian methods provide a way to define a probability distribution for the parameter of interest. The probability distribution is called the posterior distribution, and it is a combination of your prior expectation for the parameter and the likelihood of the data. Since we will spend the whole semester focusing on Bayesian models, I won’t get into any more detail here.
 
@@ -150,14 +150,14 @@ In Neyman-Pearson testing, we define a rejection region for the test statistic b
 
 The important take-home message is that Bayesian thinking involves an additional element of randomness that we don’t have with frequentist (a.k.a. traditional) methods. To really understand why this is, we need to review the idea of a likelihood, and how in frequentist statistics we use that likelihood to make inference about a parameter.
 
-Specifically, lets say we want to model the mean length of fish in a certain pond.
+Specifically, lets say we want to model the length of fish in a certain pond in order to test a hypothesis about the mean length (a.k.a., the expected value, or E[Y]) of fish in that pond.
 
 $$
 Y \sim N(\mu, \sigma^{2})
 $$
-where $\mu$ is the expected length of these fish. Frequentist methods assume $\mu$ and $\sigma$ are fixed but unknown. Our job is to reverse engineer what $\mu$ and $\sigma$ must have been in order for our data to be "a typical outcome".
+where $\mu$ is the parameter representing the mean length of these fish and $\sigma^{2}$ represents the variance (the amount of variability in the lengths of fish around that mean value). Frequentist methods assume $\mu$ and $\sigma$ are fixed but unknown. Our job is to reverse engineer what $\mu$ and $\sigma$ must have been in order for our data to be "a typical outcome".
 
-As a reminder, the probability density of the normal distribution is given by
+As a reminder, the probability density of the Normal distribution is given by
 
 $$
 P(X|\mu,\sigma) \sim \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}
@@ -174,7 +174,7 @@ $$
 P(X_{1},X_{2},...,X_{n}|\mu,\sigma)= \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(X_{i}-\mu)^{2}}{\sigma^{2}}\right)}
 $$
 
-Taken as a probability density, this equation denotes the probability of getting unknown data ${X_{1},X_{2},...,X_{n}}$ given (|) the known distribution parameters $\mu$ and $\sigma$. However, it can be rewritten as a likelihood simply by reversing the conditionality:
+Taken as a probability density, this equation denotes the probability of getting unknown data ${X_{1},X_{2},...,X_{n}}$ given (|) the known distribution parameters $\mu$ and $\sigma$. However, it can be rewritten as a likelihood simply by reversing the conditionality (* aside about notation):
 
 $$
 L(\mu,\sigma|X_{1},X_{2},...,X_{n}) = \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(X_{i}-\mu)^{2}}{\sigma^{2}}\right)}
@@ -195,7 +195,7 @@ Parameter estimates may be found by maximum likelihood simply by finding those p
 
 Hobbs and Hooten do a really nice job in Sections 4.1 and 4.2 walking through the relationship between the probability density function and the likelihood function. 
 
-Remember the verbal gymnastics we went through in Biometry when we talked about confidence intervals? For example, we emphasized that a 95th percentile confidence interval represented an interval (whose upper and lower limits were statistical quantities generated from the empirical data) that we were 95$\%$ certain contained the true value of $\mu$. The statistical probability here was placed entirely on the interval itself, something we created, because the parameter was considered fixed and therefore could not possibly have some element of chance associated with it. [STOP: Let's make sure we really are on the same page here. This is important stuff!]
+Remember the verbal gymnastics we went through in Biometry when we talked about confidence intervals? For example, we emphasized that a 95th percentile confidence interval represented an interval (whose upper and lower limits were statistical quantities generated from the empirical data) that we were 95$\%$ certain contained the true value of $\mu$. The statistical probability here was placed **entirely** on the interval itself, something we created, because the parameter was considered fixed and therefore could not possibly have some element of chance associated with it. [STOP: Let's make sure we really are on the same page here. This is important stuff!]
 
 As frequentists, we assume a single "true" value for the parameters $\mu$ and $\sigma^{2}$. Bayesians would argue that $\mu$ and $\sigma^{2}$ themselves have a probability distribution, so we have some finite probability that $\mu$ is, say, 1.2 and another probability that $\mu$ is 1.4. THEN, conditional on that value of $\mu$, we have some probability of getting the data (the fish lengths) that were actually obtained. Bayesian thinking, which explicitly defines a statistical distribution for the unknown parameters, frees us from the horrible frequentist awkwardness on confidence intervals. *We actually get what we always wanted all along but could never actually get with frequentist logic: a probability distribution for the parameters of interest.*
 
