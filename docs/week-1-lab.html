@@ -25,7 +25,7 @@
 <meta name="author" content="Heather Lynch">
 
 
-<meta name="date" content="2020-08-24">
+<meta name="date" content="2020-08-26">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -260,6 +260,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="week-1-lab" class="section level1">
 <h1><span class="header-section-number">2</span> Week 1 Lab</h1>
 <p>First, a warm up: You were given some graph paper, which we are going to use to practice some of the ideas from this week in cases where we don’t have any parametric equations to deal with. I want you to put 100 points randomly on the grid. Now that you have your dataset (which will be unique to you), I want you to answer the following questions about your empirical dataset (not the average dataset you might have obtained). What is P(X=3)? What is P(Y=1)? What is P(X=3,Y=1)? What is P(X=3|Y=1)? Which of these questions are asking about the marginal probability? Joint probability? Conditional probability? Why might it be that <span class="math inline">\(P(X=3,Y=1) \neq P(X=3) \times P(Y=1)\)</span>?</p>
+<p>Finding the marginal distribution is akin to taking a squeeggee (yes, it really is spelled that way) to the grid and shoving all the points along the x-axis (for the marginal probability P(X)) or the y-axis (for P(Y)). You can use your grid of points to create a histogram along each axis to illustrate the marginal probabilities that result.</p>
 <p><strong>Exercise #1</strong>: OK, now that we’re limbered up in the ways of joint, marginal, and conditional probabilities, let’s say you have two independent variables X and Y with the following probability distributions</p>
 <p><span class="math display">\[
 g(X)=\frac{2}{X^{3}} \space \space \space \mbox{ for } 1\leq X \leq \infty
@@ -286,7 +287,9 @@ Y \leq X \leq 6 \\
 <p><span class="math display">\[
 X^2+Y^2 \leq 36
 \]</span> Once you have worked this out analytically, we’ll try sampling from these distributions, and plotting the marginal probabilities. How you might sample from these distributions?</p>
-<p><span style="color: blueviolet;">Why would it be wrong to sample from the uniform for X and then sample from the conditional for Y?</span></p>
+<p><strong>Question: Why would it be wrong to sample from the uniform for X and then sample from the conditional for Y?</strong></p>
+<p><details> <summary>Click for Answer</summary> <span style="color: blueviolet;"> Consider for a moment Case #2, where you are sampling on the lower left hand triangle described. If you sampled using the Unif(-6,6) for X, and then sampled for Y, you would have the same number of points in the X interval (-6,-5) as you do (5,6), but those points would be squished into a tiny wedge on the left hand side of the triangle and spread out on the right hand side, so the <em>density</em> of points would be higher on the left hand side and lower on the right hand side, thus violating the goal to have the points spread uniformally in two-dimensional space.</p>
+<p>This issue comes up in a very important context in ecology. Consider for a moment the following example: You are studying birds and you want to model the number that are either absent from an island, present but not breeding, and present and breeding. You don’t know anything about which state a species is in, so you might think that the best approach would be to flip a coin for “Are you present”? And then, conditional on being present, you could flip another coin for “Are you breeding”? This <em>seems</em> like a good way to sample from the distribution when you have no information. <strong>But</strong>, the problem is that if you sample 100 times, ~50<span class="math inline">\(\%\)</span> of the samples will be “Absent”, 25<span class="math inline">\(\%\)</span> will be “Present but not breeding”, and 25<span class="math inline">\(\%\)</span> will be “Present and breeding”. So doing two sequential draws gives too much weight (arguably) to the “Absent” state, because if you were to partition the draws evenly between all three possible states, they should all end up with ~33<span class="math inline">\(\%\)</span>. This is very analogous to the sequential drawing for X and Y, in that drawing X first, and then Y|X does not actually spread the points out evenly as you would expect. </span> </details></p>
 <p>Write a function to sample from these three joint distributions, and draw 1000 values from the joint distribution. Plot the values, and put the marginal histograms on the X and Y axes. There are many ways to include the marginal histograms. I did a quick google search and found some code that would work (which uses the R package ‘ggExtra’). There is probably a better way; I’ll be interested to see what you all come up with.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">500</span>, <span class="dv">50</span>, <span class="dv">10</span>), <span class="dt">y =</span> <span class="kw">runif</span>(<span class="dv">500</span>, <span class="dv">0</span>, <span class="dv">50</span>))
 p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df1, <span class="kw">aes</span>(x, y)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">theme_bw</span>()
