@@ -58,6 +58,10 @@ Once you have worked this out analytically, we’ll try sampling from these dist
 <span style="color: blueviolet;">
 Consider for a moment Case #2, where you are sampling on the lower left hand triangle described. If you sampled using the Unif(-6,6) for X, and then sampled for Y, you would have the same number of points in the X interval (-6,-5) as you do (5,6), but those points would be squished into a tiny wedge on the left hand side of the triangle and spread out on the right hand side, so the *density* of points would be higher on the left hand side and lower on the right hand side, thus violating the goal to have the points spread uniformally in two-dimensional space. 
 
+```{r echo=FALSE, fig.align='center', fig.cap='The fallacy of sampling sequentially. Figure courtesy of Marija Iloska.', out.width='80%'}
+knitr::include_graphics('SequentialTriangle.png')
+```
+
 This issue comes up in a very important context in ecology. Consider for a moment the following example: You are studying birds and you want to model the number that are either absent from an island, present but not breeding, and present and breeding. You don't know anything about which state a species is in, so you might think that the best approach would be to flip a coin for "Are you present"? And then, conditional on being present, you could flip another coin for "Are you breeding"? This *seems* like a good way to sample from the distribution when you have no information. **But**, the problem is that if you sample 100 times, ~50$\%$ of the samples will be "Absent", 25$\%$ will be "Present but not breeding", and 25$\%$ will be "Present and breeding". So doing two sequential draws gives too much weight (arguably) to the "Absent" state, because if you were to partition the draws evenly between all three possible states, they should all end up with ~33$\%$. This is very analogous to the sequential drawing for X and Y, in that drawing X first, and then Y|X does not actually spread the points out evenly as you would expect.
 </span>
 </details> 
