@@ -25,7 +25,7 @@
 <meta name="author" content="Heather Lynch">
 
 
-<meta name="date" content="2020-08-27">
+<meta name="date" content="2020-08-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -277,18 +277,18 @@ P(\theta|x) = \frac{P(x|\theta)P(\theta)}{P(x)}
 <p><span class="math display">\[
 P(\theta|x) \propto P(x|\theta)P(\theta)
 \]</span></p>
-<p>In other words, the posterior probability distribution for the parameter <span class="math inline">\(\theta\)</span> conditional on the data <span class="math inline">\(x\)</span> is proportional to the likelihood P(x|) times the prior distribution <span class="math inline">\(P(\theta)\)</span>. We can think about this (vis a vis the video we just saw) as the likelihood “filtering out” the prior distribution. In other words, we have some distribution that describes our prior understanding of the parameter, and we use the data to sift through which values make more or less sense. Values that make the data more likely are themselves more likely, and vice versa.</p>
+<p>In other words, the posterior probability distribution for the parameter <span class="math inline">\(\theta\)</span> conditional on the data <span class="math inline">\(x\)</span> is proportional to the likelihood P(x|<span class="math inline">\(\theta\)</span>) times the prior distribution <span class="math inline">\(P(\theta)\)</span>. We can think about this (vis a vis the video we just saw) as the likelihood “filtering out” the prior distribution. In other words, we have some distribution that describes our prior understanding of the parameter, and we use the data to sift through which values make more or less sense. Values that make the data more likely are themselves more likely, and vice versa.</p>
 <p>Next week we will focus on prior distributions and their interpretation, so we won’t say much more about prior distributions at this stage. We will however work through the algebra of Bayes Theorem to see how we obtain a posterior distribution.</p>
 <p>Let’s say we have one observation <span class="math inline">\(y\)</span> from a Normal distribution of unknown mean <span class="math inline">\(\mu\)</span> and known variance <span class="math inline">\(\sigma^{2}\)</span>. The likelihood of obtaining that observation is simply:</p>
 <p><span class="math display">\[
 P(y|\mu) \propto exp\left(\frac{-(y-\mu)^{2}}{2\sigma^2}\right)
-\]</span> where I have included only the terms involving the unknown parameter <span class="math inline">\(\mu\)</span>.</p>
+\]</span> where I have included only the terms involving the unknown parameter <span class="math inline">\(\mu\)</span>. Note that I have not included <span class="math inline">\(\sigma\)</span> after the conditional “|” because I want to emphasize that only <span class="math inline">\(\mu\)</span> is unknown.</p>
 <p>(Side note on notation. By tradition, both probability densities and likelihoods have the data on the left side and the parameters on the right side on the conditional “|”. This is not how I originally introduced them last week, because in Week #1’s lecture I was trying to highlight the differences between PDFs and likelihoods, which involves what is known and what is unknown. However, to be consistent with the book and papers on the subject, here I revert back to the traditional notation where the data “y” is on the left hand side. Also, I use the letters <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> interchangeably so my choice of one or the other to represent data is arbitrary.)</p>
 <p>Let’s assume a fairly broad (i.e. large variance) Normal distribution prior for <span class="math inline">\(\mu\)</span>, <span class="math inline">\(N(\mu_{0},\tau^{2})\)</span>, so that:</p>
 <p><span class="math display">\[
 P(\mu) \propto exp\left(\frac{-(\mu-\mu_{0})^{2}}{2\tau^2}\right)
 \]</span></p>
-<p>Make sure this distribution makes sense. In this case the distribution is on <span class="math inline">\(\mu\)</span> and its parameters are <span class="math inline">\(\mu_{0}\)</span> and <span class="math inline">\(\tau\)</span>.</p>
+<p>Make sure this distribution makes sense. <strong>In this case the distribution is on <span class="math inline">\(\mu\)</span></strong> and its parameters are <span class="math inline">\(\mu_{0}\)</span> and <span class="math inline">\(\tau\)</span>. (We are not used to thinking about parameters as having distributions. In frequentist statistics, <span class="math inline">\(mu\)</span> is considered a fixed quantity, but here and throughout the semester, we will assume that all quantities, including parameters, are random variables described by a probability density function.)</p>
 <p>The posterior distribution is now given by the product:</p>
 <p><span class="math display">\[
 P(\mu|y) \propto exp\left(\frac{-(y-\mu)^{2}}{2\sigma^2}\right)exp\left(\frac{-(\mu-\mu_{0})^{2}}{2\tau^2}\right)
@@ -347,7 +347,7 @@ P(\mu|y) = \int P(\mu,\sigma|y)d\sigma
 <div id="how-do-we-interpret-the-posteriors" class="section level2">
 <h2><span class="header-section-number">3.2</span> How do we interpret the posteriors?</h2>
 <p>Whereas frequentist methods are focused on rejecting a null hypothesis, Bayesian analyses are focused on the posterior distribution as a statement of the probability of the parameter lying within a certain interval (for a continuous parameter). Bayesian methods often (but not always) end with a statement about the mean (sometimes median) of the posterior distribution and some interval around that measure of central tendency.</p>
-<p>Its worth reminding ourselves that there are three measures of central tendancy that we might want to use to describe the posterior distribution. While the <strong>mean</strong> is perhaps most common, it is not unusual in Bayesian analyses to report instead the <strong>median</strong> or the <strong>mode</strong>; it often depends on which measure of central tendency you think is the most biologically relevant.</p>
+<p>Its worth reminding ourselves that there are three measures of central tendancy that we might want to use to describe the posterior distribution. While the <strong>mean</strong> is perhaps most common, it is not unusual in Bayesian analyses to report instead the <strong>median</strong> or the <strong>mode</strong>; it often depends on which measure of central tendency you think is the most biologically relevant. We can also use the posterior distribution to answer other questions about the parameter(s) of interest. For example, if we wanted to know, “What is the probability that <span class="math inline">\(\mu\)</span> is positive?” then all we need to do is integrate the posterior distribution from 0 to <span class="math inline">\(\infty\)</span>. That yields a direct and easily interpreted probability, and allows us to easily test a iwder variety of hypotheses that was easy accomplished with a frequentist approach.</p>
 <p>We define a 100(1-<span class="math inline">\(\alpha\)</span>)<span class="math inline">\(\%\)</span> credible interval for a parameter <span class="math inline">\(\theta\)</span> as:</p>
 <p><span class="math display">\[
 P(\theta \in B_{X}|X) = 1 - \alpha
@@ -363,7 +363,7 @@ Figure 1.1: Source: Doug Schluter <a href="https://www.zoology.ubc.ca/biol548/le
 </div>
 <div id="a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats" class="section level2">
 <h2><span class="header-section-number">3.3</span> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</h2>
-<p>For lecture today you read the article by Fenton and Neil (2012) and the accompanying article from the Guardian.</p>
+<p>For lecture today I provided an article (below) by Fenton and Neil (2012) and the accompanying article from the Guardian.</p>
 <p>The basic story at hand: Convicted killer “T” appealed his conviction, which was based in part on a Bayesian analysis that found strong evidence linking his sneakers (found in his home) to a shoeprint at the crime scene. A judge threw out “T”s conviction on the basis that Bayesian statistics (specifically, expert opinion that had been used to generate a prior distribution for the number of sneakers of that type in the UK at the time) was not “firm” statistics. The court went further and basically rejected the use of Bayesian statistics in all cases except (somewhat arbitrarily, in my opinion) in the analysis of DNA evidence.</p>
 <p>Fortunately, Bayesian statisticians have come to its defense noting, for example, “The fact that variables cannot be precisely expressed does not affect the validity of the relationships described by [Bayes] formula”.</p>
 <p>A few questions that were raised in Fenton and Neil (2012):</p>
@@ -376,7 +376,7 @@ Figure 1.1: Source: Doug Schluter <a href="https://www.zoology.ubc.ca/biol548/le
 Figure 2.1: Source: Doug Schluter <a href="https://www.zoology.ubc.ca/biol548/lecturepdf/09.Bayes.pdf">link</a>
 </p>
 </div>
-<p>Note that if p=<span class="math inline">\(10^{-6}\)</span>, then <span class="math inline">\(P(\mbox{guilt}|\mbox{match})\)</span>=0.5. If p=<span class="math inline">\(0.5\)</span>, then <span class="math inline">\(P(\mbox{guilt}|\mbox{match})\)</span>=0.999999. So, your decision about the guilt or innocence of the defendent depends a lot on your prior expectations for their guilt of innocence. </span> </details></p>
+<p>Note that if p=<span class="math inline">\(10^{-6}\)</span>, then <span class="math inline">\(P(\mbox{guilt}|\mbox{match})\)</span>=0.5. If p=<span class="math inline">\(0.5\)</span>, then <span class="math inline">\(P(\mbox{guilt}|\mbox{match})\)</span>=0.999999. So, your decision about the guilt or innocence of the defendent depends a lot on your prior expectations for their guilt or innocence. </span> </details></p>
 <p> </p>
 <p>Fenton and Neil raise the idea of a Bayesian network, which we will return to briefly next week. A Bayesian network is a graphical model that shows the conditional relations among variables, and is just a more visual way of understanding a Bayesian analysis with many conditional relationships.</p>
 </div>
