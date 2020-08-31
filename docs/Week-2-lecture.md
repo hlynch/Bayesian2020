@@ -46,7 +46,7 @@ $$
 P(\mu) \propto exp\left(\frac{-(\mu-\mu_{0})^{2}}{2\tau^2}\right)
 $$
 
-Make sure this distribution makes sense. **In this case the distribution is on $\mu$** and its parameters are $\mu_{0}$ and $\tau$. (We are not used to thinking about parameters as having distributions. In frequentist statistics, $mu$ is considered a fixed quantity, but here and throughout the semester, we will assume that all quantities, including parameters, are random variables described by a probability density function.)
+Make sure this distribution makes sense. **In this case, the distribution is on $\mu$** and its parameters are $\mu_{0}$ and $\tau$. (We are not used to thinking about parameters as having distributions. In frequentist statistics, $\mu$ is considered a fixed quantity, but here and throughout the semester, we will assume that all quantities, including parameters, are random variables described by a probability density function.)
 
 The posterior distribution is now given by the product:
 
@@ -149,7 +149,7 @@ $$
 
 Whereas frequentist methods are focused on rejecting a null hypothesis, Bayesian analyses are focused on the posterior distribution as a statement of the probability of the parameter lying within a certain interval (for a continuous parameter). Bayesian methods often (but not always) end with a statement about the mean (sometimes median) of the posterior distribution and some interval around that measure of central tendency. 
 
-Its worth reminding ourselves that there are three measures of central tendancy that we might want to use to describe the posterior distribution. While the **mean** is perhaps most common, it is not unusual in Bayesian analyses to report instead the **median** or the **mode**; it often depends on which measure of central tendency you think is the most biologically relevant. We can also use the posterior distribution to answer other questions about the parameter(s) of interest. For example, if we wanted to know, "What is the probability that $\mu$ is positive?" then all we need to do is integrate the posterior distribution from 0 to $\infty$. That yields a direct and easily interpreted probability, and allows us to easily test a iwder variety of hypotheses that was easy accomplished with a frequentist approach.
+Its worth reminding ourselves that there are three measures of central tendancy that we might want to use to describe the posterior distribution. While the **mean** is perhaps most common, it is not unusual in Bayesian analyses to report instead the **median** or the **mode**; it often depends on which measure of central tendency you think is the most biologically relevant. We can also use the posterior distribution to answer other questions about the parameter(s) of interest. For example, if we wanted to know, "What is the probability that $\mu$ is positive?" then all we need to do is integrate the posterior distribution from 0 to $\infty$. That yields a direct and easily interpreted probability, and allows us to easily test a wider variety of hypotheses than was easy accomplished with a frequentist approach.
 
 We define a 100(1-$\alpha$)$\%$ credible interval for a parameter $\theta$ as: 
 
@@ -178,6 +178,13 @@ Fortunately, Bayesian statisticians have come to its defense noting, for example
 A few questions that were raised in Fenton and Neil (2012):
 
 **1) When is it OK to multiply likelihoods? Why was the practice of multiplying likelihoods (or likelihood ratios, equivalently in this case) criticized in the original court case?**
+
+<details>
+  <summary>Click for Answer</summary>
+<span style="color: blueviolet;">
+Multiplying probability/likleihoods is the **correct** thing to do **if** the traits being discussed are independent. However, many physical traits used in forensic analyses are not, in fact, independent (e.g., height and weight). When the traits being discussed are not independent, then it is incorrect to calculate the joint probability as the product of the probabilities for each trait.
+</span>
+</details> 
 
 **2) Why is a 1 in 10,000 fingerprint match not necessarily strong evidence that the accused was at the scene? (Hint: Can you ever accept the null hypothesis? What is the null hypothesis in this case? Why does it matter?)**
 
