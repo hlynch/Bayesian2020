@@ -111,6 +111,7 @@ Expert elicitation
 One method of obtaining prior distributions is through expert elicitation. The Delphi method is one way of eliciting expert judgment.
 
 Delphi method:
+
 1) Elicit information from each expert independently
 
 2) Collect results and share with the group
