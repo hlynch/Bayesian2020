@@ -43,7 +43,7 @@ $$
 p(y|N) = \mbox{Binomial}(0.5,N) = \frac{N!}{(N-y)!y!}0.5^{N-y}0.5^{y} \propto \frac{N!}{(N-y)!y!}0.5^{N}
 $$
 
-We need a prior for N, and since N is discrete we need a discrete distribution for this prior. Jeffrey’s prior in this case would be $p(N) \propto 1/N$. (See text box for more information about Jeffrey's prior; we will not go into much detail and for the example here, you just need to know that the prior is $\propto 1/N$.)
+We need a prior for N, and since N is discrete we need a discrete distribution for this prior. One possible prior (this prior happens to be called "Jeffrey's prior", but we don't get into the details on that) would be $p(N) \propto 1/N$. 
 
 The posterior distribution is then given by:
 
@@ -59,7 +59,7 @@ Sensitivity analysis
 
 At the end of every Bayesian analysis, you should do a sensitivity analysis to see how sensitive your posterior distributions are to priors. In some cases, some parameters may be highly sensitive to the choice of prior, but other parameters of more interest are not. This would be perfectly fine if you are not going to be making any biological inference on the parameters that are highly sensitive to the priors. They may be tangential to the parameters you are really focused on, which themselves may be fairly robust to various prior assumptions. However, you may have cases where the prior makes a big difference. While many data analysts fear this possibility, this is in fact, a confirmation that a Bayesian approach is worthwhile in the first place. In these cases, you simply need to justify the choice of prior and be transparent about the range of outcomes that might have been obtained with different prior assumptions.
 
-Our first exercise here will be to emphasize a caution noted in the handout from the book by Lunn et al.: that a uniform distribution is not always a “vague” or uninformative prior. You have to be very cautious when dealing with transformation of parameters. If you want a vague prior for a parameter, make sure the prior is actually what you think it is. In particular, transformations of a uniform are not uniform. This often comes up when putting a vague prior on the variance, since JAGS deals only with the precision (the inverse-variance). A uniform distribution for the precision is not what you actually want – since does not reflect the uncertainty on the scale intended (i.e. on the variance, or possibly on the standard deviation).
+Our first exercise here will be to emphasize a caution noted in the handout from the book by Lunn et al.: that **a uniform distribution is not always a “vague” or uninformative prior**. You have to be very cautious when dealing with transformation of parameters. If you want a vague prior for a parameter, make sure the prior is actually what you think it is. In particular, transformations of a uniform are not uniform. This often comes up when putting a vague prior on the variance, since JAGS deals only with the precision (the inverse-variance). A uniform distribution for the precision is not what you actually want – since does not reflect the uncertainty on the scale intended (i.e. on the variance, or possibly on the standard deviation).
 
 **EXERCISE #1**: Convince yourself of this by looking at the distribution for $\theta^2$ if $\theta \sim \mbox{Unif}(0,1)$. Lunn et al. tells us that this new distribution is actually a Beta(0.5,1) – do you agree?
 
@@ -85,7 +85,7 @@ However, when we put these two processes together, the prior distribution for th
 
 Next, we are going to explore the various methods one could employ to generate a vague prior for the Binomial parameter p.  This exercise is based on the discussion in Lunn et al. Section 5.2.5 but I want to convince ourselves of this in R since R is easier to work with and we can focus on the core ideas involved.
 
-Lunn et al. presents us with the following situation. You are doing a logistic regression analysis to understand the probability $\theta$ of a binomial event occurring, and you want to put a flat prior on the parameter $\theta$. But here we have several options, because we can use a vague prior for the probability p or we could use a vague prior for the logit($\theta$). In addition, there are several vague priors we might choose. Lunn’s notation is as follows (the “whatever” could be any linear function, its not relevant here):
+Lunn et al. presents us with the following situation. You are doing a logistic regression analysis to understand the probability $\theta$ of a binomial event occurring, and you want to put a flat prior on the parameter $\theta$. But here we have several options, because we can use a vague prior for the probability $\theta$ or we could use a vague prior for the logit($\theta$). In addition, there are several vague priors we might choose. Lunn’s notation is as follows (the “whatever” could be any linear function, its not relevant here):
 
 $$
 Y \sim \mbox{Binomial}(\theta) \\
