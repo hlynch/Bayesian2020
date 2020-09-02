@@ -20,9 +20,36 @@ We took an aside last week to discuss the ways in which Bayesian statistics is u
 How do we obtain priors?
 ------------------------
 
-The vast majority of ecological analyses use non-informative priors bounded only by biological feasibility. (In other words, you might constrain lifespan to the maximum known lifespan for that species, but use a uniform distribution over that range as the prior.) In these cases, Bayesian statistics are being employed because they are simply more flexible than frequentist methods; where both analyses are possible, they will yield similar results.
+The vast majority of ecological analyses use non-informative priors bounded only by biological feasibility. (In other words, you might constrain lifespan to the maximum known lifespan for that species, but use a uniform distribution over that range as the prior.) In these cases, Bayesian statistics are being employed because they are simply more flexible than frequentist methods; where both analyses are possible, they will yield similar results. This is, arguably, too bad because nearly all our research builds on a legacy of prior research and it is a shame to **not** use information gathered by other investigators. I would encourage students to incorporate prior knowledge where it is available, as doing so will both make your final inference "better" and numerically, using informative priors can speed convergence (more on that later).
 
 Technical Note: It is possible to use a prior distribution that is “improper”, i.e. doesn’t integrate to 1, and still obtain a proper posterior distribution. However, JAGS generally forces the use of proper prior distributions.
+
+If you are going to come up with an informed prior, there are two main ways of going about it: prior studies (i.e. the literature) and expert opinion.
+
+###Published literature as a source of prior information
+
+One way of developing a prior distribution for your parameters is to look at the published literature. As extensive search for prior information is similar to a meta-analysis; you want to find other studies that are similar enough (however you define that) to the study you are doing that their findings could serve as prior information for your own analysis. A straightforward example of doing so is illustrated by Foley et al. (2020), which saught to use prior estimates of egg survival to generate a prior distribution. In this case, there were three ranges for egg survival that were found, and these were combined (via moment matching; more on that next week) to find the Beta distribution that best captured these prior survival estimates.
+
+```{r echo=FALSE, fig.align='center', fig.cap='Source: Foley et al. (2020) $\textit{Polar Biology}$', out.width='75%'}
+knitr::include_graphics('FoleyEtAlUseofPriors.png')
+```
+
+
+###Expert opinion
+
+One method of obtaining prior distributions is through formal expert elicitation. The Delphi method is one way of eliciting expert judgment.
+
+Delphi method:
+
+1) Elicit information from each expert independently
+
+2) Collect results and share with the group
+
+3) Experts reconsider their responses in light of the responses of others
+
+4) Elicitation and feedback cycle continues
+
+We will walk through an example of this in lab.
 
 Conjugacy
 -------------
@@ -104,23 +131,6 @@ Lunn et al. lays out the options as follows (I have crossed out #3 since we won'
 (5) Use a N(mean=0,precision=0.368)=N(mean=0,var=2.71) prior on $\phi$, let $\theta$ be determined accordingly
 
 **EXERCISE #2**: Plot these alternatives in R to recreate Lunn et al. Figure 5.1. What are the pros and cons of using each of these options. Is there any practical benefit to Option #1 over #5 (or vice versa)?
-
-Expert elicitation
----------------------
-
-One method of obtaining prior distributions is through expert elicitation. The Delphi method is one way of eliciting expert judgment.
-
-Delphi method:
-
-1) Elicit information from each expert independently
-
-2) Collect results and share with the group
-
-3) Experts reconsider their responses in light of the responses of others
-
-4) Elicitation and feedback cycle continues
-
-We will walk through an example of this in lab.
 
 For more information about this week's topic
 ------------------------

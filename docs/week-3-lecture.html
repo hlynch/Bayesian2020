@@ -120,11 +120,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#for-more-information-about-this-weeks-topic-1"><i class="fa fa-check"></i><b>3.5</b> For more information about this week’s topic</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>4</b> Week 3 Lecture</a><ul>
-<li class="chapter" data-level="4.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#how-do-we-obtain-priors"><i class="fa fa-check"></i><b>4.1</b> How do we obtain priors?</a></li>
+<li class="chapter" data-level="4.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#how-do-we-obtain-priors"><i class="fa fa-check"></i><b>4.1</b> How do we obtain priors?</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#published-literature-as-a-source-of-prior-information"><i class="fa fa-check"></i><b>4.1.1</b> Published literature as a source of prior information</a></li>
+<li class="chapter" data-level="4.1.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#expert-opinion"><i class="fa fa-check"></i><b>4.1.2</b> Expert opinion</a></li>
+</ul></li>
 <li class="chapter" data-level="4.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#conjugacy"><i class="fa fa-check"></i><b>4.2</b> Conjugacy</a></li>
 <li class="chapter" data-level="4.3" data-path="week-3-lecture.html"><a href="week-3-lecture.html#sensitivity-analysis"><i class="fa fa-check"></i><b>4.3</b> Sensitivity analysis</a></li>
-<li class="chapter" data-level="4.4" data-path="week-3-lecture.html"><a href="week-3-lecture.html#expert-elicitation"><i class="fa fa-check"></i><b>4.4</b> Expert elicitation</a></li>
-<li class="chapter" data-level="4.5" data-path="week-3-lecture.html"><a href="week-3-lecture.html#for-more-information-about-this-weeks-topic-2"><i class="fa fa-check"></i><b>4.5</b> For more information about this week’s topic</a></li>
+<li class="chapter" data-level="4.4" data-path="week-3-lecture.html"><a href="week-3-lecture.html#for-more-information-about-this-weeks-topic-2"><i class="fa fa-check"></i><b>4.4</b> For more information about this week’s topic</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lab</a><ul>
 <li class="chapter" data-level="5.1" data-path="week-3-lab.html"><a href="week-3-lab.html#congugacy"><i class="fa fa-check"></i><b>5.1</b> Congugacy</a></li>
@@ -272,8 +274,31 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>Question</strong>: What does the prior distribution actually look like in a criminal case? (Hint: Can’t be a delta function at “innocent” – why not?)</p>
 <div id="how-do-we-obtain-priors" class="section level2">
 <h2><span class="header-section-number">4.1</span> How do we obtain priors?</h2>
-<p>The vast majority of ecological analyses use non-informative priors bounded only by biological feasibility. (In other words, you might constrain lifespan to the maximum known lifespan for that species, but use a uniform distribution over that range as the prior.) In these cases, Bayesian statistics are being employed because they are simply more flexible than frequentist methods; where both analyses are possible, they will yield similar results.</p>
+<p>The vast majority of ecological analyses use non-informative priors bounded only by biological feasibility. (In other words, you might constrain lifespan to the maximum known lifespan for that species, but use a uniform distribution over that range as the prior.) In these cases, Bayesian statistics are being employed because they are simply more flexible than frequentist methods; where both analyses are possible, they will yield similar results. This is, arguably, too bad because nearly all our research builds on a legacy of prior research and it is a shame to <strong>not</strong> use information gathered by other investigators. I would encourage students to incorporate prior knowledge where it is available, as doing so will both make your final inference “better” and numerically, using informative priors can speed convergence (more on that later).</p>
 <p>Technical Note: It is possible to use a prior distribution that is “improper”, i.e. doesn’t integrate to 1, and still obtain a proper posterior distribution. However, JAGS generally forces the use of proper prior distributions.</p>
+<p>If you are going to come up with an informed prior, there are two main ways of going about it: prior studies (i.e. the literature) and expert opinion.</p>
+<div id="published-literature-as-a-source-of-prior-information" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Published literature as a source of prior information</h3>
+<p>One way of developing a prior distribution for your parameters is to look at the published literature. As extensive search for prior information is similar to a meta-analysis; you want to find other studies that are similar enough (however you define that) to the study you are doing that their findings could serve as prior information for your own analysis. A straightforward example of doing so is illustrated by Foley et al. (2020), which saught to use prior estimates of egg survival to generate a prior distribution. In this case, there were three ranges for egg survival that were found, and these were combined (via moment matching; more on that next week) to find the Beta distribution that best captured these prior survival estimates.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="FoleyEtAlUseofPriors.png" alt="Source: Foley et al. (2020) $  extit{Polar Biology}$" width="75%" />
+<p class="caption">
+Figure 1.1: Source: Foley et al. (2020) $ extit{Polar Biology}$
+</p>
+</div>
+</div>
+<div id="expert-opinion" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Expert opinion</h3>
+<p>One method of obtaining prior distributions is through formal expert elicitation. The Delphi method is one way of eliciting expert judgment.</p>
+<p>Delphi method:</p>
+<ol style="list-style-type: decimal">
+<li><p>Elicit information from each expert independently</p></li>
+<li><p>Collect results and share with the group</p></li>
+<li><p>Experts reconsider their responses in light of the responses of others</p></li>
+<li><p>Elicitation and feedback cycle continues</p></li>
+</ol>
+<p>We will walk through an example of this in lab.</p>
+</div>
 </div>
 <div id="conjugacy" class="section level2">
 <h2><span class="header-section-number">4.2</span> Conjugacy</h2>
@@ -328,20 +353,8 @@ Y \sim \mbox{Binomial}(\theta) \\
 </ol>
 <p><strong>EXERCISE #2</strong>: Plot these alternatives in R to recreate Lunn et al. Figure 5.1. What are the pros and cons of using each of these options. Is there any practical benefit to Option #1 over #5 (or vice versa)?</p>
 </div>
-<div id="expert-elicitation" class="section level2">
-<h2><span class="header-section-number">4.4</span> Expert elicitation</h2>
-<p>One method of obtaining prior distributions is through expert elicitation. The Delphi method is one way of eliciting expert judgment.</p>
-<p>Delphi method:</p>
-<ol style="list-style-type: decimal">
-<li><p>Elicit information from each expert independently</p></li>
-<li><p>Collect results and share with the group</p></li>
-<li><p>Experts reconsider their responses in light of the responses of others</p></li>
-<li><p>Elicitation and feedback cycle continues</p></li>
-</ol>
-<p>We will walk through an example of this in lab.</p>
-</div>
 <div id="for-more-information-about-this-weeks-topic-2" class="section level2">
-<h2><span class="header-section-number">4.5</span> For more information about this week’s topic</h2>
+<h2><span class="header-section-number">4.4</span> For more information about this week’s topic</h2>
 <p>We do not go into detail on Jeffrey’s prior in this course because we have limited time and I don’t see Jeffrey’s priors used very often in practical ecological analyses. However, here are some references that may be useful if you would like more information.</p>
 <p>On Jeffrey’s Priors: Notes from lectures at <a href="https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/lectures/lecture7.pdf">Berkeley</a> and <a href="https://www2.stat.duke.edu/courses/Fall11/sta114/jeffreys.pdf">Duke</a>.</p>
 <p>Other papers:</p>
