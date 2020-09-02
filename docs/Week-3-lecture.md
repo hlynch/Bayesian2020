@@ -28,11 +28,11 @@ If you are going to come up with an informed prior, there are two main ways of g
 
 ###Published literature as a source of prior information
 
-One way of developing a prior distribution for your parameters is to look at the published literature. As extensive search for prior information is similar to a meta-analysis; you want to find other studies that are similar enough (however you define that) to the study you are doing that their findings could serve as prior information for your own analysis. A straightforward example of doing so is illustrated by Foley et al. (2020), which saught to use prior estimates of egg survival to generate a prior distribution. In this case, there were three ranges for egg survival that were found, and these were combined (via moment matching; more on that next week) to find the Beta distribution that best captured these prior survival estimates.
+One way of developing a prior distribution for your parameters is to look at the published literature. As extensive search for prior information is similar to a meta-analysis; you want to find other studies that are similar enough (however you define that) to the study you are doing that their findings could serve as prior information for your own analysis. A straightforward example of doing so is illustrated by Foley et al. (2020), which sought to use prior estimates of egg survival to generate a prior distribution. In this case, there were three ranges for egg survival that were found, and these were combined (via moment matching; more on that next week) to find the Beta distribution that best captured these prior survival estimates.
 
 <div class="figure" style="text-align: center">
-<img src="FoleyEtAlUseofPriors.png" alt="Source: Foley et al. (2020) $	extit{Polar Biology}$" width="75%" />
-<p class="caption">(\#fig:unnamed-chunk-1)Source: Foley et al. (2020) $	extit{Polar Biology}$</p>
+<img src="FoleyEtAlUseofPriors.png" alt="Source: Foley et al. (2020) Polar Biology" width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-1)Source: Foley et al. (2020) Polar Biology</p>
 </div>
 
 
