@@ -38,7 +38,7 @@ Since a Gamma prior will be easy to work with, we would like to elicit “expert
 Moment Matching two distributions
 -------------------------------
 
-We'll illustrate the process of moment matching with an example. Look at the handout `DistributionCheatSheet.pdf` kindly provided by the instructor of the SESYNC Bayesian course and look down to the row on the Gamma distribution. The mean and variance of the Gamma distribution is related to the two parameters a and b as follows
+We'll illustrate the process of moment matching with an example. Look at the handout [Distribution Cheat Sheet](https://github.com/hlynch/Bayesian2020/tree/master/_data/DistributionCheatSheet.pdf) kindly provided by the instructor of the SESYNC Bayesian course and look down to the row on the Gamma distribution. The mean and variance of the Gamma distribution is related to the two parameters a and b as follows
 
 $$
 E[X] = \frac{a}{b}
