@@ -18,20 +18,20 @@ In this lab, we’ll walk through the Delphi method to establish a priori probab
 Congugacy
 -----------
 
-With modern computers, we often don't worry too much about using a prior distribution that is "congugate" to the likelihood distribution. However, for this lab, we'll use the congugate distribution because it is convenient and it will help us visualize the effect of adding more data. As you will prove for the problem set, the Gamma distribution is conjugate to the Poisson distribution. In other words, ff the prior distribution is
+With modern computers, we often don't worry too much about using a prior distribution that is "congugate" to the likelihood distribution. However, for this lab, we'll use the congugate distribution because it is convenient and it will help us visualize the effect of adding more data. As you will prove for the problem set, the Gamma distribution is conjugate to the Poisson distribution. In other words, if the prior distribution is
 
 $$
-\theta \sim Gamma(a,b)
+\lambda \sim Gamma(a,b)
 $$
 and you have data with $n$ counts with an average of $\bar{y}$, then the posterior distribution will be
 
 $$
-\theta|\bar{y} \sim Gamma(a+n\bar{y},b+n)
+\lambda|\bar{y} \sim Gamma(a+n\bar{y},b+n)
 $$
 Keep in mind that this is equivalent to
 
 $$
-\theta|\bar{y} \sim Gamma(a+\sum_{i=1}^{n} y_{i},b+n)
+\lambda|\bar{y} \sim Gamma(a+\sum_{i=1}^{n} y_{i},b+n)
 $$
 Since a Gamma prior will be easy to work with, we would like to elicit “expert” opinion on $\lambda$ in the form of the gamma distribution. There are multiple methods of this (Lunn et al. introduces the idea of a “pre-prior”) but I like the moment-matching method best. In other words, you will each decide what you think is the expected value of $\lambda$ with a measure of the standard error of your estimate. We can then ask “What would the Gamma distribution parameters a and b have to be to get a distribution (for $\lambda$) with that mean and that variance”? (This is the essence behind matching moments of distributions.)
 

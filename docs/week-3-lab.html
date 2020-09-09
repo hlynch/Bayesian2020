@@ -272,15 +272,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>EXERCISE</strong>: Draw on a piece of paper a “uninformative” probability distribution for the parameter <span class="math inline">\(\lambda\)</span> associated with the Poisson distribution. Is this prior distribution a proper probability distribution? (What are the requirements for a proper probability distribution function?) What distributions might look “close enough” to your “ideal” uninformative prior? Using R, play around with the Gamma distribution to get a distribution you think is “close enough” and write down the parameter values a and b. We will need these later in our lab.</p>
 <div id="congugacy" class="section level2">
 <h2><span class="header-section-number">5.1</span> Congugacy</h2>
-<p>With modern computers, we often don’t worry too much about using a prior distribution that is “congugate” to the likelihood distribution. However, for this lab, we’ll use the congugate distribution because it is convenient and it will help us visualize the effect of adding more data. As you will prove for the problem set, the Gamma distribution is conjugate to the Poisson distribution. In other words, ff the prior distribution is</p>
+<p>With modern computers, we often don’t worry too much about using a prior distribution that is “congugate” to the likelihood distribution. However, for this lab, we’ll use the congugate distribution because it is convenient and it will help us visualize the effect of adding more data. As you will prove for the problem set, the Gamma distribution is conjugate to the Poisson distribution. In other words, if the prior distribution is</p>
 <p><span class="math display">\[
-\theta \sim Gamma(a,b)
+\lambda \sim Gamma(a,b)
 \]</span> and you have data with <span class="math inline">\(n\)</span> counts with an average of <span class="math inline">\(\bar{y}\)</span>, then the posterior distribution will be</p>
 <p><span class="math display">\[
-\theta|\bar{y} \sim Gamma(a+n\bar{y},b+n)
+\lambda|\bar{y} \sim Gamma(a+n\bar{y},b+n)
 \]</span> Keep in mind that this is equivalent to</p>
 <p><span class="math display">\[
-\theta|\bar{y} \sim Gamma(a+\sum_{i=1}^{n} y_{i},b+n)
+\lambda|\bar{y} \sim Gamma(a+\sum_{i=1}^{n} y_{i},b+n)
 \]</span> Since a Gamma prior will be easy to work with, we would like to elicit “expert” opinion on <span class="math inline">\(\lambda\)</span> in the form of the gamma distribution. There are multiple methods of this (Lunn et al. introduces the idea of a “pre-prior”) but I like the moment-matching method best. In other words, you will each decide what you think is the expected value of <span class="math inline">\(\lambda\)</span> with a measure of the standard error of your estimate. We can then ask “What would the Gamma distribution parameters a and b have to be to get a distribution (for <span class="math inline">\(\lambda\)</span>) with that mean and that variance”? (This is the essence behind matching moments of distributions.)</p>
 </div>
 <div id="moment-matching-two-distributions" class="section level2">
