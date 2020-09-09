@@ -100,6 +100,21 @@ for(i in 1:length(data)){
 }
 ```
 
+Here it looks like we've just added all the data from 1 to $i$ at once, so its not clear how the prior becomes the posterior. You can look at the parameters for the gamma distribution in two ways, keeping in mind that $n*mean(y)=\sum_{i=1}^{n}y_{i}$:
+
+(NB: I have used parentheses to group prior and the data being added)
+$$
+\mbox{shape}=(a)+(\sum_{i=1}^{n}y_{i}) \\
+\mbox{rate}=(b)+(n)
+$$
+
+**or**, you can think of it as
+
+$$
+\mbox{shape}=(a+\sum_{i=1}^{n-1}y_{i})+y_{n} \\
+\mbox{rate}=(b+n-1)+(1)
+$$
+So adding all the data at once yields the same result as converting the posterior at each step to the prior for the next step.
 
 What impact did the choice of prior have?
 ---------------------------------------

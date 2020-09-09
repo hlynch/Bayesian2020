@@ -25,7 +25,7 @@
 <meta name="author" content="Heather Lynch">
 
 
-<meta name="date" content="2020-09-02">
+<meta name="date" content="2020-09-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -325,6 +325,16 @@ for(i in <span class="dv">1</span>:<span class="kw">length</span>(data)){
   <span class="kw">lines</span>(posterior,<span class="dt">x=</span><span class="dv">8</span>:<span class="dv">22</span>,<span class="dt">col=</span><span class="kw">rainbow</span>(<span class="dv">15</span>)[i])
   
 }</code></pre></div>
+<p>Here it looks like we’ve just added all the data from 1 to <span class="math inline">\(i\)</span> at once, so its not clear how the prior becomes the posterior. You can look at the parameters for the gamma distribution in two ways, keeping in mind that <span class="math inline">\(n*mean(y)=\sum_{i=1}^{n}y_{i}\)</span>:</p>
+<p>(NB: I have used parentheses to group prior and the data being added) <span class="math display">\[
+\mbox{shape}=(a)+(\sum_{i=1}^{n}y_{i}) \\
+\mbox{rate}=(b)+(n)
+\]</span></p>
+<p><strong>or</strong>, you can think of it as</p>
+<p><span class="math display">\[
+\mbox{shape}=(a+\sum_{i=1}^{n-1}y_{i})+y_{n} \\
+\mbox{rate}=(b+n-1)+(1)
+\]</span> So adding all the data at once yields the same result as converting the posterior at each step to the prior for the next step.</p>
 </div>
 <div id="what-impact-did-the-choice-of-prior-have" class="section level2">
 <h2><span class="header-section-number">5.5</span> What impact did the choice of prior have?</h2>
