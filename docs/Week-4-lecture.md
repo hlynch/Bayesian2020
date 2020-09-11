@@ -7,6 +7,37 @@ Papers to read this week:
 * [Robert and Casella Lecture Notes](https://github.com/hlynch/Bayesian2020/tree/master/_data/MCMC-UseR.pdf): For the purpose of this week, focus on pages 51-79 but these lecture notes are excellent and cover a lot of material and are worth skimming through in their entirety in case there are other sections of interest.
 * [Smith and Gelfand 1992](https://github.com/hlynch/Bayesian2020/tree/master/_data/SmithGelfand1992.pdf): **Important**: This paper has a typo, an important one. See if you can find it. (The paper is such an important one, and so nicely explains the underlying principles, so we read this paper anyways...) In any case, we'll discuss it in class.
 
+##Conjugacy aside, how to actually calculate the posterior
+
+Over the last couple of weeks we've learned about Bayes theorem, and ow the posterior integrates information from the data (through the likelihood) and the prior. We also introduced the idea of conjugate pairs, whereby for a given likelihood distribution, there is often a choice of prior (specifically, a choice for the distribution used) that leads to a posterior of the same form. These conjugate pairs make calculating the posterior simple. However, real problems are never quite that simple, and inevitably we need to use numerical methods to figure out what the posterior distribution is.
+
+Before we dive headlong into Monte Carlo methods, I want to start with an approach that is almost too simple.  Let's start goping back to the core equation of Bayesian methods
+
+$$
+\mbox{posterior} \propto \mbox{likelihood} \times \mbox{prior}
+$$
+What if we just sampled from the prior and put those sampled values into the likelihood? To illustrate I'm going to re-fit the model from McCarthy's Box 3.4 (which we have used before to practice running models in JAGS). In the code below, I sample from a prior for $\lambda$ (in this case, a more informative but still broad prior than McCarthy used), I then take those values and calculate the likelihood of obtaining the data for each of those values of $\lambda$, and ten I multiply the likleihood and prior together. Note that to avoid numerical issues, I have summed the logged distributions and then taken the exponential at the end.
+
+
+```r
+prior<-rlnorm(1000,1,1)
+data<-c(6,0,1,2,1,7,1,5,2,0)
+
+logged.posterior<-c()
+for (i in 1:length(prior))
+{
+  logged.posterior<-c(logged.posterior,sum(dpois(data,lambda=prior[i],log=T))+dlnorm(prior[i],1,1,log=T))
+}
+plot(prior,exp(logged.posterior),xlim=c(0,5))
+```
+
+<img src="Week-4-lecture_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+
+Ta-da! The posterior distribution is peaked at $\lambda=2.5$, just like it should since the mean number of trees in the dataset is 2.5. (Note that this is the un-normalized posterior.)
+
+This seems so simple, why would we ever use another method? When you have many more parameters, it turns out that this approach is numerically inefficient, because you are trying a lot of values for the parameters that have very low likelihoods and contribute little to the posterior. But as we wade into methods that seek the same result (more efficiently), we should keeop in mind the simplicity of this basic method.
+
+##Monte Carlo Methods
 In Week #4 and #5, we take a detour from Bayesian stats itself to discuss a more general concept, which is Monte Carlo methods. Monte Carlo methods are named for the famous gambling city, which remind us that stochasticity is really the only requirement for something to be considered “Monte Carlo”. Monte Carlo methods, and the idea behind Markov Chain Monte Carlo (MCMC), are much more general than just Bayesian statistics and, in fact, arise in frequentist statistics as well.
 
 I’ll introduce Monte Carlo methods using three common applications:
@@ -25,7 +56,7 @@ The idea behind rejection sampling is pretty straightforward and best illustrate
 
 <div class="figure" style="text-align: center">
 <img src="UniformCircle.png" alt="Probability is uniform within the unit circle." width="25%" />
-<p class="caption">(\#fig:unnamed-chunk-1)Probability is uniform within the unit circle.</p>
+<p class="caption">(\#fig:unnamed-chunk-2)Probability is uniform within the unit circle.</p>
 </div>
 
 Now that we have the basic picture, we can see how this might apply to a real problem. Rejection sampling is based on the idea that you may not be able to draw from the distribution you really want, but you can sample from a distribution that includes (in a statistical sense) the distribution you want and reject samples accordingly.
@@ -49,7 +80,7 @@ OK, so now let’s assume that you have figured out what $M$ needs to be. The ps
 
 <div class="figure" style="text-align: center">
 <img src="RejectionFigure.png" alt="Pseudocode for the rejection sampling." width="50%" />
-<p class="caption">(\#fig:unnamed-chunk-2)Pseudocode for the rejection sampling.</p>
+<p class="caption">(\#fig:unnamed-chunk-3)Pseudocode for the rejection sampling.</p>
 </div>
 
 Note that the draw from the uniform is just a mechanism for accepting values from the target distribution with probability $g(x)/M*f(x)$. If it makes more sense, you could use a draw from the Bernoulli instead, i.e.
@@ -104,7 +135,7 @@ legend("topright", c("target","proposal","accepted","rejected"),
        pch=c(NA,NA,1,4), bg="white") 
 ```
 
-<img src="Week-4-lecture_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="Week-4-lecture_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 We will write some code in lab to actually practice doing this.
 
@@ -172,7 +203,7 @@ I've re-written this on the right hand side because it connects it to the geomet
 
 <div class="figure" style="text-align: center">
 <img src="BayesianIntegration.png" alt="The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008)." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-6)The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008).</p>
+<p class="caption">(\#fig:unnamed-chunk-7)The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008).</p>
 </div>
 
 Note that the term Monte Carlo Integration is sometimes replaced by, or used synonymously with the phrase Monte Carlo simulation. Don’t let this confuse you. The idea behind both of these terms is simply that you can replace a probability distribution function (which may be a conditional probability distribution) with samples from that probability distribution function.
