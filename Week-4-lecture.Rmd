@@ -9,14 +9,16 @@ Papers to read this week:
 
 ##Conjugacy aside, how to actually calculate the posterior
 
-Over the last couple of weeks we've learned about Bayes theorem, and ow the posterior integrates information from the data (through the likelihood) and the prior. We also introduced the idea of conjugate pairs, whereby for a given likelihood distribution, there is often a choice of prior (specifically, a choice for the distribution used) that leads to a posterior of the same form. These conjugate pairs make calculating the posterior simple. However, real problems are never quite that simple, and inevitably we need to use numerical methods to figure out what the posterior distribution is.
+Over the last couple of weeks we've learned about Bayes theorem, and how the posterior integrates information from the data (through the likelihood) and the prior. We also introduced the idea of conjugate pairs, whereby for a given likelihood distribution, there is often a choice of prior (specifically, a choice for the distribution used) that leads to a posterior of the same form. These conjugate pairs make calculating the posterior simple. However, real problems are never quite that simple, and inevitably we need to use numerical methods to figure out what the posterior distribution is.
 
-Before we dive headlong into Monte Carlo methods, I want to start with an approach that is almost too simple.  Let's start goping back to the core equation of Bayesian methods
+Why are we talking about sampling methods? Why do we need them in Bayesian statistics? - because the posterior distribution may have no straightforward analytical form! In most cases, we have no way of either writing down the posterior PDF or of sampling directly from it. Sampling methods (of which there are many) provide a mechanism to sample from the posterior distribution even if we cannot write it down. There are several methods we will discuss. Which ones you actually use in each situation depend on your needs for efficiency vs. simplicity. JAGS will automatically choose the best method, but a proper understanding of Bayesian statistics requires a thorough understanding of MC (even though, sadly, most ecologists use JAGS without this background...)
+
+Before we dive headlong into Monte Carlo methods, I want to start with an approach that is almost too simple.  Let's start by going back to the core equation of Bayesian methods
 
 $$
 \mbox{posterior} \propto \mbox{likelihood} \times \mbox{prior}
 $$
-What if we just sampled from the prior and put those sampled values into the likelihood? To illustrate I'm going to re-fit the model from McCarthy's Box 3.4 (which we have used before to practice running models in JAGS). In the code below, I sample from a prior for $\lambda$ (in this case, a more informative but still broad prior than McCarthy used), I then take those values and calculate the likelihood of obtaining the data for each of those values of $\lambda$, and ten I multiply the likleihood and prior together. Note that to avoid numerical issues, I have summed the logged distributions and then taken the exponential at the end.
+What if we just sampled from the prior and put those sampled values into the likelihood? To illustrate I'm going to re-fit the model from McCarthy's Box 3.4 (which we have used before to practice running models in JAGS). In the code below, I sample from a prior for $\lambda$ (in this case, a more informative but still broad prior than McCarthy used), I then take those values and calculate the likelihood of obtaining the data for each of those values of $\lambda$, and then I multiply the likleihood and prior together. Note that to avoid numerical issues, I have summed the logged distributions and then taken the exponential at the end.
 
 ```{r}
 prior<-rlnorm(1000,1,1)
@@ -30,7 +32,7 @@ for (i in 1:length(prior))
 plot(prior,exp(logged.posterior),xlim=c(0,5))
 ```
 
-Ta-da! The posterior distribution is peaked at $\lambda=2.5$, just like it should since the mean number of trees in the dataset is 2.5. (Note that this is the un-normalized posterior.)
+Ta-da! The posterior distribution is peaked at around $\lambda=2.5$, just like it should since the mean number of trees in the dataset is 2.5. (Note that this is the un-normalized posterior.) You can go back and play around with different values of the prior. What happens if you use a highly uninformative prior? Does that make sampling harder? Why?
 
 This seems so simple, why would we ever use another method? When you have many more parameters, it turns out that this approach is numerically inefficient, because you are trying a lot of values for the parameters that have very low likelihoods and contribute little to the posterior. But as we wade into methods that seek the same result (more efficiently), we should keeop in mind the simplicity of this basic method.
 
@@ -44,8 +46,6 @@ I’ll introduce Monte Carlo methods using three common applications:
 3) Importance Sampling
 
 Next week, we will tackle Markov Chain Monte Carlo Methods, such as Gibbs Sampling and Metropolis-Hastings. (Markov Chain Monte Carlo is a special case of Monte Carlo in which the next sample from the distribution depends only on the last sample [or, in more complex cases, on a finite number of previous samples]. I will tend to use the term “MCMC” when talking about these methods as applied to Bayesian statistics, because most of the methods used in Bayesian statistics have the Markov property, but keep in mind that MCMC is really a special case of a much more general concept of “Monte Carlo”.)
-
-Why are we talking about MC methods? Why do we need them in Bayesian statistics? - because the posterior distribution may have no straightforward analytical form! In most cases, we have no way of either writing down the posterior PDF or of sampling from it. MC methods (of which there are many) provide a mechanism to sample from the posterior distribution even if we cannot write it down. There are several methods we will discuss. Which ones you actually use in each situation depend on your needs for efficiency vs. simplicity. JAGS will automatically choose the best method, but a proper understanding of Bayesian statistics requires a thorough understanding of MC (even though, sadly, most ecologists use JAGS without this background…)
 
 ##Rejection Sampling
 
