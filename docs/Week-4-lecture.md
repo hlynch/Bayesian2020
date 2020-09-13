@@ -166,9 +166,6 @@ $$
 is approximated by
 
 $$
-E[X] = \int_{-\infty}^{\infty} xf(x)dx
-$$
-$$
 E[g(X)] \approx \frac{1}{T}\sum_{t=1}^{T}g(x_{t})
 $$
 Notice that this is really no more complicated, its simply saying that you draw from $f(x)$, plug those values into $g()$ and then average all those values of $g(x)$!

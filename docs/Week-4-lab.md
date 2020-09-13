@@ -18,10 +18,15 @@ Our choice of $\sigma$ here is arbitrary, so lets work with $\sigma=2$.
 **Exercise 2**: Write a script to generate samples from this distribution using Sampling Importance Resampling (SIR). This is quite similar to rejection sampling except that it does not require you to find a constant M that ensures that your candidate function is always larger than your target function. (This can be handy when your target function is unknown.)
 
 Pseudo code for SIR:
+
 *	Sample a large number of random values from a candidate distribution with support over the same range of x values as the target distribution.
+
 *	Find the probability of obtaining those values from the target distribution (i.e. the probability density at each $x$ value drawn).
+
 *	Normalize these probabilities from Step 2 so they sum to 1. 
+
 *	Use the (now normalized) probabilities from Step 3 as weights in a resampling of the random values from Step 1. In other words, use the ‘sample’ function in R to sample with replacement from the values drawn in Step 1, and use the probabilities from Step 3 as weights for that bootstrap sampling.
+
 *	The samples from Step 4 are the draws from the unknown distribution!
 
 **Exercise 3**: Calculate the E[X] of this distribution using either the samples from IS or those from SIR. (If you did everything correctly, they should be roughly the same.) (Stop and work out what E[X] should be mathematically.) Look back at the Week #4 Lecture and make sure you see why this procedure is closely related to the idea of Monte Carlo Integration. What is the function $g(x)$ in this case?
@@ -31,7 +36,9 @@ Pseudo code for SIR:
 ##Smith and Gelfand (1992)
 
 Key points:
+
 * Bayesian statistics is all about using the data to go from a prior distribution for model parameters to a posterior distribution for model parameters. In some cases, this can be done directly (e.g., when we have conjugate priors). More often than not, this cannot be done directly. In these cases, we have to settle for a somewhat indirect approach focused on using the data to go from samples from the prior distribution to samples from the posterior distribution. We have replaced manipulations of the pdfs, with stochastic samples from those pdfs.
+
 * Rejection methods require that you can calculate some number M such that the ratio of the candidate distribution to the target distribution is always greater than or equal to one. Sometimes this isn’t possible. In these cases, Smith and Gelfand (1992) introduce another approach called the weighted bootstrap approach. What is it, or in what way is it related to a simple bootstrap?  Note that in other places, this approach is called SIR=Sampling – Importance Resampling.
 
 We will now work through the binomial example discussed by Smith and Gelfand (1992). The basic premise is this: Let’s say you have two Binomial variables
