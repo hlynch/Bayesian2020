@@ -225,16 +225,16 @@ Importance sampling is similar to MC integration, and uses a bit of a trick to g
 Let’s say that $g(x)$ above is a distribution that you cannot easily sample from. You can get around this problem by finding a similar distribution that you can sample from, using
 
 $$
-g(x) = f(x)\frac{g(x)}{f(x)}
+g(x) = proposal(x)\frac{target(x)}{proposal(x)}
 $$
-What have we gained? Well, what we can do is sample from $f(x)$ and weight these draws by the ratio $\frac{g(x)}{f(x)}$.
+What have we gained? Well, what we can do is sample from $proposal(x)$ and weight these draws by the ratio $\frac{target(x)}{proposal(x)}$.
 
-Now we can get E[X] (or, similarly, the E[g(x)]), by drawing from $f(x)$ to get a chain of values $x_{i}$ and calculating
+Now we can get E[X] (or, similarly, the E[target(x)]), by drawing from $proposal(x)$ to get a chain of values $x_{i} \sim proposal()$ and calculating
 
 $$
-\frac{1}{n}\sum^{n}_{i=1}x_{i}\frac{g(x_{i})}{f(x_{i})}
+\frac{1}{N}\sum^{N}_{i=1}x_{i}\frac{target(x_{i})}{proposal(x_{i})}
 $$
-How useful is this method? The challenge here is in finding a good distribution $f(x)$ that has sufficient probability over the range that is important for g(x), but you don’t want something so “flat” that you end up sampling a lot of x values that don’t really contribute to the expected value of interest.
+How useful is this method? The challenge here is in finding a good distribution $proposal(x)$ that has sufficient probability over the range that is important for target(x), but you don’t want something so “flat” that you end up sampling a lot of x values that don’t really contribute to the expected value of interest.
 
 ##Sampling Importance Resampling
 

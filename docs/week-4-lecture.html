@@ -419,12 +419,12 @@ Figure 6.2: The left hand figure is just the Riemann sum version of integration.
 <p>Importance sampling is similar to MC integration, and uses a bit of a trick to get from a distribution you can’t easily sample from, to one you can.</p>
 <p>Let’s say that <span class="math inline">\(g(x)\)</span> above is a distribution that you cannot easily sample from. You can get around this problem by finding a similar distribution that you can sample from, using</p>
 <p><span class="math display">\[
-g(x) = f(x)\frac{g(x)}{f(x)}
-\]</span> What have we gained? Well, what we can do is sample from <span class="math inline">\(f(x)\)</span> and weight these draws by the ratio <span class="math inline">\(\frac{g(x)}{f(x)}\)</span>.</p>
-<p>Now we can get E[X] (or, similarly, the E[g(x)]), by drawing from <span class="math inline">\(f(x)\)</span> to get a chain of values <span class="math inline">\(x_{i}\)</span> and calculating</p>
+g(x) = proposal(x)\frac{target(x)}{proposal(x)}
+\]</span> What have we gained? Well, what we can do is sample from <span class="math inline">\(proposal(x)\)</span> and weight these draws by the ratio <span class="math inline">\(\frac{target(x)}{proposal(x)}\)</span>.</p>
+<p>Now we can get E[X] (or, similarly, the E[target(x)]), by drawing from <span class="math inline">\(proposal(x)\)</span> to get a chain of values <span class="math inline">\(x_{i} \sim proposal()\)</span> and calculating</p>
 <p><span class="math display">\[
-\frac{1}{n}\sum^{n}_{i=1}x_{i}\frac{g(x_{i})}{f(x_{i})}
-\]</span> How useful is this method? The challenge here is in finding a good distribution <span class="math inline">\(f(x)\)</span> that has sufficient probability over the range that is important for g(x), but you don’t want something so “flat” that you end up sampling a lot of x values that don’t really contribute to the expected value of interest.</p>
+\frac{1}{N}\sum^{N}_{i=1}x_{i}\frac{target(x_{i})}{proposal(x_{i})}
+\]</span> How useful is this method? The challenge here is in finding a good distribution <span class="math inline">\(proposal(x)\)</span> that has sufficient probability over the range that is important for target(x), but you don’t want something so “flat” that you end up sampling a lot of x values that don’t really contribute to the expected value of interest.</p>
 </div>
 <div id="sampling-importance-resampling" class="section level2">
 <h2><span class="header-section-number">6.8</span> Sampling Importance Resampling</h2>
