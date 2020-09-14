@@ -7,6 +7,9 @@ Papers to read this week:
 * [Robert and Casella Lecture Notes](https://github.com/hlynch/Bayesian2020/tree/master/_data/MCMC-UseR.pdf): For the purpose of this week, focus on pages 51-79 but these lecture notes are excellent and cover a lot of material and are worth skimming through in their entirety in case there are other sections of interest.
 * [Smith and Gelfand 1992](https://github.com/hlynch/Bayesian2020/tree/master/_data/SmithGelfand1992.pdf): **Important**: This paper has a typo, an important one. See if you can find it. (The paper is such an important one, and so nicely explains the underlying principles, so we read this paper anyways...) In any case, we'll discuss it in class.
 
+When we had a conjugate orioir to the likelihood, we were lucky enough to end up with a parametric distribution for the posterior and almost certainly that was a distribution built into R and JAGS. So we could easily write down the PDF for the distribution and sample from the distribution. In the most general case, we are not so lucky. If we are working through this problem analytically, we may have an expression for the posterior but no easy way to sample from it (NB: most statistical inference in Bayesian modelling stems from posterior samples, so even if we have the posterior PDF, we want to be able to sample from it) **or** we have samples from the distribution (like produced from JAGS) but we don't know what the PDF is. Today we will focus on methods that either allow us to sample from a distribution even if its not built into JAGS or to calculate properties of a distribution if all we have are samples from it. 
+
+
 ##Conjugacy aside, how to actually calculate the posterior
 
 Over the last couple of weeks we've learned about Bayes theorem, and how the posterior integrates information from the data (through the likelihood) and the prior. We also introduced the idea of conjugate pairs, whereby for a given likelihood distribution, there is often a choice of prior (specifically, a choice for the distribution used) that leads to a posterior of the same form. These conjugate pairs make calculating the posterior simple. However, real problems are never quite that simple, and inevitably we need to use numerical methods to figure out what the posterior distribution is.
@@ -18,32 +21,36 @@ Before we dive headlong into Monte Carlo methods, I want to start with an approa
 $$
 \mbox{posterior} \propto \mbox{likelihood} \times \mbox{prior}
 $$
-What if we just sampled from the prior and put those sampled values into the likelihood? To illustrate I'm going to re-fit the model from McCarthy's Box 3.4 (which we have used before to practice running models in JAGS). In the code below, I sample from a prior for $\lambda$ (in this case, a more informative but still broad prior than McCarthy used), I then take those values and calculate the likelihood of obtaining the data for each of those values of $\lambda$, and then I multiply the likleihood and prior together. Note that to avoid numerical issues, I have summed the logged distributions and then taken the exponential at the end.
+What if we just sampled from the prior and put those sampled values into the likelihood? To illustrate I'm going to re-fit the model from McCarthy's Box 3.4 (which we have used before to practice running models in JAGS). In the code below, I sample from a prior for $\lambda$ (in this case, a more informative but still broad prior than McCarthy used), I then take those values and calculate the likelihood of obtaining the data for each of those values of $\lambda$, and then I multiply the likleihood and prior together. 
 
 ```{r}
-prior<-rlnorm(1000,1,1)
+prior<-rlnorm(100,1,1)
 data<-c(6,0,1,2,1,7,1,5,2,0)
 
-logged.posterior<-c()
+posterior<-c()
 for (i in 1:length(prior))
 {
-  logged.posterior<-c(logged.posterior,sum(dpois(data,lambda=prior[i],log=T))+dlnorm(prior[i],1,1,log=T))
+  posterior<-c(posterior,prod(dpois(data,lambda=prior[i]))*dlnorm(prior[i],1,1))
 }
-plot(prior,exp(logged.posterior),xlim=c(0,5))
+plot(prior,posterior,xlim=c(0,5),xlab="lambda")
 ```
 
 Ta-da! The posterior distribution is peaked at around $\lambda=2.5$, just like it should since the mean number of trees in the dataset is 2.5. (Note that this is the un-normalized posterior.) You can go back and play around with different values of the prior. What happens if you use a highly uninformative prior? Does that make sampling harder? Why?
 
-This seems so simple, why would we ever use another method? When you have many more parameters, it turns out that this approach is numerically inefficient, because you are trying a lot of values for the parameters that have very low likelihoods and contribute little to the posterior. But as we wade into methods that seek the same result (more efficiently), we should keeop in mind the simplicity of this basic method.
+This seems so simple, why would we ever use another method? 
+
+*This method does a good job in this case or ``tracing out'' the posterior PDF, but there is no easy way to sample from this PDF (i.e. to obtain posterior samples) or to calculate its properties. In other words, there is no obvious way to calculate $P(\lambda > 3)$. To do that, we either need to actual equation for the posterior (and even then, integration might be a nightmare) or we need samples from the posterior (much easier),
+
+*When you have many more parameters, it turns out that this approach is numerically inefficient, because you are trying a lot of values for the parameters that have very low likelihoods and contribute little to the posterior. 
 
 ##Monte Carlo Methods
 In Week #4 and #5, we take a detour from Bayesian stats itself to discuss a more general concept, which is Monte Carlo methods. Monte Carlo methods are named for the famous gambling city, which remind us that stochasticity is really the only requirement for something to be considered “Monte Carlo”. Monte Carlo methods, and the idea behind Markov Chain Monte Carlo (MCMC), are much more general than just Bayesian statistics and, in fact, arise in frequentist statistics as well.
 
 I’ll introduce Monte Carlo methods using three common applications:
 
-1) Rejection sampling
-2) Monte Carlo Integration
-3) Importance Sampling
+1) Rejection sampling (how to **get** random samples when you have the PDF)
+2) Monte Carlo Integration (how to **use** random samples when you want to know something about the PDF)
+3) Importance Sampling (how to **use** random samples when you want to know something about the PDF)
 
 Next week, we will tackle Markov Chain Monte Carlo Methods, such as Gibbs Sampling and Metropolis-Hastings. (Markov Chain Monte Carlo is a special case of Monte Carlo in which the next sample from the distribution depends only on the last sample [or, in more complex cases, on a finite number of previous samples]. I will tend to use the term “MCMC” when talking about these methods as applied to Bayesian statistics, because most of the methods used in Bayesian statistics have the Markov property, but keep in mind that MCMC is really a special case of a much more general concept of “Monte Carlo”.)
 
@@ -57,32 +64,32 @@ knitr::include_graphics('UniformCircle.png')
 
 Now that we have the basic picture, we can see how this might apply to a real problem. Rejection sampling is based on the idea that you may not be able to draw from the distribution you really want, but you can sample from a distribution that includes (in a statistical sense) the distribution you want and reject samples accordingly.
 
-Assume $g(x)$ is the distribution you would like to draw from – we call this the “target distribution”. The basic idea is that you take a distribution $f(x)$ that you **can** sample from (we call this the “candidate distribution” because it generate candidates for the accept-reject part; sometimes this is also called the "proposal distribution" because it is the distribution used to propose samples that are either rejected or accepted), and you scale it by some number M so that you guarantee that $M*f(x)$ is always greater than or equal to $g(x)$. (NB: The more traditional letters for the target and candidate distributions are p() and q() but here I am using f() and g() to be consistent with the notes that follow. As might be understood by now, the actual letters used is irrelevant, but I'll try and keep everything consistent to minimize confusion.)
+Assume $target(x)$ is the distribution you would like to draw from – we call this the “target distribution”. The basic idea is that you take a distribution $proposal(x)$ that you **can** sample from (we call this the “candidate" or "proposal" distribution because it generate candidates for the accept-reject part; sometimes this is also called the "proposal distribution" because it is the distribution used to propose samples that are either rejected or accepted), and you scale it by some number M so that you guarantee that $M*proposal(x)$ is always greater than or equal to $target(x)$. (NB: The more traditional letters for the target and candidate distributions are p() and q() but here I am using proposal() and target() to be consistent with the notes that follow. As might be understood by now, the actual letters used is irrelevant, but I'll try and keep everything consistent to minimize confusion.)
 
 What is M? You want M to be only as large as it needs to be (Why?), so we calculate M as
 
 $$
-M = sup_{x}\left(\frac{g(x)}{f(x)}\right)
+M = sup_{x}\left(\frac{target(x)}{proposal(x)}\right)
 $$
 or, to look at it another way
 
 $$
-1 = sup_{x}\left(\frac{g(x)}{M*f(x)}\right)
+1 = sup_{x}\left(\frac{target(x)}{M*proposal(x)}\right)
 $$
 
-In words, this simply says that the **largest** you would want $g(x)/M*f(x)$ to be is 1.
+In words, this simply says that the **largest** you would want $target(x)/M*proposal(x)$ to be is 1.
 
-OK, so now let’s assume that you have figured out what $M$ needs to be. The pseudocode lays out the basic algorithm to draw N samples from the target distribution:
+OK, so now let’s assume that you have figured out what $M$ needs to be. The pseudocode lays out the basic algorithm to draw N samples from the target distribution (NB: Here f(x)=proposal(x) and g(x)=target(x)):
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Pseudocode for the rejection sampling.', out.width='50%'}
 knitr::include_graphics('RejectionFigure.png')
 ```
 
-Note that the draw from the uniform is just a mechanism for accepting values from the target distribution with probability $g(x)/M*f(x)$. If it makes more sense, you could use a draw from the Bernoulli instead, i.e.
+Note that the draw from the uniform is just a mechanism for accepting values from the target distribution with probability $target(x)/M*proposal(x)$. If it makes more sense, you could use a draw from the Bernoulli instead, i.e.
 
 $$
-x^{(i)} \sim f(x) \\
-\mbox{if rBinom} \left(1,\frac{g(x)}{M*f(x)}\right)
+x^{(i)} \sim proposal(x) \\
+\mbox{if rBinom} \left(1,\frac{target(x)}{M*proposal(x)}\right)
 $$
 
 The analogy I might use is that of carving out a sandcastle from a pile of sand. The first task is to pile up enough sand that the pile is higher than the tallest part of the castle, and then the second task is to carve away at the sand until you get the shape you want. Rejection sampling is just carving away at the big shapeless pile of sand to get the distribution you wanted in the first place.
@@ -135,10 +142,10 @@ The idea behind Monte Carlo integration is very simple. Let’s say you have a p
 $$
 E[X] = \int_{-\infty}^{\infty} xf(x)dx
 $$
-But what do you do if you don’t know the equation for $f(x)$ but you do have some way of sampling from $f(x)$? (in other words, some black box method for generating random draws ${x_{1},x_{2},x_{3},...,x_{T}}$, but no idea what’s in the black box...) In this case, you can estimate the expectation by
+But what do you do if you don’t know the equation for $f(x)$ but you do have some way of sampling from $f(x)$? (in other words, some black box method for generating random draws ${x_{1},x_{2},x_{3},...,x_{N}}$, but no idea what’s in the black box...) In this case, you can estimate the expectation by
 
 $$
-E[X] \approx \frac{1}{T}\sum_{t=1}^{T}x_{t}
+E[X] \approx \frac{1}{N}\sum_{i=1}^{N}x_{i}
 $$
 
 Remember that the expected value E[X] is simply the value you would expect if you sampled from $f(x)$. The expected value is just the mean of all values from $f(x)$, in which case you can simply use the draws that you have in lieu of having the full pdf describing $f(x)$.
@@ -151,19 +158,19 @@ $$
 is approximated by
 
 $$
-E[g(X)] \approx \frac{1}{T}\sum_{t=1}^{T}g(x_{t})
+E[g(X)] \approx \frac{1}{N}\sum_{i=1}^{N}g(x_{i})
 $$
 Notice that this is really no more complicated, its simply saying that you draw from $f(x)$, plug those values into $g()$ and then average all those values of $g(x)$!
 
 How good is this estimate?
 
 $$
-SE_{E[g(x)]} = \sqrt{\frac{s^{2}_{g(x)}}{T}}
+SE_{E[g(x)]} = \sqrt{\frac{s^{2}_{g(x)}}{N}}
 $$
 where $s^{2}_{g(x)}$ is the sample variance of $g(X)$
 
 $$
-s^{2}_{g(x)} = \frac{1}{T-1}\sum^{T}_{1}(g(x_{t})-E[g(x)])^2
+s^{2}_{g(x)} = \frac{1}{N-1}\sum^{N}_{1}(g(x_{t})-E[g(x)])^2
 $$
 (This is closely tied to some of the ideas we discussed in Biometry regarding bootstrap sampling. The basic idea is the same: Samples from $f(x)$ can be used in lieu of $f(x)$ for approximations of quantities involving $f(x)$. The quality of those approximations increases as the number of samples used increases.)
 
@@ -179,7 +186,7 @@ $$
 The last version here looks like what we had up above. So we now draw from $f(x)=Unif(a,b)$ and plug those draws into our function $g(x)$
 
 $$
-(b-a)\left[\frac{1}{N}\sum^{N}_{t=1}g(x_{t})\right] = \sum^{N}_{t=1}g(x_{t}) \times \frac{(b-a)}{N}
+(b-a)\left[\frac{1}{N}\sum^{N}_{i=1}g(x_{i})\right] = \sum^{N}_{i=1}g(x_{i}) \times \frac{(b-a)}{N}
 $$
 I've re-written this on the right hand side because it connects it to the geometric interpretation illustrated in the figure.
 
