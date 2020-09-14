@@ -52,7 +52,7 @@ Next week, we will tackle Markov Chain Monte Carlo Methods, such as Gibbs Sampli
 
 ##Rejection Sampling
 
-The idea behind rejection sampling is pretty straightforward and best illustrated with a geometric example. Assume for a moment that you want to sample points within the unit circle (at right) but you only have a machine that can sample from the Uniform(0,1) distribution. What do you do? You could sample X and Y from the Unif(0,1), which will give you a random assortment of locations (X,Y) within the white square. For each pair of points (defining a location $[x_i, y_i]$) you can test whether it falls inside the unit circle (by checking that ) or outside. If you simply reject all pairs $(x,y)$ that fall outside the unit circle, you are left with a random sample of points within the unit circle. (This is probably what you did to solve the Week #1 Problem Set.) This is just as good as having a function to sample from the unit circle directly except now it is less efficient because you have had to draw more points than you needed (because some were rejected). In this case, the loss of efficiency was rather trivial, but you can imagine having drawn X and Y from Unif(-1000,1000) and using rejection sampling to get points within the unit circle. In this case, the loss of efficiency would be rather extreme. 
+The idea behind rejection sampling is pretty straightforward and best illustrated with a geometric example. Assume for a moment that you want to sample points within the unit circle (below) but you only have a machine that can sample from the Uniform(0,1) distribution. What do you do? You could sample X and Y from the Unif(0,1), which will give you a random assortment of locations (X,Y) within the white square. For each pair of points (defining a location $[x_i, y_i]$) you can test whether it falls inside the unit circle (by checking that ) or outside. If you simply reject all pairs $(x,y)$ that fall outside the unit circle, you are left with a random sample of points within the unit circle. (This is probably what you did to solve the Week #1 Problem Set.) This is just as good as having a function to sample from the unit circle directly except now it is less efficient because you have had to draw more points than you needed (because some were rejected). In this case, the loss of efficiency was rather trivial, but you can imagine having drawn X and Y from Unif(-1000,1000) and using rejection sampling to get points within the unit circle. In this case, the loss of efficiency would be rather extreme. 
 
 <div class="figure" style="text-align: center">
 <img src="UniformCircle.png" alt="Probability is uniform within the unit circle." width="25%" />
@@ -92,7 +92,7 @@ $$
 
 The analogy I might use is that of carving out a sandcastle from a pile of sand. The first task is to pile up enough sand that the pile is higher than the tallest part of the castle, and then the second task is to carve away at the sand until you get the shape you want. Rejection sampling is just carving away at the big shapeless pile of sand to get the distribution you wanted in the first place.
 
-To walk through a simple example, I've bottowed a nice example nearly verbatim from Jarad Neimi's [blog](https://www.jarad.me/teaching/2013/10/03/rejection-sampling) where we take the Beta distribution as the target we want to sample from (pretending, for a moment, that this is not in base R) and the Unif(0,1) as the candidate distribution we actually can sample from. So in this example, and using the notation above, g(x) is the Beta distribution and f(x) is the Uniform distribution.
+To walk through a simple example, I've borrowed a nice example nearly verbatim from Jarad Neimi's [blog](https://www.jarad.me/teaching/2013/10/03/rejection-sampling) where we take the Beta distribution as the target we want to sample from (pretending, for a moment, that this is not in base R) and the Unif(0,1) as the candidate distribution we actually can sample from. So in this example, and using the notation above, g(x) is the Beta distribution and f(x) is the Uniform distribution.
 
 
 ```r
@@ -101,6 +101,8 @@ b = 12
 target = function(x) dbeta(x,a,b)
 proposal = dunif
 ```
+
+(Note the highly unorthodox use of the function dunif. I have left Jarad's code as is for illustration. Here he is simply taking the function dunif and creating a new function ''proposal'' that is the same function but now with a new name. He has done this to make it clear that the Uniform is being used as the proposal distribution.)
 
 Now we will calculate M and the probability of acceptance.
 
@@ -205,7 +207,7 @@ I've re-written this on the right hand side because it connects it to the geomet
 
 Note that the term Monte Carlo Integration is sometimes replaced by, or used synonymously with the phrase Monte Carlo simulation. Don’t let this confuse you. The idea behind both of these terms is simply that you can replace a probability distribution function (which may be a conditional probability distribution) with samples from that probability distribution function.
 
-In one-dimension, this all seems rather too simple to be of any use, but in multi-dimensional problems, these methods are essential. The reason is that if you have $T$ multidimensional draws from $f(\vec{X})$ (where I am using vector notation explicitly to denote the fact that each draw contains $>1$ element), then you can make inference about any particular component by using the draws for that component **completely ignoring the other components**. Why does this work? Because the draws from the multidimensional distribution “average out” (heuristically speaking) the other components which might be related. In other words, to the extent that the pdf involves correlations among components, the draws from the multidimensional distribution reflect those underlying correlations already, and you can use the marginal distributions directly without concern for the multidimensionality of it. (Why this is so exciting will become clearer as we get into more detailed Bayesian examples...)
+In one-dimension, this all seems rather too simple to be of any use, but in multi-dimensional problems, these methods are essential. The reason is that if you have $T$ multidimensional draws from $f(\vec{X})$ (where I am using vector notation explicitly to denote the fact that each draw contains $>1$ element), then you can make inference about any particular component by using the draws for that component **completely ignoring the other components**. Why does this work? Because the draws from the multidimensional distribution “average out” (heuristically speaking) the other components which might be related. In other words, to the extent that the pdf involves correlations among components, **the draws from the multidimensional distribution reflect those underlying correlations already**, and you can use the marginal distributions directly without concern for the multidimensionality of it. (Why this is so exciting will become clearer as we get into more detailed Bayesian examples...)
 
 We will play around this this in lab as well.
 

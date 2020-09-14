@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 Week 4 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes</title>
-  <meta name="description" content="1 Week 4 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <title>6 Week 4 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes</title>
+  <meta name="description" content="6 Week 4 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 Week 4 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <meta property="og:title" content="6 Week 4 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 Week 4 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <meta name="twitter:title" content="6 Week 4 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
   
   
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-09-11" />
+<meta name="date" content="2020-09-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="week-7-lab.html"/>
+<link rel="prev" href="week-3-lab.html"/>
+<link rel="next" href="week-4-lab.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -106,25 +106,144 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">Bayesian Data Analysis and Computation Lecture and Lab Notes</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#how-do-we-interpret-the-posteriors"><i class="fa fa-check"></i><b>0.1</b> How do we interpret the posteriors?</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats"><i class="fa fa-check"></i><b>0.2</b> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</a></li>
-<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#getting-some-more-practice-with-jags"><i class="fa fa-check"></i><b>0.3</b> Getting some more practice with JAGS</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
+<li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#introduction-to-this-course"><i class="fa fa-check"></i><b>1.1</b> Introduction to this course</a></li>
+<li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#some-probability-vocabulary"><i class="fa fa-check"></i><b>1.2</b> Some probability vocabulary</a></li>
+<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#statistical-philosophy-and-the-foundations-of-bayesian-analysis"><i class="fa fa-check"></i><b>1.3</b> Statistical philosophy and the foundations of Bayesian analysis</a></li>
+<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#testing-jags-installation"><i class="fa fa-check"></i><b>1.4</b> Testing JAGS installation</a></li>
+<li class="chapter" data-level="1.5" data-path="week-1-lecture.html"><a href="week-1-lecture.html#for-more-information-about-this-weeks-topic"><i class="fa fa-check"></i><b>1.5</b> For more information about this week’s topic</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 4 Lecture</a><ul>
-<li class="chapter" data-level="1.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#conjugacy-aside-how-to-actually-calculate-the-posterior"><i class="fa fa-check"></i><b>1.1</b> Conjugacy aside, how to actually calculate the posterior</a></li>
-<li class="chapter" data-level="1.2" data-path="week-4-lecture.html"><a href="week-4-lecture.html#monte-carlo-methods"><i class="fa fa-check"></i><b>1.2</b> Monte Carlo Methods</a></li>
-<li class="chapter" data-level="1.3" data-path="week-4-lecture.html"><a href="week-4-lecture.html#rejection-sampling"><i class="fa fa-check"></i><b>1.3</b> Rejection Sampling</a></li>
-<li class="chapter" data-level="1.4" data-path="week-4-lecture.html"><a href="week-4-lecture.html#adaptive-rejection-sampling"><i class="fa fa-check"></i><b>1.4</b> Adaptive Rejection Sampling</a></li>
-<li class="chapter" data-level="1.5" data-path="week-4-lecture.html"><a href="week-4-lecture.html#monte-carlo-integration"><i class="fa fa-check"></i><b>1.5</b> Monte Carlo Integration</a></li>
-<li class="chapter" data-level="1.6" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sometimes-you-just-want-the-integral"><i class="fa fa-check"></i><b>1.6</b> Sometimes you just want the integral…</a></li>
-<li class="chapter" data-level="1.7" data-path="week-4-lecture.html"><a href="week-4-lecture.html#importance-sampling"><i class="fa fa-check"></i><b>1.7</b> Importance Sampling</a></li>
-<li class="chapter" data-level="1.8" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sampling-importance-resampling"><i class="fa fa-check"></i><b>1.8</b> Sampling Importance Resampling</a></li>
+<li class="chapter" data-level="2" data-path="week-1-lab.html"><a href="week-1-lab.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab</a></li>
+<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a><ul>
+<li class="chapter" data-level="3.1" data-path="week-2-lecture.html"><a href="week-2-lecture.html#bayes-theorem-and-all-that-follows-from-it"><i class="fa fa-check"></i><b>3.1</b> Bayes Theorem and all that follows from it</a></li>
+<li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#how-do-we-interpret-the-posteriors"><i class="fa fa-check"></i><b>3.2</b> How do we interpret the posteriors?</a></li>
+<li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#a-slight-detour-to-get-us-thinking-about-the-basic-philosophy-behind-bayesian-stats"><i class="fa fa-check"></i><b>3.3</b> A slight detour, to get us thinking about the basic philosophy behind Bayesian stats</a></li>
+<li class="chapter" data-level="3.4" data-path="week-2-lecture.html"><a href="week-2-lecture.html#getting-some-more-practice-with-jags"><i class="fa fa-check"></i><b>3.4</b> Getting some more practice with JAGS</a></li>
+<li class="chapter" data-level="3.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#for-more-information-about-this-weeks-topic-1"><i class="fa fa-check"></i><b>3.5</b> For more information about this week’s topic</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="week-7-lab.html"><a href="week-7-lab.html"><i class="fa fa-check"></i><b>2</b> Week 7 Lab</a><ul>
-<li class="chapter" data-level="2.1" data-path="week-7-lab.html"><a href="week-7-lab.html#in-sum."><i class="fa fa-check"></i><b>2.1</b> In sum….</a></li>
+<li class="chapter" data-level="4" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>4</b> Week 3 Lecture</a><ul>
+<li class="chapter" data-level="4.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#how-do-we-obtain-priors"><i class="fa fa-check"></i><b>4.1</b> How do we obtain priors?</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#published-literature-as-a-source-of-prior-information"><i class="fa fa-check"></i><b>4.1.1</b> Published literature as a source of prior information</a></li>
+<li class="chapter" data-level="4.1.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#expert-opinion"><i class="fa fa-check"></i><b>4.1.2</b> Expert opinion</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>3</b> Week 9 Lab</a></li>
+<li class="chapter" data-level="4.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#conjugacy"><i class="fa fa-check"></i><b>4.2</b> Conjugacy</a></li>
+<li class="chapter" data-level="4.3" data-path="week-3-lecture.html"><a href="week-3-lecture.html#sensitivity-analysis"><i class="fa fa-check"></i><b>4.3</b> Sensitivity analysis</a></li>
+<li class="chapter" data-level="4.4" data-path="week-3-lecture.html"><a href="week-3-lecture.html#for-more-information-about-this-weeks-topic-2"><i class="fa fa-check"></i><b>4.4</b> For more information about this week’s topic</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="5.1" data-path="week-3-lab.html"><a href="week-3-lab.html#congugacy"><i class="fa fa-check"></i><b>5.1</b> Congugacy</a></li>
+<li class="chapter" data-level="5.2" data-path="week-3-lab.html"><a href="week-3-lab.html#moment-matching-two-distributions"><i class="fa fa-check"></i><b>5.2</b> Moment Matching two distributions</a></li>
+<li class="chapter" data-level="5.3" data-path="week-3-lab.html"><a href="week-3-lab.html#from-prior-to-posterior-to-prior"><i class="fa fa-check"></i><b>5.3</b> From Prior to Posterior to Prior</a></li>
+<li class="chapter" data-level="5.4" data-path="week-3-lab.html"><a href="week-3-lab.html#adding-data-one-at-a-time-or-all-at-once"><i class="fa fa-check"></i><b>5.4</b> Adding data: One at a time or all at once?</a></li>
+<li class="chapter" data-level="5.5" data-path="week-3-lab.html"><a href="week-3-lab.html#what-impact-did-the-choice-of-prior-have"><i class="fa fa-check"></i><b>5.5</b> What impact did the choice of prior have?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>6</b> Week 4 Lecture</a><ul>
+<li class="chapter" data-level="6.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#conjugacy-aside-how-to-actually-calculate-the-posterior"><i class="fa fa-check"></i><b>6.1</b> Conjugacy aside, how to actually calculate the posterior</a></li>
+<li class="chapter" data-level="6.2" data-path="week-4-lecture.html"><a href="week-4-lecture.html#monte-carlo-methods"><i class="fa fa-check"></i><b>6.2</b> Monte Carlo Methods</a></li>
+<li class="chapter" data-level="6.3" data-path="week-4-lecture.html"><a href="week-4-lecture.html#rejection-sampling"><i class="fa fa-check"></i><b>6.3</b> Rejection Sampling</a></li>
+<li class="chapter" data-level="6.4" data-path="week-4-lecture.html"><a href="week-4-lecture.html#adaptive-rejection-sampling"><i class="fa fa-check"></i><b>6.4</b> Adaptive Rejection Sampling</a></li>
+<li class="chapter" data-level="6.5" data-path="week-4-lecture.html"><a href="week-4-lecture.html#monte-carlo-integration"><i class="fa fa-check"></i><b>6.5</b> Monte Carlo Integration</a></li>
+<li class="chapter" data-level="6.6" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sometimes-you-just-want-the-integral"><i class="fa fa-check"></i><b>6.6</b> Sometimes you just want the integral…</a></li>
+<li class="chapter" data-level="6.7" data-path="week-4-lecture.html"><a href="week-4-lecture.html#importance-sampling"><i class="fa fa-check"></i><b>6.7</b> Importance Sampling</a></li>
+<li class="chapter" data-level="6.8" data-path="week-4-lecture.html"><a href="week-4-lecture.html#sampling-importance-resampling"><i class="fa fa-check"></i><b>6.8</b> Sampling Importance Resampling</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lab</a><ul>
+<li class="chapter" data-level="7.1" data-path="week-4-lab.html"><a href="week-4-lab.html#smith-and-gelfand-1992"><i class="fa fa-check"></i><b>7.1</b> Smith and Gelfand (1992)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>8</b> Week 5 Lecture</a><ul>
+<li class="chapter" data-level="8.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#gibbs-sampling"><i class="fa fa-check"></i><b>8.1</b> Gibbs Sampling</a></li>
+<li class="chapter" data-level="8.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#metropolis-algorithm"><i class="fa fa-check"></i><b>8.2</b> Metropolis algorithm</a></li>
+<li class="chapter" data-level="8.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-messy-reality-hybrid-of-m-h-and-gibbs"><i class="fa fa-check"></i><b>8.3</b> The Messy reality = Hybrid of M-H and Gibbs</a></li>
+<li class="chapter" data-level="8.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#convergence"><i class="fa fa-check"></i><b>8.4</b> Convergence</a></li>
+<li class="chapter" data-level="8.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#bayesian-change-point-example"><i class="fa fa-check"></i><b>8.5</b> Bayesian change point example</a></li>
+<li class="chapter" data-level="8.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#hierarchical-model"><i class="fa fa-check"></i><b>8.6</b> Hierarchical model</a></li>
+<li class="chapter" data-level="8.7" data-path="week-5-lecture.html"><a href="week-5-lecture.html#for-more-information-about-this-weeks-topic-3"><i class="fa fa-check"></i><b>8.7</b> For more information about this week’s topic</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lab</a><ul>
+<li class="chapter" data-level="9.1" data-path="week-5-lab.html"><a href="week-5-lab.html#gibbs-sampler"><i class="fa fa-check"></i><b>9.1</b> Gibbs Sampler</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="week-6-lab.html"><a href="week-6-lab.html"><i class="fa fa-check"></i><b>10</b> Week 6 Lab</a><ul>
+<li class="chapter" data-level="10.1" data-path="week-6-lab.html"><a href="week-6-lab.html#fitting-a-distribution"><i class="fa fa-check"></i><b>10.1</b> Fitting a distribution</a></li>
+<li class="chapter" data-level="10.2" data-path="week-6-lab.html"><a href="week-6-lab.html#one-way-anova"><i class="fa fa-check"></i><b>10.2</b> One-way ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="week-7-lecture.html"><a href="week-7-lecture.html"><i class="fa fa-check"></i><b>11</b> Week 7 Lecture</a><ul>
+<li class="chapter" data-level="11.1" data-path="week-7-lecture.html"><a href="week-7-lecture.html#class-projects"><i class="fa fa-check"></i><b>11.1</b> Class projects</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="week-7-lab.html"><a href="week-7-lab.html"><i class="fa fa-check"></i><b>12</b> Week 7 Lab</a></li>
+<li class="chapter" data-level="13" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>13</b> Week 8 Lecture</a></li>
+<li class="chapter" data-level="14" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lab</a></li>
+<li class="chapter" data-level="15" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>15</b> Week 9 Lecture</a><ul>
+<li class="chapter" data-level="15.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#the-probability-of-estimability"><i class="fa fa-check"></i><b>15.1</b> The probability of estimability</a></li>
+<li class="chapter" data-level="15.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#multilevel-modelling-ala-gelman-and-hill"><i class="fa fa-check"></i><b>15.2</b> Multilevel modelling ala Gelman and Hill</a></li>
+<li class="chapter" data-level="15.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#in-sum."><i class="fa fa-check"></i><b>15.3</b> In sum….</a></li>
+<li class="chapter" data-level="15.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#nice-et-al.-2014"><i class="fa fa-check"></i><b>15.4</b> Nice et al. (2014)</a></li>
+<li class="chapter" data-level="15.5" data-path="week-9-lecture.html"><a href="week-9-lecture.html#for-more-information-about-this-weeks-topic-4"><i class="fa fa-check"></i><b>15.5</b> For more information about this week’s topic</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lab</a></li>
+<li class="chapter" data-level="17" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>17</b> Week 10 Lecture</a><ul>
+<li class="chapter" data-level="17.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#convergence-1"><i class="fa fa-check"></i><b>17.1</b> Convergence</a></li>
+<li class="chapter" data-level="17.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#testing-for-convergence"><i class="fa fa-check"></i><b>17.2</b> Testing for convergence</a></li>
+<li class="chapter" data-level="17.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#gelman-rubin-statistic"><i class="fa fa-check"></i><b>17.3</b> Gelman-Rubin statistic</a></li>
+<li class="chapter" data-level="17.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#the-take-away-what-should-we-be-checking-after-we-run-our-models"><i class="fa fa-check"></i><b>17.4</b> The take away: What should we be checking after we run our models</a></li>
+<li class="chapter" data-level="17.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#missing-data"><i class="fa fa-check"></i><b>17.5</b> Missing data</a></li>
+<li class="chapter" data-level="17.6" data-path="week-10-lecture.html"><a href="week-10-lecture.html#initial-values"><i class="fa fa-check"></i><b>17.6</b> Initial values</a></li>
+<li class="chapter" data-level="17.7" data-path="week-10-lecture.html"><a href="week-10-lecture.html#sample-scripts-and-output-for-prior-posterior-overlap"><i class="fa fa-check"></i><b>17.7</b> Sample scripts and output for prior-posterior overlap</a></li>
+<li class="chapter" data-level="17.8" data-path="week-10-lecture.html"><a href="week-10-lecture.html#for-more-information-about-this-weeks-topic-5"><i class="fa fa-check"></i><b>17.8</b> For more information about this week’s topic</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lab</a></li>
+<li class="chapter" data-level="19" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>19</b> Week 11 Lecture</a><ul>
+<li class="chapter" data-level="19.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#dynamical-time-series-models"><i class="fa fa-check"></i><b>19.1</b> Dynamical (time series) models</a></li>
+<li class="chapter" data-level="19.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#process-error"><i class="fa fa-check"></i><b>19.2</b> Process error</a></li>
+<li class="chapter" data-level="19.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#observation-error"><i class="fa fa-check"></i><b>19.3</b> Observation error</a></li>
+<li class="chapter" data-level="19.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#other-kinds-of-statespace-models"><i class="fa fa-check"></i><b>19.4</b> Other kinds of state=space models</a></li>
+<li class="chapter" data-level="19.5" data-path="week-11-lecture.html"><a href="week-11-lecture.html#missing-data-1"><i class="fa fa-check"></i><b>19.5</b> Missing data</a></li>
+<li class="chapter" data-level="19.6" data-path="week-11-lecture.html"><a href="week-11-lecture.html#for-more-information-about-this-weeks-topic-6"><i class="fa fa-check"></i><b>19.6</b> For more information about this week’s topic</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lab</a><ul>
+<li class="chapter" data-level="20.1" data-path="week-11-lab.html"><a href="week-11-lab.html#simple-logistic"><i class="fa fa-check"></i><b>20.1</b> Simple logistic</a></li>
+<li class="chapter" data-level="20.2" data-path="week-11-lab.html"><a href="week-11-lab.html#observation-error-only-model"><i class="fa fa-check"></i><b>20.2</b> Observation-error-only model</a></li>
+<li class="chapter" data-level="20.3" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-only-model"><i class="fa fa-check"></i><b>20.3</b> Process-error-only model</a></li>
+<li class="chapter" data-level="20.4" data-path="week-11-lab.html"><a href="week-11-lab.html#process-error-and-observation-error-together"><i class="fa fa-check"></i><b>20.4</b> Process-error and observation-error together</a></li>
+<li class="chapter" data-level="20.5" data-path="week-11-lab.html"><a href="week-11-lab.html#final-thoughts"><i class="fa fa-check"></i><b>20.5</b> Final thoughts</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>21</b> Week 12 Lecture</a><ul>
+<li class="chapter" data-level="21.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#mark-recapture-modeling"><i class="fa fa-check"></i><b>21.1</b> Mark-recapture modeling</a></li>
+<li class="chapter" data-level="21.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#cormack-jolly-seber"><i class="fa fa-check"></i><b>21.2</b> Cormack-Jolly-Seber</a></li>
+<li class="chapter" data-level="21.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-1-brute-force"><i class="fa fa-check"></i><b>21.3</b> Method #1: Brute force</a></li>
+<li class="chapter" data-level="21.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#method-2-modeling-the-entire-capture-history"><i class="fa fa-check"></i><b>21.4</b> Method #2: Modeling the entire capture history</a></li>
+<li class="chapter" data-level="21.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#what-other-kind-of-models-might-you-fit"><i class="fa fa-check"></i><b>21.5</b> What other kind of models might you fit</a></li>
+<li class="chapter" data-level="21.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#occupancy-modelling"><i class="fa fa-check"></i><b>21.6</b> Occupancy modelling</a></li>
+<li class="chapter" data-level="21.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#dynamic-state-space-models-for-meta-population-dynamics"><i class="fa fa-check"></i><b>21.7</b> Dynamic state-space models for meta-population dynamics</a></li>
+<li class="chapter" data-level="21.8" data-path="week-12-lecture.html"><a href="week-12-lecture.html#for-more-information-about-this-weeks-topic-7"><i class="fa fa-check"></i><b>21.8</b> For more information about this week’s topic</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lab</a><ul>
+<li class="chapter" data-level="22.1" data-path="week-12-lab.html"><a href="week-12-lab.html#the-zeros-trick"><i class="fa fa-check"></i><b>22.1</b> The ‘zeros’ trick</a></li>
+<li class="chapter" data-level="22.2" data-path="week-12-lab.html"><a href="week-12-lab.html#the-ones-trick"><i class="fa fa-check"></i><b>22.2</b> The ‘ones’ trick</a></li>
+<li class="chapter" data-level="22.3" data-path="week-12-lab.html"><a href="week-12-lab.html#initial-values-1"><i class="fa fa-check"></i><b>22.3</b> Initial values</a></li>
+<li class="chapter" data-level="22.4" data-path="week-12-lab.html"><a href="week-12-lab.html#first-a-warm-up"><i class="fa fa-check"></i><b>22.4</b> First, a warm up</a></li>
+<li class="chapter" data-level="22.5" data-path="week-12-lab.html"><a href="week-12-lab.html#fitting-mark-recapture-models"><i class="fa fa-check"></i><b>22.5</b> Fitting mark-recapture models</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>23</b> Week 13 Lecture</a><ul>
+<li class="chapter" data-level="23.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#rejection-abc"><i class="fa fa-check"></i><b>23.1</b> Rejection ABC</a></li>
+<li class="chapter" data-level="23.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-1-basic-rejection-abc"><i class="fa fa-check"></i><b>23.2</b> Option #1: Basic rejection ABC</a></li>
+<li class="chapter" data-level="23.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-2-markov-chain-monte-carlo-abc"><i class="fa fa-check"></i><b>23.3</b> Option #2: Markov Chain Monte Carlo ABC</a></li>
+<li class="chapter" data-level="23.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-3-sequential-monte-carlo-abc"><i class="fa fa-check"></i><b>23.4</b> Option #3: Sequential Monte Carlo ABC</a></li>
+<li class="chapter" data-level="23.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#for-more-information-about-this-weeks-topic-8"><i class="fa fa-check"></i><b>23.5</b> For more information about this week’s topic</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 14 Lecture</a><ul>
+<li class="chapter" data-level="24.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#the-mona-lisa"><i class="fa fa-check"></i><b>24.1</b> The Mona Lisa</a></li>
+<li class="chapter" data-level="24.2" data-path="week-14-lecture.html"><a href="week-14-lecture.html#for-more-information-about-this-weeks-topic-9"><i class="fa fa-check"></i><b>24.2</b> For more information about this week’s topic</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>25</b> Week 14 Lab</a></li>
+<li class="chapter" data-level="26" data-path="week-15-lecture.html"><a href="week-15-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 15 Lecture</a><ul>
+<li class="chapter" data-level="26.1" data-path="week-15-lecture.html"><a href="week-15-lecture.html#a-quick-step-back-what-are-the-goals-of-model-selection"><i class="fa fa-check"></i><b>26.1</b> A quick step back: What are the goals of model selection?</a></li>
+<li class="chapter" data-level="26.2" data-path="week-15-lecture.html"><a href="week-15-lecture.html#bayesian-model-averaging"><i class="fa fa-check"></i><b>26.2</b> Bayesian model averaging</a></li>
+<li class="chapter" data-level="26.3" data-path="week-15-lecture.html"><a href="week-15-lecture.html#beyond-bayes-factors"><i class="fa fa-check"></i><b>26.3</b> Beyond Bayes Factors</a></li>
+<li class="chapter" data-level="26.4" data-path="week-15-lecture.html"><a href="week-15-lecture.html#variable-selection-for-nested-models"><i class="fa fa-check"></i><b>26.4</b> Variable selection for nested models</a></li>
+<li class="chapter" data-level="26.5" data-path="week-15-lecture.html"><a href="week-15-lecture.html#prior-data-conflict"><i class="fa fa-check"></i><b>26.5</b> Prior-data conflict</a></li>
+<li class="chapter" data-level="26.6" data-path="week-15-lecture.html"><a href="week-15-lecture.html#for-more-information-about-this-weeks-topic-10"><i class="fa fa-check"></i><b>26.6</b> For more information about this week’s topic</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -146,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="week-4-lecture" class="section level1">
-<h1><span class="header-section-number">1</span> Week 4 Lecture</h1>
+<h1><span class="header-section-number">6</span> Week 4 Lecture</h1>
 <p>Papers to read this week:</p>
 <ul>
 <li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/Lunn1.4.pdf">Lunn et al. Section 1.4</a></li>
@@ -154,7 +273,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/SmithGelfand1992.pdf">Smith and Gelfand 1992</a>: <strong>Important</strong>: This paper has a typo, an important one. See if you can find it. (The paper is such an important one, and so nicely explains the underlying principles, so we read this paper anyways…) In any case, we’ll discuss it in class.</li>
 </ul>
 <div id="conjugacy-aside-how-to-actually-calculate-the-posterior" class="section level2">
-<h2><span class="header-section-number">1.1</span> Conjugacy aside, how to actually calculate the posterior</h2>
+<h2><span class="header-section-number">6.1</span> Conjugacy aside, how to actually calculate the posterior</h2>
 <p>Over the last couple of weeks we’ve learned about Bayes theorem, and how the posterior integrates information from the data (through the likelihood) and the prior. We also introduced the idea of conjugate pairs, whereby for a given likelihood distribution, there is often a choice of prior (specifically, a choice for the distribution used) that leads to a posterior of the same form. These conjugate pairs make calculating the posterior simple. However, real problems are never quite that simple, and inevitably we need to use numerical methods to figure out what the posterior distribution is.</p>
 <p>Why are we talking about sampling methods? Why do we need them in Bayesian statistics? - because the posterior distribution may have no straightforward analytical form! In most cases, we have no way of either writing down the posterior PDF or of sampling directly from it. Sampling methods (of which there are many) provide a mechanism to sample from the posterior distribution even if we cannot write it down. There are several methods we will discuss. Which ones you actually use in each situation depend on your needs for efficiency vs. simplicity. JAGS will automatically choose the best method, but a proper understanding of Bayesian statistics requires a thorough understanding of MC (even though, sadly, most ecologists use JAGS without this background…)</p>
 <p>Before we dive headlong into Monte Carlo methods, I want to start with an approach that is almost too simple. Let’s start by going back to the core equation of Bayesian methods</p>
@@ -175,7 +294,7 @@ logged.posterior&lt;-<span class="kw">c</span>()
 <p>This seems so simple, why would we ever use another method? When you have many more parameters, it turns out that this approach is numerically inefficient, because you are trying a lot of values for the parameters that have very low likelihoods and contribute little to the posterior. But as we wade into methods that seek the same result (more efficiently), we should keeop in mind the simplicity of this basic method.</p>
 </div>
 <div id="monte-carlo-methods" class="section level2">
-<h2><span class="header-section-number">1.2</span> Monte Carlo Methods</h2>
+<h2><span class="header-section-number">6.2</span> Monte Carlo Methods</h2>
 <p>In Week #4 and #5, we take a detour from Bayesian stats itself to discuss a more general concept, which is Monte Carlo methods. Monte Carlo methods are named for the famous gambling city, which remind us that stochasticity is really the only requirement for something to be considered “Monte Carlo”. Monte Carlo methods, and the idea behind Markov Chain Monte Carlo (MCMC), are much more general than just Bayesian statistics and, in fact, arise in frequentist statistics as well.</p>
 <p>I’ll introduce Monte Carlo methods using three common applications:</p>
 <ol style="list-style-type: decimal">
@@ -186,12 +305,12 @@ logged.posterior&lt;-<span class="kw">c</span>()
 <p>Next week, we will tackle Markov Chain Monte Carlo Methods, such as Gibbs Sampling and Metropolis-Hastings. (Markov Chain Monte Carlo is a special case of Monte Carlo in which the next sample from the distribution depends only on the last sample [or, in more complex cases, on a finite number of previous samples]. I will tend to use the term “MCMC” when talking about these methods as applied to Bayesian statistics, because most of the methods used in Bayesian statistics have the Markov property, but keep in mind that MCMC is really a special case of a much more general concept of “Monte Carlo”.)</p>
 </div>
 <div id="rejection-sampling" class="section level2">
-<h2><span class="header-section-number">1.3</span> Rejection Sampling</h2>
-<p>The idea behind rejection sampling is pretty straightforward and best illustrated with a geometric example. Assume for a moment that you want to sample points within the unit circle (at right) but you only have a machine that can sample from the Uniform(0,1) distribution. What do you do? You could sample X and Y from the Unif(0,1), which will give you a random assortment of locations (X,Y) within the white square. For each pair of points (defining a location <span class="math inline">\([x_i, y_i]\)</span>) you can test whether it falls inside the unit circle (by checking that ) or outside. If you simply reject all pairs <span class="math inline">\((x,y)\)</span> that fall outside the unit circle, you are left with a random sample of points within the unit circle. (This is probably what you did to solve the Week #1 Problem Set.) This is just as good as having a function to sample from the unit circle directly except now it is less efficient because you have had to draw more points than you needed (because some were rejected). In this case, the loss of efficiency was rather trivial, but you can imagine having drawn X and Y from Unif(-1000,1000) and using rejection sampling to get points within the unit circle. In this case, the loss of efficiency would be rather extreme.</p>
+<h2><span class="header-section-number">6.3</span> Rejection Sampling</h2>
+<p>The idea behind rejection sampling is pretty straightforward and best illustrated with a geometric example. Assume for a moment that you want to sample points within the unit circle (below) but you only have a machine that can sample from the Uniform(0,1) distribution. What do you do? You could sample X and Y from the Unif(0,1), which will give you a random assortment of locations (X,Y) within the white square. For each pair of points (defining a location <span class="math inline">\([x_i, y_i]\)</span>) you can test whether it falls inside the unit circle (by checking that ) or outside. If you simply reject all pairs <span class="math inline">\((x,y)\)</span> that fall outside the unit circle, you are left with a random sample of points within the unit circle. (This is probably what you did to solve the Week #1 Problem Set.) This is just as good as having a function to sample from the unit circle directly except now it is less efficient because you have had to draw more points than you needed (because some were rejected). In this case, the loss of efficiency was rather trivial, but you can imagine having drawn X and Y from Unif(-1000,1000) and using rejection sampling to get points within the unit circle. In this case, the loss of efficiency would be rather extreme.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
 <img src="UniformCircle.png" alt="Probability is uniform within the unit circle." width="25%" />
 <p class="caption">
-Figure 1.1: Probability is uniform within the unit circle.
+Figure 2.1: Probability is uniform within the unit circle.
 </p>
 </div>
 <p>Now that we have the basic picture, we can see how this might apply to a real problem. Rejection sampling is based on the idea that you may not be able to draw from the distribution you really want, but you can sample from a distribution that includes (in a statistical sense) the distribution you want and reject samples accordingly.</p>
@@ -208,7 +327,7 @@ M = sup_{x}\left(\frac{g(x)}{f(x)}\right)
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
 <img src="RejectionFigure.png" alt="Pseudocode for the rejection sampling." width="50%" />
 <p class="caption">
-Figure 1.2: Pseudocode for the rejection sampling.
+Figure 6.1: Pseudocode for the rejection sampling.
 </p>
 </div>
 <p>Note that the draw from the uniform is just a mechanism for accepting values from the target distribution with probability <span class="math inline">\(g(x)/M*f(x)\)</span>. If it makes more sense, you could use a draw from the Bernoulli instead, i.e.</p>
@@ -217,11 +336,12 @@ x^{(i)} \sim f(x) \\
 \mbox{if rBinom} \left(1,\frac{g(x)}{M*f(x)}\right)
 \]</span></p>
 <p>The analogy I might use is that of carving out a sandcastle from a pile of sand. The first task is to pile up enough sand that the pile is higher than the tallest part of the castle, and then the second task is to carve away at the sand until you get the shape you want. Rejection sampling is just carving away at the big shapeless pile of sand to get the distribution you wanted in the first place.</p>
-<p>To walk through a simple example, I’ve bottowed a nice example nearly verbatim from Jarad Neimi’s <a href="https://www.jarad.me/teaching/2013/10/03/rejection-sampling">blog</a> where we take the Beta distribution as the target we want to sample from (pretending, for a moment, that this is not in base R) and the Unif(0,1) as the candidate distribution we actually can sample from. So in this example, and using the notation above, g(x) is the Beta distribution and f(x) is the Uniform distribution.</p>
+<p>To walk through a simple example, I’ve borrowed a nice example nearly verbatim from Jarad Neimi’s <a href="https://www.jarad.me/teaching/2013/10/03/rejection-sampling">blog</a> where we take the Beta distribution as the target we want to sample from (pretending, for a moment, that this is not in base R) and the Unif(0,1) as the candidate distribution we actually can sample from. So in this example, and using the notation above, g(x) is the Beta distribution and f(x) is the Uniform distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span><span class="dv">5</span>
 b =<span class="st"> </span><span class="dv">12</span>
 target =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">dbeta</span>(x,a,b)
 proposal =<span class="st"> </span>dunif</code></pre></div>
+<p>(Note the highly unorthodox use of the function dunif. I have left Jarad’s code as is for illustration. Here he is simply taking the function dunif and creating a new function ‘’proposal’’ that is the same function but now with a new name. He has done this to make it clear that the Uniform is being used as the proposal distribution.)</p>
 <p>Now we will calculate M and the probability of acceptance.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mode =<span class="st"> </span>(a<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>(a<span class="op">+</span>b<span class="op">-</span><span class="dv">2</span>)
 M =<span class="st"> </span><span class="kw">target</span>(mode)
@@ -243,11 +363,11 @@ accept =<span class="st"> </span>uniforms <span class="op">&lt;</span><span clas
 <p>We will write some code in lab to actually practice doing this.</p>
 </div>
 <div id="adaptive-rejection-sampling" class="section level2">
-<h2><span class="header-section-number">1.4</span> Adaptive Rejection Sampling</h2>
+<h2><span class="header-section-number">6.4</span> Adaptive Rejection Sampling</h2>
 <p>I won’t say much about adaptive rejections sampling, except to say that it tunes the candidate distribution over time to increase the acceptance ratio and speed up the sampling.</p>
 </div>
 <div id="monte-carlo-integration" class="section level2">
-<h2><span class="header-section-number">1.5</span> Monte Carlo Integration</h2>
+<h2><span class="header-section-number">6.5</span> Monte Carlo Integration</h2>
 <p>The idea behind Monte Carlo integration is very simple. Let’s say you have a probability distribution f(x) and you want to know the E[X]. If you knew the pdf analytically, you could simply calculate the expectation as follows:</p>
 <p><span class="math display">\[
 E[X] = \int_{-\infty}^{\infty} xf(x)dx
@@ -272,7 +392,7 @@ s^{2}_{g(x)} = \frac{1}{T-1}\sum^{T}_{1}(g(x_{t})-E[g(x)])^2
 \]</span> (This is closely tied to some of the ideas we discussed in Biometry regarding bootstrap sampling. The basic idea is the same: Samples from <span class="math inline">\(f(x)\)</span> can be used in lieu of <span class="math inline">\(f(x)\)</span> for approximations of quantities involving <span class="math inline">\(f(x)\)</span>. The quality of those approximations increases as the number of samples used increases.)</p>
 </div>
 <div id="sometimes-you-just-want-the-integral" class="section level2">
-<h2><span class="header-section-number">1.6</span> Sometimes you just want the integral…</h2>
+<h2><span class="header-section-number">6.6</span> Sometimes you just want the integral…</h2>
 <p>So far, we’ve been focused on using MC integration to calculate an expected value, but really it is a more general strategy for calculating an integral. Let’s say we want to know the integral of some function over the interval <span class="math inline">\([a,b)\)</span>.</p>
 <p>We can use the <span class="math inline">\(Unif(a,b)\)</span> distribution to help us, by using it for <span class="math inline">\(f(x)\)</span> in the equation above, i.e. as the distribution we can draw easily from. To see that, lets re-write the initial integral as</p>
 <p><span class="math display">\[
@@ -284,15 +404,15 @@ s^{2}_{g(x)} = \frac{1}{T-1}\sum^{T}_{1}(g(x_{t})-E[g(x)])^2
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
 <img src="BayesianIntegration.png" alt="The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008)." width="100%" />
 <p class="caption">
-Figure 1.3: The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function <span class="math inline">\(g(x)\)</span>. Figure adapted from Jarosz (2008).
+Figure 6.2: The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function <span class="math inline">\(g(x)\)</span>. Figure adapted from Jarosz (2008).
 </p>
 </div>
 <p>Note that the term Monte Carlo Integration is sometimes replaced by, or used synonymously with the phrase Monte Carlo simulation. Don’t let this confuse you. The idea behind both of these terms is simply that you can replace a probability distribution function (which may be a conditional probability distribution) with samples from that probability distribution function.</p>
-<p>In one-dimension, this all seems rather too simple to be of any use, but in multi-dimensional problems, these methods are essential. The reason is that if you have <span class="math inline">\(T\)</span> multidimensional draws from <span class="math inline">\(f(\vec{X})\)</span> (where I am using vector notation explicitly to denote the fact that each draw contains <span class="math inline">\(&gt;1\)</span> element), then you can make inference about any particular component by using the draws for that component <strong>completely ignoring the other components</strong>. Why does this work? Because the draws from the multidimensional distribution “average out” (heuristically speaking) the other components which might be related. In other words, to the extent that the pdf involves correlations among components, the draws from the multidimensional distribution reflect those underlying correlations already, and you can use the marginal distributions directly without concern for the multidimensionality of it. (Why this is so exciting will become clearer as we get into more detailed Bayesian examples…)</p>
+<p>In one-dimension, this all seems rather too simple to be of any use, but in multi-dimensional problems, these methods are essential. The reason is that if you have <span class="math inline">\(T\)</span> multidimensional draws from <span class="math inline">\(f(\vec{X})\)</span> (where I am using vector notation explicitly to denote the fact that each draw contains <span class="math inline">\(&gt;1\)</span> element), then you can make inference about any particular component by using the draws for that component <strong>completely ignoring the other components</strong>. Why does this work? Because the draws from the multidimensional distribution “average out” (heuristically speaking) the other components which might be related. In other words, to the extent that the pdf involves correlations among components, <strong>the draws from the multidimensional distribution reflect those underlying correlations already</strong>, and you can use the marginal distributions directly without concern for the multidimensionality of it. (Why this is so exciting will become clearer as we get into more detailed Bayesian examples…)</p>
 <p>We will play around this this in lab as well.</p>
 </div>
 <div id="importance-sampling" class="section level2">
-<h2><span class="header-section-number">1.7</span> Importance Sampling</h2>
+<h2><span class="header-section-number">6.7</span> Importance Sampling</h2>
 <p>Importance sampling is similar to MC integration, and uses a bit of a trick to get from a distribution you can’t easily sample from, to one you can.</p>
 <p>Let’s say that <span class="math inline">\(g(x)\)</span> above is a distribution that you cannot easily sample from. You can get around this problem by finding a similar distribution that you can sample from, using</p>
 <p><span class="math display">\[
@@ -304,13 +424,8 @@ g(x) = f(x)\frac{g(x)}{f(x)}
 \]</span> How useful is this method? The challenge here is in finding a good distribution <span class="math inline">\(f(x)\)</span> that has sufficient probability over the range that is important for g(x), but you don’t want something so “flat” that you end up sampling a lot of x values that don’t really contribute to the expected value of interest.</p>
 </div>
 <div id="sampling-importance-resampling" class="section level2">
-<h2><span class="header-section-number">1.8</span> Sampling Importance Resampling</h2>
+<h2><span class="header-section-number">6.8</span> Sampling Importance Resampling</h2>
 <p>Notice that in the above discussion of Importance Sampling, I only showed you how to use the Importance Ratios to calculate expectations, but we didn’t actually discuss how to use this method to get samples from the distribution itself. This procedure is called Sampling Importance Resampling, and we will go over it and the discussion by Smith and Gelfand (1992) in lab.</p>
-
-
-
-
-
 
 </div>
 </div>
@@ -319,8 +434,8 @@ g(x) = f(x)\frac{g(x)}{f(x)}
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="week-7-lab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="week-3-lab.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-4-lab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
