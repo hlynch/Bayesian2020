@@ -345,24 +345,23 @@ b =<span class="st"> </span><span class="dv">12</span>
 target =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">dbeta</span>(x,a,b)
 proposal =<span class="st"> </span>dunif</code></pre></div>
 <p>(Note the highly unorthodox use of the function dunif. I have left Jarad’s code as is for illustration. Here he is simply taking the function dunif and creating a new function ‘’proposal’’ that is the same function but now with a new name. He has done this to make it clear that the Uniform is being used as the proposal distribution.)</p>
-<p>Now we will calculate M and the probability of acceptance.</p>
+<p>First we will calculate M so we know that the acceptance probability is never greater than 1. Once we have that, we loop through the prior samples, calculate the acceptance porobability, and then we flip a coin to see whether that sample from the prior is accepted (and kept) or rejected (and discarded). Note that while this loop through prior samples could be written more efficiently (vectorizing the loop), I have used the loop to make the steps clearer.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mode =<span class="st"> </span>(a<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>(a<span class="op">+</span>b<span class="op">-</span><span class="dv">2</span>)
 M =<span class="st"> </span><span class="kw">target</span>(mode)
 <span class="dv">1</span><span class="op">/</span>M</code></pre></div>
 <pre><code>## [1] 0.2745091</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">1000</span>
-points =<span class="st"> </span><span class="kw">runif</span>(n)
-uniforms =<span class="st"> </span><span class="kw">runif</span>(n)
-accept =<span class="st"> </span>uniforms <span class="op">&lt;</span><span class="st"> </span>(<span class="kw">target</span>(points)<span class="op">/</span>(M<span class="op">*</span><span class="kw">proposal</span>(points)))</code></pre></div>
-<p>The plot below has target (red) and proposal (green) density as well as the proposal density scaled by M (green, dashed) to show how it creates an envelope over the target. The points are accepted (blue circle) and rejected (red x) values on the x-axis with their associated uniform draws on the y-axis.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">curve</span>(target, <span class="dt">lwd=</span><span class="dv">2</span>)
-<span class="kw">curve</span>(proposal, <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col=</span><span class="st">&quot;seagreen&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)
-<span class="kw">curve</span>(M<span class="op">*</span><span class="kw">proposal</span>(x), <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col=</span><span class="st">&quot;seagreen&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">2</span>)
-<span class="kw">points</span>(points, M<span class="op">*</span>uniforms, <span class="dt">pch=</span><span class="kw">ifelse</span>(accept,<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">col=</span><span class="kw">ifelse</span>(accept,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="dt">lwd=</span><span class="dv">2</span>)
-<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;target&quot;</span>,<span class="st">&quot;proposal&quot;</span>,<span class="st">&quot;accepted&quot;</span>,<span class="st">&quot;rejected&quot;</span>), 
-       <span class="dt">lwd=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="ot">NA</span>,<span class="ot">NA</span>), <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;seagreen&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>),
-       <span class="dt">pch=</span><span class="kw">c</span>(<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="dv">1</span>,<span class="dv">4</span>), <span class="dt">bg=</span><span class="st">&quot;white&quot;</span>) </code></pre></div>
-<p><img src="Week-4-lecture_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n =<span class="st"> </span><span class="dv">10000</span>
+prior_samples =<span class="st"> </span><span class="kw">runif</span>(n,<span class="dv">0</span>,<span class="dv">1</span>)
+accepted_samples&lt;-<span class="kw">c</span>()
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(prior_samples))
+{
+  accept_prob &lt;-<span class="st"> </span>(<span class="kw">target</span>(prior_samples[i])<span class="op">/</span>(M<span class="op">*</span><span class="kw">proposal</span>(prior_samples[i])))
+  accept_decision &lt;-<span class="st"> </span><span class="kw">rbinom</span>(<span class="dt">n=</span><span class="dv">1</span>,<span class="dt">size=</span><span class="dv">1</span>,<span class="dt">prob=</span>accept_prob)
+  <span class="cf">if</span> (accept_decision<span class="op">==</span><span class="dv">1</span>) {accepted_samples &lt;-<span class="st"> </span><span class="kw">c</span>(accepted_samples,prior_samples[i])} 
+}
+<span class="kw">hist</span>(prior_samples,<span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.02</span>))
+<span class="kw">hist</span>(accepted_samples,<span class="dt">add=</span>T,<span class="dt">col=</span><span class="kw">rgb</span>(<span class="fl">0.5</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="fl">0.7</span>),<span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.02</span>))</code></pre></div>
+<p><img src="Week-4-lecture_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>We will write some code in lab to actually practice doing this.</p>
 </div>
 <div id="adaptive-rejection-sampling" class="section level2">
@@ -404,7 +403,7 @@ s^{2}_{g(x)} = \frac{1}{N-1}\sum^{N}_{1}(g(x_{t})-E[g(x)])^2
 <p><span class="math display">\[
 (b-a)\left[\frac{1}{N}\sum^{N}_{i=1}g(x_{i})\right] = \sum^{N}_{i=1}g(x_{i}) \times \frac{(b-a)}{N}
 \]</span> I’ve re-written this on the right hand side because it connects it to the geometric interpretation illustrated in the figure.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="BayesianIntegration.png" alt="The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008)." width="100%" />
 <p class="caption">
 Figure 6.2: The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function <span class="math inline">\(g(x)\)</span>. Figure adapted from Jarosz (2008).

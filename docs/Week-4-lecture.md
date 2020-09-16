@@ -111,7 +111,7 @@ proposal = dunif
 
 (Note the highly unorthodox use of the function dunif. I have left Jarad's code as is for illustration. Here he is simply taking the function dunif and creating a new function ''proposal'' that is the same function but now with a new name. He has done this to make it clear that the Uniform is being used as the proposal distribution.)
 
-Now we will calculate M and the probability of acceptance.
+First we will calculate M so we know that the acceptance probability is never greater than 1. Once we have that, we loop through the prior samples, calculate the acceptance porobability, and then we flip a coin to see whether that sample from the prior is accepted (and kept) or rejected (and discarded). Note that while this loop through prior samples could be written more efficiently (vectorizing the loop), I have used the loop to make the steps clearer.
 
 
 ```r
@@ -125,26 +125,20 @@ M = target(mode)
 ```
 
 ```r
-n = 1000
-points = runif(n)
-uniforms = runif(n)
-accept = uniforms < (target(points)/(M*proposal(points)))
+n = 10000
+prior_samples = runif(n,0,1)
+accepted_samples<-c()
+for (i in 1:length(prior_samples))
+{
+  accept_prob <- (target(prior_samples[i])/(M*proposal(prior_samples[i])))
+  accept_decision <- rbinom(n=1,size=1,prob=accept_prob)
+  if (accept_decision==1) {accepted_samples <- c(accepted_samples,prior_samples[i])} 
+}
+hist(prior_samples,breaks=seq(0,1,0.02))
+hist(accepted_samples,add=T,col=rgb(0.5,1,1,0.7),breaks=seq(0,1,0.02))
 ```
 
-The plot below has target (red) and proposal (green) density as well as the proposal density scaled by M (green, dashed) to show how it creates an envelope over the target. The points are accepted (blue circle) and rejected (red x) values on the x-axis with their associated uniform draws on the y-axis.
-
-
-```r
-curve(target, lwd=2)
-curve(proposal, add=TRUE, col="seagreen", lwd=2)
-curve(M*proposal(x), add=TRUE, col="seagreen", lty=2, lwd=2)
-points(points, M*uniforms, pch=ifelse(accept,1,4), col=ifelse(accept,"blue","red"), lwd=2)
-legend("topright", c("target","proposal","accepted","rejected"), 
-       lwd=c(2,2,NA,NA), col=c("black","seagreen","blue","red"),
-       pch=c(NA,NA,1,4), bg="white") 
-```
-
-<img src="Week-4-lecture_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="Week-4-lecture_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 We will write some code in lab to actually practice doing this.
 
@@ -209,7 +203,7 @@ I've re-written this on the right hand side because it connects it to the geomet
 
 <div class="figure" style="text-align: center">
 <img src="BayesianIntegration.png" alt="The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008)." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-7)The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008).</p>
+<p class="caption">(\#fig:unnamed-chunk-6)The left hand figure is just the Riemann sum version of integration. The right hand side is what we are essentially doing with Monte Carlo integration. Instead of drawing equal spaced boxes along the x-axis, we are sampling values along the x axes from a uniform distribution and then using those values to calculate the function $g(x)$. Figure adapted from Jarosz (2008).</p>
 </div>
 
 Note that the term Monte Carlo Integration is sometimes replaced by, or used synonymously with the phrase Monte Carlo simulation. Don’t let this confuse you. The idea behind both of these terms is simply that you can replace a probability distribution function (which may be a conditional probability distribution) with samples from that probability distribution function.
