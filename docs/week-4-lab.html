@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-09-14" />
+<meta name="date" content="2020-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -337,8 +337,8 @@ Y_{i} = X_{i1}+X_{i2}
 <p><span class="math display">\[
 \prod^{3}_{i=1}\left[\sum_{ji} {n_{i1} \choose j_i}{n_{i2} \choose y_i-j_i}\theta_{1}^{j_{i}}(1-\theta_{1})^{n_{i1}-j_{i}}\theta_{2}^{y_{i}-j_{i}}(1-\theta_{2})^{n_{i2}-y_{i}+j_{i}}\right]
 \]</span> Note that the bounds on <span class="math inline">\(j_{i}\)</span> are as follows: <span class="math inline">\(max(0,y_{i}-n_{i2}) \leq j_{i} \leq min(n_{i1},y_{i})\)</span>.</p>
-<p><strong>Important!</strong> They don’t say in the paper, but Smith and Gelfand drop the factorials from their likelihood <span class="math inline">\({n_{i1} \choose j_{i}}{n_{i2} \choose y_{i}-j_{i}}\)</span>. To match with their figure, you should do so as well. The constant does not change the <span class="math inline">\((\theta_{1},\theta_{2})\)</span> location of the peaks of the posterior distribution. However, it does change the posterior and strictly speaking, Smith and Gelfand are incorrect. (In other words, the peaks are still in the same place but the shape of the likelihood is changed.) To get the correct posterior likelihood, the factorials should be left in. But for the purposes of the problem set, we will also drop these terms because doing so will allow us to reproduce what Smith and Gelfand have done.</p>
-<p><strong>Exercise 5</strong>: Use a grid search to find the MLEs. Plot the two-dimensional likelihood (since we left off the constants in step 1, this will be an unscaled likelihood, but it doesn’t matter for our purposes)</p>
+<p><strong>Important!</strong> They don’t say in the paper, but Smith and Gelfand drop the factorials from their likelihood <span class="math inline">\({n_{i1} \choose j_{i}}{n_{i2} \choose y_{i}-j_{i}}\)</span> when they plot Figure 2. I <strong>do not want you to drop these coefficients</strong> but if you want to check that your likelihood is correct, you can see what yours looks like if you do drop those coefficients, as it should match Figure 2. (But then add them back!) The constant does not change the <span class="math inline">\((\theta_{1},\theta_{2})\)</span> location of the peaks of the posterior distribution. (In other words, the peaks are still in the same place but the shape of the likelihood is changed.) However, it does change the posterior and Smith and Gelfand look to have just made a mistake. To get the correct posterior likelihood, the factorials should be left in.</p>
+<p><strong>Exercise 5</strong>: Use a grid search to find the MLEs. Plot the two-dimensional likelihood.</p>
 <p>To apply a Bayesian analysis, we need prior distributions for <span class="math inline">\(\theta_{1}\)</span> and <span class="math inline">\(\theta_{2}\)</span>. We will follow Smith and Gelfand’s lead and just use the unit square (so Unif(0,1) for both). What other prior distributions might we have used?</p>
 <p>We will use sampling importance resampling to sample from the posterior distribution.</p>
 <p>To do this, first generate a sample from the prior distributions to get prior samples of <span class="math inline">\((\theta_{1},\theta_{2})\)</span>. Then calculate the likelihood of the data for each sample from the prior <span class="math inline">\((\theta_{1},\theta_{2})\)</span>.</p>

@@ -73,9 +73,9 @@ $$
 $$
 Note that the bounds on $j_{i}$ are as follows: $max(0,y_{i}-n_{i2}) \leq j_{i} \leq min(n_{i1},y_{i})$.
 
-**Important!** They don't say in the paper, but Smith and Gelfand drop the factorials from their likelihood ${n_{i1} \choose j_{i}}{n_{i2} \choose y_{i}-j_{i}}$. To match with their figure, you should do so as well. The constant does not change the $(\theta_{1},\theta_{2})$ location of the peaks of the posterior distribution. However, it does change the posterior and strictly speaking, Smith and Gelfand are incorrect. (In other words, the peaks are still in the same place but the shape of the likelihood is changed.) To get the correct posterior likelihood, the factorials should be left in. But for the purposes of the problem set, we will also drop these terms because doing so will allow us to reproduce what Smith and Gelfand have done.  
+**Important!** They don't say in the paper, but Smith and Gelfand drop the factorials from their likelihood ${n_{i1} \choose j_{i}}{n_{i2} \choose y_{i}-j_{i}}$ when they plot Figure 2. I **do not want you to drop these coefficients** but if you want to check that your likelihood is correct, you can see what yours looks like if you do drop those coefficients, as it should match Figure 2. (But then add them back!) The constant does not change the $(\theta_{1},\theta_{2})$ location of the peaks of the posterior distribution. (In other words, the peaks are still in the same place but the shape of the likelihood is changed.) However, it does change the posterior and Smith and Gelfand look to have just made a mistake. To get the correct posterior likelihood, the factorials should be left in.  
 
-**Exercise 5**: Use a grid search to find the MLEs. Plot the two-dimensional likelihood (since we left off the constants in step 1, this will be an unscaled likelihood, but it doesn’t matter for our purposes)
+**Exercise 5**: Use a grid search to find the MLEs. Plot the two-dimensional likelihood.
 
 To apply a Bayesian analysis, we need prior distributions for $\theta_{1}$ and $\theta_{2}$. We will follow Smith and Gelfand’s lead and just use the unit square (so Unif(0,1) for both). What other prior distributions might we have used?
 
