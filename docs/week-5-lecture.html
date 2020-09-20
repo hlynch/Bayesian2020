@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-09-16" />
+<meta name="date" content="2020-09-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -305,21 +305,21 @@ p_{31} &amp; p_{32} &amp; p_{33}
 <td align="center">1</td>
 <td align="center">1</td>
 <td align="center">3</td>
-<td align="center">$p_{11}p_{13}</td>
+<td align="center"><span class="math inline">\(p_{11}p_{13}\)</span></td>
 </tr>
 <tr class="even">
 <td>#2</td>
 <td align="center">1</td>
 <td align="center">2</td>
 <td align="center">3</td>
-<td align="center">$p_{12}p_{23}</td>
+<td align="center"><span class="math inline">\(p_{12}p_{23}\)</span></td>
 </tr>
 <tr class="odd">
 <td>#3</td>
 <td align="center">1</td>
 <td align="center">3</td>
 <td align="center">3</td>
-<td align="center">$p_{13}p_{33}</td>
+<td align="center"><span class="math inline">\(p_{13}p_{33}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -455,10 +455,10 @@ Figure 8.1: Autocorrelation function from MCMC samples.
 <p>The following is based on the Bayesian change point example by Murali Haran.</p>
 <p>Consider the following simple changepoint example: You have Poisson draws and you expect that the Poisson parameter has changed at some point in the time series, so that</p>
 <p><span class="math display">\[
-Y_{i}|k,\theta,\lambda \sim Pois(\theta) \mbox{for i=1,...,k}
+Y_{i}|k,\theta,\lambda \sim Pois(\theta) \mbox{ for } i=1,\dots,k
 \]</span></p>
 <p><span class="math display">\[
-Y_{i}|k,\theta,\lambda \sim Pois(\lambda) \mbox{for i=k+1,...,n}
+Y_{i}|k,\theta,\lambda \sim Pois(\lambda) \mbox{ for } i=k+1,\dots,n
 \]</span></p>
 <p>We assume the following prior distributions for <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\lambda\)</span></p>
 <p><span class="math display">\[
@@ -528,7 +528,7 @@ k^{(1)} \sim \left(\prod_{i=1}^{k^{(0)}}(\theta^{(0)})^{Y_{i}}e^{-\theta^{(0)}}\
 \]</span></p>
 <p>Which can simplify to</p>
 <p><span class="math display">\[
-\theta^{(1)} \sim Gamma(\sum_{i=1}^{k^{(1)}}Y_{i}+0.5,\frac{3}{3k^{(1)}+1})
+\theta^{(1)} \sim Gamma\left(\sum_{i=1}^{k^{(1)}}Y_{i}+0.5,\frac{3}{3k^{(1)}+1}\right)
 \]</span></p>
 <p>because the Gamma is conjugate to the Poisson.</p>
 <p>Finally,</p>
@@ -537,9 +537,9 @@ k^{(1)} \sim \left(\prod_{i=1}^{k^{(0)}}(\theta^{(0)})^{Y_{i}}e^{-\theta^{(0)}}\
 \]</span></p>
 <p>Likewise...</p>
 <p><span class="math display">\[
-\lambda^{(1)} \sim Gamma(\sum_{i=k^{(1)}+1}^{n}Y_{i}+0.5,\frac{3}{3(n-k^{(1)})+1})
+\lambda^{(1)} \sim Gamma\left(\sum_{i=k^{(1)}+1}^{n}Y_{i}+0.5,\frac{3}{3(n-k^{(1)})+1}\right)
 \]</span></p>
-<p>Note that while the posteriors for <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\lambda\)</span> have well-known forms because of conjugacy, the conditional posterior for k does not have a standard PDF and we only know its PDF up to a proportion. That's OK, though, because we can use any of the tools have have learned to sample from PDFs that are not &quot;built-into-R&quot;. What we have done is break apart a complex 3-dimensional posterior into three one-dimensional posteriors. Often, these conditional posteriors are easy to write down because you've used conjugate priors that have an analytically tractable posterior (as with <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\lambda\)</span>). In this case, the conditional posterior for k cannot be written in an easy form, so we have to use some other method of sampling <em>inside</em> the Gibbs loop. See Gelfand 2000 Section 2.4. Notice that when the conditional posterior take a non-standard form, we can employ any of the tools we have learned, including rejection sampling, importance sampling, or Metropolis-Hastings. The last of these is quite a common approach, and it is called &quot;Metropolis-within-Gibbs&quot;. However, there are no cookbook recipes for doing this, you (as the modeller) have to choose among the tools to find one that works for your case.) The next round of draws would look like</p>
+<p>Note that while the posteriors for <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\lambda\)</span> have well-known forms because of conjugacy, the conditional posterior for k does not have a standard PDF and we only know its PDF up to a proportion. That's OK, though, because we can use any of the tools have have learned to sample from PDFs that are not &quot;built-into-R&quot;. What we have done is break apart a complex 3-dimensional posterior into three one-dimensional posteriors. Often, these conditional posteriors are easy to write down because you've used conjugate priors that have an analytically tractable posterior (as with <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\lambda\)</span>). In this case, the conditional posterior for k cannot be written in an easy form, so we have to use some other method of sampling <em>inside</em> the Gibbs loop. See Gelfand 2000 Section 2.4. Notice that when the conditional posterior takes a non-standard form, we can employ any of the tools we have learned, including rejection sampling, importance sampling, or Metropolis-Hastings. The last of these is quite a common approach, and it is called &quot;Metropolis-within-Gibbs&quot;. However, there are no cookbook recipes for doing this, you (as the modeller) have to choose among the tools to find one that works for your case.) The next round of draws would look like</p>
 <p><span class="math display">\[
 k^{(2)} \sim \left(\prod_{i=1}^{k^{(1)}}(\theta^{(1)})^{Y_{i}}e^{-\theta^{(1)}}\right) \left(\prod_{i=k^{(1)}+1}^{n}(\lambda^{(1)})^{Y_{i}}e^{-\lambda^{(1)}}\right)
 \]</span></p>
