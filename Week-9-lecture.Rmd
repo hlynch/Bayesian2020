@@ -113,17 +113,16 @@ and then afterwards simply fit a normal distribution to the resulting slope esti
 
 So far we have assumed that the covariates we have are specific to each individual, for example, the exact latitude of each plant. But it may be that covariates come in at the ecosystem level, like species diversity. (I'm not saying I know how species diversity might affect flowering phenology, its just an example of a covariate that comes in at the ecosystem level.) Why does this require special consideration? Let's say that the first few rows of our data might look like
 
-| FloweringDay  | Ecosystem       | Latitude           | Ecosystem Species Diversity  |
-|               |                 | (Individual level) | (Group level)                |
-| -------- ---- |:---------------:|:------------------:|:-----------:|:--------------:|
-| 97            |    PineBarrens  |    40.78           |    120      |                |
-| 95            |    PineBarrens  |    40.65           |    120      |                |       
-| 103           |    PineBarrens  |    40.62           |    120      |                |
-| 107           |    PineBarrens  |    40.81           |    120      |                |
-| 92            |    PineBarrens  |    40.60           |    120      |                |
-| 101           |   Adirondacks   |    44.13           |    235      |                |
+| FloweringDay  | Ecosystem       | Latitude           | Species Diversity          |
+|:-------------:|:---------------:|:------------------:|:--------------------------:|
+| 97            |    PineBarrens  |    40.78           |    120                     |           
+| 95            |    PineBarrens  |    40.65           |    120                     |       
+| 103           |    PineBarrens  |    40.62           |    120                     |
+| 107           |    PineBarrens  |    40.81           |    120                     |
+| 92            |    PineBarrens  |    40.60           |    120                     |
+| 101           |   Adirondacks   |    44.13           |    235                     |
 
-Notice that if we use the varying-slope model, we shouldn't write the model like this:
+Note that Latitude is on the individual level, whereas species diversity is a function of the ecosystem within which a species resides. Notice that if we use the varying-slope model, we shouldn't write the model like this:
 
 $$
 y_{i} = \alpha + \beta_{j[i]}Lat_{i} + \gamma Diversity_{i} + \epsilon_{i}
