@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-09-20" />
+<meta name="date" content="2020-09-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -168,9 +168,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.2" data-path="week-6-lab.html"><a href="week-6-lab.html#one-way-anova"><i class="fa fa-check"></i><b>10.2</b> One-way ANOVA</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="week-7-lecture.html"><a href="week-7-lecture.html"><i class="fa fa-check"></i><b>11</b> Week 7 Lecture</a><ul>
-<li class="chapter" data-level="11.1" data-path="week-7-lecture.html"><a href="week-7-lecture.html#class-projects"><i class="fa fa-check"></i><b>11.1</b> Class projects</a></li>
+<li class="chapter" data-level="11.1" data-path="week-7-lecture.html"><a href="week-7-lecture.html#an-exercise-with-regression"><i class="fa fa-check"></i><b>11.1</b> An exercise with regression</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="week-7-lab.html"><a href="week-7-lab.html"><i class="fa fa-check"></i><b>12</b> Week 7 Lab</a></li>
+<li class="chapter" data-level="12" data-path="week-7-lab.html"><a href="week-7-lab.html"><i class="fa fa-check"></i><b>12</b> Week 7 Lab</a><ul>
+<li class="chapter" data-level="12.1" data-path="week-7-lab.html"><a href="week-7-lab.html#class-projects"><i class="fa fa-check"></i><b>12.1</b> Class projects</a></li>
+</ul></li>
 <li class="chapter" data-level="13" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>13</b> Week 8 Lecture</a></li>
 <li class="chapter" data-level="14" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lab</a></li>
 <li class="chapter" data-level="15" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>15</b> Week 9 Lecture</a><ul>
@@ -266,16 +268,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="week-7-lab" class="section level1">
 <h1><span class="header-section-number">12</span> Week 7 Lab</h1>
-<p>This week we’ll be using a <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/PLOSdataConcord.csv">dataset</a> on flower phenology that was published in <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/EllwoodEtAl2013.pdf">PLOS ONE</a>. Please read the paper so you have some context for the modelling that we will be doing. (NB: The temperature data for 1894 was missing, and I have replaced it with the mean temperature from the other years just for the purposes of doing the lab.)</p>
-<p>This is as good a time as any to introduce some of the R packages designed to help you plot and evaluate MCMC chains produced by JAGS. Download the <a href="https://cran.r-project.org/web/packages/coda/index.html">‘coda’</a> package in R and read through the manual. There is another newer package called <a href="https://cran.r-project.org/web/packages/MCMCvis/index.html">‘MCMCvis'</a> written by a former PhD student of mine Casey Youngflesh that has many nice features as well.</p>
-<p>Exercise: Write a script to use JAGS to fit a linear regression model to the flower data. In other words, write a JAGS script to fit the following model:</p>
-<p><span class="math display">\[
-Y_{i} \sim N(\alpha + \beta*MAMTemp_{i},\sigma^{2})
-\]</span></p>
-<p>where <span class="math inline">\(i\)</span> is an index for a particular year. You can choose any flower you wish to focus on. (Copy and paste code, summary of parameters, and relevant plots.)</p>
-<p><strong>Question #1</strong>: Is there a statistically significant relationship between mean temperatures and flowering date? (Note that, when doing a Bayesian analysis, we are not strictly involved in “hypothesis testing” (e.g., we have no null model, no p-values, etc.). However, in a loose mapping between Bayesian approaches and frequentists approaches, data analysts will often use overlap between the credible interval and zero [or other null value] as a measure of “statistical significance”.)</p>
-<p><strong>Question #2</strong>: Plot the data, the best-fit regression line, and the confidence and prediction intervals.</p>
+<div id="class-projects" class="section level2">
+<h2><span class="header-section-number">12.1</span> Class projects</h2>
+<p>For lab this week, we will break into our groups to go over our projects. Taking turns, I would like you guys to share the code that you have already and any preliminary results. Once you have discussed all the projects, spend the rest of the time working on your projects in your breakout group. I will cycle through the different rooms to answer any questions or advice as needed. Otherwise, you have this time to develop your code with the goal of getting a simple version of the model running before the end of lab.</p>
+<p>We will return to these groups in a couple weeks for another work session, where you can hopefully share some prelimiary results with your team mates and discuss additional modifications or changes to the original model.</p>
 
+</div>
 </div>
             </section>
 

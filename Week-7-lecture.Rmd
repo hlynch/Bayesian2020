@@ -48,18 +48,22 @@ Just as before, we should sample from the posterior for $\sigma^{2}$, and not ju
 
 Note that there is yet a third way of getting predictions, and that is to include those X values of interest as **missing data** in the original model fit. In other words, if you want a prediction interval for X=1500, add the data point (1500,NA) to the data. JAGS will use the model to fill in the missing data, which is precisely what a prediction interval is anyways.
 
-Class projects
------------------
-For the rest of lecture, we will go over your project proposal. Keep in mind that your proposal is just that, a proposal. You are free to make changes as needed, just as you would with any research project. 
+An exercise with regression
+-----------
 
-We’ll get into groups of three. Send your proposal to your two classmates so everyone has a copy of each proposal. Discuss each proposal in turn, using the following as guiding questions:
+This week we’ll be using a [dataset](https://github.com/hlynch/Bayesian2020/tree/master/_data/PLOSdataConcord.csv) on flower phenology that was published in [PLOS ONE](https://github.com/hlynch/Bayesian2020/tree/master/_data/EllwoodEtAl2013.pdf). Please read the paper so you have some context for the modelling that we will be doing. (NB: The temperature data for 1894 was missing, and I have replaced it with the mean temperature from the other years just for the purposes of doing the lab.)
 
-1.	Is this potentially publishable? (Hopefully, yes! Many of the projects from the last two Bayesian classes were published, and the goal should be to finish a publication-worthy analysis.)
-2.	What is the model? (Specifically, with equations.) Does everyone understand the model?
-3.	What data are available? 
-4.	What are the parameters of interest? Is there a specific hypothesis to be tested?
-5.	What is the most appropriate distribution for the response data?
-6.	Are there going to be missing data? Data can be imputed, so missing response data can be addressed.
-7.	Is the focus on understanding past phenomena or predicting future behavior?
-8.	Are there other papers in the literature (in your field) that have used similar methods? If not, why not? 
+This is as good a time as any to introduce some of the R packages designed to help you plot and evaluate MCMC chains produced by JAGS.  Download the [‘coda’](https://cran.r-project.org/web/packages/coda/index.html) package in R and read through the manual. There is another newer package called [‘MCMCvis'](https://cran.r-project.org/web/packages/MCMCvis/index.html) written by a former PhD student of mine Casey Youngflesh that has many nice features as well.
+
+Exercise: Write a script to use JAGS to fit a linear regression model to the flower data. In other words, write a JAGS script to fit the following model:
+
+$$
+Y_{i} \sim N(\alpha + \beta*MAMTemp_{i},\sigma^{2})
+$$
+
+where $i$ is an index for a particular year. You can choose any flower you wish to focus on. (Copy and paste code, summary of parameters, and relevant plots.) 
+
+**Question #1**: Is there a statistically significant relationship between mean temperatures and flowering date? (Note that, when doing a Bayesian analysis, we are not strictly involved in “hypothesis testing” (e.g., we have no null model, no p-values, etc.). However, in a loose mapping between Bayesian approaches and frequentists approaches, data analysts will often use overlap between the credible interval and zero [or other null value] as a measure of “statistical significance”.)
+
+**Question #2**: Plot the data, the best-fit regression line, and the confidence and prediction intervals.
 

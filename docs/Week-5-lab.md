@@ -3,9 +3,9 @@ Week 5 Lab
 
 We won’t get into Bayesian regression until Week #7 and #8, but we will use an example of a logistic regression to illustrate the basic method of Metropolis sampling. We will start with an ecological data set that comes from 
 
-M.P. Johnson and P.H. Raven (1973). Species number and endemism: The Galapagos Archipelago revisited. Science 179, 893-895.
+[M.P. Johnson and P.H. Raven (1973). Species number and endemism: The Galapagos Archipelago revisited. Science 179, 893-895](https://github.com/hlynch/Bayesian2020/tree/master/_data/JohnsonRaven1973.pdf). 
 
-and which can be downloaded here. 
+and which can be downloaded [here](https://github.com/hlynch/Bayesian2020/tree/master/docs/galapagos.txt).
 
 This is really a subset of the original dataset; I have included only the columns relevant for lab:
 

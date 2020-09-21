@@ -23,7 +23,7 @@ To get some intuition for what the burn-in is doing, you might try setting burn 
 One-way ANOVA
 -----------------------
 
-Here we are going to use a small dataset found [here] (http://www.stat.ucla.edu/projects/datasets/seaslug-explanation.html).
+Here we are going to use a small dataset found [here](http://www.stat.ucla.edu/projects/datasets/seaslug-explanation.html).
 
 From the data source:
 
