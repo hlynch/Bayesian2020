@@ -96,7 +96,7 @@ Things to play around with:
 Gibbs Sampler
 -----------------
 
-(This example is basically Lunn et al. Example 4.2.2) For this example, I have generated some random values from a Normal distribution with unknown (to you) mean $\mu$ and variance $\sigma^{2}$. The data are posted on Bb under “gibbsdata.txt”. Since JAGS works with the precision, we will define the precision $\tau=1/\sigma^{2}$.
+(This example is basically Lunn et al. Example 4.2.2) For this example, I have generated some random values from a Normal distribution with unknown (to you) mean $\mu$ and variance $\sigma^{2}$. The data are posted [here](https://github.com/hlynch/Bayesian2020/tree/master/docs/Gibbsdata.txt). Since JAGS works with the precision, we will define the precision $\tau=1/\sigma^{2}$.
 
 We will use the following priors 
 

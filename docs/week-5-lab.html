@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-09-21" />
+<meta name="date" content="2020-09-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -326,7 +326,7 @@ log(\pi(x^*))-log(\pi(x)) = log(P(Y|\beta_{0}^*,\beta_{1}^*))+log(P(\beta_{0}^*)
 </ol>
 <div id="gibbs-sampler" class="section level2">
 <h2><span class="header-section-number">9.1</span> Gibbs Sampler</h2>
-<p>(This example is basically Lunn et al. Example 4.2.2) For this example, I have generated some random values from a Normal distribution with unknown (to you) mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^{2}\)</span>. The data are posted on Bb under “gibbsdata.txt”. Since JAGS works with the precision, we will define the precision <span class="math inline">\(\tau=1/\sigma^{2}\)</span>.</p>
+<p>(This example is basically Lunn et al. Example 4.2.2) For this example, I have generated some random values from a Normal distribution with unknown (to you) mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^{2}\)</span>. The data are posted <a href="https://github.com/hlynch/Bayesian2020/tree/master/docs/Gibbsdata.txt">here</a>. Since JAGS works with the precision, we will define the precision <span class="math inline">\(\tau=1/\sigma^{2}\)</span>.</p>
 <p>We will use the following priors</p>
 <p><span class="math display">\[
 \mu \sim N(\gamma, \omega^{2}) \\
