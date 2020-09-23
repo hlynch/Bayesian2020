@@ -67,9 +67,9 @@ thus eliminating the pesky denominator in both expressions.
 We will make a minor modification to step 3 to head off problems with numerical errors. The original formulation would require that we draw a value from Unif(0,1) and accept if this value is less than $\pi(x^*)/\pi(x)$. Since probabilities (esp. joint probabilities) are always very small problematic numbers, we would prefer to log both sides of this, and to log the draw from the Unif(0,1) and compare this value to $\pi(x^*)/\pi(x)=log(\pi(x^*))-log(\pi(x))$.
 
 $$
-log(\pi(x^*))-log(\pi(x)) = log(P(Y|\beta_{0}^*,\beta_{1}^*))+log(P(\beta_{0}^*))+log(\beta_{1}^*)-log(P(Y|\beta_{0},\beta_{1}))-log(P(\beta_{0}))-log(P(\beta_{1}))
+log(\pi(x^*))-log(\pi(x)) = log(P(Y|\beta_{0}^*,\beta_{1}^*))+log(P(\beta_{0}^*))+log(\beta_{1}^*) \\-log(P(Y|\beta_{0},\beta_{1}))-log(P(\beta_{0}))-log(P(\beta_{1}))
 $$
-In other words, we calculate the difference in log probabilities and use this as the acceptance threshold.
+In other words, we calculate the difference in log probabilities and use this as the acceptance threshold. (Note that to get the actual probability of acceptance, you will need to exponentiate this, i.e. $exp(log(\pi(x^*))-log(\pi(x)))$. Also, keep in mind that the likelihood $P(Y|\beta_{0}^*,\beta_{1}^*)$ is the *joint* likelihood over all the islands. The joint likleihood of the islands (assuming, as we are here, that they are independent) is the product over the likelihood for the individual islands or, in log space, the sum.
 
 **Note – this still may not prevent numerical underflow – what are other possible solutions?** 
 
