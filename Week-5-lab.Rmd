@@ -40,15 +40,12 @@ $$
 
 The pseudocode goes as follows:
 
-1) Choose starting values. 
-2) Propose new value of $\beta_{0}$ (a.k.a. $\beta_{0}^*$)
-3) Accept $\beta_{0}^*$ with probability $\mbox{min}[1,\pi(x^*)/\pi(x)]$
-4) Repeat Steps 2 and 3 with $\beta_{1}$
-5) Repeat Steps 2-4 many times (1000? 10000?)
+1) Choose starting values for $\beta_{0}$ and $\beta_{1}$. Could be anything, but best practice to draw these from the prior.
+2) Propose new value of $\beta_{0}$ and $\beta_{1}$ (a.k.a. $\beta_{0}^*$ and $\beta_{1}^*$)
+3) Accept ($\beta_{0}^*$,$\beta_{1}^*$) with probability $\mbox{min}[1,\pi(x^*)/\pi(x)]$
+4) Repeat Steps 2 and 3 many times (1000? 10000?)
 
-You can also make multivariate draws using the ‘mvrnorm’ function from the MASS package.
-
-**Question**: Why might multivariate draws be preferrable?
+You can propose jumps in $\beta_{0}$ and $\beta_{1}$ independently or you can make multivariate draws using the ‘mvrnorm’ function from the MASS package. The latter approach would allow for you to make correlated draws and, if carefully tuned, may lead to greater efficiency.
 
 Keep in mind the following:
 

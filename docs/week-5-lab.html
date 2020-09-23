@@ -293,14 +293,12 @@ S(\beta,\beta^*) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-(\beta^*-\beta)^2/2\sigma^2}
 \]</span> (I am letting you find the best <span class="math inline">\(\sigma\)</span>.) This proposal distribution is a random-walk proposal distribution.</p>
 <p>The pseudocode goes as follows:</p>
 <ol style="list-style-type: decimal">
-<li>Choose starting values.</li>
-<li>Propose new value of <span class="math inline">\(\beta_{0}\)</span> (a.k.a. <span class="math inline">\(\beta_{0}^*\)</span>)</li>
-<li>Accept <span class="math inline">\(\beta_{0}^*\)</span> with probability <span class="math inline">\(\mbox{min}[1,\pi(x^*)/\pi(x)]\)</span></li>
-<li>Repeat Steps 2 and 3 with <span class="math inline">\(\beta_{1}\)</span></li>
-<li>Repeat Steps 2-4 many times (1000? 10000?)</li>
+<li>Choose starting values for <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span>. Could be anything, but best practice to draw these from the prior.</li>
+<li>Propose new value of <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> (a.k.a. <span class="math inline">\(\beta_{0}^*\)</span> and <span class="math inline">\(\beta_{1}^*\)</span>)</li>
+<li>Accept (<span class="math inline">\(\beta_{0}^*\)</span>,<span class="math inline">\(\beta_{1}^*\)</span>) with probability <span class="math inline">\(\mbox{min}[1,\pi(x^*)/\pi(x)]\)</span></li>
+<li>Repeat Steps 2 and 3 many times (1000? 10000?)</li>
 </ol>
-<p>You can also make multivariate draws using the ‘mvrnorm’ function from the MASS package.</p>
-<p><strong>Question</strong>: Why might multivariate draws be preferrable?</p>
+<p>You can propose jumps in <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> independently or you can make multivariate draws using the ‘mvrnorm’ function from the MASS package. The latter approach would allow for you to make correlated draws and, if carefully tuned, may lead to greater efficiency.</p>
 <p>Keep in mind the following:</p>
 <p><span class="math display">\[
 P(\beta_{0}^*,\beta_{1}^*|Y) = \frac{P(Y|\beta_{0}^*,\beta_{1}^*)P(\beta_{0}^*,\beta_{1}^*)}{P(Y)}
