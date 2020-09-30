@@ -23,26 +23,17 @@ To get some intuition for what the burn-in is doing, you might try setting burn 
 One-way ANOVA
 -----------------------
 
-Here we are going to use a small dataset found [here](https://github.com/hlynch/Bayesian2020/tree/master/docs/seaslug.csv).
+Here we are going to use a small dataset found [here](https://github.com/hlynch/Bayesian2020/tree/master/docs/seaslug.csv). This study has been published: Krug, P.J. and R.K. Zimmer. 2000.  Larval settlement: chemical markers for tracing production, transport, and distribution of a waterborne cue. Marine Ecology Progress Series, vol. 207: 283-296.
 
 From the data source:
+\emph{Sea slugs, which live along the Southern California coast, produce thousands of microscopic larvae each year. These larvae locate and settle onto a patch of vaucherian seaweed, before developing into sea slugs. The accompanying data file is from a pilot study on the ability of sea slug larvae to detect this kind of seaweed at different tide heights.  Instead of randomly swimming until they find this seaweed (as was previously believed), these larvae actually "smell" the seaweed when they are passing over it in the water.  They do this, it is believed, by detecting chemicals that slowly leach out of the seaweed.  This study attempts to support this theory by analyzing the ability of larvae to distinguish the smell of this seaweed just as the tide is coming in -- when the chemicals are most concentrated -- and at high tide -- when the chemicals are more dilute due to the rising tide.}
 
-<span style="color:#3d8343;">
-GENERAL EXPLANATION OF THE STUDY
+Description of the data: 
+\emph{Just before the tide came in, one water sample containing filtered sea water was collected away from the patch of seaweed.  This sample is the control (it is coded 99).  Once the tide washed in, water samples were collected above a patch of vaucherian seaweed every five minutes, for a total of thirty minutes.  Each of these samples was then divided into six, so that there are six replicates for each time point.  There are seven time points (0-30 minutes) so there are a total of 42 observations, excluding the control.  The control was divided into five replicates.}  
 
-Sea slugs, which live along the Southern California coast, produce thousands of microscopic larvae each year. These larvae locate and settle onto a patch of vaucherian seaweed, before developing into sea slugs. The accompanying data file is from a pilot study on the ability of sea slug larvae to detect this kind of seaweed at different tide heights.  Instead of randomly swimming until they find this seaweed (as was previously believed), these larvae actually "smell" the seaweed when they are passing over it in the water.  They do this, it is believed, by detecting chemicals that slowly leach out of the seaweed.  This study attempts to support this theory by analyzing the ability of larvae to distinguish the smell of this seaweed just as the tide is coming in -- when the chemicals are most concentrated -- and at high tide -- when the chemicals are more dilute due to the rising tide.
+\emph{Fifteen slug larvae were then injected into each of the replicates, and the percentage of larvae that metamorphosed was recorded.  This percentage is a function of the ability of the larvae to detect the chemicals from the seaweed.}
 
-This study has been published: Krug, P.J. and R.K. Zimmer. 2000b.  Larval settlement: chemical markers for tracing production, transport, and distribution of a waterborne cue.
-Marine Ecology Progress Series, vol. 207: 283-296.
-
-BRIEF DESCRIPTION OF THE DATA          
-
-Just before the tide came in, one water sample containing filtered sea water was collected away from the patch of seaweed.  This sample is the control (it is coded 99).  Once the tide washed in, water samples were collected above a patch of vaucherian seaweed every five minutes, for a total of thirty minutes.  Each of these samples was then divided into six, so that there are six replicates for each time point.  There are seven time points (0-30 minutes) so there are a total of 42 observations, excluding the control.  The control was divided into five replicates.  
-
-Fifteen slug larvae were then injected into each of the replicates, and the percentage of larvae that metamorphosed was recorded.  This percentage is a function of the ability of the larvae to detect the chemicals from the seaweed.
-</span>
-
-I’ve added a column for “Group” to the original dataset and put it in the folder for this week’s lab (seaslug.csv). Its worth noting that in the original experiment, there were not exactly 15 seaslugs in each treatment (some would die before undergoing metamorphosis, etc.). While this experiment nominally lends itself to a Binomial model, the data provided are just percentages (we have no data on final sample sizes in each treatment group). While the beta distribution would be the most appropriate distribution, we will keep things simple and model the percentages with a Normal distribution. 
+I’ve added a column for “Group” to the original dataset and put it in the folder for this week’s lab (seaslug.csv). Its worth noting that in the original experiment, there were not exactly 15 seaslugs in each treatment (some would die before undergoing metamorphosis, etc.). While this experiment nominally lends itself to a Binomial model, the data provided are just percentages (we have no data on final sample sizes in each treatment group). We will keep things simple for now and model the percentages with a Normal distribution. 
 
 There are many ways to fit an ANOVA model. Let's start by writing a script to fit this model
 
@@ -53,7 +44,7 @@ where $Y_{i}$ is the percentage of sea slugs that metamorphosed in Group $i$.
 
 When you get the code working, you should end up with estimates of the mean percentage for each group of sea slug and the standard deviation $\sigma$.
 
-**Question #3**: Is the normal distribution really appropriate here? What other distribution might we use that would be better? Amend the model with a more appropriate distribution for the data.
+**Question #3**: Is the Normal distribution really appropriate here? What other distribution might we use that would be better? Amend the model with a more appropriate distribution for the data.
 
-**Question #4**: In our original model set up, we estimated the average percentage for each group. There were no “contrasts” defined, so our posterior distributions for each group do not lend themselves to testing any particular hypothesis. What would be a more appropriate way to write this model? Amend your model from Question #1 with a more appropriate contrast. (Note that Bayesian models make it really easy to track variables of interest in the model rather than post hoc. Be sure to write your model so that you get a posterior distribution for the quantity [or contrast] of interest.)
+**Question #4**: Our model has been set up to estimate the average percentage for each group. No “contrasts” were defined, so our posterior distributions for each group do not lend themselves to testing any particular hypothesis. What would be a more appropriate way to write this model? Amend your model from Question #3 with a more appropriate contrast. (Note that Bayesian models make it really easy to track variables of interest in the model rather than post hoc. Be sure to write your model so that you get a posterior distribution for the quantity [or contrast] of interest.)
 
