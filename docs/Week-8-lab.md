@@ -1,7 +1,7 @@
 Week 8 Lab
 ========================================================
 
-In lab we are going to work through several examples of fitting GLMs using data from the breeding bird survey program. The data you have been given (BBS data for NY.csv) is, as the name implies, the summary of BBS data for the state of NY. For those not familiar with the BBS data, what we have are essentially counts of individuals recorded along transect surveys. The first two columns of the dataset are the Year and the number of Routes completed (which is related to effort). The other columns are for each species recorded in NY state.
+In lab we are going to work through several examples of fitting GLMs using data from the breeding bird survey program. The data you have been given [BBS data for NY](https://github.com/hlynch/Bayesian2020/tree/master/docs/BBS_NY.csv) is, as the name implies, the summary of BBS data for the state of NY. For those not familiar with the BBS data, what we have are essentially counts of individuals recorded along transect surveys. The first two columns of the dataset are the Year and the number of Routes completed (which is related to effort). The other columns are for each species recorded in NY state.
 
 **Exercise #1**: We are going to do a traditional Poisson regression to look at the change in abundance of the Northern Bobwhite: 
 

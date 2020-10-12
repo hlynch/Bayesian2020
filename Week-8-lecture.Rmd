@@ -26,7 +26,7 @@ or
 $$
 \mu_{i} = exp(\alpha + \beta X_{i})
 $$
-or anything else for that matter. The point is that when we introduce GLMs, we tend to gloss over the fact that we are changing **both** the model for the errors **and*** the relationship between the model parameters and the covariates of interest. (Non-linear regression usually implies that we have kept a normal model but made the relationship between the mean and the covariate non-linear.)
+or anything else for that matter. The point is that when we introduce GLMs, we tend to gloss over the fact that we are changing **both** the model for the errors **and** the relationship between the model parameters and the covariates of interest. (Non-linear regression usually implies that we have kept a normal model but made the relationship between the mean and the covariate non-linear.)
 
 When we have a Bernoulli or Binomial response, we use a Bernoulli or Binomial model for the data
 
