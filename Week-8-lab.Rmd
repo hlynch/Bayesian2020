@@ -31,7 +31,7 @@ $$
 (4) The Bayesian prediction interval, which we find by taking the (2.5,97.5) quantiles of 
 
 $$
-\mbox{Pois}(exp(\alpha[k]+\beta[k]*Year_{i})
+\mbox{Pois}(exp(\alpha[k]+\beta[k]*Year_{i}))
 $$
 If you plot these draws as little tiny dots (pch=”.”) than you can see the spread of predicted values and the data at the same time. 
 
