@@ -140,12 +140,17 @@ It is important to determine what kind of missingness you have.
 **Question: Any examples of missing data from your research? What kind of missingness are you dealing with?**
 
 A sample of imputation methods:
+
 1. Replace missing covariate value with the mean of that covariate across all units.
+
 2. Last value carried forward (sensible if you have a time series or something with strong autocorrelation).
+
 3. Sample with replacement from the other values for that covariate.
+
 4. Fit a model to the observed cases and use that model to predict the missing covariate values.
-	a) Can use the expected value of the model for imputation
-	b) Can include prediction error (in this case, as with any situation in which there is some stochasticity to the imputation procedure, it is best to do this multiple times and assess sensitivity of the results to the imputed values)
+
+	+ Can use the expected value of the model for imputation
+	+ Can include prediction error (in this case, as with any situation in which there is some stochasticity to the imputation procedure, it is best to do this multiple times and assess sensitivity of the results to the imputed values)
 
 Some vocabulary: Hot-deck vs. cold deck imputation. Hot-deck imputation is when a missing value is imputed by finding one or more “similar” cases without missing data in the dataset under analysis. Cold-deck imputation uses a similar matching procedure but with data that were collected previous to the current analysis.
 
