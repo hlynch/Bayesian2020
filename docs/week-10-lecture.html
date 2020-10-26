@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-10-14" />
+<meta name="date" content="2020-10-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -302,14 +302,14 @@ Y_{i} \sim \mbox{Binom}(N,\theta)
 <p><span class="math display">\[
 \hat{\theta} = E[\theta|Y_{i}]
 \]</span> Unlike the standard deviation of the samples for <span class="math inline">\(\theta|Y_{i}\)</span>, our uncertainty regarding <span class="math inline">\(\hat{\theta}\)</span> (which we call the Monte Carlo standard error) <strong>is</strong> sensitive to sample size. As we collect more samples, we will more precisely estimate <span class="math inline">\(\hat{\theta}\)</span>, and our uncertainty about will decrease. This situation is analogous to the difference between the standard deviation of a distribution, and the standard deviation of the mean of a distribution, the latter of which we refer to as the standard error (of the mean).</p>
-<p>In most applied applications of Bayesian modelling, Monte Carlo standard errors are not of interest and will be far smaller than the standard deviation of the posterior. In other words, given the Binomial model just discussion, you would report in your paper &quot;$=<span class="math inline">\(3.5 (2.1,4.7)&quot;. You would not need to specify the posterior mean to more digits &quot;\)</span>=$3.547834 (2.1,4.7)&quot; because the extra precision is made irrelevant because of the spread of the posterior. Technically, you should also report the uncertainty associated with the estimate of the posterior mean (in other words, how well do you know that the mean is 3.5 and not 3.4 or 3.6) but this is not usually done in the manuscript, rather the error of the mean is usually included in a table (such as in the summary table produced by JAGS).</p>
+<p>In most applied applications of Bayesian modelling, Monte Carlo standard errors are not of interest and will be far smaller than the standard deviation of the posterior. In other words, given the Binomial model just discussion, you would report in your paper <span class="math inline">\(\hat{\theta}=3.5~(2.1,4.7)\)</span>. You would not need to specify the posterior mean to more digits <span class="math inline">\(\hat{\theta}=3.547834~ (2.1,4.7)\)</span> because the extra precision is made irrelevant because of the spread of the posterior. Technically, you should also report the uncertainty associated with the estimate of the posterior mean (in other words, how well do you know that the mean is 3.5 and not 3.4 or 3.6) but this is not usually done in the manuscript, rather the error of the mean is usually included in a table (such as in the summary table produced by JAGS).</p>
 <p>[Keep in mind that we can ask about the MCSE for any function of any parameter, such as a function <span class="math inline">\(\widehat{g(\theta)}\)</span>.]</p>
 <p><strong>OK, now we know what Monte Carlo standard errors are, but how do we calculate them?</strong></p>
 <p>If the N samples were all independent, then we could easily calculate the MCSE by just using the Central Limit Theorem.</p>
 <p><span class="math display">\[
 \mbox{MCSE} = \sqrt{\frac{s^2}{N}} = \sqrt{\frac{\frac{1}{N-1}\sum_{i=1}^{N}(g(\theta_{i})-\overline{g(\theta_{i})})^{2}}{N}} = \frac{SD(g(\theta_{i}))}{\sqrt{N}}
 \]</span> However, the samples are not usually independent, and in fact, Markov Chain samples can be highly autocorrelated. Therefore, we use the  way of calculating the MCSE, which is to divide up our chain into <span class="math inline">\(m\)</span> batches of length <span class="math inline">\(n\)</span> (<span class="math inline">\(N=mn\)</span>); while the individual draws may be highly correlated, we hope that batches of draws will be independent. (There are many ways to estimate the Markov Chain standard error but here I am describing the <strong>batch means</strong> method.)</p>
-<p>Now we can write</p>
+<p>Now, using the notation that <span class="math inline">\(\overline{\theta_{. j}}\)</span> is the average value in the <span class="math inline">\(j^{th}\)</span> batch and <span class="math inline">\(\overline{\theta_{..}}\)</span> is the average across all batches, we can write</p>
 <p><span class="math display">\[
 s^{2} = \frac{n}{m-1}\sum_{j=1}^{m}(\overline{\theta_{. j}}-\overline{\theta_{..}})^{2}
 \]</span> without concern for the autocorrelation of individual samples.</p>
@@ -331,7 +331,7 @@ s^{2} = \frac{n}{m-1}\sum_{j=1}^{m}(\overline{\theta_{. j}}-\overline{\theta_{..
 <p><span class="math display">\[
 B=\frac{n}{m-1}\sum_{j=1}^{m}(\overline{\theta_{. j}}-\overline{\theta_{..}})^{2} \\
 W=\frac{1}{m}\sum_{j=1}^{m}\left[\frac{1}{n-1}\sum_{i=1}^{n}(\overline{\theta_{ij}}-\overline{\theta_{.j}})^{2}\right]
-\]</span> where <span class="math inline">\(\theta_{ij}\)</span> is the ith sample from the jth chain, <span class="math inline">\(\overline{\theta_{.j}}\)</span> is the average over the jth chain, and <span class="math inline">\(\theta_{..}\)</span> is the global average (over all samples in all chains).</p>
+\]</span> where (like before) <span class="math inline">\(\theta_{ij}\)</span> is the ith sample from the jth chain, <span class="math inline">\(\overline{\theta_{.j}}\)</span> is the average over the <span class="math inline">\(j^{th}\)</span> chain, and <span class="math inline">\(\theta_{..}\)</span> is the global average (over all samples in all chains). Note that the term B is just the same as the variance <span class="math inline">\(s^{2}\)</span> introduced above. B represents the <em>within-chain</em> variation. W represents the <em>between-chain</em> variation.</p>
 <p>Using these values, we can estimate the marginal posterior variance of <span class="math inline">\(\theta\)</span></p>
 <p><span class="math display">\[
 \widehat{Var(\theta|y)} = \frac{n-1}{n}W + \frac{1}{n}B
@@ -339,10 +339,6 @@ W=\frac{1}{m}\sum_{j=1}^{m}\left[\frac{1}{n-1}\sum_{i=1}^{n}(\overline{\theta_{i
 <p><span class="math display">\[
 \hat{R} = \sqrt{\frac{\widehat{Var(\theta|y)}}{W}}
 \]</span> If <span class="math inline">\(\hat{R} \approx 1\)</span>, at least &lt;1.1, then we can be fairly confident that the chains have converged.</p>
-<p>To gain a little intuition for this statistic, consider the case of very large <span class="math inline">\(n\)</span> (which is always the case, since the chains are always long)</p>
-<p><span class="math display">\[
-\hat{R}_{\mbox{n large}} \approx \sqrt{\frac{B/n}{W}}
-\]</span> which is basically like comparing two estimates of the variance, one derived from the variance between chains (divided by n, think back to how we got SE from SD!) and one derived from the variance within a chain.</p>
 <p>The effective sample size <span class="math inline">\(n_{eff}\)</span> is a related measure to <span class="math inline">\(\hat{R}\)</span>.</p>
 </div>
 <div id="the-take-away-what-should-we-be-checking-after-we-run-our-models" class="section level2">
@@ -410,20 +406,20 @@ calc.overlap=function(prior.vec,posterior.vec)
 }</code></pre></div>
 <p>In this case, the data were informative about the first of these parameters but not about the second.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
-<img src="PriorPosterior1.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="75%" />
+<img src="PriorPosterior1.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="50%" />
 <p class="caption">
 Figure 2.1: Histogram of prior distribution (blue) and posterior distribution (pink).
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
-<img src="PriorPosterior2.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="75%" />
+<img src="PriorPosterior2.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="50%" />
 <p class="caption">
 Figure 6.1: Histogram of prior distribution (blue) and posterior distribution (pink).
 </p>
 </div>
 <p>Here is an example of where the prior was centered on the posterior mean but the data were still clearly informative:</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
-<img src="PriorPosterior3.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="75%" />
+<img src="PriorPosterior3.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="50%" />
 <p class="caption">
 Figure 8.1: Histogram of prior distribution (blue) and posterior distribution (pink).
 </p>

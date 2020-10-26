@@ -52,7 +52,7 @@ $$
 $$
 Unlike the standard deviation of the samples for $\theta|Y_{i}$, our uncertainty regarding $\hat{\theta}$  (which we call the Monte Carlo standard error) **is** sensitive to sample size. As we collect more samples, we will more precisely estimate $\hat{\theta}$, and our uncertainty about  will decrease. This situation is analogous to the difference between the standard deviation of a distribution, and the standard deviation of the mean of a distribution, the latter of which we refer to as the standard error (of the mean).
 
-In most applied applications of Bayesian modelling, Monte Carlo standard errors are not of interest and will be far smaller than the standard deviation of the posterior. In other words, given the Binomial model just discussion, you would report in your paper "$\hat{\theta}=$3.5 (2.1,4.7)". You would not need to specify the posterior mean to more digits "$\hat{\theta}=$3.547834 (2.1,4.7)" because the extra precision is made irrelevant because of the spread of the posterior. Technically, you should also report the uncertainty associated with the estimate of the posterior mean (in other words, how well do you know that the mean is 3.5 and not 3.4 or 3.6) but this is not usually done in the manuscript, rather the error of the mean is usually included in a table (such as in the summary table produced by JAGS).
+In most applied applications of Bayesian modelling, Monte Carlo standard errors are not of interest and will be far smaller than the standard deviation of the posterior. In other words, given the Binomial model just discussion, you would report in your paper $\hat{\theta}=3.5~(2.1,4.7)$. You would not need to specify the posterior mean to more digits $\hat{\theta}=3.547834~ (2.1,4.7)$ because the extra precision is made irrelevant because of the spread of the posterior. Technically, you should also report the uncertainty associated with the estimate of the posterior mean (in other words, how well do you know that the mean is 3.5 and not 3.4 or 3.6) but this is not usually done in the manuscript, rather the error of the mean is usually included in a table (such as in the summary table produced by JAGS).
 
 [Keep in mind that we can ask about the MCSE for any function of any parameter, such as a function $\widehat{g(\theta)}$.]
 
@@ -65,7 +65,7 @@ $$
 $$
 However, the samples are not usually independent, and in fact, Markov Chain samples can be highly autocorrelated. Therefore, we use the \emph{other} way of calculating the MCSE, which is to divide up our chain into $m$ batches of length $n$ ($N=mn$); while the individual draws may be highly correlated, we hope that batches of draws will be independent. (There are many ways to estimate the Markov Chain standard error but here I am describing the **batch means** method.) 
 
-Now we can write 
+Now, using the notation that $\overline{\theta_{. j}}$ is the average value in the $j^{th}$ batch and $\overline{\theta_{..}}$ is the average across all batches, we can write 
 
 $$
 s^{2} = \frac{n}{m-1}\sum_{j=1}^{m}(\overline{\theta_{. j}}-\overline{\theta_{..}})^{2}
@@ -93,7 +93,7 @@ $$
 B=\frac{n}{m-1}\sum_{j=1}^{m}(\overline{\theta_{. j}}-\overline{\theta_{..}})^{2} \\
 W=\frac{1}{m}\sum_{j=1}^{m}\left[\frac{1}{n-1}\sum_{i=1}^{n}(\overline{\theta_{ij}}-\overline{\theta_{.j}})^{2}\right]
 $$
-where $\theta_{ij}$ is the ith sample from the jth chain, $\overline{\theta_{.j}}$ is the average over the jth chain, and $\theta_{..}$ is the global average (over all samples in all chains). 
+where (like before) $\theta_{ij}$ is the ith sample from the jth chain, $\overline{\theta_{.j}}$ is the average over the $j^{th}$ chain, and $\theta_{..}$ is the global average (over all samples in all chains). Note that the term B is just the same as the variance $s^{2}$ introduced above. B represents the *within-chain* variation. W represents the *between-chain* variation.
 
 Using these values, we can estimate the marginal posterior variance of $\theta$
 
@@ -106,13 +106,6 @@ $$
 \hat{R} = \sqrt{\frac{\widehat{Var(\theta|y)}}{W}}
 $$
 If $\hat{R} \approx 1$, at least <1.1, then we can be fairly confident that the chains have converged.
-
-To gain a little intuition for this statistic, consider the case of very large $n$ (which is always the case, since the chains are always long)
-
-$$
-\hat{R}_{\mbox{n large}} \approx \sqrt{\frac{B/n}{W}}
-$$
-which is basically like comparing two estimates of the variance, one derived from the variance between chains (divided by n, think back to how we got SE from SD!) and one derived from the variance within a chain. 
 
 The effective sample size $n_{eff}$ is a related measure to $\hat{R}$.
 
@@ -197,17 +190,17 @@ calc.overlap=function(prior.vec,posterior.vec)
 
 In this case, the data were informative about the first of these parameters but not about the second.
 
-```{r echo=FALSE, fig.align='center', fig.cap='Histogram of prior distribution (blue) and posterior distribution (pink).', out.width='75%'}
+```{r echo=FALSE, fig.align='center', fig.cap='Histogram of prior distribution (blue) and posterior distribution (pink).', out.width='50%'}
 knitr::include_graphics('PriorPosterior1.png')
 ```
 
-```{r echo=FALSE, fig.align='center', fig.cap='Histogram of prior distribution (blue) and posterior distribution (pink).', out.width='75%'}
+```{r echo=FALSE, fig.align='center', fig.cap='Histogram of prior distribution (blue) and posterior distribution (pink).', out.width='50%'}
 knitr::include_graphics('PriorPosterior2.png')
 ```
 
 Here is an example of where the prior was centered on the posterior mean but the data were still clearly informative:
 
-```{r echo=FALSE, fig.align='center', fig.cap='Histogram of prior distribution (blue) and posterior distribution (pink).', out.width='75%'}
+```{r echo=FALSE, fig.align='center', fig.cap='Histogram of prior distribution (blue) and posterior distribution (pink).', out.width='50%'}
 knitr::include_graphics('PriorPosterior3.png')
 ```
 
