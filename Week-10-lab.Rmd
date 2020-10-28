@@ -50,4 +50,4 @@ $$
 $$
 rather than just taking the expected value $\beta_{0}+\beta_{1}*FD$.
 
-Once you have your four imputed datasets, run the model you created for the Week #7 lab (one species only). Create a 4x4 table of the 95th percentile posterior CIs (Degradation Method $\times$ Imputation Method). Do any of the imputation methods work better than any others? How might you define “better”?
+Once you have your four imputed datasets, run the model you created for the Week #7 lab (one species only). Create a 4x4 table of the 95th percentile posterior CIs (Degradation Method $\times$ Imputation Method) for the slope parameter (i.e. the rate at which phenology is shifting over time). Do any of the imputation methods work better than any others? How might you define “better”?

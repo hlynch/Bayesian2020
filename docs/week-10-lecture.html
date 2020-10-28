@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-10-26" />
+<meta name="date" content="2020-10-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -302,7 +302,7 @@ Y_{i} \sim \mbox{Binom}(N,\theta)
 <p><span class="math display">\[
 \hat{\theta} = E[\theta|Y_{i}]
 \]</span> Unlike the standard deviation of the samples for <span class="math inline">\(\theta|Y_{i}\)</span>, our uncertainty regarding <span class="math inline">\(\hat{\theta}\)</span> (which we call the Monte Carlo standard error) <strong>is</strong> sensitive to sample size. As we collect more samples, we will more precisely estimate <span class="math inline">\(\hat{\theta}\)</span>, and our uncertainty about will decrease. This situation is analogous to the difference between the standard deviation of a distribution, and the standard deviation of the mean of a distribution, the latter of which we refer to as the standard error (of the mean).</p>
-<p>In most applied applications of Bayesian modelling, Monte Carlo standard errors are not of interest and will be far smaller than the standard deviation of the posterior. In other words, given the Binomial model just discussion, you would report in your paper <span class="math inline">\(\hat{\theta}=3.5~(2.1,4.7)\)</span>. You would not need to specify the posterior mean to more digits <span class="math inline">\(\hat{\theta}=3.547834~ (2.1,4.7)\)</span> because the extra precision is made irrelevant because of the spread of the posterior. Technically, you should also report the uncertainty associated with the estimate of the posterior mean (in other words, how well do you know that the mean is 3.5 and not 3.4 or 3.6) but this is not usually done in the manuscript, rather the error of the mean is usually included in a table (such as in the summary table produced by JAGS).</p>
+<p>In most applied applications of Bayesian modelling, Monte Carlo standard errors are not of interest and will be far smaller than the standard deviation of the posterior. In other words, given the Binomial model just discussion, you would report in your paper <span class="math inline">\(\hat{\theta}=0.5~(0.2,0.6)\)</span>. You would not need to specify the posterior mean to more digits <span class="math inline">\(\hat{\theta}=0.547834~ (0.2,0.6)\)</span> because the extra precision is made irrelevant because of the spread of the posterior. (Note that the CI here are assymmetric, which is perfectly fine; the posterior distribution neeed not be symmetric.) Technically, you should also report the uncertainty associated with the estimate of the posterior mean (in other words, how well do you know that the mean is 3.5 and not 3.4 or 3.6) but this is not usually done in the manuscript, rather the error of the mean is usually included in a table (such as in the summary table produced by JAGS).</p>
 <p>[Keep in mind that we can ask about the MCSE for any function of any parameter, such as a function <span class="math inline">\(\widehat{g(\theta)}\)</span>.]</p>
 <p><strong>OK, now we know what Monte Carlo standard errors are, but how do we calculate them?</strong></p>
 <p>If the N samples were all independent, then we could easily calculate the MCSE by just using the Central Limit Theorem.</p>
