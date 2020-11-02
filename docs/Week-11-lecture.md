@@ -39,7 +39,7 @@ $$
 <p class="caption">(\#fig:unnamed-chunk-1)Diagram of a state space model</p>
 </div>
 
-If you were to simulate 1000 time series from a process-error only model, the time series would diverge over time. By contrast, if you simulated 1000 time series from a model with only observation error, the time series occupy a “band” of constant width over time. Do you see why this is? The process errors accumulate over time because the error in one year affects the dynamics in the next year. Observation errors do not affect the real state of the system, and thus do not accumulate over time.
+If you were to simulate 1000 time series from a process-error only model, the time series would diverge over time. By contrast, if you simulated 1000 time series from a model with only observation error, the time series occupy a “band” of constant width over time. Do you see why this is? **The process errors accumulate over time because the error in one year affects the dynamics in the next year. Observation errors do not affect the real state of the system, and thus do not accumulate over time.**
 
 Some vocabulary is in order here. If you are measuring the state of the system with error, then the true state $N_{t}$ is called a ‘latent’ state. We use the term ‘latent state’ to describe any hidden state which can only be inferred indirectly through observation. 
 
@@ -91,7 +91,7 @@ or, equivalently,
 $$
 N_{t+1} = N(N_{t}e^{r(1-N_{t}/K)},\sigma^{2})
 $$
-There are no strict rules about how process error should be modeled (or when); such details would be included in the description of a model. The former approach would be called ‘log-normally distributed process error’, whereas the latter would be called ‘normally distributed process error’.
+**There are no strict rules about how process error should be modeled (or when); such details would be included in the description of a model.** The former approach would be called ‘log-normally distributed process error’, whereas the latter would be called ‘normally distributed process error’. How and when to include process error is one of the key decisions faced by a statistical ecologist and it requires the modeller to think carefully about the ecological dynamics. There is no one "correct" statistical approach. (Another key decision is how and when to include density dependence, a topic we will cover in the lab.)
 
 
 To see how all this gets applied in practice, we will walk through the example provided in McCarthy on mountain pygmy possums. The key elements of the biology are as follows:
@@ -126,6 +126,16 @@ $$
 N_{t+1,obs} \sim \mbox{Binom}(N_{t+1},\theta)
 $$
 This will not work when there are false positives or double counting or some other "failure mode" for your observations that does not fit into this Binomial framework. 
+
+Another common model for observation errors is to assume a log-normally distributed model for the observations, such as
+
+$$
+log(N_{t+1,obs}) \sim \mbox{N}(log(N_{t+1}),\sigma^2)
+$$
+
+The log-normal model for error treats abundance as a continuous variable (which is less than ideal, since we do not have fractional animals) but it has other advantages: it is strictly non-negative, it is a two-parameter distribution so (unlike the Poisson) it allows for an observation error that is independent from the mean, and it naturally arises when observation errors are recorded as a percentage ($\pm 10\%$ error, etc.).
+
+**Question: What kinds of observation errors might you have in your own research? How might you model them?**
 
 Other kinds of state-space models
 -----------------------------
