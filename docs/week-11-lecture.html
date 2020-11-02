@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-10-28" />
+<meta name="date" content="2020-11-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -198,7 +198,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="19.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#dynamical-time-series-models"><i class="fa fa-check"></i><b>19.1</b> Dynamical (time series) models</a></li>
 <li class="chapter" data-level="19.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#process-error"><i class="fa fa-check"></i><b>19.2</b> Process error</a></li>
 <li class="chapter" data-level="19.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#observation-error"><i class="fa fa-check"></i><b>19.3</b> Observation error</a></li>
-<li class="chapter" data-level="19.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#other-kinds-of-statespace-models"><i class="fa fa-check"></i><b>19.4</b> Other kinds of state=space models</a></li>
+<li class="chapter" data-level="19.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#other-kinds-of-state-space-models"><i class="fa fa-check"></i><b>19.4</b> Other kinds of state-space models</a></li>
 <li class="chapter" data-level="19.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#missing-data"><i class="fa fa-check"></i><b>19.5</b> Missing data</a></li>
 <li class="chapter" data-level="19.6" data-path="week-1-lecture.html"><a href="week-1-lecture.html#for-more-information-about-this-weeks-topic"><i class="fa fa-check"></i><b>19.6</b> For more information about this week's topic</a></li>
 </ul></li>
@@ -298,7 +298,7 @@ Figure 1.1: Diagram of a state space model
 </p>
 </div>
 <p>If you were to simulate 1000 time series from a process-error only model, the time series would diverge over time. By contrast, if you simulated 1000 time series from a model with only observation error, the time series occupy a “band” of constant width over time. Do you see why this is? The process errors accumulate over time because the error in one year affects the dynamics in the next year. Observation errors do not affect the real state of the system, and thus do not accumulate over time.</p>
-<p>Some vocabulary is in order here. If you are measuring the state of the system with error, then the true state <span class="math inline">\(N_{t}\)</span>] is called a ‘latent’ state. We use the term ‘latent state’ to describe any hidden state which can only be inferred indirectly through observation.</p>
+<p>Some vocabulary is in order here. If you are measuring the state of the system with error, then the true state <span class="math inline">\(N_{t}\)</span> is called a ‘latent’ state. We use the term ‘latent state’ to describe any hidden state which can only be inferred indirectly through observation.</p>
 </div>
 <div id="process-error" class="section level2">
 <h2><span class="header-section-number">19.2</span> Process error</h2>
@@ -320,7 +320,7 @@ log(N_{t+1}) \sim N\left(\mbox{log}(N_{t}) + r\left(1-\frac{N_{t}}{K}\right),\si
 \]</span> we see that process error of this type assumes <span class="math inline">\(N_{t}\)</span> log-normally distributed.</p>
 <p>Another way of writing this would be</p>
 <p><span class="math display">\[
-N_{t+1} = N_{t}e^{r(1-N_{t}/K)+\epsilon} = N_{t}e^{r(1-N_{t}/K)e^{\epsilon}}
+N_{t+1} = N_{t}e^{r(1-N_{t}/K)+\epsilon} = N_{t}e^{r(1-N_{t}/K)}e^{\epsilon}
 \]</span> Note that <span class="math inline">\(E[e^{\epsilon}] \neq 1\)</span>, so <span class="math inline">\(E[N_{t+1}] \neq N_{t}e^{r(1-N_{t}/K)}\)</span> as you might think (or want, if you are building the model). For this reason, people often add a correction factor (see Hilborn and Mangel pg. 146).</p>
 <p>Another way of adding process error would be to assume</p>
 <p><span class="math display">\[
@@ -332,8 +332,8 @@ N_{t+1} = N(N_{t}e^{r(1-N_{t}/K)},\sigma^{2})
 \]</span> There are no strict rules about how process error should be modeled (or when); such details would be included in the description of a model. The former approach would be called ‘log-normally distributed process error’, whereas the latter would be called ‘normally distributed process error’.</p>
 <p>To see how all this gets applied in practice, we will walk through the example provided in McCarthy on mountain pygmy possums. The key elements of the biology are as follows:</p>
 <ul>
-<li>we will build a model that lumps all age-classes together into a single population. In other words, there will be no age- or stage-structure included in the model, although doing so would be a rather straightforward modification of the code. (Stage- and age-structured models are fairly easy to code, but unless there is a lot of information of the abundance of each stage or age, they can be quite difficult to fit...)</li>
-<li>female pygmy possums are highly territorial, so we need to include density dependence. We do this here using a Ricker model: <span class="math inline">\(N_{t+1} = N_{t}e^{r(1-N_{t}/K)}\)</span>, although there are many ways you might want to do this, and various models can be compared as we will discuss next week.</li>
+<li>We will build a model that lumps all age-classes together into a single population. In other words, there will be no age- or stage-structure included in the model, although doing so would be a rather straightforward modification of the code. (Stage- and age-structured models are fairly easy to code, but unless there is a lot of information of the abundance of each stage or age, they can be quite difficult to fit...)</li>
+<li>Female pygmy possums are highly territorial, so we need to include density dependence. We do this here using a Ricker model: <span class="math inline">\(N_{t+1} = N_{t}e^{r(1-N_{t}/K)}\)</span>, although there are many ways you might want to do this, and various models can be compared as we will discuss next week.</li>
 <li>Pygmy possums have small population sizes, and thus experience demographic stochasticity. In other words, just by random chance, their populations can fluctuate, and these fluctuations can be important when population sizes are small. We will use the Poisson distribution to model their abundance. (Side note: Abundances are discrete and non-negative and so a Poisson is an obvious choice. However, abundances are often quite large and are frequently modeled with a continuous distribution such as a Normal. The advantage of a Normal distribution is that you can model the variance independent of the mean. The downside is that a normal distribution does not enforce non-negativity, and for this reason, the log-normal is often used.)</li>
 </ul>
 <p>The model that McCarthy suggests is the following:</p>
@@ -356,8 +356,8 @@ log(\lambda_{t+1}) = log(N_{t}) + r\left(1-\frac{N_{t}}{K}\right) + \epsilon \\
 N_{t+1,obs} \sim \mbox{Binom}(N_{t+1},\theta)
 \]</span> This will not work when there are false positives or double counting or some other &quot;failure mode&quot; for your observations that does not fit into this Binomial framework.</p>
 </div>
-<div id="other-kinds-of-statespace-models" class="section level2">
-<h2><span class="header-section-number">19.4</span> Other kinds of state=space models</h2>
+<div id="other-kinds-of-state-space-models" class="section level2">
+<h2><span class="header-section-number">19.4</span> Other kinds of state-space models</h2>
 <p>Clark and Bjornstad is a classic paper on state-space models. Let’s walk through their discussion on epidemiological models since they represent a different flavor of state-space models that the ones we have been discussing. These so-called S-I-R models track the number of individuals that are S=Susceptible to a disease, I = Infected with a disease, and R=Recovered from a disease (we usually assume no reinfection after recovery). Like all state-space models, the hard part is just getting accounting right, and working out the transition rates or flow of individuals among different states.</p>
 <p>The number of susceptible individuals in Year <span class="math inline">\(t\)</span> is given by</p>
 <p><span class="math display">\[

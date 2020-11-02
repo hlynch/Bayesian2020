@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-10-28" />
+<meta name="date" content="2020-11-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -198,7 +198,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="19.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#dynamical-time-series-models"><i class="fa fa-check"></i><b>19.1</b> Dynamical (time series) models</a></li>
 <li class="chapter" data-level="19.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#process-error"><i class="fa fa-check"></i><b>19.2</b> Process error</a></li>
 <li class="chapter" data-level="19.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#observation-error"><i class="fa fa-check"></i><b>19.3</b> Observation error</a></li>
-<li class="chapter" data-level="19.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#other-kinds-of-statespace-models"><i class="fa fa-check"></i><b>19.4</b> Other kinds of state=space models</a></li>
+<li class="chapter" data-level="19.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#other-kinds-of-state-space-models"><i class="fa fa-check"></i><b>19.4</b> Other kinds of state-space models</a></li>
 <li class="chapter" data-level="19.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#missing-data"><i class="fa fa-check"></i><b>19.5</b> Missing data</a></li>
 <li class="chapter" data-level="19.6" data-path="week-1-lecture.html"><a href="week-1-lecture.html#for-more-information-about-this-weeks-topic"><i class="fa fa-check"></i><b>19.6</b> For more information about this week's topic</a></li>
 </ul></li>
@@ -345,7 +345,7 @@ log(N_{t,obs}) \sim N\left(log(N_{t-1})+r*\left(1-\frac{N_{t-1}}{K}\right),\sigm
 </div>
 <div id="process-error-and-observation-error-together" class="section level2">
 <h2><span class="header-section-number">20.4</span> Process-error and observation-error together</h2>
-<p><strong>Exercise #3</strong>: Write a JAGS script to fit a model with both process error and observation error. Plot the posterior mean and 95th credible intervals for on the original data. Plot scatterplots of the posterior chains for r vs K– do we have correlations among these two parameters? How about when we plot <span class="math inline">\(\sigma^{2}_{proc}\)</span> vs <span class="math inline">\(\sigma^{2}_{obs}\)</span>? (You should find <span class="math inline">\(\sigma^{2}_{proc}\)</span> and <span class="math inline">\(\sigma^{2}_{obs}\)</span> strongly correlated with one another. This reflects the fundamental non-identifiability of this model. There is not enough information for the model to distinguish process error and observation error because both are modeled in the same way and so it cannot distinguish them. While such non-identifiability is fairly easy to see from the model itself, in more complex models it is not always easy to see when parameters are non-identifiable, and so plotting posteriors against each other is a good way to check whether parameters are simply “trading off” in the MCMC chains.</p>
+<p><strong>Exercise #3</strong>: Write a JAGS script to fit a model with both process error and observation error. Plot the posterior mean and 95th credible intervals for on the original data. Plot scatterplots of the posterior chains for r vs K– do we have correlations among these two parameters? How about when we plot <span class="math inline">\(\sigma^{2}_{proc}\)</span> vs <span class="math inline">\(\sigma^{2}_{obs}\)</span>? You should find <span class="math inline">\(\sigma^{2}_{proc}\)</span> and <span class="math inline">\(\sigma^{2}_{obs}\)</span> strongly correlated with one another. This reflects the fundamental non-identifiability of this model. There is not enough information for the model to distinguish process error and observation error because both are modeled in the same way and so it cannot distinguish them. While such non-identifiability is fairly easy to see from the model itself, in more complex models it is not always easy to see when parameters are non-identifiable, and so plotting posteriors against each other is a good way to check whether parameters are simply “trading off” in the MCMC chains.</p>
 </div>
 <div id="final-thoughts" class="section level2">
 <h2><span class="header-section-number">20.5</span> Final thoughts</h2>
@@ -356,7 +356,7 @@ log(N_{t,obs}) \sim N(log(N_{t}),\sigma^{2}_{obs})
 <p><span class="math display">\[
 N_{t,obs} \sim N(N_{t},\sigma^{2}_{obs})
 \]</span></p>
-<p>How to choose? It comes down to which you think better captures the observation error process. For example, if you are counting a group of birds and your counting procedure is highly accurate but birds keep running in and out of the study area, you might want to model observation error on the linear scale. However, if your process has a certain error percentage (i.e. $<span class="math inline">\(15\)</span>%$) than perhaps the observation is better modelled on the log-scale.</p>
+<p>How to choose? It comes down to which you think better captures the observation error process. For example, if you are counting a group of birds and your counting procedure is highly accurate but birds keep running in and out of the study area, you might want to model observation error on the linear scale. However, if your process has a certain error percentage (i.e. <span class="math inline">\(\pm15\%\)</span>) than perhaps the observation is better modelled on the log-scale.</p>
 
 </div>
 </div>
