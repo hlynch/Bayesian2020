@@ -269,7 +269,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="week-11-lab" class="section level1">
 <h1><span class="header-section-number">20</span> Week 11 Lab</h1>
 <p>In this lab, we're going to gain some practice fitting models with (1) only observation error, (2) only process error, and (3) observation AND process error together. Let's stop and remind ourselves why this distinction is so important.</p>
-<p>Let's assume we have a simple exponential growth model for a population of fish (or cats, or humans, or money, whatever).</p>
+<p>Let's assume we have a simple exponential growth model for a population of voles. (I have provided a small dataset for the exercises below <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/vole_data.txt">here</a>.)</p>
 <p><span class="math display">\[
 N_{t} = N_{0}e^{rt}
 \]</span> which equates to the following &quot;regression-type&quot; linear model on logged abundance (unless I specify otherwise, we're always using natural logs since we usually need to &quot;undo&quot; the exponential).</p>
@@ -300,7 +300,7 @@ log(N_{t,obs}) = log(N_{t}) \sim N(log(N_{t-1})+r,\sigma^{2}_{proc})
 <p>In practice, we often build models that assume both observation and process error, and the task is to distinguish how much of the variation is due to each component. This is sometimes quite difficult to do.</p>
 <p>In lab, we are going to start with the simple logistic model, which adds to the exponential growth model a term for density-dependence. In other words, the model looks like</p>
 <p><span class="math display">\[
-N_{t+1} = N_{t}e^{r\left(1-N_{t/K}\right)}
+N_{t+1} = N_{t}e^{r\left(1-\frac{N_t}{K}\right)}
 \]</span> We have added a new parameter, which is the carrying capacity <span class="math inline">\(K\)</span>.</p>
 <p>At the end, we’ll move on to a variation of the logistic model called the theta-logistic model. As you’ll see, while the simple logistic model is fairly straightforward to fit (i.e. no major convergence issues), the theta-logistic model is exceptionally hard to use, as is described in some detail by Clark et al.</p>
 <div id="simple-logistic" class="section level2">

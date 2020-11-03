@@ -3,7 +3,7 @@ Week 11 Lab
 
 In this lab, we're going to gain some practice fitting models with (1) only observation error, (2) only process error, and (3) observation AND process error together. Let's stop and remind ourselves why this distinction is so important. 
 
-Let's assume we have a simple exponential growth model for a population of fish (or cats, or humans, or money, whatever).
+Let's assume we have a simple exponential growth model for a population of voles. (I have provided a small dataset for the exercises below [here](https://github.com/hlynch/Bayesian2020/tree/master/_data/vole_data.txt).)
 
 $$
 N_{t} = N_{0}e^{rt}
@@ -53,7 +53,7 @@ In practice, we often build models that assume both observation and process erro
 In lab, we are going to start with the simple logistic model, which adds to the exponential growth model a term for density-dependence. In other words, the model looks like
 
 $$
-N_{t+1} = N_{t}e^{r\left(1-N_{t/K}\right)}
+N_{t+1} = N_{t}e^{r\left(1-\frac{N_t}{K}\right)}
 $$
 We have added a new parameter, which is the carrying capacity $K$.
 
