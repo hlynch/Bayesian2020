@@ -96,7 +96,7 @@ A process-error only model assuming the simple logistic equation is responsible 
 
 $$
 N_{t,obs} = N_{t} \\
-log(N_{t} \sim N\left(log(N_{t-1})+r*\left(1-\frac{N_{t-1}}{K}\right),\sigma^{2}_{proc}\right)
+log(N_{t}) \sim N\left(log(N_{t-1})+r*\left(1-\frac{N_{t-1}}{K}\right),\sigma^{2}_{proc}\right)
 $$
 What to do with $t=0$ (the first data point)? In this case there is no observation error so the first year has no uncertainty, it is the value measured ($N_{0,obs} = N_{0} = 8$). So your likelihood has only 29 terms in it, starting at $t=1$. (Your statistical model is now for **transitions** between one year and the next, and there are only 29 transitions.) How many parameters do you have now?  There are now 4 total: $r$, $\theta$, $K$, and $\sigma^{2}_{obs}$ . As before, we will fit this model using JAGS, but make sure you understand how you would fit this model using maximum likelihood as well.
 
