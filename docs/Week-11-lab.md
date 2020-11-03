@@ -11,7 +11,7 @@ $$
 which equates to the following "regression-type" linear model on logged abundance (unless I specify otherwise, we're always using natural logs since we usually need to "undo" the exponential).
 
 $$
-log(N_{t}) = log(N_{0}+rt)
+log(N_{t}) = log(N_{0})+rt
 $$
 
 On the log-scale, this is now a straightforward linear regression model, with $log(N_{0})$ as the intercept and $r$ as the slope. (I could have chosen to model this differently, see Box 1 at end, but here I will do everything on the log scale for mathematical simplicity.)

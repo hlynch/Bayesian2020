@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-11-02" />
+<meta name="date" content="2020-11-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -274,7 +274,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 N_{t} = N_{0}e^{rt}
 \]</span> which equates to the following &quot;regression-type&quot; linear model on logged abundance (unless I specify otherwise, we're always using natural logs since we usually need to &quot;undo&quot; the exponential).</p>
 <p><span class="math display">\[
-log(N_{t}) = log(N_{0}+rt)
+log(N_{t}) = log(N_{0})+rt
 \]</span></p>
 <p>On the log-scale, this is now a straightforward linear regression model, with <span class="math inline">\(log(N_{0})\)</span> as the intercept and <span class="math inline">\(r\)</span> as the slope. (I could have chosen to model this differently, see Box 1 at end, but here I will do everything on the log scale for mathematical simplicity.)</p>
 <p>If I assume I <strong>only</strong> have observation error, then the model can be written as</p>
