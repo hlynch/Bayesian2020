@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-11-03" />
+<meta name="date" content="2020-11-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -320,8 +320,8 @@ log(N_{t,obs}) \sim N(log(N_{t-1})+r*\left(1-\frac{N_{t-1}}{K}\right),\sigma^{2}
 \]</span> Here you have a statement that is the likelihood for a single observed abundance. In other words, if you observe abundance <span class="math inline">\(N_{t,obs}\)</span>, then dnorm applied to the above expression yields the likelihood for year <span class="math inline">\(t\)</span>. The product of likelihoods across all years in your time series would yield the joint likelihood for the entire dataset.</p>
 <p>What to do with <span class="math inline">\(t=0\)</span> (the first data point)? A reasonable model for this would be</p>
 <p><span class="math display">\[
-log(N_{0,abs}) \sim N(log(N_{0}),\sigma^{2}_{obs})
-\]</span> where <span class="math inline">\(N_{0}\)</span> (i.e. true abundance in year 0) is a free parameter the model will estimate. How many parameters do you have? There are 5 total: <span class="math inline">\(r\)</span>, <span class="math inline">\(\theta\)</span>, <span class="math inline">\(K\)</span>, <span class="math inline">\(\sigma^{2}_{obs}\)</span> and somewhat less obviously, <span class="math inline">\(N_{0}\)</span>. How many likelihoods are being multiplied together? You have 30 data points (assuming you simply impute the missing datapoint) so there will be 30 PDFs multiplied together, 29 of which will take the form of Eq. 1 and then one more for the first year (Eq. 2).</p>
+log(N_{0,obs}) \sim N(log(N_{0}),\sigma^{2}_{obs})
+\]</span> where <span class="math inline">\(N_{0}\)</span> (i.e. true abundance in year 0) is a free parameter the model will estimate. How many parameters do you have? There are 4 total: <span class="math inline">\(r\)</span>, <span class="math inline">\(K\)</span>, <span class="math inline">\(\sigma^{2}_{obs}\)</span> and somewhat less obviously, <span class="math inline">\(N_{0}\)</span>. How many likelihoods are being multiplied together? You have 30 data points (assuming you simply impute the missing datapoint) so there will be 30 PDFs multiplied together, 29 of which will take the form of Eq. 1 and then one more for the first year (Eq. 2).</p>
 <p><strong>Exercise #1</strong>: Fit this model using JAGS. Plot the posterior mean and 95th credible intervals for <span class="math inline">\(N_{t}\)</span> on the original data. Plot scatterplots of the posterior chains for r vs K– do we have correlations among these two parameters?</p>
 </div>
 <div id="process-error-only-model" class="section level2">
