@@ -86,7 +86,7 @@ What to do with $t=0$ (the first data point)? A reasonable model for this would 
 $$
 log(N_{0,obs}) \sim N(log(N_{0}),\sigma^{2}_{obs})
 $$
-where $N_{0}$ (i.e. true abundance in year 0) is a free parameter the model will estimate. How many parameters do you have?  There are 4 total: $r$, $K$, $\sigma^{2}_{obs}$ and somewhat less obviously, $N_{0}$. How many likelihoods are being multiplied together? You have 30 data points (assuming you simply impute the missing datapoint) so there will be 30 PDFs multiplied together, 29 of which will take the form of Eq. 1 and then one more for the first year (Eq. 2).
+where $N_{0}$ (i.e. true abundance in year 0) is a free parameter the model will estimate. How many parameters do you have?  There are 4 total: $r$, $K$, $\sigma^{2}_{obs}$ and somewhat less obviously, $N_{0}$. How many likelihoods are being multiplied together? You have 30 data points so there will be 30 PDFs multiplied together, 29 of which will take the form of Eq. 1 and then one more for the first year (Eq. 2).
 
 **Exercise #1**: Fit this model using JAGS. Plot the posterior mean and 95th credible intervals for $N_{t}$ on the original data. Plot scatterplots of the posterior chains for r vs K– do we have correlations among these two parameters?
 
