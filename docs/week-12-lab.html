@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-11-04" />
+<meta name="date" content="2020-11-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -273,7 +273,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">22.1</span> The 'zeros' trick</h2>
 <p>The ‘zeroes trick’ is JAGS goes as follows. Let’s say we want to model</p>
 <p><span class="math display">\[
-Y \sim g(\theta)
+Y \sim G(\theta)
 \]</span></p>
 <p>but <span class="math inline">\(G()\)</span> is not a distribution that is built into JAGS. We can achieve the same effect (i.e. have the same likelihood enter the model) if we instead say that we observed a value of <span class="math inline">\(Y=0\)</span> from the following model</p>
 <p><span class="math display">\[
@@ -313,13 +313,13 @@ Ones[i]~<span class="kw">dbern</span>(p[i])</code></pre></div>
 </div>
 <div id="first-a-warm-up" class="section level2">
 <h2><span class="header-section-number">22.4</span> First, a warm up</h2>
-<p>Let’s look through some code for occupancy modeling that will serve as a warm up to the Lab and the Problem Set. It has been posted on Bb under “code for Week 12 Lab warm up.R”. This code simulates the detection of an amphibian (usually detected through calling) at 100 sites assuming 30 surveys each breeding season, and detection probabilities that vary as a function of humidity. (This is a bit of a contrived example. We assume 30 replicate surveys at each site, assuming a closed population and assuming that each site has fixed humidity. Nevertheless, these assumptions simplify the data simulation and are easily relaxed.)</p>
+<p>Let’s look through some <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/Week12LabWarmup.R">code</a> for occupancy modeling that will serve as a warm up to the Lab and the Problem Set. This code simulates the detection of an amphibian (usually detected through calling) at 100 sites assuming 30 surveys each breeding season, and detection probabilities that vary as a function of humidity. (This is a bit of a contrived example. We assume 30 replicate surveys at each site, assuming a closed population and assuming that each site has fixed humidity. Nevertheless, these assumptions simplify the data simulation and are easily relaxed.)</p>
 <p>(Note that this warm up exercise involves occupancy of an animal species at different sites, whereas the lab itself involves mark-recapture of individual animals over several years. Occupancy and mark-recapture are related problems, but the actual model code will be different.)</p>
 </div>
 <div id="fitting-mark-recapture-models" class="section level2">
 <h2><span class="header-section-number">22.5</span> Fitting mark-recapture models</h2>
 <p>Mark-recapture models are a huge field of modeling, and so we will only just barely scratch the surface on what can be done. Nevertheless, they are a common application of Bayesian models, and they will give us some practice writing Bayesian models in a wider variety of applications.</p>
-<p>We are going to start with a fairly straightforward dataset on the survival of the European Dipper, which was described in the paper by McCarthy and Masters (2005) that you read for class this week. I have posted the survival data on Bb; copy and paste from “dipper_data.txt”. (While the code used by McCarthy and Masters is online as part of the supplement, no peaking! You’ll learn more working through it from the beginning.)</p>
+<p>We are going to start with a fairly straightforward dataset on the survival of the European Dipper, which was described in the paper by McCarthy and Masters (2005) that you read for class this week. I have posted the survival data <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/dipper_data.R">here</a>. (While the code used by McCarthy and Masters is online as part of the supplement, no peaking! You’ll learn more working through it from the beginning.)</p>
 <p>Write a mark-recapture model to estimate survival (constant over time) and resighting rate (also constant over time) for the Dipper. We’ll start with an uninformative prior, and we have time can go back and discuss how McCarthy and Masters generated a more informative prior if we have time.</p>
 <p><strong>Exercise #1</strong>: Use the Method #1 (Brute force) approach described in lecture on Monday. This is the most straightforward and the easiest to code.</p>
 <p><strong>Exercise #2</strong>: Use the Method #2 (Modelling the entire capture history) approach described on Monday. You’ll have to think carefully how to represent the likelihood for the entire recapture history. (Hint: You may need the ‘ones’ or ‘zeroes’ trick.)</p>

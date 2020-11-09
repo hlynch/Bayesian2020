@@ -9,7 +9,7 @@ The 'zeros' trick
 The ‘zeroes trick’ is JAGS goes as follows. Let’s say we want to model
 
 $$
-Y \sim g(\theta)
+Y \sim G(\theta)
 $$
 
 but $G()$ is not a distribution that is built into JAGS. We can achieve the same effect (i.e. have the same likelihood enter the model) if we instead say that we observed a value of $Y=0$ from the following model
@@ -69,7 +69,7 @@ Sometimes, the hardest part about getting JAGS to run successfully is supplying 
 
 ##First, a warm up
 
-Let’s look through some code for occupancy modeling that will serve as a warm up to the Lab and the Problem Set. It has been posted on Bb under “code for Week 12 Lab warm up.R”. This code simulates the detection of an amphibian (usually detected through calling) at 100 sites assuming 30 surveys each breeding season, and detection probabilities that vary as a function of humidity. (This is a bit of a contrived example. We assume 30 replicate surveys at each site, assuming a closed population and assuming that each site has fixed humidity. Nevertheless, these assumptions simplify the data simulation and are easily relaxed.) 
+Let’s look through some [code](https://github.com/hlynch/Bayesian2020/tree/master/_data/Week12LabWarmup.R) for occupancy modeling that will serve as a warm up to the Lab and the Problem Set. This code simulates the detection of an amphibian (usually detected through calling) at 100 sites assuming 30 surveys each breeding season, and detection probabilities that vary as a function of humidity. (This is a bit of a contrived example. We assume 30 replicate surveys at each site, assuming a closed population and assuming that each site has fixed humidity. Nevertheless, these assumptions simplify the data simulation and are easily relaxed.) 
 
 (Note that this warm up exercise involves occupancy of an animal species at different sites, whereas the lab itself involves mark-recapture of individual animals over several years. Occupancy and mark-recapture are related problems, but the actual model code will be different.)
 
@@ -77,7 +77,7 @@ Let’s look through some code for occupancy modeling that will serve as a warm 
 
 Mark-recapture models are a huge field of modeling, and so we will only just barely scratch the surface on what can be done. Nevertheless, they are a common application of Bayesian models, and they will give us some practice writing Bayesian models in a wider variety of applications.
 
-We are going to start with a fairly straightforward dataset on the survival of the European Dipper, which was described in the paper by McCarthy and Masters (2005) that you read for class this week. I have posted the survival data on Bb; copy and paste from “dipper_data.txt”. (While the code used by McCarthy and Masters is online as part of the supplement, no peaking! You’ll learn more working through it from the beginning.)
+We are going to start with a fairly straightforward dataset on the survival of the European Dipper, which was described in the paper by McCarthy and Masters (2005) that you read for class this week. I have posted the survival data [here](https://github.com/hlynch/Bayesian2020/tree/master/_data/dipper_data.R). (While the code used by McCarthy and Masters is online as part of the supplement, no peaking! You’ll learn more working through it from the beginning.)
 
 Write a mark-recapture model to estimate survival (constant over time) and resighting rate (also constant over time) for the Dipper. We’ll start with an uninformative prior, and we have time can go back and discuss how McCarthy and Masters generated a more informative prior if we have time.
 

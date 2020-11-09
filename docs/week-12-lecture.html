@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-11-04" />
+<meta name="date" content="2020-11-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -327,11 +327,11 @@ Figure 6.1: Transitions in a state-space model
 </p>
 </div>
 <p>We have a lot of flexibility in modeling capture probabilities. At one extreme, we could model each capture probability separately, and at the other extreme we could assume a constant capture probability for the whole experiment. Somewhere in between these two extremes are models that assume capture probability is drawn from some distribution (this distribution would be governed by ‘hyperparameters’; this is an example of hierarchical modeling which we discussed a few weeks ago), or governed by some covariates (such a time of day, weather, etc.).</p>
-<p>Exercise: What would some of these observation models (i.e. models for capture probability) look like?</p>
+<p></p>
 </div>
 <div id="method-2-modeling-the-entire-capture-history" class="section level2">
 <h2><span class="header-section-number">21.4</span> Method #2: Modeling the entire capture history</h2>
-<p>The idea behind this is as follows. For the entire period between marking and the last recapture, you know the animal is alive. Between the last resighting and the end of the experiment, you don’t know whether the animal is still alive or not. So we divide up the recapture history into two periods, the first being the period in which we know the animal is alive (from initial marking until ), and the second in which we do not know whether the animal is alive or dead.</p>
+<p>The idea behind this is as follows. For the entire period between marking and the last recapture, you know the animal is alive. Between the last resighting and the end of the experiment, you don’t know whether the animal is still alive or not. So we divide up the recapture history into two periods, the first being the period in which we know the animal is alive (from initial marking until <span class="math inline">\(t_{1}\)</span>), and the second in which we do not know whether the animal is alive or dead.</p>
 <p>In the first period, you know that the animal survived <span class="math inline">\(t_{1}\)</span> years, and so the detection history of <span class="math inline">\(d\)</span> re-captures and <span class="math inline">\(t_{1}-d\)</span> non-captures:</p>
 <p><span class="math display">\[
 L_{1} = \phi^{t_{1}}p^{d}(1-p)^{t_{1}-d}
@@ -383,7 +383,7 @@ N_{i} \sim \mbox{Pois}(\lambda) \\
 <div id="dynamic-state-space-models-for-meta-population-dynamics" class="section level2">
 <h2><span class="header-section-number">21.7</span> Dynamic state-space models for meta-population dynamics</h2>
 <p>NB: My discussion here follows closely the paper by Royle and Kéry (2007).</p>
-<p>In the discussion above, we assumed a totally closed population. <strong>Meta-population models, in which we are interested in colonization and extinction dynamics of sites (or ‘patches’), explicitly include the possibility that a site’s occupancy status might change over time.</strong> In these cases, we assume a sampling strategy in which site occupancy is allowed to change between ‘primary’ sampling periods (often, but not always, between years) but is assumed fixed at secondary sampling intervals (such as within a breeding season). The secondary sampling allows us to estimate the true probability of occupancy in each year, and changes in true occupancy status  years gives us information on the metapopulation dynamics. Note that if we ignored detection failures, we would probably over-estimate the probabilities of extinction and recolonization, because a detection history of 101 (found, not found, found) would be interpreted as one extinction event followed by one colonization event. Allowing for detection failures, there emerges a second possibility, which is continuous occupation with a detection failure in year 2.</p>
+<p>In the discussion above, we assumed a totally closed population. <strong>Meta-population models, in which we are interested in colonization and extinction dynamics of sites (or ‘patches’), explicitly include the possibility that a site’s occupancy status might change over time.</strong> In these cases, we assume a sampling strategy in which site occupancy is allowed to change between ‘primary’ sampling periods (often, but not always, between years) but is assumed fixed at secondary sampling intervals (such as within a breeding season). The secondary sampling allows us to estimate the true probability of occupancy in each year, and changes in true occupancy status  years gives us information on the metapopulation dynamics. Note that <strong>if we ignored detection failures, we would probably over-estimate the probabilities of extinction and recolonization</strong>, because a detection history of 101 (found, not found, found) would be interpreted as one extinction event followed by one colonization event. Allowing for detection failures, there emerges a second possibility, which is continuous occupation with a detection failure in year 2.</p>
 <p>We model the true occupancy status of site in year (the process model) as</p>
 <p><span class="math display">\[
 Z_{i,t}|Z_{i,t-1} \sim \mbox{Bern}(Z_{i,t-1}\phi_{t-1}+(1-Z_{i,t-1})\gamma_{t-1})

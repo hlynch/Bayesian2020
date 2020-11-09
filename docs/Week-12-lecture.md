@@ -19,7 +19,7 @@ MARK is a very popular software for mark-recapture models that uses maximum like
 
 ##Cormack-Jolly-Seber
 
-The CJS model assumes \emph{time dependent survival} and \emph{capture-specific detection probabilities}. (These are different because while an animal has to survive every year, detection or non-detection only occurs when there is an effort to recapture or re-sight animals. Thus, you may have a 10 year time series in which 4 recapture surveys were completed. You would, in the most general model then, have 9 probabilities for survival to estimate ($\phi$), but only 4 probabilities for detection ($p$).) 
+The CJS model assumes \textbf{time dependent survival} and \textbf{capture-specific detection probabilities}. (These are different because while an animal has to survive every year, detection or non-detection only occurs when there is an effort to recapture or re-sight animals. Thus, you may have a 10 year time series in which 4 recapture surveys were completed. You would, in the most general model then, have 9 probabilities for survival to estimate ($\phi$), but only 4 probabilities for detection ($p$).) 
 
 Let’s say we have a 7 year time series, and we make an effort to re-sight animals in each year. The illustration below numbers the probability of re-sight according to the year, so the first re-sight attempt is made in Year 2, and is called $p_{2}$.
 
@@ -75,11 +75,11 @@ Note that $Z_{i,t}$ is a latent state, knowledge of which is inferred only indir
 
 We have a lot of flexibility in modeling capture probabilities. At one extreme, we could model each capture probability separately, and at the other extreme we could assume a constant capture probability for the whole experiment. Somewhere in between these two extremes are models that assume capture probability is drawn from some distribution (this distribution would be governed by ‘hyperparameters’; this is an example of hierarchical modeling which we discussed a few weeks ago), or governed by some covariates (such a time of day, weather, etc.).
 
-Exercise: What would some of these observation models (i.e. models for capture probability) look like?
+\textbf{Exercise: What would some of these observation models (i.e. models for capture probability) look like?}
 
 ##Method #2: Modeling the entire capture history
 
-The idea behind this is as follows. For the entire period between marking and the last recapture, you know the animal is alive.  Between the last resighting and the end of the experiment, you don’t know whether the animal is still alive or not. So we divide up the recapture history into two periods, the first being the period in which we know the animal is alive (from initial marking until ), and the second in which we do not know whether the animal is alive or dead.
+The idea behind this is as follows. For the entire period between marking and the last recapture, you know the animal is alive.  Between the last resighting and the end of the experiment, you don’t know whether the animal is still alive or not. So we divide up the recapture history into two periods, the first being the period in which we know the animal is alive (from initial marking until $t_{1}$), and the second in which we do not know whether the animal is alive or dead.
 
 In the first period, you know that the animal survived $t_{1}$ years, and so the detection history of $d$ re-captures and $t_{1}-d$ non-captures:
 
@@ -155,7 +155,7 @@ where the number of animals actually present at site $i$ ($N_{i}$) is drawn from
 
 NB: My discussion here follows closely the paper by Royle and Kéry (2007).
 
-In the discussion above, we assumed a totally closed population. **Meta-population models, in which we are interested in colonization and extinction dynamics of sites (or ‘patches’), explicitly include the possibility that a site’s occupancy status might change over time.** In these cases, we assume a sampling strategy in which site occupancy is allowed to change between ‘primary’ sampling periods (often, but not always, between years) but is assumed fixed at secondary sampling intervals (such as within a breeding season). The secondary sampling allows us to estimate the true probability of occupancy in each year, and changes in true occupancy status \emph{across} years gives us information on the metapopulation dynamics. Note that if we ignored detection failures, we would probably over-estimate the probabilities of extinction and recolonization, because a detection history of 101 (found, not found, found) would be interpreted as one extinction event followed by one colonization event. Allowing for detection failures, there emerges a second possibility, which is continuous occupation with a detection failure in year 2.
+In the discussion above, we assumed a totally closed population. **Meta-population models, in which we are interested in colonization and extinction dynamics of sites (or ‘patches’), explicitly include the possibility that a site’s occupancy status might change over time.** In these cases, we assume a sampling strategy in which site occupancy is allowed to change between ‘primary’ sampling periods (often, but not always, between years) but is assumed fixed at secondary sampling intervals (such as within a breeding season). The secondary sampling allows us to estimate the true probability of occupancy in each year, and changes in true occupancy status \textit{across} years gives us information on the metapopulation dynamics. Note that **if we ignored detection failures, we would probably over-estimate the probabilities of extinction and recolonization**, because a detection history of 101 (found, not found, found) would be interpreted as one extinction event followed by one colonization event. Allowing for detection failures, there emerges a second possibility, which is continuous occupation with a detection failure in year 2.
 
 We model the true occupancy status of site  in year  (the process model) as
 
