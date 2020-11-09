@@ -19,7 +19,7 @@ MARK is a very popular software for mark-recapture models that uses maximum like
 
 ##Cormack-Jolly-Seber
 
-The CJS model assumes \textbf{time dependent survival} and \textbf{capture-specific detection probabilities}. (These are different because while an animal has to survive every year, detection or non-detection only occurs when there is an effort to recapture or re-sight animals. Thus, you may have a 10 year time series in which 4 recapture surveys were completed. You would, in the most general model then, have 9 probabilities for survival to estimate ($\phi$), but only 4 probabilities for detection ($p$).) 
+The CJS model assumes **time dependent survival** and **capture-specific detection probabilities**. (These are different because while an animal has to survive every year, detection or non-detection only occurs when there is an effort to recapture or re-sight animals. Thus, you may have a 10 year time series in which 4 recapture surveys were completed. You would, in the most general model then, have 9 probabilities for survival to estimate ($\phi$), but only 4 probabilities for detection ($p$).) 
 
 Let’s say we have a 7 year time series, and we make an effort to re-sight animals in each year. The illustration below numbers the probability of re-sight according to the year, so the first re-sight attempt is made in Year 2, and is called $p_{2}$.
 
@@ -61,10 +61,10 @@ $$
 The probability of re-sighting an animal is 
 
 $$
-Y_{i,t} \sim Bern(Z_{i,t}p_{i})
+Y_{i,t} \sim Bern(Z_{i,t}p)
 $$
 
-Note that $Z_{i,t}$ is a latent state, knowledge of which is inferred only indirectly through $Y_{i,t}$, which is the data. The set up looks like
+Note that $Z_{i,t}$ is a latent state, knowledge of which is inferred only indirectly through $Y_{i,t}$, which is the data. I am assuming here constant survival and constant detection probability. The set up looks like
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Transitions in a state-space model', out.width='100%'}
 knitr::include_graphics('StateSpaceDiagram.png')
