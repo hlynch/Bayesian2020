@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>17 Week 10 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes</title>
-  <meta name="description" content="17 Week 10 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <title>24 Week 13 Lab | Bayesian Data Analysis and Computation Lecture and Lab Notes</title>
+  <meta name="description" content="24 Week 13 Lab | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="17 Week 10 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <meta property="og:title" content="24 Week 13 Lab | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="17 Week 10 Lecture | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
+  <meta name="twitter:title" content="24 Week 13 Lab | Bayesian Data Analysis and Computation Lecture and Lab Notes" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="week-9-lab.html"/>
-<link rel="next" href="week-10-lab.html"/>
+<link rel="prev" href="week-13-lecture.html"/>
+<link rel="next" href="week-14-lecture.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -268,191 +268,47 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="week-10-lecture" class="section level1">
-<h1><span class="header-section-number">17</span> Week 10 Lecture</h1>
-<p>Papers to read this week:</p>
-<ul>
-<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/NakagawaFreckleton2008.pdf">Nakagawa and Freckleton 2008</a></li>
-<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/GelmanHillChapter25.pdf">Gelman and Hill Chapter 25</a></li>
-<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/MCMC-UseR.pdf">Robert and Casella Lecture Notes</a>: For the purpose of this week, focus on Chapter 8 starting on Page 210.</li>
-<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/Lunn4.pdf">Lunn et al. Sections 4.3-4.5</a></li>
-</ul>
-<p>This week we’ll take some time to discuss the messy, annoying computational details of doing Bayesian analyses. Before launching into this, its worth stepping back and reviewing a bit about Analysis of Variance, since the same ideas are going to be useful to us today.</p>
-<p>Let’s say I have Normally distributed data on heights and I have three groups of individuals; I may want to ask whether these groups are different in height (on average). At first blush, I could simply take the average height in each group and compare them to each other, but this isn’t a good test. Why? Because if there is any variability in heights, then I do not know whether these group means are different because of random sampling error (i.e. I took a sample from each group and my sample may not be representative of the underlying population because there is some variance and maybe my sample has a few smaller individuals, etc.), or whether they are different because the groups really are fundamentally different in height. This is what we have to decide using the data we have. We do this by computing within-group variance using two methods.</p>
-<p>Method #1: The simplest way of estimating within group variance is just to calculate it. In other words, calculate the variance for each group individually. If we have 3 groups, we now have 3 estimates of within group variance. To get an average estimate of within-group variance, we can just average those estimates together. More formally:</p>
+<div id="week-13-lab" class="section level1">
+<h1><span class="header-section-number">24</span> Week 13 Lab</h1>
+<p>For lab, we're going to get some practice fitting ABC models using a dataset of a collared sheep. The <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/SheepData.csv">data we will be using for the problem set</a> is a slightly modified (simplified) version of the data from the <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/RuizSuaresEtAl2020.pdf">original paper</a>.</p>
+<p>I have provided a dataset of locations from a collared sheep at $$5 min intervals over a $$2 month period. We will assume all the time intervals are the same so you can ignore the time column in the data set provided. I have projected the lat/long locations into a local (Argentinian) coordinate system with (X,Y) being measurements of location in units of meters.</p>
+<p>We will fit a relatively simple model for movement, in which the sheep advances some distance <span class="math inline">\(d\)</span> at each step and then turns some angle <span class="math inline">\(\theta\)</span> before moving again. We want to use ABC to estimate the parameters of the distribution for distance and turning angle.</p>
+<p>We will assume a half-Normal model for distance</p>
 <p><span class="math display">\[
-\sigma^{2} = \frac{1}{m}\sum_{j=1}^{m}(\mbox{variance in group j})
-\]</span> This works as an estimate of within-group variance even if the groups are different from one another. We could have a group of very tall individuals and a group of shorter individuals, but we could still estimate within-group variance by looking at the variation within each group and then averaging them together.</p>
-<p>If the groups are <strong>not</strong> different (i.e., under <span class="math inline">\(H_{0}\)</span>), then all the individuals sampled really do come from the same underlying population, regardless of group, and this gives us a second method of estimating within-group standard deviation. Recall that the Central Limit Theorem states that the variance in the <strong>mean</strong> is related to the variance in the data as</p>
+d \sim Norm(\mu,\sigma^{2})[0,\infty)
+\]</span></p>
+<p>and a von Mises distribution for turning angle <span class="math inline">\(\theta\)</span></p>
 <p><span class="math display">\[
-\sigma^{2}_{\bar{Y}} = \frac{\sigma^{2}}{n}
-\]</span> More samples (<span class="math inline">\(n\)</span>) means we have a more precise (smaller <span class="math inline">\(\sigma_{\bar{Y}}\)</span>) estimate of the mean <span class="math inline">\(\bar{Y}\)</span>. We can flip this around to say</p>
+\theta \sim vonMises(\rho,\kappa)
+\]</span></p>
+<p>where the PDF of the von Mises distribution is given by</p>
 <p><span class="math display">\[
-\sigma^{2} = n\sigma^{2}_{\bar{Y}}
-\]</span> This says that if we know the variance among the MEANS we can use this to estimate the within-group variance. This only works when all the comes come from the same distribution. When doing ANOVA, we compare these two measures of within-sample variance to TEST whether the samples in different groups come from the same population. But the basic underlying idea, that we have variation within each group, and variance between groups, and that variance between groups can be used to estimate variance within groups (under <span class="math inline">\(H_{0}\)</span>) is an idea we will need to use again in the context of chain convergence.</p>
-<div id="convergence" class="section level2">
-<h2><span class="header-section-number">17.1</span> Convergence</h2>
-<p>When we talk about a Bayesian model converging, we usually mean that our posterior distributions have adequately sampled the (correct) posterior distribution, and that we have enough samples from that posterior distribution to precisely estimate the parameters of our model. There are many metrics that we might use to assess our MCMC chains but they generally fall into two categories.</p>
+f(\theta|\rho,\kappa) = \frac{e^{\kappa cos(\theta-\rho)}}{2\pi I_{0}(\kappa)}
+\]</span></p>
+<p>(Note that the von Mises is usually described in terms of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\kappa\)</span>, but I have used <span class="math inline">\(\rho\)</span> instead of <span class="math inline">\(\mu\)</span> to avoid confusion with the half-Normal used for distance.) What is <span class="math inline">\(I_{0}(\kappa)\)</span>? It is the modified <a href="https://en.wikipedia.org/wiki/Bessel_function">Bessel function</a> of order 0. But, luckily enough, the von Mises distribution is built into the <a href="https://cran.r-project.org/web/packages/circular/circular.pdf"><code>circular</code> package</a> in R, so you can use the function in that package to draw from the von Mises distribution.</p>
+<p>Keep in mind that <span class="math inline">\(\theta\)</span> is an angle in radians and ranges from <span class="math inline">\((-\pi,\pi)\)</span>.</p>
+<p>Your task for this problem set is to use ABC to generate posterior distributions for the four model parameters: <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\rho\)</span>, and <span class="math inline">\(\kappa\)</span>.</p>
+<p>The basic steps are:</p>
 <ol style="list-style-type: decimal">
-<li><p>Estimates of Monte Carlo error: Monte Carlo error refers to the uncertainty in our parameter estimates that stems from having a finite number of samples from the posterior.</p></li>
-<li><p>Testing convergence: <span class="math inline">\(\hat{R}\)</span> and <span class="math inline">\(n_{eff}\)</span></p></li>
+<li>Determine priors for each of the parameters</li>
+<li>Draw from the priors</li>
+<li>Simulate a path</li>
+<li>Compare to the data</li>
+<li>Accept/reject posterior samples</li>
+<li>Cycle back to Step 2.</li>
 </ol>
-<p>Before getting further, I want to make sure that everyone understands the distinction between two types of error. This is best illustrated with an example. Lets say that I have a simple binomial model</p>
-<p><span class="math display">\[
-Y_{i} \sim \mbox{Binom}(N,\theta)
-\]</span> The posterior distribution <span class="math inline">\(\theta|Y_{i}\)</span> will have some &quot;spread&quot;, as is easily seen by a histogram of the posterior samples, and the standard deviation of the posterior samples is a measure of that uncertainty. As long as we have adequately sampled the posterior distribution, that standard deviation will be insensitive to sample size. In other words, we can run our chains forever and that spread of the posterior distribution won’t change, because that spread reflects the &quot;true&quot; uncertainty about the parameter based on the prior and the data available. The parameter estimate we will report in the paper (i.e. the quantity of interest) will usually be the mean or median of that distribution, and we will refer to this measure of central tendency as <span class="math inline">\(\hat{\theta}\)</span>. If we use the posterior mean as our measure of central tendency, then</p>
-<p><span class="math display">\[
-\hat{\theta} = E[\theta|Y_{i}]
-\]</span> Unlike the standard deviation of the samples for <span class="math inline">\(\theta|Y_{i}\)</span>, our uncertainty regarding <span class="math inline">\(\hat{\theta}\)</span> (which we call the Monte Carlo standard error) <strong>is</strong> sensitive to sample size. As we collect more samples, we will more precisely estimate <span class="math inline">\(\hat{\theta}\)</span>, and our uncertainty about will decrease. This situation is analogous to the difference between the standard deviation of a distribution, and the standard deviation of the mean of a distribution, the latter of which we refer to as the standard error (of the mean).</p>
-<p>In most applied applications of Bayesian modelling, Monte Carlo standard errors are not of interest and will be far smaller than the standard deviation of the posterior. In other words, given the Binomial model just discussion, you would report in your paper <span class="math inline">\(\hat{\theta}=0.5~(0.2,0.6)\)</span>. You would not need to specify the posterior mean to more digits <span class="math inline">\(\hat{\theta}=0.547834~ (0.2,0.6)\)</span> because the extra precision is made irrelevant because of the spread of the posterior. (Note that the CI here are assymmetric, which is perfectly fine; the posterior distribution neeed not be symmetric.) Technically, you should also report the uncertainty associated with the estimate of the posterior mean (in other words, how well do you know that the mean is 3.5 and not 3.4 or 3.6) but this is not usually done in the manuscript, rather the error of the mean is usually included in a table (such as in the summary table produced by JAGS).</p>
-<p>[Keep in mind that we can ask about the MCSE for any function of any parameter, such as a function <span class="math inline">\(\widehat{g(\theta)}\)</span>.]</p>
-<p><strong>OK, now we know what Monte Carlo standard errors are, but how do we calculate them?</strong></p>
-<p>If the N samples were all independent, then we could easily calculate the MCSE by just using the Central Limit Theorem.</p>
-<p><span class="math display">\[
-\mbox{MCSE} = \sqrt{\frac{s^2}{N}} = \sqrt{\frac{\frac{1}{N-1}\sum_{i=1}^{N}(g(\theta_{i})-\overline{g(\theta_{i})})^{2}}{N}} = \frac{SD(g(\theta_{i}))}{\sqrt{N}}
-\]</span> However, the samples are not usually independent, and in fact, Markov Chain samples can be highly autocorrelated. Therefore, we use the  way of calculating the MCSE, which is to divide up our chain into <span class="math inline">\(m\)</span> batches of length <span class="math inline">\(n\)</span> (<span class="math inline">\(N=mn\)</span>); while the individual draws may be highly correlated, we hope that batches of draws will be independent. (There are many ways to estimate the Markov Chain standard error but here I am describing the <strong>batch means</strong> method.)</p>
-<p>Now, using the notation that <span class="math inline">\(\overline{\theta_{. j}}\)</span> is the average value in the <span class="math inline">\(j^{th}\)</span> batch and <span class="math inline">\(\overline{\theta_{..}}\)</span> is the average across all batches, we can write</p>
-<p><span class="math display">\[
-s^{2} = \frac{n}{m-1}\sum_{j=1}^{m}(\overline{\theta_{. j}}-\overline{\theta_{..}})^{2}
-\]</span> without concern for the autocorrelation of individual samples.</p>
-</div>
-<div id="testing-for-convergence" class="section level2">
-<h2><span class="header-section-number">17.2</span> Testing for convergence</h2>
-<p>Theory cannot tell us how long it will take to get our chains to converge. So far we’ve done simple examples that converge after only a few thousand iterations, and take only seconds to run. In practice, JAGS may take days or even weeks of processing, even with parallel chains, to converge. You may never get it to converge.</p>
-<p>If you are writing your own samplers from scratch, there are a lot of issues you have to deal with, but using JAGS, your problems are fewer. One of the few controls you have on the actual posterior is to decide how much to thin the chains. It is always better to keep everything. However, if you have to run millions of chains, you are usually better off only storing some fraction of those samples. You can thin out by selection one out of every two, one out of ten, etc. This keeps the size of the MCMC output reasonable even if the chains are very long, and because the samples are often highly correlated, it involves minimal information loss.</p>
-<p>How do we assess convergence? Many Bayesian practitioners would argue the best approach is simply to compare the performance of multiple chains. With parallel processing, this often doesn’t take any longer than running a single chain, especially so because even basic desktop computers have multiple cores. The idea is that if multiple chains converge on the same distribution, then you must have found the correct distribution. However, Geyer (in Brooks et al. 2011) cautions about pseudo-convergence. What is pseudo-convergence? Consider a situation in which the distribution you are trying to sample from (but don’t know) has a 99.9% probability of being Unif(0,1) and a 0.1% probability of being Unif(1000000,1000001). Under these circumstances, assuming a fairly typical jump proposal such as N(0,1), you might start all of your samplers so that they end up sampling only the portion that is Unif(0,1). For a chain of any reasonable length, you might never propose a jump to the second portion of the distribution Unif(1000000,1000001), and so your chains will appear to converge on Unif(0,1) and you would have no clue that there was in fact support along some other interval. Running multiple chains will not have helped identify convergence because, in essence, they were not ‘overdispersed’. <strong>The problem is that without knowing the distribution, you have no way of knowing what constitutes overdispersed</strong>, so you have no way of choosing starting values that are guaranteed to sample the entire space. As noted by Geyer, this is a problem with all “black box” samplers.</p>
-<p>Gelman and Shirley (in Brooks et al. 2011) are less nihilistic in their advice on convergence, and they offer some more practical suggestions. The most important suggestion in to <strong>simulate fake data</strong> and fit the model to convince yourself that a) the model works as expected and b) that the posterior intervals are sensible (i.e., 50% of the 50% posterior intervals should contain the true value).</p>
-<ul>
-<li>Whenever possible, its critical to use fake data to confirm that your code works. This is well worth the time invested.</li>
-<li>I also like Gelman and Shirley’s (slightly cheeky) advice to run the chains from the point of submission until the reviews come in. It’s actually kind of brilliant.</li>
-</ul>
-</div>
-<div id="gelman-rubin-statistic" class="section level2">
-<h2><span class="header-section-number">17.3</span> Gelman-Rubin statistic</h2>
-<p>There are many ways to try and assess whether a chain has converged. Of course, we never know if this is pseudo-convergence, but this is an unknown unknown that non-statisticians don’t usually obsess over (unless, of course, the posterior is pathological or the chains are very slow to mix…). Here I will present just one formal test, the Gelman-Rubin diagnostic, which I like because it’s quite intuitive and is a direct analog to an analysis of variance. (It is also well-known, and likely to pass through peer review without a second glance…) The G-R statistic requires that you run multiple chains starting with “overdispersed” starting values (in practice, people just pick widely different starting values; more correctly, I would fit your model, draw overdispersed values from those posteriors, and run it again with those starting values). If you have chains, each of length , then the G-R statistic is</p>
-<p><span class="math display">\[
-B=\frac{n}{m-1}\sum_{j=1}^{m}(\overline{\theta_{. j}}-\overline{\theta_{..}})^{2} \\
-W=\frac{1}{m}\sum_{j=1}^{m}\left[\frac{1}{n-1}\sum_{i=1}^{n}(\overline{\theta_{ij}}-\overline{\theta_{.j}})^{2}\right]
-\]</span> where (like before) <span class="math inline">\(\theta_{ij}\)</span> is the ith sample from the jth chain, <span class="math inline">\(\overline{\theta_{.j}}\)</span> is the average over the <span class="math inline">\(j^{th}\)</span> chain, and <span class="math inline">\(\theta_{..}\)</span> is the global average (over all samples in all chains). Note that the term B is just the same as the variance <span class="math inline">\(s^{2}\)</span> introduced above. B represents the <em>within-chain</em> variation. W represents the <em>between-chain</em> variation.</p>
-<p>Using these values, we can estimate the marginal posterior variance of <span class="math inline">\(\theta\)</span></p>
-<p><span class="math display">\[
-\widehat{Var(\theta|y)} = \frac{n-1}{n}W + \frac{1}{n}B
-\]</span> which can be used to calculate the Gelman-Rubin statistic</p>
-<p><span class="math display">\[
-\hat{R} = \sqrt{\frac{\widehat{Var(\theta|y)}}{W}}
-\]</span> If <span class="math inline">\(\hat{R} \approx 1\)</span>, at least &lt;1.1, then we can be fairly confident that the chains have converged.</p>
-<p>The effective sample size <span class="math inline">\(n_{eff}\)</span> is a related measure to <span class="math inline">\(\hat{R}\)</span>.</p>
-</div>
-<div id="the-take-away-what-should-we-be-checking-after-we-run-our-models" class="section level2">
-<h2><span class="header-section-number">17.4</span> The take away: What should we be checking after we run our models</h2>
-<p>Step 1: The first step in fitting any kind of “mission-critical” model is to simulate data and to ensure that you can recover your parameter values. If some parameters are recoverable, but others are not, this might suggest a reworking of the model to eliminate non-identifiable parameters.</p>
-<p>Step 2: Once you’ve run your model (on simulated data, as in Step 1, or later with real data), you will want to check convergence.</p>
-<ol style="list-style-type: lower-alpha">
-<li>Visual inspection of the chains</li>
-<li>Look at <span class="math inline">\(\hat{R}\)</span> for all parameters, esp. those of key interest</li>
-</ol>
-<p>Step 3: Do a bivariate scatterplot of your key parameters. In other words, make scatterplots which plots the samples of each parameter against the samples from the other parameter. Doing so will highlight parameters that might be “trading off” (i.e. large values of one parameter are associated with small values of another parameters, etc.). If parameters are trading off, it may be because there is some combination of these that is identifiable (the product or the ratio) but that the parameters individually are not identifiable. If you have parameters that are trading off or whose scatterplots show non-independence between parameters, you will need to summarize your posterior distribution by a confidence envelop rather than through the two marginal posterior distributions, since the latter (while not strictly incorrect) hides the inherent correlations between the two parameters and may lead you to over- or underestimate uncertainty (similar to Bolker’s likelihood slices vs likelihood profiles in Biometry).</p>
-<p>Step 4: Plot prior-posterior overlap for each key parameter of interest. Too much overlap strongly suggests that your data are simply not that informative about a certain parameter, which is why your posterior looks very similar to the prior.</p>
-<p>Some code to do that and some example output are appended at the end of the lecture notes.</p>
-</div>
-<div id="missing-data" class="section level2">
-<h2><span class="header-section-number">17.5</span> Missing data</h2>
-<p>Bayesian analyses treat data as being sampled from a statistical distribution, so missing response data poses no problem. Missing covariate data, on the other hand, poses more of a problem, and our choices are to either discard rows of our dataset which contain missing covariates (very sad) or impute missing covariates. Unless your dataset is very large, I recommend against deleting data whenever possible. Bayesian methods are often used when datasets are small anyways, and it’s better to rescue elements of your dataset that make your dataset smaller than it has to be.</p>
-<p>First we need to distinguish between four types of missing:</p>
-<ol style="list-style-type: decimal">
-<li>Missing completely at random (probability of being missing is the same for all units)</li>
-<li>Missing at random (probability of being missing depends only on available information)</li>
-<li>Missingness depends on unobserved predictors</li>
-<li>Missingness depends on the missing value itself</li>
-</ol>
-<p>It is important to determine what kind of missingness you have.</p>
-<p><strong>Question: Any examples of missing data from your research? What kind of missingness are you dealing with?</strong></p>
-<p>A sample of imputation methods:</p>
-<ol style="list-style-type: decimal">
-<li><p>Replace missing covariate value with the mean of that covariate across all units.</p></li>
-<li><p>Last value carried forward (sensible if you have a time series or something with strong autocorrelation).</p></li>
-<li><p>Sample with replacement from the other values for that covariate.</p></li>
-<li><p>Fit a model to the observed cases and use that model to predict the missing covariate values.</p>
-<ul>
-<li>Can use the expected value of the model for imputation</li>
-<li>Can include prediction error (in this case, as with any situation in which there is some stochasticity to the imputation procedure, it is best to do this multiple times and assess sensitivity of the results to the imputed values)</li>
-</ul></li>
-</ol>
-<p>Some vocabulary: Hot-deck vs. cold deck imputation. Hot-deck imputation is when a missing value is imputed by finding one or more “similar” cases without missing data in the dataset under analysis. Cold-deck imputation uses a similar matching procedure but with data that were collected previous to the current analysis.</p>
-</div>
-<div id="initial-values" class="section level2">
-<h2><span class="header-section-number">17.6</span> Initial values</h2>
-<p>We tend to ignore the initial values, though we know that we should be starting our MCMC chains with three &quot;random&quot; widely dispersed values. How do we define widely dispersed? Usually with respect to the prior distribution. BUT in some cases we might be using a flat prior, and drawing random values from a flat prior might make it difficult for the model to converge, or it will take a very long time to converge. I suggest a two part approach for &quot;the final run&quot; of models that are nearing publication-readiness. First, try running the model by drawing randomly from the prior; hopefully this works OK. If not, you'll have to hand select initial values from values that you think are more reasonable starting values. Run the model, see how it does. Even if it doesn't reach full convergence, use draws from the posterior as new initial values for a second run. Constrain these starting values to ensure that at least one value is drawn from each side of the posterior mode. In other words, if the posterior is centered on zero, make sure you have at least one positive and at least one negative starting value. Now you'll be starting values that are dispersed (by design) and shouldn't be TOO far off reasonable even if you stick with the original flat prior.</p>
-</div>
-<div id="sample-scripts-and-output-for-prior-posterior-overlap" class="section level2">
-<h2><span class="header-section-number">17.7</span> Sample scripts and output for prior-posterior overlap</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot.function=function(prior.vec,posterior.vec,overlap)
-{
-  prior &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">values=</span>prior.vec)
-  posterior &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">values=</span>posterior.vec)
-  prior$name &lt;-<span class="st"> &#39;prior&#39;</span>
-  posterior$name &lt;-<span class="st"> &#39;posterior&#39;</span>
-  Results &lt;-<span class="st"> </span><span class="kw">rbind</span>(prior, posterior)
-  binsize&lt;-(<span class="kw">max</span>(Results$values)-<span class="kw">min</span>(Results$values))/<span class="dv">50</span>
-  <span class="kw">ggplot</span>(Results, <span class="kw">aes</span>(values, <span class="dt">fill =</span> name)) +<span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">binwidth=</span>binsize, <span class="kw">aes</span>(<span class="dt">y =</span> ..density..), <span class="dt">position =</span> <span class="st">&#39;identity&#39;</span>) +<span class="st"> </span><span class="kw">ggtitle</span>(<span class="kw">paste</span>(<span class="kw">as.character</span>(<span class="kw">round</span>(overlap,<span class="dt">digits=</span><span class="dv">2</span>)),<span class="st">&quot;% overlap&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>))
-}
+<p>You are free to determine the metric(s) of fit for the ABC. Ruiz-Suarez et al. (2020) suggest four metrics, you can use these or others. You will likely find that using multiple metrics of fit (different criteria, <strong>all</strong> of which would need to be satisfied to accept a set of parameters) will help narrow down your posteriors. Note also, however, that if your metric(s) of fit are too stringent, than so many samples will be rejected that it will take a very long time to get a sufficiently large sample of accepted parameters to estimate your posteriors.</p>
+<p>Important: Your parameters are either all accepted or all rejected, so the parameter values that you draw in Step #2 “rise or fall” together. Either all of them are accepted, or none of them are.</p>
+<p>For the problem set, provide your code, your posteriors, and a description of your metrics of fit.</p>
 
-calc.overlap=function(prior.vec,posterior.vec)
-{
-  prior &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">values=</span>prior.vec)
-  posterior &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">values=</span>posterior.vec)
-  prior$name &lt;-<span class="st"> &#39;prior&#39;</span>
-  posterior$name &lt;-<span class="st"> &#39;posterior&#39;</span>
-  Results &lt;-<span class="st"> </span><span class="kw">rbind</span>(prior, posterior)
-  binsize&lt;-(<span class="kw">max</span>(Results$values)-<span class="kw">min</span>(Results$values))/<span class="dv">50</span>
-  s&lt;-<span class="kw">seq</span>(<span class="kw">min</span>(Results$values),<span class="kw">max</span>(Results$values),<span class="dt">by=</span>binsize)
-  overlap&lt;-<span class="kw">vector</span>(<span class="dt">length=</span><span class="kw">length</span>(s))
-  for (i in <span class="dv">1</span>:(<span class="kw">length</span>(s)-<span class="dv">1</span>))
-    {
-      prior.num&lt;-<span class="kw">sum</span>(<span class="kw">as.numeric</span>((prior.vec&gt;s[i])&amp;(prior.vec&lt;s[i<span class="dv">+1</span>])))/<span class="kw">length</span>(prior.vec)
-      posterior.num&lt;-<span class="kw">sum</span>(<span class="kw">as.numeric</span>((posterior.vec&gt;s[i])&amp;(posterior.vec&lt;s[i<span class="dv">+1</span>])))/<span class="kw">length</span>(posterior.vec)
-      overlap[i]&lt;-<span class="kw">min</span>(prior.num,posterior.num)
-    }
-  percent.overlap=<span class="kw">sum</span>(overlap)
-  <span class="kw">return</span>(percent.overlap)
-}</code></pre></div>
-<p>In this case, the data were informative about the first of these parameters but not about the second.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
-<img src="PriorPosterior1.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="50%" />
-<p class="caption">
-Figure 2.1: Histogram of prior distribution (blue) and posterior distribution (pink).
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
-<img src="PriorPosterior2.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="50%" />
-<p class="caption">
-Figure 6.1: Histogram of prior distribution (blue) and posterior distribution (pink).
-</p>
-</div>
-<p>Here is an example of where the prior was centered on the posterior mean but the data were still clearly informative:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
-<img src="PriorPosterior3.png" alt="Histogram of prior distribution (blue) and posterior distribution (pink)." width="50%" />
-<p class="caption">
-Figure 8.1: Histogram of prior distribution (blue) and posterior distribution (pink).
-</p>
-</div>
-</div>
-<div id="for-more-information-about-this-weeks-topic" class="section level2">
-<h2><span class="header-section-number">17.8</span> For more information about this week's topic</h2>
-<ul>
-<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/BrooksGelman1998.pdf">Brooks and Gelman 1998</a></li>
-<li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/GelmanShirley2011.pdf">Gelman and Shirley 2011</a></li>
-</ul>
-
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="week-9-lab.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="week-10-lab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="week-13-lecture.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-14-lecture.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
