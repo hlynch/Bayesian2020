@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-11-09" />
+<meta name="date" content="2020-11-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -225,6 +225,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="22.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#initial-values"><i class="fa fa-check"></i><b>22.3</b> Initial values</a></li>
 <li class="chapter" data-level="22.4" data-path="week-12-lab.html"><a href="week-12-lab.html#first-a-warm-up"><i class="fa fa-check"></i><b>22.4</b> First, a warm up</a></li>
 <li class="chapter" data-level="22.5" data-path="week-12-lab.html"><a href="week-12-lab.html#fitting-mark-recapture-models"><i class="fa fa-check"></i><b>22.5</b> Fitting mark-recapture models</a></li>
+<li class="chapter" data-level="22.6" data-path="week-12-lab.html"><a href="week-12-lab.html#faq"><i class="fa fa-check"></i><b>22.6</b> FAQ</a></li>
 </ul></li>
 <li class="chapter" data-level="23" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>23</b> Week 13 Lecture</a><ul>
 <li class="chapter" data-level="23.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#rejection-abc"><i class="fa fa-check"></i><b>23.1</b> Rejection ABC</a></li>
@@ -284,7 +285,7 @@ Y \sim Pois(\lambda)
 \lambda = -\mbox{log}(g(y,\theta))
 \]</span></p>
 <p>and <span class="math inline">\(g(y,\theta)\)</span> is the likelihood associated with distribution <span class="math inline">\(G\)</span>. In other words, the probability of getting a 0 from <span class="math inline">\(\mbox{Pois}(-\mbox{log}(g(y,\theta))\)</span> is just <span class="math inline">\(g(y,\theta)\)</span>, which is the likelihood we wanted in the first place.</p>
-<p>(Reminder, the pmf of a Poisson is <span class="math inline">\(\frac{\lambda^{x}}{x!}e^{-\lambda}\)</span> so the probability of getting <span class="math inline">\(x=0\)</span> is <span class="math inline">\(e^{-\lambda}\)</span>.)</p>
+<p>(Reminder, the pmf of a Poisson is <span class="math inline">\(\frac{\lambda^{y}}{y!}e^{-\lambda}\)</span> so the probability of getting <span class="math inline">\(y=0\)</span> is <span class="math inline">\(e^{-\lambda}\)</span>.)</p>
 <p>In practice, we add a constant <span class="math inline">\(C\)</span> to get <span class="math inline">\(\lambda = -\mbox{log}(g(y,\theta))+C\)</span> to ensure that <span class="math inline">\(\lambda &gt; 0\)</span>.)</p>
 <p>Let’s take for example the Cauchy distribution</p>
 <p><span class="math display">\[
@@ -323,6 +324,11 @@ Ones[i]~<span class="kw">dbern</span>(p[i])</code></pre></div>
 <p>Write a mark-recapture model to estimate survival (constant over time) and resighting rate (also constant over time) for the Dipper. We’ll start with an uninformative prior, and we have time can go back and discuss how McCarthy and Masters generated a more informative prior if we have time.</p>
 <p><strong>Exercise #1</strong>: Use the Method #1 (Brute force) approach described in lecture on Monday. This is the most straightforward and the easiest to code.</p>
 <p><strong>Exercise #2</strong>: Use the Method #2 (Modelling the entire capture history) approach described on Monday. You’ll have to think carefully how to represent the likelihood for the entire recapture history. (Hint: You may need the ‘ones’ or ‘zeroes’ trick.)</p>
+</div>
+<div id="faq" class="section level2">
+<h2><span class="header-section-number">22.6</span> FAQ</h2>
+<p><strong>Question</strong>: Why not turn the 0s at the end of each row to NA, since you did not detect anything?</p>
+<p><strong>Answer</strong>: The answer is that until you fit the model, you don't know how informative (or not) a 0 at the end of the time series is. Lets say you fit the model and the model estimates detection probability is 0.999. Then (conditional on the animal being alive), you are almost certain to detect it, which means a non-detection in the last year is almost certainly a death, and thats highly informative for the model. On the other hand, if detection probability is 0.001, then the 0 at the end has very little value to the model, and it could be set to NA with little change to the posteriors. So, <em>a priori</em>, the model actually doesn't know how &quot;informative&quot; the non-detections are in the period at the end where the animal could be dead or alive. (edited)</p>
 
 </div>
 </div>

@@ -26,7 +26,7 @@ $$
 
 and $g(y,\theta)$ is the likelihood associated with distribution $G$. In other words, the probability of getting a 0 from $\mbox{Pois}(-\mbox{log}(g(y,\theta))$ is just $g(y,\theta)$, which is the likelihood we wanted in the first place. 
 
-(Reminder, the pmf of a Poisson is $\frac{\lambda^{x}}{x!}e^{-\lambda}$ so the probability of getting $x=0$ is $e^{-\lambda}$.)
+(Reminder, the pmf of a Poisson is $\frac{\lambda^{y}}{y!}e^{-\lambda}$ so the probability of getting $y=0$ is $e^{-\lambda}$.)
 
 In practice, we add a constant $C$ to get $\lambda = -\mbox{log}(g(y,\theta))+C$ to ensure that $\lambda > 0$.)
 
@@ -85,3 +85,8 @@ Write a mark-recapture model to estimate survival (constant over time) and resig
 
 **Exercise #2**: Use the Method #2 (Modelling the entire capture history) approach described on Monday. You’ll have to think carefully how to represent the likelihood for the entire recapture history. (Hint: You may need the ‘ones’ or ‘zeroes’ trick.)
 
+##FAQ
+
+**Question**: Why not turn the 0s at the end of each row to NA, since you did not detect anything?
+
+**Answer**: The answer is that until you fit the model, you don't know how informative (or not) a 0 at the end of the time series is. Lets say you fit the model and the model estimates detection probability is 0.999. Then (conditional on the animal being alive), you are almost certain to detect it, which means a non-detection in the last year is almost certainly a death, and thats highly informative for the model. On the other hand, if detection probability is 0.001, then the 0 at the end has very little value to the model, and it could be set to NA with little change to the posteriors. So, _a priori_, the model actually doesn't know how "informative" the non-detections are in the period at the end where the animal could be dead or alive. (edited) 
