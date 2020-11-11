@@ -2,11 +2,18 @@ library(sf)
 library(mapview)
 library(magrittr)
 library(dplyr)
+
+# to view them as points
 sheep_sf <- st_as_sf(read.csv(file = "SheepData.csv"),
                      coords = c("Longitude", "Latitude"), crs = 4326) %>%
-  st_transform(5343) %>%
-  st_cast("MULTILINESTRING")
-# to view them quickly
+  st_transform(5343) 
+
+# to view the track as a line
+sheep_line_sf <- sheep_sf %>%
+  mutate(group = "A") %>%
+  group_by(group) %>%
+  summarize(do_union = FALSE) %>%
+  st_cast("LINESTRING")
 
 mapview(sheep_sf)
 # create df of sf
