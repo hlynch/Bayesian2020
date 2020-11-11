@@ -228,16 +228,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="22.6" data-path="week-12-lab.html"><a href="week-12-lab.html#faq"><i class="fa fa-check"></i><b>22.6</b> FAQ</a></li>
 </ul></li>
 <li class="chapter" data-level="23" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>23</b> Week 13 Lecture</a><ul>
-<li class="chapter" data-level="23.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#rejection-abc"><i class="fa fa-check"></i><b>23.1</b> Rejection ABC</a></li>
-<li class="chapter" data-level="23.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-1-basic-rejection-abc"><i class="fa fa-check"></i><b>23.2</b> Option #1: Basic rejection ABC</a></li>
-<li class="chapter" data-level="23.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-2-markov-chain-monte-carlo-abc"><i class="fa fa-check"></i><b>23.3</b> Option #2: Markov Chain Monte Carlo ABC</a></li>
-<li class="chapter" data-level="23.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-3-sequential-monte-carlo-abc"><i class="fa fa-check"></i><b>23.4</b> Option #3: Sequential Monte Carlo ABC</a></li>
-<li class="chapter" data-level="23.5" data-path="week-1-lecture.html"><a href="week-1-lecture.html#for-more-information-about-this-weeks-topic"><i class="fa fa-check"></i><b>23.5</b> For more information about this week's topic</a></li>
+<li class="chapter" data-level="23.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#a-side-note-about-summary-statistics-the-mona-lisa"><i class="fa fa-check"></i><b>23.1</b> A side note about summary statistics: The Mona Lisa</a></li>
+<li class="chapter" data-level="23.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#rejection-abc"><i class="fa fa-check"></i><b>23.2</b> Rejection ABC</a></li>
+<li class="chapter" data-level="23.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-1-basic-rejection-abc"><i class="fa fa-check"></i><b>23.3</b> Option #1: Basic rejection ABC</a></li>
+<li class="chapter" data-level="23.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-2-markov-chain-monte-carlo-abc"><i class="fa fa-check"></i><b>23.4</b> Option #2: Markov Chain Monte Carlo ABC</a></li>
+<li class="chapter" data-level="23.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-3-sequential-monte-carlo-abc"><i class="fa fa-check"></i><b>23.5</b> Option #3: Sequential Monte Carlo ABC</a></li>
+<li class="chapter" data-level="23.6" data-path="week-1-lecture.html"><a href="week-1-lecture.html#for-more-information-about-this-weeks-topic"><i class="fa fa-check"></i><b>23.6</b> For more information about this week's topic</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="week-13-lab.html"><a href="week-13-lab.html"><i class="fa fa-check"></i><b>24</b> Week 13 Lab</a></li>
 <li class="chapter" data-level="25" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>25</b> Week 14 Lecture</a><ul>
-<li class="chapter" data-level="25.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#the-mona-lisa"><i class="fa fa-check"></i><b>25.1</b> The Mona Lisa</a></li>
-<li class="chapter" data-level="25.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#for-more-information-about-this-weeks-topic"><i class="fa fa-check"></i><b>25.2</b> For more information about this week's topic</a></li>
+<li class="chapter" data-level="25.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#for-more-information-about-this-weeks-topic"><i class="fa fa-check"></i><b>25.1</b> For more information about this week's topic</a></li>
 </ul></li>
 <li class="chapter" data-level="26" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>26</b> Week 14 Lab</a></li>
 <li class="chapter" data-level="27" data-path="week-15-lecture.html"><a href="week-15-lecture.html"><i class="fa fa-check"></i><b>27</b> Week 15 Lecture</a><ul>
@@ -344,6 +344,7 @@ L_{2} = (1-\phi)\sum_{i=1}^{t_{2}}[\phi(1-p)]^{i-1}+[\phi(1-p)]^{t_{2}}
 \]</span> where <span class="math inline">\(\phi\)</span> is the probability of survival and <span class="math inline">\(p\)</span> is the probability of detection. (You may need to write out a few terms to convince yourself of this.)</p>
 <p>The joint likelihood of the entire time series is the product of <span class="math inline">\(L_{1}\)</span> and <span class="math inline">\(L_{2}\)</span>.</p>
 <p>The advantage to modeling the entire capture history in this way is that you have condensed the data down to three numbers for each mark-recapture history <span class="math inline">\(t_{1}\)</span>, <span class="math inline">\(d\)</span>, and <span class="math inline">\(t_{2}\)</span>, so animals that share these metrics can be combined and the entire dataset, which might be quite large, can be greatly compressed for analysis.</p>
+<p><strong>Question</strong>: What would be <span class="math inline">\(t_{1}\)</span>,<span class="math inline">\(t_{2}\)</span>, and <span class="math inline">\(d\)</span> for the capture history 0010110001100000? <details> <summary>Click for Answer</summary> <span style="color: blueviolet;"> In this case, the animal was marked in Year 3, so we disregard the first portion of the capture history as none of these terms contribute to the likelihood. Here, <span class="math inline">\(t_{1}=8\)</span> and in these first 8 years, it was detected <span class="math inline">\(d\)</span>=4 times. There are <span class="math inline">\(t_{2}\)</span>=5 years at the end with no detections, during which time the fate of the animal is unknown. </span> </details></p>
 </div>
 <div id="what-other-kind-of-models-might-you-fit" class="section level2">
 <h2><span class="header-section-number">21.5</span> What other kind of models might you fit</h2>

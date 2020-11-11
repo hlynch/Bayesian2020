@@ -13,7 +13,7 @@ When would we use ABC? ABC should be considered when the mechanism generating yo
 The basics of ABC are simple:
 (1) Specify some summary metric that you think captures the fit of the model to the data. [Some references call this "D" but I like to use the symbol T since this is more traditional and it matches the symbology we used in Biometry.] In other words, how would you judge whether a model was a "good" model. Usually there are aspects of the data that you think are really important and any good model should match the data in these respects. There are also probably aspects of the data that are not as critical and you'd be satisfied with a model that missed the mark in these respects. (In a population model, for example, you might be most concerned that your model captures the interannual variability in abundance, and less concerned that the models gets the right number for abundance. In this case, the summary statistic might be interannual variation in abundance.) 
 
-**Sufficient statistics** A little vocabulary is in order here. A sufficient statistic is a summary metric that captures all the information in the data for a given parameter. Once you calculate the sufficient statistic, you have everything you need to estimate the parameter of interest. For example, if you have data from a Poisson distribution, the sum of the data is all you need to estimate the parameter $\lambda$. (This seems obvious for this example but there are more complex examples in which the "data compression" of the summary statistic is significant.) I'm bringing this up here because sufficient statistics are always the best summary metric to use for ABC, since there is no loss of information in using the sufficient statistic to compare the simulated data to the real data. However, in many practical cases, the sufficient statistic is unknown so you have to be a bit creative when thinking of summary metrics that capture the key elements of the dataset you have.
+**Sufficient statistics** A little vocabulary is in order here. A sufficient statistic is a summary metric that captures all the information in the data for a given parameter. Once you calculate the sufficient statistic, you have everything you need to estimate the parameter of interest. For example, if you have data from a Poisson distribution, the sum of the data is all you need to estimate the parameter $\lambda$. (This seems obvious for this example but there are more complex examples in which the "data compression" of the summary statistic is significant.) I'm bringing this up here because sufficient statistics are always the best summary metric to use for ABC, since there is no loss of information in using the sufficient statistic to compare the simulated data to the real data. However, in many practical cases, the sufficient statistic is unknown so you have to be a bit creative when thinking of summary metrics that capture the key elements of the dataset you have. (We'll discuss this with an example in a few minutes.)
 
 (2) Simulate the process over the space of all possible parameter values. 
 
@@ -23,7 +23,39 @@ The basics of ABC are simple:
 
 Strictly speaking, the algorithm as I have just described it is ABC-rejection sampling, because we are rejecting parameter sets that do not fit the data. Other algorithms for ABC operate more like particle filters, whereby you iterate through the ABC process but at each step you redraw new parameter sets in the vicinity of the ones that were retained at the last stage.
 
-To solidify these ideas, let make sure we see the parallels between ABC and the basic rejection sampling we learned in the beginning of the semester.
+##A side note about summary statistics: The Mona Lisa 
+
+Coming up with summary statistics (often called 'test' statistics) for your model can be challenging. Let's work through an example. What test statistics would you use to determine if a painting actually was the Mona Lisa? (Thanks to Stefano Allesina for the idea.)
+
+<div class="figure" style="text-align: center">
+<img src="MonaLisaOriginal.png" alt="The Mona Lisa. Source: Wikimedia Commons" width="25%" />
+<p class="caption">(\#fig:unnamed-chunk-1)The Mona Lisa. Source: Wikimedia Commons</p>
+</div>
+
+<details>
+  <summary>Click for Answer</summary>
+<span style="color: blueviolet;">
+Compare your test statistics to three “model” Mona Lisas – Were your test statistics powerful enough to reject any of the models as the real Mona Lisa?
+
+<div class="figure" style="text-align: center">
+<img src="MonaLisa1.png" alt="Fake Mona Lisa #1." width="25%" />
+<p class="caption">(\#fig:unnamed-chunk-2)Fake Mona Lisa #1.</p>
+</div>
+
+<div class="figure" style="text-align: center">
+<img src="MonaLisa2.png" alt="Fake Mona Lisa #2." width="25%" />
+<p class="caption">(\#fig:unnamed-chunk-3)Fake Mona Lisa #2.</p>
+</div>
+
+<div class="figure" style="text-align: center">
+<img src="MonaLisa3.png" alt="Fake Mona Lisa #3." width="25%" />
+<p class="caption">(\#fig:unnamed-chunk-4)Fake Mona Lisa #3.</p>
+</div>
+</span>
+</details> 
+
+
+To solidify our understanding of ABC, let make sure we see the parallels between ABC and the basic rejection sampling we learned in the beginning of the semester.
 
 **Rejection sampling**
 
@@ -123,7 +155,7 @@ Take $\tau_{t+1}^{2} as twice the weighted empirical variance of the $\theta_{i}
 
 <div class="figure" style="text-align: center">
 <img src="RejectionMCMCSMC.png" alt="Visualization of the alternative sampling options: Rejection Sampling, MCMC, and SMC." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-1)Visualization of the alternative sampling options: Rejection Sampling, MCMC, and SMC.</p>
+<p class="caption">(\#fig:unnamed-chunk-5)Visualization of the alternative sampling options: Rejection Sampling, MCMC, and SMC.</p>
 </div>
 
 For more information about this week's topic

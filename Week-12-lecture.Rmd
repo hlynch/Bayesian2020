@@ -96,6 +96,15 @@ The joint likelihood of the entire time series is the product of $L_{1}$ and $L_
 
 The advantage to modeling the entire capture history in this way is that you have condensed the data down to three numbers for each mark-recapture history $t_{1}$, $d$, and $t_{2}$, so animals that share these metrics can be combined and the entire dataset, which might be quite large, can be greatly compressed for analysis.
 
+**Question**: What would be $t_{1}$,$t_{2}$, and $d$ for the capture history 0010110001100000?
+<details>
+  <summary>Click for Answer</summary>
+<span style="color: blueviolet;">
+In this case, the animal was marked in Year 3, so we disregard the first portion of the capture history as none of these terms contribute to the likelihood. Here, $t_{1}=8$ and in these first 8 years, it was detected $d$=4 times. There are $t_{2}$=5 years at the end with no detections, during which time the fate of the animal is unknown.
+</span>
+</details> 
+
+
 ##What other kind of models might you fit
 
 There are almost an infinite variety of models you might fit to your data. You could build models that include

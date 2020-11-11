@@ -77,37 +77,7 @@ Note that here we have used the data twice – once to build the model and then 
 
 Note that passing the “test” above does not mean the model is guaranteed to be good, because **your test statistic T may have low power to detect certain violations**. However, it may flag problems with the model that are worth investigating further.
 
-##The Mona Lisa 
-
-What test statistics would you use to determine if a painting actually was the Mona Lisa? (Thanks to Stefano Allesina for the idea.)
-
-<div class="figure" style="text-align: center">
-<img src="MonaLisaOriginal.png" alt="The Mona Lisa. Source: Wikimedia Commons" width="25%" />
-<p class="caption">(\#fig:unnamed-chunk-1)The Mona Lisa. Source: Wikimedia Commons</p>
-</div>
-
-<details>
-  <summary>Click for Answer</summary>
-<span style="color: blueviolet;">
-Compare your test statistics to three “model” Mona Lisas – Were your test statistics powerful enough to reject any of the models as the real Mona Lisa?
-
-<div class="figure" style="text-align: center">
-<img src="MonaLisa1.png" alt="Fake Mona Lisa #1." width="25%" />
-<p class="caption">(\#fig:unnamed-chunk-2)Fake Mona Lisa #1.</p>
-</div>
-
-<div class="figure" style="text-align: center">
-<img src="MonaLisa2.png" alt="Fake Mona Lisa #2." width="25%" />
-<p class="caption">(\#fig:unnamed-chunk-3)Fake Mona Lisa #2.</p>
-</div>
-
-<div class="figure" style="text-align: center">
-<img src="MonaLisa3.png" alt="Fake Mona Lisa #3." width="25%" />
-<p class="caption">(\#fig:unnamed-chunk-4)Fake Mona Lisa #3.</p>
-</div>
-</span>
-</details> 
-
+**Remember back to the Mona Lisa example from last week.**
 
 As I’ve tried to illustrate below, both frequentist and Bayesian statistics can be thought of as following the hypothetico-deductive framework, but the former relies on $p(data|model)$ and the latter on $p(model|data)$.
 
@@ -117,7 +87,7 @@ Note that in Step #4 of the Bayesian workflow diagram, I’ve stated that the po
 
 <div class="figure" style="text-align: center">
 <img src="BayesianVsFrequentist.png" alt="Diagram illustrating how Bayesian and frequentist approaches integrate theory, data, and predictions." width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-5)Diagram illustrating how Bayesian and frequentist approaches integrate theory, data, and predictions.</p>
+<p class="caption">(\#fig:unnamed-chunk-1)Diagram illustrating how Bayesian and frequentist approaches integrate theory, data, and predictions.</p>
 </div>
 
 **Method #3: Deviance Information Criteria (DIC)**

@@ -77,33 +77,7 @@ Note that here we have used the data twice – once to build the model and then 
 
 Note that passing the “test” above does not mean the model is guaranteed to be good, because **your test statistic T may have low power to detect certain violations**. However, it may flag problems with the model that are worth investigating further.
 
-##The Mona Lisa 
-
-What test statistics would you use to determine if a painting actually was the Mona Lisa? (Thanks to Stefano Allesina for the idea.)
-
-```{r echo=FALSE, fig.align='center', fig.cap='The Mona Lisa. Source: Wikimedia Commons', out.width='25%'}
-knitr::include_graphics('MonaLisaOriginal.png')
-```
-
-<details>
-  <summary>Click for Answer</summary>
-<span style="color: blueviolet;">
-Compare your test statistics to three “model” Mona Lisas – Were your test statistics powerful enough to reject any of the models as the real Mona Lisa?
-
-```{r echo=FALSE, fig.align='center', fig.cap='Fake Mona Lisa #1.', out.width='25%'}
-knitr::include_graphics('MonaLisa1.png')
-```
-
-```{r echo=FALSE, fig.align='center', fig.cap='Fake Mona Lisa #2.', out.width='25%'}
-knitr::include_graphics('MonaLisa2.png')
-```
-
-```{r echo=FALSE, fig.align='center', fig.cap='Fake Mona Lisa #3.', out.width='25%'}
-knitr::include_graphics('MonaLisa3.png')
-```
-</span>
-</details> 
-
+**Remember back to the Mona Lisa example from last week.**
 
 As I’ve tried to illustrate below, both frequentist and Bayesian statistics can be thought of as following the hypothetico-deductive framework, but the former relies on $p(data|model)$ and the latter on $p(model|data)$.
 
