@@ -107,9 +107,9 @@ In this method, you will have a Markov Chain of samples. I've pasted the pseudoc
 **Pseudocode**
 
 Initialize by sampling $\theta^{(0)} \sim \pi(\theta)$. \\
-At iteration $t \get 1$, \\
+At iteration $t$, \\
 
-1. Simulate $\theta^{\prime} \sim K(\theta|\theta^{(t-1)}$).
+1. Simulate $\theta^{\prime} \sim K(\theta|\theta^{(t-1)})$.
 2. Simulate $x \sim p(x| \theta^{\prime}$).
 3. If $\rho(S(x),S(y)) < \epsilon$,
 \tab a. $u \sim \mbox{Unif}$(0,1);
@@ -147,11 +147,16 @@ pick $\theta_{i}^{*}$ from the $\theta_{j}^{(t-1)}$'s with probability $\omega_{
 generate $\theta_{i}^{(t)} \sim K(\theta | \theta_{i}^{(*)};\tau_{t}^{2})$ and $x \sim p(x|\theta_{i}^{(t)})$. \\
 Set $\omega_{i}^{(t)} \propto \pi(\theta_{i}^{(t)})/\sum_{j=1}^{N}\omega_{j}^{(t-1)}K(\theta_{i}^{(t)}|\theta_{i}^{(t-1)};\tau_{t}^{2}$).
 
-Take $\tau_{t+1}^{2} as twice the weighted empirical variance of the $\theta_{i}^{(t)}$'s.
+Take $\tau_{t+1}^{2}$ as twice the weighted empirical variance of the $\theta_{i}^{(t)}$'s.
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Visualization of the alternative sampling options: Rejection Sampling, MCMC, and SMC.', out.width='100%'}
 knitr::include_graphics('RejectionMCMCSMC.png')
 ```
+
+
+##Drawbacks to ABC
+
+While ABC has several appealing features, and forces us to articulate precisely what a "good" model would like like, keep in mind that the samples we keep in our posterior are not draws from the exact posterior distribution $p(\theta|y)$ but rather from $p(\theta|d(\tilde{y},y) \leq \epsilon)$. This becomes a good approximation to the true likelihood if $\epsilon$ is very small, but $\epsilon \rightarrow 0$ carries computational costs. So ABC involves a careful balence between accuracy and speed.
 
 For more information about this week's topic
 ------------------------

@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-11-11" />
+<meta name="date" content="2020-11-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -233,7 +233,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="23.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-1-basic-rejection-abc"><i class="fa fa-check"></i><b>23.3</b> Option #1: Basic rejection ABC</a></li>
 <li class="chapter" data-level="23.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-2-markov-chain-monte-carlo-abc"><i class="fa fa-check"></i><b>23.4</b> Option #2: Markov Chain Monte Carlo ABC</a></li>
 <li class="chapter" data-level="23.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#option-3-sequential-monte-carlo-abc"><i class="fa fa-check"></i><b>23.5</b> Option #3: Sequential Monte Carlo ABC</a></li>
-<li class="chapter" data-level="23.6" data-path="week-1-lecture.html"><a href="week-1-lecture.html#for-more-information-about-this-weeks-topic"><i class="fa fa-check"></i><b>23.6</b> For more information about this week's topic</a></li>
+<li class="chapter" data-level="23.6" data-path="week-13-lecture.html"><a href="week-13-lecture.html#drawbacks-to-abc"><i class="fa fa-check"></i><b>23.6</b> Drawbacks to ABC</a></li>
+<li class="chapter" data-level="23.7" data-path="week-1-lecture.html"><a href="week-1-lecture.html#for-more-information-about-this-weeks-topic"><i class="fa fa-check"></i><b>23.7</b> For more information about this week's topic</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="week-13-lab.html"><a href="week-13-lab.html"><i class="fa fa-check"></i><b>24</b> Week 13 Lab</a></li>
 <li class="chapter" data-level="25" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>25</b> Week 14 Lecture</a><ul>
@@ -353,9 +354,9 @@ x^{(i)} \sim q(x) \\
 <h2><span class="header-section-number">23.4</span> Option #2: Markov Chain Monte Carlo ABC</h2>
 <p>In this method, you will have a Markov Chain of samples. I've pasted the pseudocode from Beaumont 2010 below. Note that <span class="math inline">\(\pi(\theta)\)</span> is the prior distribution for parameter <span class="math inline">\(\theta\)</span> and that <span class="math inline">\(K()\)</span> is a PDF describing jumps between values in parameter space. (This is exactly the same as we dealt with previously with we discussed Metropolis-Hastings.) Note that if the jump distribution <span class="math inline">\(K()\)</span> is symmetric, than the ratio in step 3b is equal to 1 and can be dropped.</p>
 <p><strong>Pseudocode</strong></p>
-<p>Initialize by sampling <span class="math inline">\(\theta^{(0)} \sim \pi(\theta)\)</span>. \ At iteration <span class="math inline">\(t \get 1\)</span>, \</p>
+<p>Initialize by sampling <span class="math inline">\(\theta^{(0)} \sim \pi(\theta)\)</span>. \ At iteration <span class="math inline">\(t\)</span>, \</p>
 <ol style="list-style-type: decimal">
-<li>Simulate <span class="math inline">\(\theta^{\prime} \sim K(\theta|\theta^{(t-1)}\)</span>).</li>
+<li>Simulate <span class="math inline">\(\theta^{\prime} \sim K(\theta|\theta^{(t-1)})\)</span>.</li>
 <li>Simulate <span class="math inline">\(x \sim p(x| \theta^{\prime}\)</span>).</li>
 <li>If <span class="math inline">\(\rho(S(x),S(y)) &lt; \epsilon\)</span>, a. <span class="math inline">\(u \sim \mbox{Unif}\)</span>(0,1); b. <span class="math inline">\(\mbox{if} u \leq \pi(\theta^{\prime})/\pi(\theta^{(t-1)}) \times K(\theta^{(t-1)}|\theta^{\prime})/K(\theta^{\prime}|\theta^{(t-1)}), \mbox{then } \theta^{(t)}=\theta^{\prime}\)</span>; c. <span class="math inline">\(\mbox{otherwise } \theta^{(t)} = \theta^{(t-1)}\)</span>;</li>
 <li><span class="math inline">\(\mbox{otherwise } \theta^{(t)} = \theta^{(t-1)}\)</span>.</li>
@@ -379,7 +380,7 @@ x^{(i)} \sim q(x) \\
 <li><p>At iteration <span class="math inline">\(t=1\)</span>, \ for <span class="math inline">\(i = 1,\dots,N\)</span>, \ until <span class="math inline">\(\rho(S(x),S(y)) &lt; \epsilon_{1}\)</span> \ simulate $<em>{i}^{(1)} ()  x p(x|</em>{i}^{(1)}). \ Set <span class="math inline">\(\omega_{i}^{(1)} = 1/N\)</span>. \ Take <span class="math inline">\(\tau^{2}_{2}\)</span> as twice the empirical variance of the <span class="math inline">\(\theta_{i}^{(1)}\)</span>'s.</p></li>
 <li><p>At iteration <span class="math inline">\(2 \leq t \leq T\)</span>, \ for <span class="math inline">\(i = 1,\dots,N\)</span>, \ until <span class="math inline">\(\rho(S(x),S(y)) &lt; \epsilon_{t}\)</span> \ pick <span class="math inline">\(\theta_{i}^{*}\)</span> from the <span class="math inline">\(\theta_{j}^{(t-1)}\)</span>'s with probability <span class="math inline">\(\omega_{j}^{(t-1)}\)</span>; \ generate <span class="math inline">\(\theta_{i}^{(t)} \sim K(\theta | \theta_{i}^{(*)};\tau_{t}^{2})\)</span> and <span class="math inline">\(x \sim p(x|\theta_{i}^{(t)})\)</span>. \ Set <span class="math inline">\(\omega_{i}^{(t)} \propto \pi(\theta_{i}^{(t)})/\sum_{j=1}^{N}\omega_{j}^{(t-1)}K(\theta_{i}^{(t)}|\theta_{i}^{(t-1)};\tau_{t}^{2}\)</span>).</p></li>
 </ol>
-<p>Take $_{t+1}^{2} as twice the weighted empirical variance of the <span class="math inline">\(\theta_{i}^{(t)}\)</span>'s.</p>
+<p>Take <span class="math inline">\(\tau_{t+1}^{2}\)</span> as twice the weighted empirical variance of the <span class="math inline">\(\theta_{i}^{(t)}\)</span>'s.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="RejectionMCMCSMC.png" alt="Visualization of the alternative sampling options: Rejection Sampling, MCMC, and SMC." width="100%" />
 <p class="caption">
@@ -387,8 +388,12 @@ Figure 23.1: Visualization of the alternative sampling options: Rejection Sampli
 </p>
 </div>
 </div>
+<div id="drawbacks-to-abc" class="section level2">
+<h2><span class="header-section-number">23.6</span> Drawbacks to ABC</h2>
+<p>While ABC has several appealing features, and forces us to articulate precisely what a &quot;good&quot; model would like like, keep in mind that the samples we keep in our posterior are not draws from the exact posterior distribution <span class="math inline">\(p(\theta|y)\)</span> but rather from <span class="math inline">\(p(\theta|d(\tilde{y},y) \leq \epsilon)\)</span>. This becomes a good approximation to the true likelihood if <span class="math inline">\(\epsilon\)</span> is very small, but <span class="math inline">\(\epsilon \rightarrow 0\)</span> carries computational costs. So ABC involves a careful balence between accuracy and speed.</p>
+</div>
 <div id="for-more-information-about-this-weeks-topic" class="section level2">
-<h2><span class="header-section-number">23.6</span> For more information about this week's topic</h2>
+<h2><span class="header-section-number">23.7</span> For more information about this week's topic</h2>
 <ul>
 <li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/HartigEtAl2011.pdf">Hertig et al. 2011</a></li>
 <li><a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/McKinleyEtAl2017.pdf">McKinley et al. 2017</a></li>
