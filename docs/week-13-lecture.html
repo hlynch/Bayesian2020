@@ -377,9 +377,28 @@ x^{(i)} \sim q(x) \\
 </ol>
 <p>or, more mathematically,</p>
 <ol style="list-style-type: decimal">
-<li><p>At iteration <span class="math inline">\(t=1\)</span>, \ for <span class="math inline">\(i = 1,\dots,N\)</span>, \ until <span class="math inline">\(\rho(S(x),S(y)) &lt; \epsilon_{1}\)</span> \ simulate $<em>{i}^{(1)} ()  x p(x|</em>{i}^{(1)}). \ Set <span class="math inline">\(\omega_{i}^{(1)} = 1/N\)</span>. \ Take <span class="math inline">\(\tau^{2}_{2}\)</span> as twice the empirical variance of the <span class="math inline">\(\theta_{i}^{(1)}\)</span>'s.</p></li>
-<li><p>At iteration <span class="math inline">\(2 \leq t \leq T\)</span>, \ for <span class="math inline">\(i = 1,\dots,N\)</span>, \ until <span class="math inline">\(\rho(S(x),S(y)) &lt; \epsilon_{t}\)</span> \ pick <span class="math inline">\(\theta_{i}^{*}\)</span> from the <span class="math inline">\(\theta_{j}^{(t-1)}\)</span>'s with probability <span class="math inline">\(\omega_{j}^{(t-1)}\)</span>; \ generate <span class="math inline">\(\theta_{i}^{(t)} \sim K(\theta | \theta_{i}^{(*)};\tau_{t}^{2})\)</span> and <span class="math inline">\(x \sim p(x|\theta_{i}^{(t)})\)</span>. \ Set <span class="math inline">\(\omega_{i}^{(t)} \propto \pi(\theta_{i}^{(t)})/\sum_{j=1}^{N}\omega_{j}^{(t-1)}K(\theta_{i}^{(t)}|\theta_{i}^{(t-1)};\tau_{t}^{2}\)</span>).</p></li>
+<li>At iteration <span class="math inline">\(t=1\)</span>,<br />
+</li>
 </ol>
+<ul>
+<li>for <span class="math inline">\(i = 1,\dots,N\)</span>,<br />
+</li>
+<li>until <span class="math inline">\(\rho(S(x),S(y)) &lt; \epsilon_{1}\)</span><br />
+</li>
+<li>simulate <span class="math inline">\(\theta_{i}^{(1)} \sim \pi(\theta) \mbox{ and } x \sim p(x|\theta_{i}^{(1)})\)</span>.</li>
+<li>set <span class="math inline">\(\omega_{i}^{(1)} = 1/N\)</span>.<br />
+</li>
+<li>take <span class="math inline">\(\tau^{2}_{2}\)</span> as twice the empirical variance of the <span class="math inline">\(\theta_{i}^{(1)}\)</span>'s.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>At iteration <span class="math inline">\(2 \leq t \leq T\)</span>, +for <span class="math inline">\(i = 1,\dots,N\)</span>,</li>
+</ol>
+<ul>
+<li>until <span class="math inline">\(\rho(S(x),S(y)) &lt; \epsilon_{t}\)</span></li>
+<li>pick <span class="math inline">\(\theta_{i}^{*}\)</span> from the <span class="math inline">\(\theta_{j}^{(t-1)}\)</span>'s with probability <span class="math inline">\(\omega_{j}^{(t-1)}\)</span>;</li>
+<li>generate <span class="math inline">\(\theta_{i}^{(t)} \sim K(\theta | \theta_{i}^{(*)};\tau_{t}^{2})\)</span> and <span class="math inline">\(x \sim p(x|\theta_{i}^{(t)})\)</span>.</li>
+<li>set <span class="math inline">\(\omega_{i}^{(t)} \propto \pi(\theta_{i}^{(t)})/\sum_{j=1}^{N}\omega_{j}^{(t-1)}K(\theta_{i}^{(t)}|\theta_{i}^{(t-1)};\tau_{t}^{2}\)</span>).</li>
+</ul>
 <p>Take <span class="math inline">\(\tau_{t+1}^{2}\)</span> as twice the weighted empirical variance of the <span class="math inline">\(\theta_{i}^{(t)}\)</span>'s.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="RejectionMCMCSMC.png" alt="Visualization of the alternative sampling options: Rejection Sampling, MCMC, and SMC." width="100%" />

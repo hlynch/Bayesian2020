@@ -133,19 +133,19 @@ A more sophisticated algorithm is called Sequential Monte Carlo (SMC) ABC. In SM
 
 or, more mathematically,
 
-1. At iteration $t=1$, \\
-for $i = 1,\dots,N$, \\
-\tab until $\rho(S(x),S(y)) < \epsilon_{1}$ \\
-\tab \tab simulate $\theta_{i}^{(1)} \sim \pi(\theta) \mbox{and} x \sim p(x|\theta_{i}^{(1)}). \\
-Set $\omega_{i}^{(1)} = 1/N$. \\
-Take $\tau^{2}_{2}$ as twice the empirical variance of the $\theta_{i}^{(1)}$'s.
+1. At iteration $t=1$,  
++ for $i = 1,\dots,N$,  
++ until $\rho(S(x),S(y)) < \epsilon_{1}$  
++ simulate $\theta_{i}^{(1)} \sim \pi(\theta) \mbox{ and } x \sim p(x|\theta_{i}^{(1)})$. 
++ set $\omega_{i}^{(1)} = 1/N$.  
++ take $\tau^{2}_{2}$ as twice the empirical variance of the $\theta_{i}^{(1)}$'s.  
 
-2. At iteration $2 \leq t \leq T$, \\
-for $i = 1,\dots,N$, \\
-\tab until $\rho(S(x),S(y)) < \epsilon_{t}$ \\
-pick $\theta_{i}^{*}$ from the $\theta_{j}^{(t-1)}$'s with probability $\omega_{j}^{(t-1)}$; \\
-generate $\theta_{i}^{(t)} \sim K(\theta | \theta_{i}^{(*)};\tau_{t}^{2})$ and $x \sim p(x|\theta_{i}^{(t)})$. \\
-Set $\omega_{i}^{(t)} \propto \pi(\theta_{i}^{(t)})/\sum_{j=1}^{N}\omega_{j}^{(t-1)}K(\theta_{i}^{(t)}|\theta_{i}^{(t-1)};\tau_{t}^{2}$).
+2. At iteration $2 \leq t \leq T$, 
++for $i = 1,\dots,N$, 
++ until $\rho(S(x),S(y)) < \epsilon_{t}$ 
++ pick $\theta_{i}^{*}$ from the $\theta_{j}^{(t-1)}$'s with probability $\omega_{j}^{(t-1)}$; 
++ generate $\theta_{i}^{(t)} \sim K(\theta | \theta_{i}^{(*)};\tau_{t}^{2})$ and $x \sim p(x|\theta_{i}^{(t)})$. 
++ set $\omega_{i}^{(t)} \propto \pi(\theta_{i}^{(t)})/\sum_{j=1}^{N}\omega_{j}^{(t-1)}K(\theta_{i}^{(t)}|\theta_{i}^{(t-1)};\tau_{t}^{2}$).
 
 Take $\tau_{t+1}^{2}$ as twice the weighted empirical variance of the $\theta_{i}^{(t)}$'s.
 
