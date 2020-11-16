@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-11-15" />
+<meta name="date" content="2020-11-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -274,21 +274,28 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>For lab, we're going to get some practice fitting ABC models using a dataset of a collared sheep. The <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/SheepData.csv">data we will be using for the problem set</a> is a slightly modified (simplified) version of the data from the <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/RuizSuarezEtAl2020.pdf">original paper</a>.</p>
 <p>I have provided a dataset of locations from a collared sheep at approximately 5 min intervals over a 2 month period. We will assume all the time intervals are the same so you can ignore the time column in the data set provided. I have provided <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/SheepDataPrep.R">some code</a> to project the original geographic locations into a local (Argentinian) coordinate system with (X,Y) being measurements of location in units of meters. This code also plots the data on a map using the R function mapview(), which is an incredibly handy set of functions for displaying GIS data directly in R.</p>
 <p>(Side note: I have also provided an alternative dataset that can be used for lab. A slightly modified version of the original data from <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/TarrouxEtAl2020.pdf">this paper</a> can be found <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/PetrelData.csv">here</a>. Note that this dataset includes multiple animals and I suggest modelling all the animals with the same movement parameters [though each in and out track will be one foraging &quot;bout&quot;, so you'll have to treat each &quot;bout&quot; as its own time series, whereas the sheep data represents one long time series for a single individual], though more complex versions of the models could of course include random effects for individual. I provide some code <a href="https://github.com/hlynch/Bayesian2020/tree/master/_data/PetrelDataPrep.R">here</a> to help you read in and re-project the data.)</p>
-<p>We will fit a relatively simple model for movement, in which the sheep advances some distance <span class="math inline">\(d\)</span> at each step and then turns some angle <span class="math inline">\(\theta\)</span> before moving again. We want to use ABC to estimate the parameters of the distribution for distance and turning angle.</p>
-<p>We will assume a half-Normal model for distance</p>
+<p>We will fit a relatively simple model for movement, in which the sheep advances some distance <span class="math inline">\(\ell\)</span> at each step and then turns some angle <span class="math inline">\(\phi\)</span> before moving again.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="moveHMM-guide_pdf.png" alt="Visualization of movement model parameters step length and turning angle (Source: moveHMM R package vignette)" width="100%" />
+<p class="caption">
+Figure 1.1: Visualization of movement model parameters step length and turning angle (Source: moveHMM R package vignette)
+</p>
+</div>
+<p>We want to use ABC to estimate the parameters of the distribution for distance and turning angle.</p>
+<p>We will assume a half-Normal model for step length</p>
 <p><span class="math display">\[
-d \sim Norm(\mu,\sigma^{2})[0,\infty)
+\ell \sim Norm(\mu,\sigma^{2})[0,\infty)
 \]</span></p>
 <p>and a von Mises distribution for turning angle <span class="math inline">\(\theta\)</span></p>
 <p><span class="math display">\[
-\theta \sim vonMises(\rho,\kappa)
+\phi \sim vonMises(\rho,\kappa)
 \]</span></p>
 <p>where the PDF of the von Mises distribution is given by</p>
 <p><span class="math display">\[
-f(\theta|\rho,\kappa) = \frac{e^{\kappa cos(\theta-\rho)}}{2\pi I_{0}(\kappa)}
+f(\phi|\rho,\kappa) = \frac{e^{\kappa cos(\phi-\rho)}}{2\pi I_{0}(\kappa)}
 \]</span></p>
 <p>(Note that the von Mises is usually described in terms of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\kappa\)</span>, but I have used <span class="math inline">\(\rho\)</span> instead of <span class="math inline">\(\mu\)</span> to avoid confusion with the half-Normal used for distance.) What is <span class="math inline">\(I_{0}(\kappa)\)</span>? It is the modified <a href="https://en.wikipedia.org/wiki/Bessel_function">Bessel function</a> of order 0. But, luckily enough, the von Mises distribution is built into the <a href="https://cran.r-project.org/web/packages/circular/circular.pdf"><code>circular</code> package</a> in R, so you can use the function in that package to draw from the von Mises distribution.</p>
-<p>Keep in mind that <span class="math inline">\(\theta\)</span> is an angle in radians and ranges from <span class="math inline">\((-\pi,\pi)\)</span>.</p>
+<p>Keep in mind that <span class="math inline">\(\phi\)</span> is an angle in radians and ranges from <span class="math inline">\((-\pi,\pi)\)</span>.</p>
 <p>Your task for this problem set is to use ABC to generate posterior distributions for the four model parameters: <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\rho\)</span>, and <span class="math inline">\(\kappa\)</span>.</p>
 <p>The basic steps are:</p>
 <ol style="list-style-type: decimal">

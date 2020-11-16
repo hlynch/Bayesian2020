@@ -7,29 +7,35 @@ I have provided a dataset of locations from a collared sheep at approximately 5 
 
 (Side note: I have also provided an alternative dataset that can be used for lab. A slightly modified version of the original data from [this paper](https://github.com/hlynch/Bayesian2020/tree/master/_data/TarrouxEtAl2020.pdf) can be found [here](https://github.com/hlynch/Bayesian2020/tree/master/_data/PetrelData.csv). Note that this dataset includes multiple animals and I suggest modelling all the animals with the same movement parameters [though each in and out track will be one foraging "bout", so you'll have to treat each "bout" as its own time series, whereas the sheep data represents one long time series for a single individual], though more complex versions of the models could of course include random effects for individual. I provide some code [here](https://github.com/hlynch/Bayesian2020/tree/master/_data/PetrelDataPrep.R) to help you read in and re-project the data.)
 
-We will fit a relatively simple model for movement, in which the sheep advances some distance $d$ at each step and then turns some angle $\theta$ before moving again. We want to use ABC to estimate the parameters of the distribution for distance and turning angle.
+We will fit a relatively simple model for movement, in which the sheep advances some distance $\ell$ at each step and then turns some angle $\phi$ before moving again. 
 
-We will assume a half-Normal model for distance
+```{r echo=FALSE, fig.align='center', fig.cap='Visualization of movement model parameters step length and turning angle (Source: moveHMM R package vignette)', out.width='100%'}
+knitr::include_graphics('moveHMM-guide_pdf.png')
+```
+
+We want to use ABC to estimate the parameters of the distribution for distance and turning angle.
+
+We will assume a half-Normal model for step length
 
 $$
-d \sim Norm(\mu,\sigma^{2})[0,\infty)
+\ell \sim Norm(\mu,\sigma^{2})[0,\infty)
 $$
 
 and a von Mises distribution for turning angle $\theta$
 
 $$
-\theta \sim vonMises(\rho,\kappa)
+\phi \sim vonMises(\rho,\kappa)
 $$
 
 where the PDF of the von Mises distribution is given by
 
 $$
-f(\theta|\rho,\kappa) = \frac{e^{\kappa cos(\theta-\rho)}}{2\pi I_{0}(\kappa)}
+f(\phi|\rho,\kappa) = \frac{e^{\kappa cos(\phi-\rho)}}{2\pi I_{0}(\kappa)}
 $$
 
 (Note that the von Mises is usually described in terms of $\mu$ and $\kappa$, but I have used $\rho$ instead of $\mu$ to avoid confusion with the half-Normal used for distance.) What is $I_{0}(\kappa)$? It is the modified [Bessel function](https://en.wikipedia.org/wiki/Bessel_function) of order 0. But, luckily enough, the von Mises distribution is built into the [`circular` package](https://cran.r-project.org/web/packages/circular/circular.pdf) in R, so you can use the function in that package to draw from the von Mises distribution.
 
-Keep in mind that $\theta$ is an angle in radians and ranges from $(-\pi,\pi)$.
+Keep in mind that $\phi$ is an angle in radians and ranges from $(-\pi,\pi)$.
 
 Your task for this problem set is to use ABC to generate posterior distributions for the four model parameters: $\mu$, $\sigma$, $\rho$, and $\kappa$.
 
