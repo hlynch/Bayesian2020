@@ -21,7 +21,7 @@ $$
 \ell \sim Norm(\mu,\sigma^{2})[0,\infty)
 $$
 
-and a von Mises distribution for turning angle $\theta$
+and a von Mises distribution for turning angle $\phi$
 
 $$
 \phi \sim vonMises(\rho,\kappa)
