@@ -6,6 +6,10 @@ Papers to read this week:
 * [Bolker Chapter 11](https://github.com/hlynch/Bayesian2020/tree/master/_data/BolkerChapter11.pdf)
 * [Clark and Bjornstad 2004](https://github.com/hlynch/Bayesian2020/tree/master/_data/ClarkBjornstad2004.pdf)
 
+This is a long paper but worth reading the highlights:
+
+* [Auger-Methe et al. 2020](https://github.com/hlynch/Bayesian2020/tree/master/_data/AugerMetheEtAl2020.pdf)
+
 For the problem set, you will also need to read:
 
 * [Clark et al. 2010](https://github.com/hlynch/Bayesian2020/tree/master/_data/ClarkEtAl2010.pdf)
