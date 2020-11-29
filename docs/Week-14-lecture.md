@@ -30,7 +30,7 @@ includes both $\mu$ **and** $\sigma^{2}$, the latter of which should not be dism
 
 **Method #1: Plot the model against the data**
 
-While it seems almost too simple to be of any use, you should always lot the model against the data. Sometimes, the parameters look fine but the fit is obviously horrible for one reason or another.  
+While it seems almost too simple to be of any use, you should always plot the model against the data. Sometimes, the parameters look fine but the fit is obviously horrible for one reason or another.  
 
 **Method #2: Posterior predictive checks**
 
@@ -39,18 +39,22 @@ An alternative to asking “How well does the model fit the data we have” is t
 $$
 p(\tilde{y}|y) = \int p(\tilde{y}|\theta)p(\theta|y)d\theta
 $$
-$\tilde{y}$ = new data\\
-y = original data \\
-$\theta$ = model parameters \\
+$\tilde{y}$ = new data
+
+y = original data 
+
+$\theta$ = model parameters 
+
 $p(\theta|y)$ = posterior distribution of $\theta$
 
 **Question: What is $p(\tilde{y}|\theta)$?**
 
-In other words, you want to integrate out the posterior distribution for the parameters to get the posterior distribution for the predicted values. 
+Our focus on ABC last week can actually provide some intuition here. $p(\tilde{y}|\theta)$ is the probability of your data conditional on some set of parameters. In ABC, every simulation involved a specific set of parameters drawn from the prior distribution. Because your model was stochastic, running the simulation multiple times with the exact same set of parameters would yield a range of outcomes $y$. That's what we mean when we talk about a distribution conditional on a set of parameter values. (In practice, we don't bother drawing multiple times with the same parameter set, we draw a single outcome with each draw from the prior, but the idea that each parameter set yields an entire distribution of outcomes should be clear.) The posterior predictive check is focused not on the parameters themselves, in fact, they are considered but a necessary step on the journey; what we want is to integrate over ("marginalize out") the posterior distribution of the parameters. You can think of the posterior as being a weight, and the possible outcomes are weighted according to the likelihood of the parameters that were used.
 
 In practice this means doing the following:
 
 Step #1: Sample $m$ values of $\theta$ from the posterior $p(\theta|y)$ 
+
 Step #2: For each of these $m$ values, sample from the likelihood $p(\tilde{y}|\theta)$
 
 These samples represent draws from the posterior predictive distribution $p(\tilde{y}|y)$.
@@ -59,7 +63,7 @@ How do we use $p(\tilde{y}|y)$? The most straightforward, and in practice recomm
 
 **Remember: All models are wrong, but some are useful.**
 
-A second, more quantitative but also probably less helpful, approach would be to do this following.
+A second, more quantitative (but not necessarily more helpful) approach would be to focus on a key set of test statistics, just the way you would have done for ABC.
 
 Step 1 $\rightarrow$ Come up with a ‘relevant’ test statistic $T$, i.e. one that has the power to distinguish a good model from a bad model. Note that ‘good’ and ‘bad’ here are context dependent, because it depends on the goals of the modeling. You want to compare models based on the most important predictions, which may or may not be straightforward. In other words, in studying the population growth rate of a species, you may be interested in the maximum population growth rate, which is a function of other life history parameters such as age to maturity. It may be that you are not interested in age to maturity at all, except in as far as it influences maximum population growth rate. In this case, you should compare models based on growth rate and not age to maturity.
 
@@ -71,7 +75,7 @@ Step 3 $\rightarrow$ Calculate T for each draw from the posterior predictive dis
 
 Step 4 $\rightarrow$ Calculate the fraction of times that $T(y) < T(\tilde{y}|y)$. (I have flipped this statement around from Gelman and Chalizi 2013 because I think its easier to think of in this way). Sound familiar? It should. This is called the **posterior predictive p-value**. In other words, we are checking to see whether our data would be considered an extreme outcome of the model as defined by the test statistic. Let’s say that our test statistic exceeds the model prediction test statistic $T(\tilde{y}|y)$ for $>95\%$ of model predicted data sets. In this case, the posterior predicted p-value would be $<0.05$, and we would say that we can reject the model as fitting the data. (Bayesians don’t use this phrase, but another way to think about it is that we have established a null hypothesis that the model does fit the data in as far as the characteristic measured by the test statistic $T$, and a p-value$<0.05$ would lead us to reject that null hypothesis.)
 
-Recap: A very low p-value says that it is unlikely, \emph{under the model}, to have obtained data as extreme along the T-dimension as the actual y, i,.e. we are seeing something which would be highly improbable \emph{if the model were true}. In other words, you want your model to make your data look typical, not unusual.
+Recap: A very low p-value says that it is unlikely, *under the model*, to have obtained data as extreme along the T-dimension as the actual y, i,.e. we are seeing something which would be highly improbable *if the model were true*. In other words, you want your model to make your data look typical, not unusual.
 
 Note that here we have used the data twice – once to build the model and then again to check the model. This is akin to looking at the $R^2$ of a traditional frequentist regression model. Sure, the model probably fits because it was designed to fit the data. This doesn’t really tell us all that much about whether the model would work on new data. As we discussed in Biometry (in our Shmueli discussion), one solution would be to withhold some data from the model fitting, and use only the withheld data to see if the model is any good (at making predictions).
 
@@ -81,7 +85,7 @@ Note that passing the “test” above does not mean the model is guaranteed to 
 
 As I’ve tried to illustrate below, both frequentist and Bayesian statistics can be thought of as following the hypothetico-deductive framework, but the former relies on $p(data|model)$ and the latter on $p(model|data)$.
 
-Note that in Step #4 of the Bayesian workflow diagram, I’ve stated that the posterior predictive checks can be used to falsify a model. While true, this isn’t all that helpful, because we know a priori that **all models are false**. The way to think about this last step is that you are checking to see in what way your model is false and whether your model fails in ways that are important to your application.
+Note that in Step #4 of the Bayesian workflow diagram, I’ve stated that the posterior predictive checks can be used to falsify a model. While true, this isn’t all that helpful, because we know a priori that **all models are false**. The way to think about this last step is that **you are checking to see in what way your model is false and whether your model fails in ways that are important to your application.**
 
 (Posterior predictive p-values are not without their critics, and here I would refer to Andrew Gelman’s blog, where he airs out the dirty laundry of posterior predictive p-values [which he himself has helped develop].) 
 
@@ -103,7 +107,7 @@ First, a quick recap of Deviance.
 $$
 D = -2 * (LL_{\mbox{reduced}} - LL_{\mbox{full}})
 $$
-where $LL_{\mbox{reduced}}$$ refers to the log-likelihood of a reduced (smaller) model, as compared to $LL_{\mbox{full}}$, which refers to the full model. The ‘full’ model remains a statistical abstract, and usually we are comparing two reduced models, one of which is nested inside the other. The discussion then becomes one of differences in deviance
+where $LL_{\mbox{reduced}}$ refers to the log-likelihood of a reduced (smaller) model, as compared to $LL_{\mbox{full}}$, which refers to the full model. The ‘full’ model remains a statistical abstract, and usually we are comparing two reduced models, one of which is nested inside the other. The discussion then becomes one of differences in deviance
 
 $$
 D = -2 * (LL_{\mbox{smaller}} - LL_{\mbox{larger}})
@@ -141,7 +145,7 @@ Now we have a way of quantifying model fit ($\hat{D}$) and a way of quantifying 
 $$
 DIC = \hat{D} + 2p_{D}
 $$
-We can interpret DIC similar to AIC, in that DICs within $\sim$2 are considered equivalent, those falling 2-4 units below the best model having somewhat less support etc.
+We can interpret DIC similar to AIC, in that DICs within $\sim$ 2 are considered equivalent, those falling 2-4 units below the best model having somewhat less support etc.
 
 Criticisms of DIC (from Spiegelhalter et al. 2014):
 
