@@ -19,8 +19,6 @@ We usually have two questions when fitting models with data:
 
 We have to be careful that an excessive concern over model comparison does not keep up from asking the very fundamental question: Are any of these models any good? If none of the models are very good, the whole exercise of model comparison may be a waste of time. (But maybe not – perhaps you are interested in statistically significant covariates even though they explain little of the variation in the data.)
 
-** Stop & discuss: What makes a “good” model?**
-
 McCarthy makes an important point when he says that the model should fit both the central tendency and the variation in the data. In other words, let us not forget that a model such as
 
 $$
@@ -32,9 +30,21 @@ includes both $\mu$ **and** $\sigma^{2}$, the latter of which should not be dism
 
 While it seems almost too simple to be of any use, you should always plot the model against the data. Sometimes, the parameters look fine but the fit is obviously horrible for one reason or another.  
 
-**Method #2: Posterior predictive checks**
+**Method #2: Mean squared predictive error**
 
-An alternative to asking “How well does the model fit the data we have” is to ask “How well does the model predict new data given the fit to the old data”. To do this we calculate the posterior predictive distribution 
+Beyond simply visualizing your model and its fit (that is, the fit of the predicted values) to the original data, you could imagine using out-of-sample data (What do I mean vy out-of-sample? What if we don't have out-of-sample data?) and calculating a squared error term similar to the kind of error one would calculate in a frequentist linear regression type context. We call this a mean squared *predictive* error so as to remind you that this error is relative to some predicted y values.
+
+$$
+MSPE = \sum_{i=1}^{n}\frac{(y_{oos,i}-\widehat{y_{oos,i}})^{2}}{n}
+$$
+
+where we have calculated the squared error over all $i=1,\dots,n$ out-of-sample data points.
+
+This measure of error, while intuitive and easy to calculate, has a major flaw, in that it does not incorporate any information about our uncertainty. In other words, our posterior distribution for the parameters $\theta$ capture our uncertainty about the parameter values and on top of that, there is a distribution for the predicted y values even for a single parameter value. So, the MSPE measure requires us to collapse all of that uncertainty to a single "point" estimate for $\widehat{y_{oos,i}}$, and that just isn'y very "Bayesian".
+
+**Method #3: Posterior predictive checks**
+
+A more "Bayesian" approach would be to calculate the posterior predictive distribution 
 
 $$
 p(\tilde{y}|y) = \int p(\tilde{y}|\theta)p(\theta|y)d\theta
@@ -47,7 +57,7 @@ $\theta$ = model parameters
 
 $p(\theta|y)$ = posterior distribution of $\theta$
 
-**Question: What is $p(\tilde{y}|\theta)$?**
+This explicitly incorporates the relavent uncertainties, not only the posterior distribution for the parameters, but also the probability density function describing the distribution of predicted y values conditional on a set of parameter values $p(\tilde{y}|\theta)$.
 
 Our focus on ABC last week can actually provide some intuition here. $p(\tilde{y}|\theta)$ is the probability of your data conditional on some set of parameters. In ABC, every simulation involved a specific set of parameters drawn from the prior distribution. Because your model was stochastic, running the simulation multiple times with the exact same set of parameters would yield a range of outcomes $y$. That's what we mean when we talk about a distribution conditional on a set of parameter values. (In practice, we don't bother drawing multiple times with the same parameter set, we draw a single outcome with each draw from the prior, but the idea that each parameter set yields an entire distribution of outcomes should be clear.) The posterior predictive check is focused not on the parameters themselves, in fact, they are considered but a necessary step on the journey; what we want is to integrate over ("marginalize out") the posterior distribution of the parameters. You can think of the posterior as being a weight, and the possible outcomes are weighted according to the likelihood of the parameters that were used.
 
@@ -159,7 +169,34 @@ Criticisms of DIC (from Spiegelhalter et al. 2014):
 
 The DIC is an omnibus measure of fit, and its use is fairly contested among statisticians. (I think some of the complaint is that non-statisticians use it blindly without any knowledge of what it actually is or what the caveats might be.)  
 
-We will discuss a fourth method, Bayes Factors, next week when we dig deeper into the world of multimodel inference.
+**Method #4: WAIC**
+
+Because of the some of the concerns over DIC as a measure of model fit, many practitioners have started using a measure called WAIC, which has stronger theoretical justification and avoids many of the problems of DIC
+
+$$
+WAIC = -2\sum_{i=1}^{n} log \int p(y_{i}|\theta)p(\theta|y)d\theta + 2p_{D}
+$$
+
+where now $i=1,\dots,n$ represents the index for all data in the set (not an out-of-sample set but the data used to fit the original model). The WAIC looks a lot like the AIC measure that we use in a frequentist analysis, in that we have a term that reflects the negative log likelihood of the data (the dependence on the parameters has been marginalized out) and a penalty for model complexity.
+
+We can approximate this using the samples from our MCMC chain as
+
+$$
+WAIC \sim -2 \left(\sum_{i=1}^{n}log\left(\frac{\sum_{k=1}^{K}p(y_{i}|\theta^{k})}{K}\right)\right) + 2p_{D}
+$$
+where $k=1,\dots,K$ represents the samples in the MCMC chain itself.
+
+**Method #5: Posterior predictive loss**
+
+Yet another measure of fit is the posterior predictive loss
+
+$$
+D_{sel}=\sum_{i=1}^{n}(y_{i}-E[y_{i}^{new}|y])^{2} + \sum_{i=1}^{n}Var[y_{i}^{new}|y]
+$$
+
+Notice that in practice this requires just calculating a new data set at each interation of the MCMC chain.
+
+We will discuss yet another method, Bayes Factors, next week when we dig deeper into the world of multimodel inference.
 
 For more information about this week's topic
 ------------------------
