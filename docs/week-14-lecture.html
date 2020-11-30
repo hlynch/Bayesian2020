@@ -355,6 +355,10 @@ D = -2 * LL
 <p><span class="math display">\[
 \hat{D} = D(\bar{\theta_{1}},\bar{\theta_{2}},\mbox{etc.})
 \]</span></p>
+<p>Note that another way to write <span class="math inline">\(\hat{D}\)</span> is</p>
+<p><span class="math display">\[
+\hat{D} = -2log(p(y|E[\theta|y]))= -2\sum_{i=1}^{n}log(p(y_{i}|E[\theta|y]))
+\]</span></p>
 <p>Easy enough, right? Sadly, no. Because we know that we can always improve fit by adding complexity, but for complex models we have no way to calculate the model complexity. (This will become clearer when we get to hierarchical models in which the number of parameters in the model isn’t even really an integer…)</p>
 <p>Spiegelhalter et al. (2002) derived an estimate of the number of effective parameters</p>
 <p><span class="math display">\[
