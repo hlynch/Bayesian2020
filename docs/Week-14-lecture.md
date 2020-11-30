@@ -153,6 +153,7 @@ Spiegelhalter et al. (2002) derived an estimate of the number of effective param
 $$
 p_{D} = \bar{D}-\hat{D}
 $$
+
 where $\bar{D}$ is the mean of the posterior deviance. I won’t make you read the original paper on this, since its pretty dense, and likewise I find McCarthy’s explanation for its intuitiveness rather unconvincing. Nevertheless, this is one way to estimate the effective number of parameters, and it can be generated automatically in WinBUGS so its used quite commonly. (I find this more convincing in practice, as we will demonstrate in lab, because non-hierarchical models with little prior information yield $p_{D} \sim$ true number of parameters.)
 
  (I have assigned the much newer Spiegelhalter et al. (2014) paper because it nicely summarizes the controversies surrounding DIC and reminds us that all this is still a matter of active development among statisticians.)
@@ -185,13 +186,18 @@ $$
 WAIC = -2\sum_{i=1}^{n} log \int p(y_{i}|\theta)p(\theta|y)d\theta + 2p_{D}
 $$
 
-where now $i=1,\dots,n$ represents the index for all data in the set (not an out-of-sample set but the data used to fit the original model). The WAIC looks a lot like the AIC measure that we use in a frequentist analysis, in that we have a term that reflects the negative log likelihood of the data (the dependence on the parameters has been marginalized out) and a penalty for model complexity.
+where now $i=1,\dots,n$ represents the index for all data in the set (not an out-of-sample set but the data used to fit the original model). The WAIC looks a lot like the AIC measure that we use in a frequentist analysis, in that we have a term that reflects the negative log likelihood of the data (the dependence on the parameters has been marginalized out) and a penalty for model complexity. WAIC uses a different estimator for the number of effective parameters:
+
+$$
+p_{D} = \sum_{i=1}^{n}Var_{\theta|y}(log[y_{i}|\theta])
+$$
 
 We can approximate this using the samples from our MCMC chain as
 
 $$
 WAIC \sim -2 \left(\sum_{i=1}^{n}log\left(\frac{\sum_{k=1}^{K}p(y_{i}|\theta^{k})}{K}\right)\right) + 2p_{D}
 $$
+
 where $k=1,\dots,K$ represents the samples in the MCMC chain itself.
 
 **Method #5: Posterior predictive loss**
