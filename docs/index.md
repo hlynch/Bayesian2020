@@ -1,7 +1,7 @@
 --- 
 title: "Bayesian Data Analysis and Computation Lecture and Lab Notes"
 author: "Heather Lynch"
-date: "2020-11-30"
+date: "2020-12-01"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
@@ -22,8 +22,8 @@ This eBook contains all of the lecture notes and lab exercises that we will do t
 
 **September 28**: Midterm exam
 
-**December 4**: Projects due
+**December 4 at 5 pm**: Projects due
 
-**December 9**: Project peer reviews due
+**December 9 at 5 pm**: Project peer reviews due
 
-**December 11**: Project peer reviews responses due
+**December 14 at 5 pm**: Project peer reviews responses due
