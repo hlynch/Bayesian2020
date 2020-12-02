@@ -3,17 +3,20 @@ Week 14 Lab
 
 We are going to redo the analysis by Ward (2008) but using the same time series we worked on a couple of weeks ago on [voles](https://github.com/hlynch/Bayesian2020/tree/master/_data/vole_data.txt) and other times series provided by Clark et al. (2010).
 
-I want you to fit two of the four different population models used by Ward: 
+I want you to fit a model with and without density dependence, re-using the code from the Week 11 lab: 
 
-*(1)* Geometric model
-
-$$
-N_{t+1} = N_{t}(1+r)
-$$
-*(2)* Logistic model
+*(1)* With density-dependence, observation error only
 
 $$
-N_{t+1} = N_{t} + r N_{t}\left(1-\frac{N_{t}}{K}\right)
+log(N_{t,obs}) \sim N(log(N_{t}),\sigma^{2}_{obs}) \\
+log(N_{t}) = log(N_{t-1})+r*\left(1-\frac{N_{t-1}}{K}\right)
+$$
+
+*(2)* Without density-dependence, observation error only
+
+$$
+log(N_{t,obs}) \sim N(log(N_{t}),\sigma^{2}_{obs}) \\
+log(N_{t}) = log(N_{t-1})+r
 $$
 
 I want you to fit these two models using both likelihood and Bayesian methods, assuming log-normally distributed observation error only. (You have most of the code already from previous exercises.)
