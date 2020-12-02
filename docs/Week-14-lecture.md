@@ -176,6 +176,24 @@ Criticisms of DIC (from Spiegelhalter et al. 2014):
 \tab d) “weak” theoretical justification
 
 
+Note that DIC was defined above in terms of $\hat{D}$, so as to make the analogy to AIC clearer, but what JAGS (at least as manifest in the R2jags package that we are using in this course) is tracking is the deviance. Therefore, deviance becomes another parameter being tracked in the model, and you end up with a posterior distribution of deviance. The mean of the posterior distribution for deviance is not $\hat{D}$ but $\bar{D}$. Therefore, to connect this to the summary table of JAGS, we will re-write the equation for DIC above as
+
+$$
+p_{D} = \bar{D}-\hat{D}
+$$
+therefore
+
+$$
+\hat{D}=\bar{D}-p_{D}
+$$
+and
+
+$$
+DIC = \hat{D} + 2p_{D} = \bar{D}-p_{D}+ 2p_{D} = \bar{D}+p_{D}
+$$
+
+So, another way to calculate DIC is to take the posterior mean of devaince and add the number of effective parameters $p_{D}$. (R2jags uses half the variance of the posterior deviance as the estimate of $p_{D}$.) Finally, as a reminder, like everything else estimated using MCMC sampling, deviance is only estimated, and therefore estimates of $\bar{D}$ and $p_{D}$ will be both non-integer and varianble from one MCMC run to the next.
+
 The DIC is an omnibus measure of fit, and its use is fairly contested among statisticians. (I think some of the complaint is that non-statisticians use it blindly without any knowledge of what it actually is or what the caveats might be.)  
 
 **Method #4: WAIC**

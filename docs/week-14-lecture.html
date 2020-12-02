@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2020-12-01" />
+<meta name="date" content="2020-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -375,6 +375,17 @@ DIC = \hat{D} + 2p_{D}
 <p>b) Lack of consistency (As the size of the dataset grows to infinity, DIC may not converge to the true model)</p>
 <p>c) Not based on a proper predictive criterion</p>
 <p>d) “weak” theoretical justification</p>
+<p>Note that DIC was defined above in terms of <span class="math inline">\(\hat{D}\)</span>, so as to make the analogy to AIC clearer, but what JAGS (at least as manifest in the R2jags package that we are using in this course) is tracking is the deviance. Therefore, deviance becomes another parameter being tracked in the model, and you end up with a posterior distribution of deviance. The mean of the posterior distribution for deviance is not <span class="math inline">\(\hat{D}\)</span> but <span class="math inline">\(\bar{D}\)</span>. Therefore, to connect this to the summary table of JAGS, we will re-write the equation for DIC above as</p>
+<p><span class="math display">\[
+p_{D} = \bar{D}-\hat{D}
+\]</span> therefore</p>
+<p><span class="math display">\[
+\hat{D}=\bar{D}-p_{D}
+\]</span> and</p>
+<p><span class="math display">\[
+DIC = \hat{D} + 2p_{D} = \bar{D}-p_{D}+ 2p_{D} = \bar{D}+p_{D}
+\]</span></p>
+<p>So, another way to calculate DIC is to take the posterior mean of devaince and add the number of effective parameters <span class="math inline">\(p_{D}\)</span>. (R2jags uses half the variance of the posterior deviance as the estimate of <span class="math inline">\(p_{D}\)</span>.) Finally, as a reminder, like everything else estimated using MCMC sampling, deviance is only estimated, and therefore estimates of <span class="math inline">\(\bar{D}\)</span> and <span class="math inline">\(p_{D}\)</span> will be both non-integer and varianble from one MCMC run to the next.</p>
 <p>The DIC is an omnibus measure of fit, and its use is fairly contested among statisticians. (I think some of the complaint is that non-statisticians use it blindly without any knowledge of what it actually is or what the caveats might be.)</p>
 <p><strong>Method #4: WAIC</strong></p>
 <p>Because of the some of the concerns over DIC as a measure of model fit, many practitioners have started using a measure called WAIC, which has stronger theoretical justification and avoids many of the problems of DIC</p>
