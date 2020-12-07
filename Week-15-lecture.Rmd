@@ -17,8 +17,16 @@ $$
 (The denominators involved have canceled, see McCarthy.) The term on the left hand side is the odds ratio. The first term on the right-hand-side is simply the ratio of the prior probability of Model 1 vs. Model 2. The second term on the right-hand-side is known as the “Bayes factor”. (This is similar to the likelihood ratio, but the LR is based on those parameters that **maximize** the likelihood, whereas the Bayes factor **integrates** over the parameter priors.) So this equation works out to be
 
 $$
-\mbox{posterior odds} = \mbox{Bayes factor} \times \mbox{prior odds}
+\mbox{posterior odds} =  \mbox{prior odds} \times \mbox{Bayes factor}
 $$
+
+Note that Bayes factor can also be seen as the ratio of the posterior odds and the prior odds:
+
+$$
+\frac{\frac{P(M_{1}|D)}{P(M_{2}|D)}}{\frac{P(M_{1})}{P(M_{2})}} = \frac{P(D|M_{1})}{P(D|M_{2})}
+$$
+
+where the posterior odds reflect the relative model probabilities **after** seeing the data and the prior odds are the relative probabilities **before** seeing the data.
 
 In the very simplest case in which you are comparing two point hypotheses (in other words, comparing two models which postulate different point estimates for the parameter in question), the Bayes factor works out to be the likelihood ratio. However, generally speaking, we have to integrate over the prior distribution under each model, e.g., 
 
@@ -59,7 +67,7 @@ Unfortunately, Bayes Factors can be difficult to calculate, and so they are rare
 
 ##Variable selection for nested models
 
-If you have a comprehensive model with many covariates, and your interest is in paring this down to a smaller set of covariates to make the most parsimonious model, that you can use another trick developed by Kuo and Mallick. This procedure is described in nice detail by Darren Wilkinson on his blog, which I have posted on Bb for you to read. 
+If you have a comprehensive model with many covariates, and your interest is in paring this down to a smaller set of covariates to make the most parsimonious model, that you can use another trick developed by Kuo and Mallick. This procedure is described in nice detail by Darren Wilkinson on his [blog](https://darrenjw.wordpress.com/tag/selection/). 
 
 ##Prior-data conflict
 
